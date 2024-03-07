@@ -1,10 +1,11 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
 import DashboardLayout from "layouts/Dashboard/layout"
+import AuthLayout from "layouts/Auth/layout"
 
 import Page404 from "pages/404"
 
-import { dashboardRoutes } from "routes"
+import { authRoutes, dashboardRoutes } from "routes"
 
 export default function App() {
   const router = createBrowserRouter([
@@ -12,6 +13,11 @@ export default function App() {
       element: <DashboardLayout />,
       errorElement: <Page404 />,
       children: dashboardRoutes
+    },
+    {
+      element: <AuthLayout />,
+      errorElement: <Page404 />,
+      children: authRoutes
     }
   ])
 

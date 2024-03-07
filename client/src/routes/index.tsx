@@ -11,4 +11,18 @@ const dashboardRoutes = [
 	},
 ];
 
-export { dashboardRoutes };
+const SignIn = lazy(() => import("pages/Auth/Sign-In"));
+const SignUp = lazy(() => import("pages/Auth/Sign-Up"));
+
+const authRoutes = [
+	{
+		path: Path.SIGN_IN,
+		element: <SignIn />
+	},
+	{
+		path: Path.SIGN_UP,
+		element: <SignUp />
+	}
+]
+
+export { dashboardRoutes, authRoutes };
