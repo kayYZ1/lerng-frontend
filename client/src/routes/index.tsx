@@ -25,4 +25,15 @@ const authRoutes = [
 	}
 ]
 
-export { dashboardRoutes, authRoutes };
+const SettingsProfile = lazy(() => import("pages/Settings/Profile"));
+
+const settingsRoutes = [
+	{
+		path: Path.PROFILE,
+		element: <SettingsProfile />
+	}
+]
+
+export { dashboardRoutes, authRoutes, settingsRoutes };
+
+

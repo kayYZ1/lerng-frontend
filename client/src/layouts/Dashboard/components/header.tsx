@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
+
 import Box from '@mui/joy/Box';
 import Typography from '@mui/joy/Typography';
 import IconButton from '@mui/joy/IconButton';
@@ -19,6 +21,9 @@ import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 
 import TeamNav from "./navigation"
+import Path from 'routes/paths';
+
+import style from "../dashboard.module.css"
 
 export default function Header() {
   const [open, setOpen] = React.useState(false);
@@ -37,7 +42,7 @@ export default function Header() {
         spacing={1}
         sx={{ display: { xs: 'none', sm: 'flex' } }}
       >
-        Learn Linux 
+        Learn Linux
       </Stack>
       <Box sx={{ display: { xs: 'inline-flex', sm: 'none' } }}>
         <IconButton variant="plain" color="neutral" onClick={() => setOpen(true)}>
@@ -114,12 +119,12 @@ export default function Header() {
             </MenuItem>
             <MenuItem>
               <SettingsRoundedIcon />
-              Settings
+              <Link to={Path.PROFILE} className={style.link}>Settings</Link>
             </MenuItem>
             <ListDivider />
             <MenuItem>
               <LogoutRoundedIcon />
-              Log out
+              <Link to={Path.SIGN_IN} className={style.link}>Sign Out</Link>
             </MenuItem>
           </Menu>
         </Dropdown>
