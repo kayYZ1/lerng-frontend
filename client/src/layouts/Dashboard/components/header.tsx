@@ -119,7 +119,7 @@ export default function Header() {
             </MenuItem>
             <MenuItem>
               <SettingsRoundedIcon />
-              <Link to={Path.PROFILE} className={style.link}>Settings</Link>
+              <Link to={Path.SETTINGS} className={style.link}>Settings</Link>
             </MenuItem>
             <ListDivider />
             <MenuItem>

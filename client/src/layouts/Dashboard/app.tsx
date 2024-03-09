@@ -19,11 +19,11 @@ export default function DashboardLayout() {
         <Layout.SideNav>
           <Navigation />
         </Layout.SideNav>
-        <main>
+        <Layout.Main>
           <Suspense fallback={<div>Loading...</div>}>
             <Outlet />
           </Suspense>
-        </main>
+        </Layout.Main>
       </Layout.Root>
     </CssVarsProvider>
   );

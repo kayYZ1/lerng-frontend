@@ -3,12 +3,22 @@ import { lazy } from "react";
 import Path from "./paths";
 
 const Dashboard = lazy(() => import("pages/Dashboard/index"));
+const SettingsProfile = lazy(() => import("pages/Settings/Profile"));
+const Courses = lazy(() => import("pages/Courses/index"))
 
 const dashboardRoutes = [
 	{
 		path: Path.DASHBOARD,
 		element: <Dashboard />
 	},
+	{
+		path: Path.SETTINGS,
+		element: <SettingsProfile />
+	},
+	{
+		path: Path.COURSES,
+		element: <Courses />
+	}
 ];
 
 const SignIn = lazy(() => import("pages/Auth/Sign-In"));
@@ -25,15 +35,7 @@ const authRoutes = [
 	}
 ]
 
-const SettingsProfile = lazy(() => import("pages/Settings/Profile"));
 
-const settingsRoutes = [
-	{
-		path: Path.PROFILE,
-		element: <SettingsProfile />
-	}
-]
-
-export { dashboardRoutes, authRoutes, settingsRoutes };
+export { dashboardRoutes, authRoutes };
 
 

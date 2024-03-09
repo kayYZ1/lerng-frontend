@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import List from '@mui/joy/List';
 import ListSubheader from '@mui/joy/ListSubheader';
 import ListItem from '@mui/joy/ListItem';
@@ -7,6 +9,9 @@ import ListItemContent from '@mui/joy/ListItemContent';
 
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import BookmarksIcon from '@mui/icons-material/Bookmarks';
+
+import Path from 'routes/paths';
+import style from "../dashboard.module.css"
 
 export default function Navigation() {
   return (
@@ -25,11 +30,13 @@ export default function Navigation() {
           }}
         >
           <ListItem>
-            <ListItemButton selected>
+            <ListItemButton>
               <ListItemDecorator>
                 <LibraryBooksIcon fontSize="small" />
               </ListItemDecorator>
-              <ListItemContent>Courses</ListItemContent>
+              <ListItemContent>
+                <Link to={Path.COURSES} className={style.link}>Courses</Link>
+              </ListItemContent>
             </ListItemButton>
           </ListItem>
           <ListItem>
