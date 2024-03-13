@@ -7,6 +7,7 @@ import CssBaseline from '@mui/joy/CssBaseline';
 import Box from '@mui/joy/Box';
 import Typography from '@mui/joy/Typography';
 import { Link } from '@mui/joy';
+import ColorSchemeToggle from 'shared/components/ColorToggle';
 
 export default function AuthLayout() {
   return (
@@ -56,6 +57,7 @@ export default function AuthLayout() {
             <Box sx={{ gap: 2, display: 'flex', alignItems: 'center' }}>
               <Typography level="title-lg">Learn Linux</Typography>
             </Box>
+            <ColorSchemeToggle />
           </Box>
           <Box
             component="main"
