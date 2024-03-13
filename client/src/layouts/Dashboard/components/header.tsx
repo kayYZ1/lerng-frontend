@@ -76,7 +76,7 @@ export default function Header() {
         spacing={1}
         sx={{ display: { xs: 'none', sm: 'flex' } }}
       >
-        Learn Linux
+        Learn-Linux.com
       </Stack>
       <Box sx={{ display: { xs: 'inline-flex', sm: 'none' } }}>
         <IconButton variant="plain" color="neutral" onClick={() => setOpen(true)}>
@@ -88,7 +88,7 @@ export default function Header() {
           onClose={() => setOpen(false)}
         >
           <ModalClose />
-          <DialogTitle>LearnLinux.com</DialogTitle>
+          <DialogTitle>Learn-Linux.com</DialogTitle>
           <Box sx={{ px: 1 }}>
             <TeamNav />
           </Box>

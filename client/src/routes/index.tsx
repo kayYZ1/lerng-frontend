@@ -5,6 +5,7 @@ import Path from "./paths";
 const Dashboard = lazy(() => import("pages/Dashboard/index"));
 const SettingsProfile = lazy(() => import("pages/Settings/Profile"));
 const Courses = lazy(() => import("pages/Courses/index"))
+const Enrolled = lazy(() => import("pages/Enrolled/index"))
 
 const dashboardRoutes = [
 	{
@@ -18,6 +19,10 @@ const dashboardRoutes = [
 	{
 		path: Path.COURSES,
 		element: <Courses />
+	},
+	{
+		path: Path.ENROLLED,
+		element: <Enrolled />
 	}
 ];
 

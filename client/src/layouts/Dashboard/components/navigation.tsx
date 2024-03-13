@@ -44,7 +44,9 @@ export default function Navigation() {
               <ListItemDecorator sx={{ color: 'neutral.500' }}>
                 <BookmarksIcon fontSize="small" />
               </ListItemDecorator>
-              <ListItemContent>Enrolled</ListItemContent>
+              <ListItemContent>
+                <Link to={Path.ENROLLED} className={style.link}>Enrolled</Link>
+              </ListItemContent>
             </ListItemButton>
           </ListItem>
         </List>
