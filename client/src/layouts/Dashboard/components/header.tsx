@@ -14,16 +14,50 @@ import ListDivider from '@mui/joy/ListDivider';
 import Drawer from '@mui/joy/Drawer';
 import ModalClose from '@mui/joy/ModalClose';
 import DialogTitle from '@mui/joy/DialogTitle';
+import { Tooltip } from '@mui/joy';
+import { useColorScheme } from '@mui/joy';
 
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import HelpRoundedIcon from '@mui/icons-material/HelpRounded';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
+import { DarkModeRounded, LightModeRounded } from '@mui/icons-material';
 
 import TeamNav from "./navigation"
 import Path from 'routes/paths';
 
 import style from "../dashboard.module.css"
+
+function ColorSchemeToggle() {
+  const { mode, setMode } = useColorScheme();
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+  if (!mounted) {
+    return <IconButton size="sm" variant="outlined" color="primary" />;
+  }
+  return (
+    <Tooltip title="Change theme" variant="outlined">
+      <IconButton
+        id="toggle-mode"
+        size="sm"
+        variant="plain"
+        color="neutral"
+        sx={{ alignSelf: 'center' }}
+        onClick={() => {
+          if (mode === 'light') {
+            setMode('dark');
+          } else {
+            setMode('light');
+          }
+        }}
+      >
+        {mode === 'light' ? <DarkModeRounded /> : <LightModeRounded />}
+      </IconButton>
+    </Tooltip>
+  );
+}
 
 export default function Header() {
   const [open, setOpen] = React.useState(false);
@@ -68,6 +102,7 @@ export default function Header() {
           alignItems: 'center',
         }}
       >
+        <ColorSchemeToggle />
         <Dropdown>
           <MenuButton
             variant="plain"

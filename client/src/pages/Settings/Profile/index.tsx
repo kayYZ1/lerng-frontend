@@ -4,10 +4,8 @@ import Button from '@mui/joy/Button';
 import Divider from '@mui/joy/Divider';
 import FormControl from '@mui/joy/FormControl';
 import FormLabel from '@mui/joy/FormLabel';
-import FormHelperText from '@mui/joy/FormHelperText';
 import Input from '@mui/joy/Input';
 import IconButton from '@mui/joy/IconButton';
-import Textarea from '@mui/joy/Textarea';
 import Stack from '@mui/joy/Stack';
 import Select from '@mui/joy/Select';
 import Option from '@mui/joy/Option';
@@ -37,7 +35,7 @@ export default function Profile() {
         >
           <Box sx={{ px: { xs: 2, md: 6 } }}>
             <Typography level="h2" component="h1" sx={{ mt: 1, mb: 2 }}>
-              My profile
+              Settings
             </Typography>
           </Box>
           <Tabs
@@ -68,16 +66,10 @@ export default function Profile() {
               }}
             >
               <Tab sx={{ borderRadius: '6px 6px 0 0' }} indicatorInset value={0}>
-                Settings
+                Profile
               </Tab>
               <Tab sx={{ borderRadius: '6px 6px 0 0' }} indicatorInset value={1}>
-                Team
-              </Tab>
-              <Tab sx={{ borderRadius: '6px 6px 0 0' }} indicatorInset value={2}>
-                Plan
-              </Tab>
-              <Tab sx={{ borderRadius: '6px 6px 0 0' }} indicatorInset value={3}>
-                Billing
+                App settings
               </Tab>
             </TabList>
           </Tabs>
@@ -138,7 +130,7 @@ export default function Profile() {
               </Stack>
               <Stack spacing={2} sx={{ flexGrow: 1 }}>
                 <Stack spacing={1}>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>Username</FormLabel>
                   <FormControl
                     sx={{ display: { sm: 'flex-column', md: 'flex-row' }, gap: 2 }}
                   >
@@ -148,8 +140,8 @@ export default function Profile() {
                 </Stack>
                 <Stack direction="row" spacing={2}>
                   <FormControl>
-                    <FormLabel>Role</FormLabel>
-                    <Input size="sm" defaultValue="UI Developer" />
+                    <FormLabel>Password</FormLabel>
+                    <Input size="sm" defaultValue="password" type="password" disabled/>
                   </FormControl>
                   <FormControl sx={{ flexGrow: 1 }}>
                     <FormLabel>Email</FormLabel>
