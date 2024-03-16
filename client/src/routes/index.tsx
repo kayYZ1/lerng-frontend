@@ -4,8 +4,9 @@ import Path from "./paths";
 
 const Dashboard = lazy(() => import("pages/Dashboard/index"));
 const SettingsProfile = lazy(() => import("pages/Settings/Profile"));
+
 const Courses = lazy(() => import("pages/Courses/index"))
-const Enrolled = lazy(() => import("pages/Enrolled/index"))
+const SingleCourse = lazy(() => import("pages/Courses/SingleCourse/index"))
 
 const dashboardRoutes = [
 	{
@@ -21,9 +22,9 @@ const dashboardRoutes = [
 		element: <Courses />
 	},
 	{
-		path: Path.ENROLLED,
-		element: <Enrolled />
-	}
+		path: Path.COURSE,
+		element: <SingleCourse />
+	},
 ];
 
 const SignIn = lazy(() => import("pages/Auth/Sign-In"));

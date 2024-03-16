@@ -45,7 +45,7 @@ export default function Navigation() {
                 <BookmarksIcon fontSize="small" />
               </ListItemDecorator>
               <ListItemContent>
-                <Link to={Path.ENROLLED} className={style.link}>Enrolled</Link>
+                Enrolled
               </ListItemContent>
             </ListItemButton>
           </ListItem>

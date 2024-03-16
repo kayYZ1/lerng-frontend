@@ -5,11 +5,14 @@ import CardOverflow from '@mui/joy/CardOverflow';
 import Divider from '@mui/joy/Divider';
 import Typography from '@mui/joy/Typography';
 import IconButton from '@mui/joy/IconButton';
-import Link from '@mui/joy/Link';
 import Favorite from '@mui/icons-material/Favorite';
 
-import { CardItem } from './types';
+import { Link } from 'react-router-dom';
+
+import { CardItem } from '../types';
 import { Grid } from '@mui/joy';
+
+import style from "../courses.module.css"
 
 export default function CourseItem(item: CardItem) {
   return (
@@ -42,20 +45,17 @@ export default function CourseItem(item: CardItem) {
         </CardOverflow>
         <CardContent>
           <Typography level="title-md">
-            <Link href="#multiple-actions" overlay underline="none">
+            <Link to={`/dashboard/courses/course/${item.id}`} className={style.link}>
               {item.title.length > 38 ? `${item.title.substring(0, 33)}...` : item.title}
             </Link>
-          </Typography>
-          <Typography level="body-sm">
-            <Link href="#multiple-actions">California</Link>
           </Typography>
         </CardContent>
         <CardOverflow variant="soft">
           <Divider inset="context" />
           <CardContent orientation="horizontal">
-            <Typography level="body-xs">6.3k views</Typography>
+            <Typography level="body-xs">Score: 4.4/5</Typography>
             <Divider orientation="vertical" />
-            <Typography level="body-xs">1 hour ago</Typography>
+            <Typography level="body-xs">22.03.2024</Typography>
           </CardContent>
         </CardOverflow>
       </Card>

@@ -1,8 +1,8 @@
 import { Box, Typography, Sheet, Input, IconButton, Divider } from "@mui/joy"
 import { SearchRounded } from "@mui/icons-material"
 
-import CourseList from "./courseList"
-import SelectFilter from "./components/SelectFilter"
+import CourseList from "./components/courseList"
+import SelectFilter from "./components/selectFilter"
 
 export default function Courses() {
   return (

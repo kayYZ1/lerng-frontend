@@ -1,6 +1,6 @@
 import { Box, Grid } from "@mui/joy"
 
-import { CardItem } from "./types"
+import { CardItem } from "../types"
 import CourseItem from "./courseItem"
 
 const mockCardData: CardItem[] = [
