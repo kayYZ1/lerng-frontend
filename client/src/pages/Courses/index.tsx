@@ -1,4 +1,4 @@
-import { Box, Typography, Sheet, Input, IconButton } from "@mui/joy"
+import { Box, Typography, Sheet, Input, IconButton, Divider } from "@mui/joy"
 import { SearchRounded } from "@mui/icons-material"
 
 import CourseList from "./courseList"
@@ -25,7 +25,6 @@ export default function Courses() {
       <Sheet
         sx={{
           display: { xs: 'flex' },
-          my: 1,
           gap: 1,
           flexDirection: { xs: 'column', sm: 'row' },
           alignItems: 'center',
@@ -49,6 +48,7 @@ export default function Courses() {
         />
         <SelectFilter />
       </Sheet>
+      <Divider sx={{ my: 2}}/>
       <CourseList />
     </Box>
   )
