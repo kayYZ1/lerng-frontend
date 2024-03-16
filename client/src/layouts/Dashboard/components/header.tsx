@@ -117,10 +117,6 @@ export default function Header() {
             </MenuItem>
             <ListDivider />
             <MenuItem>
-              <HelpRoundedIcon />
-              Help
-            </MenuItem>
-            <MenuItem>
               <SettingsRoundedIcon />
               <Link to={Path.SETTINGS} className={style.link}>Settings</Link>
             </MenuItem>

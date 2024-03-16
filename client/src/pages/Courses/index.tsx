@@ -1,6 +1,9 @@
 import { Box, Typography, Sheet, Input, IconButton } from "@mui/joy"
 import { SearchRounded } from "@mui/icons-material"
 
+import CourseList from "./courseList"
+import SelectFilter from "./components/SelectFilter"
+
 export default function Courses() {
   return (
     <Box sx={{ flex: 1, width: '100%' }}>
@@ -24,6 +27,10 @@ export default function Courses() {
           display: { xs: 'flex' },
           my: 1,
           gap: 1,
+          flexDirection: { xs: 'column', sm: 'row' },
+          alignItems: 'center',
+          justifyContent: { xs: 'space-between', sm: 'flex-start' },
+          px: { xs: 2, md: 6 }
         }}
       >
         <Input
@@ -40,7 +47,9 @@ export default function Courses() {
             </IconButton>
           }
         />
+        <SelectFilter />
       </Sheet>
+      <CourseList />
     </Box>
   )
 }
