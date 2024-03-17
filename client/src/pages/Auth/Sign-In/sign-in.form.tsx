@@ -1,15 +1,64 @@
-import { FormControl, FormLabel, Input, Stack, Box, Link, Button } from "@mui/joy";
+import { FormControl, FormLabel, Input, Stack, Box, Link, Button, FormHelperText } from "@mui/joy";
+import { useFormik } from "formik";
+import * as yup from "yup"
+
+import { useSignInFnMutation } from "features/auth/authApi.slice";
+import { UserSignIn } from "shared/types";
+
+import style from "../auth.module.css"
+
+const validationSchema = yup.object().shape({
+  email: yup.string().email('Invalid email').required('Email is required'),
+  password: yup.string().min(8, 'Password must be atleast 8 characters long').required('Password is required'),
+});
 
 export default function SignInForm() {
+  const [SignInFn, { isLoading, error, isSuccess }] = useSignInFnMutation();
+
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema,
+    onSubmit: async (values, { resetForm }) => {
+      const user: UserSignIn = {
+        email: values.email,
+        password: values.password,
+      }
+      console.log(user);
+      await SignInFn(values);
+      resetForm();
+    }
+  })
+
   return (
-    <form>
+    <form onSubmit={formik.handleSubmit}>
       <FormControl required>
         <FormLabel>Email</FormLabel>
-        <Input type="email" name="email" />
+        <Input
+          type="email"
+          name="email"
+          value={formik.values.email}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.email && !!formik.errors.email}
+        />
+        {formik.touched.email ?
+          <FormHelperText component="div" className={style.formHelperError}>{formik.errors.email}</FormHelperText> : ""}
       </FormControl>
       <FormControl required>
         <FormLabel>Password</FormLabel>
-        <Input type="password" name="password" />
+        <Input
+          type="password"
+          name="password"
+          value={formik.values.password}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.password && !!formik.errors.password}
+        />
+        {formik.touched.password ?
+          <FormHelperText component="div" className={style.formHelperError}>{formik.errors.password}</FormHelperText> : ""}
       </FormControl>
       <Stack gap={4} sx={{ mt: 2 }}>
         <Box
@@ -23,10 +72,12 @@ export default function SignInForm() {
             Forgot your password?
           </Link>
         </Box>
-        <Button type="submit" fullWidth>
+        <Button type="submit" loading={isLoading} fullWidth>
           Sign in
         </Button>
       </Stack>
+      {error ? <div>Something went wrong</div> : ""}
+      {isSuccess ? <div>Works</div> : <div>Does not work</div>}
     </form>
   )
 }

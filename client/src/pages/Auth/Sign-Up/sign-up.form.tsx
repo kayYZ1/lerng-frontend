@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import * as yup from "yup"
 
 import { useSignUpFnMutation } from "features/auth/authApi.slice";
-import { UserSignIn } from "shared/types";
+import { UserSignUp } from "shared/types";
 
 import style from "../auth.module.css"
 
@@ -26,14 +26,15 @@ export default function SignUpForm() {
       repeatPassword: "",
     },
     validationSchema,
-    onSubmit: async (values) => {
-      const user: UserSignIn = {
+    onSubmit: async (values, { resetForm }) => {
+      const user: UserSignUp = {
         email: values.email,
         password: values.password,
         username: values.username
       }
       console.log(user);
       await SignUpFn(values);
+      resetForm();
     }
   })
 
