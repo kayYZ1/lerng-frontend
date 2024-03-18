@@ -1,7 +1,9 @@
 import { FormControl, FormLabel, Input, Stack, Box, Link, Button, FormHelperText } from "@mui/joy";
 import { useFormik } from "formik";
-import * as yup from "yup"
+import * as yup from "yup";
+import { useDispatch } from "react-redux";
 
+import { setCredentials } from "features/auth/auth.slice";
 import { useSignInFnMutation } from "features/auth/authApi.slice";
 import { UserSignIn } from "shared/types";
 
@@ -13,7 +15,9 @@ const validationSchema = yup.object().shape({
 });
 
 export default function SignInForm() {
-  const [SignInFn, { isLoading, error, isSuccess }] = useSignInFnMutation();
+  const dispatch = useDispatch();
+
+  const [SignInFn, { isLoading, error }] = useSignInFnMutation();
 
   const formik = useFormik({
     initialValues: {
@@ -27,7 +31,8 @@ export default function SignInForm() {
         password: values.password,
       }
       console.log(user);
-      await SignInFn(values);
+      const { accessToken } = await SignInFn(values).unwrap();
+      dispatch(setCredentials(accessToken))
       resetForm();
     }
   })
@@ -77,7 +82,6 @@ export default function SignInForm() {
         </Button>
       </Stack>
       {error ? <div>Something went wrong</div> : ""}
-      {isSuccess ? <div>Works</div> : <div>Does not work</div>}
     </form>
   )
 }
