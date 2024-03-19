@@ -5,14 +5,14 @@ import {
 	fetchBaseQuery,
 } from "@reduxjs/toolkit/query/react";
 
-import { setCredentials, signOut } from "./auth.slice";
+import { setCredentials, signOut } from "../auth/auth.slice";
 
 const baseQuery = fetchBaseQuery({
 	baseUrl: "http://localhost:3000",
 	credentials: "include",
 	prepareHeaders: (headers, { getState }) => {
 		const state = getState() as any;
-		const token = state.auth.token;
+		const token = state.auth.accessToken;
 		if (token) {
 			headers.set("authorization", `Bearer ${token}`);
 		}

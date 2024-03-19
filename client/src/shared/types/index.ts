@@ -5,6 +5,10 @@ export type UserSignUp = {
 };
 
 export type UserSignIn = {
-  email: string;
-  password: string;
-}
+	email: string;
+	password: string;
+};
+
+export type RouteChild = {
+	children: JSX.Element;
+};

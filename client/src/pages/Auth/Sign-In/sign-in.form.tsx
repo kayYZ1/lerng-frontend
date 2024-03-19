@@ -4,7 +4,7 @@ import * as yup from "yup";
 import { useDispatch } from "react-redux";
 
 import { setCredentials } from "features/auth/auth.slice";
-import { useSignInFnMutation } from "features/auth/authApi.slice";
+import { useSignInFnMutation } from "features/auth/auth.api.slice";
 import { UserSignIn } from "shared/types";
 
 import style from "../auth.module.css"
