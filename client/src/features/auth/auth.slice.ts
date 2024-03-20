@@ -4,7 +4,7 @@ const initialState = {
 	accessToken: sessionStorage.getItem("accessToken") || null,
 };
 
-const authSlice = createSlice({
+const authSlice = createSlice({			
 	name: "auth",
 	initialState,
 	reducers: {
@@ -12,14 +12,12 @@ const authSlice = createSlice({
 			state.accessToken = action.payload;
 			sessionStorage.setItem("accessToken", JSON.stringify(state.accessToken));
 		},
-		signOut: (state, _action) => {
+		signOut: (state) => {
 			state.accessToken = null;
 			sessionStorage.removeItem("accessToken");
 		},
 	},
 });
-
-console.log(initialState.accessToken);
 
 export const { setCredentials, signOut } = authSlice.actions;
 

@@ -2,12 +2,14 @@ import { FormControl, FormLabel, Input, Stack, Box, Link, Button, FormHelperText
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import { setCredentials } from "features/auth/auth.slice";
 import { useSignInFnMutation } from "features/auth/auth.api.slice";
 import { UserSignIn } from "shared/types";
 
 import style from "../auth.module.css"
+import Path from "routes/paths";
 
 const validationSchema = yup.object().shape({
   email: yup.string().email('Invalid email').required('Email is required'),
@@ -16,6 +18,7 @@ const validationSchema = yup.object().shape({
 
 export default function SignInForm() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [SignInFn, { isLoading, error }] = useSignInFnMutation();
 
@@ -33,6 +36,7 @@ export default function SignInForm() {
       console.log(user);
       const { accessToken } = await SignInFn(values).unwrap();
       dispatch(setCredentials(accessToken))
+      navigate(Path.DASHBOARD)
       resetForm();
     }
   })

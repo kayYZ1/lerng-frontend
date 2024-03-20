@@ -7,7 +7,5 @@ import Path from "routes/paths";
 
 export default function AuthRoute({ children }: RouteChild) {
   const token = useSelector(selectCurrentToken);
-  console.log(token)
-
   return token ? children : <Navigate to={Path.SIGN_IN} />
 }

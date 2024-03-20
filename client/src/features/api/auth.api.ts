@@ -9,15 +9,15 @@ import { setCredentials, signOut } from "../auth/auth.slice";
 
 const baseQuery = fetchBaseQuery({
 	baseUrl: "http://localhost:3000",
-	credentials: "include",
 	prepareHeaders: (headers, { getState }) => {
 		const state = getState() as any;
 		const token = state.auth.accessToken;
 		if (token) {
-			headers.set("authorization", `Bearer ${token}`);
+			headers.set("Authorization", `Bearer ${token}`);
 		}
 		return headers;
 	},
+	credentials: "include",	
 });
 
 const baseQueryWithReauth = async (
@@ -38,7 +38,7 @@ const baseQueryWithReauth = async (
 
 			result = await baseQuery(args, api, extraOptions);
 		} else {
-			api.dispatch(signOut(undefined));
+			api.dispatch(signOut());
 		}
 	}
 	return result;
