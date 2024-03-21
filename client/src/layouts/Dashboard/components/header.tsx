@@ -38,7 +38,7 @@ export default function Header() {
   const { data, isLoading } = useGetMeQuery(undefined);
   const [SignOutFn] = useSignOutFnMutation();
 
-  const signOutHandler =  () => {
+  const signOutHandler = () => {
     SignOutFn(undefined);
     dispatch(signOut());
   }

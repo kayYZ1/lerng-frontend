@@ -1,7 +1,6 @@
 import {
 	BaseQueryApi,
 	FetchArgs,
-	createApi,
 	fetchBaseQuery,
 } from "@reduxjs/toolkit/query/react";
 
@@ -21,7 +20,7 @@ const baseQuery = fetchBaseQuery({
 	credentials: "include",
 });
 
-const baseQueryWithReauth = async (
+export const baseQueryWithReauth = async (
 	args: string | FetchArgs,
 	api: BaseQueryApi,
 	extraOptions: {}
@@ -45,8 +44,3 @@ const baseQueryWithReauth = async (
 	}
 	return result;
 };
-
-export const authApi = createApi({
-	baseQuery: baseQueryWithReauth,
-	endpoints: (_builder) => ({}),
-});
