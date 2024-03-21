@@ -16,6 +16,12 @@ export const authApiSlice = authApi.injectEndpoints({
 				body: data,
 			}),
 		}),
+		SignOutFn: builder.mutation({
+			query: () => ({
+				url: "/auth/sign-out",
+				method: "POST"
+			})
+		}),
 		GetMe: builder.query({
 			query: () => ({
 				url: "/auth/me",
@@ -25,4 +31,4 @@ export const authApiSlice = authApi.injectEndpoints({
 	}),
 });
 
-export const { useSignInFnMutation, useSignUpFnMutation, useGetMeQuery } = authApiSlice;
+export const { useSignInFnMutation, useSignUpFnMutation, useSignOutFnMutation, useGetMeQuery } = authApiSlice;

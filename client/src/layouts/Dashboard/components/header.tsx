@@ -14,9 +14,10 @@ import ListDivider from '@mui/joy/ListDivider';
 import Drawer from '@mui/joy/Drawer';
 import ModalClose from '@mui/joy/ModalClose';
 import DialogTitle from '@mui/joy/DialogTitle';
+import Skeleton from '@mui/joy/Skeleton';
+import { useDispatch } from 'react-redux';
 
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
-import HelpRoundedIcon from '@mui/icons-material/HelpRounded';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 
@@ -27,8 +28,21 @@ import style from "../dashboard.module.css"
 
 import ColorSchemeToggle from 'shared/components/ColorToggle';
 
+import { useGetMeQuery } from 'features/auth/auth.api.slice';
+import { useSignOutFnMutation } from 'features/auth/auth.api.slice';
+import { signOut } from 'features/auth/auth.slice';
+
 export default function Header() {
+  const dispatch = useDispatch();
   const [open, setOpen] = React.useState(false);
+  const { data, isLoading } = useGetMeQuery(undefined);
+  const [SignOutFn] = useSignOutFnMutation();
+
+  const signOutHandler =  () => {
+    SignOutFn(undefined);
+    dispatch(signOut());
+  }
+
   return (
     <Box
       sx={{
@@ -78,10 +92,11 @@ export default function Header() {
             sx={{ maxWidth: '32px', maxHeight: '32px', borderRadius: '9999999px' }}
           >
             <Avatar
-              src="https://i.pravatar.cc/40?img=2"
-              srcSet="https://i.pravatar.cc/80?img=2"
+              src={isLoading ? '' : data.avatar}
               sx={{ maxWidth: '32px', maxHeight: '32px' }}
-            />
+            >
+              <Skeleton loading={isLoading} />
+            </Avatar>
           </MenuButton>
           <Menu
             placement="bottom-end"
@@ -101,16 +116,18 @@ export default function Header() {
                 }}
               >
                 <Avatar
-                  src="https://i.pravatar.cc/40?img=2"
-                  srcSet="https://i.pravatar.cc/80?img=2"
+                  src={isLoading ? '' : data.avatar}
                   sx={{ borderRadius: '50%' }}
                 />
                 <Box sx={{ ml: 1.5 }}>
                   <Typography level="title-sm" textColor="text.primary">
-                    Rick Sanchez
+                    {isLoading ? '' : data.username}
                   </Typography>
-                  <Typography level="body-xs" textColor="text.tertiary">
-                    rick@email.com
+                  <Typography level="body-sm" textColor="text.tertiary">
+                    {isLoading ? '' : data.email}
+                  </Typography>
+                  <Typography level="body-xs">
+                    {isLoading ? '' : data.role}
                   </Typography>
                 </Box>
               </Box>
@@ -123,7 +140,7 @@ export default function Header() {
             <ListDivider />
             <MenuItem>
               <LogoutRoundedIcon />
-              <Link to={Path.SIGN_IN} className={style.link}>Sign Out</Link>
+              <Link to={Path.SIGN_IN} className={style.link} onClick={signOutHandler}>Sign Out</Link>
             </MenuItem>
           </Menu>
         </Dropdown>
