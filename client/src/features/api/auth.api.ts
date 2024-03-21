@@ -5,7 +5,8 @@ import {
 	fetchBaseQuery,
 } from "@reduxjs/toolkit/query/react";
 
-import { setCredentials, signOut } from "../auth/auth.slice";
+import { getCookie } from "shared/lib/cookies";
+import { setCredentials, setRefreshToken, signOut } from "../auth/auth.slice";
 
 const baseQuery = fetchBaseQuery({
 	baseUrl: "http://localhost:3000",
@@ -28,12 +29,15 @@ const baseQueryWithReauth = async (
 	let result = await baseQuery(args, api, extraOptions);
 
 	if (result.error && result.error.status === 401) {
-		console.log(document.cookie);
+		const refreshToken: string = getCookie();
+		api.dispatch(setRefreshToken(refreshToken)); //Currently uses HTTPOnly:False needs to be fixed in the future
+
 		const refreshResult = await baseQuery("/auth/refresh", api, extraOptions);
-		console.log(refreshResult);
 
 		if (refreshResult.data) {
-			api.dispatch(setCredentials(refreshResult.data));
+			const accessToken = (refreshResult.data as { accessToken: string })
+				.accessToken;
+			api.dispatch(setCredentials(accessToken));
 			result = await baseQuery(args, api, extraOptions);
 		} else {
 			api.dispatch(signOut());
@@ -46,4 +50,3 @@ export const authApi = createApi({
 	baseQuery: baseQueryWithReauth,
 	endpoints: (_builder) => ({}),
 });
-
