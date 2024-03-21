@@ -1,18 +1,15 @@
 import { Box, Grid } from "@mui/joy"
 
-import { CardItem } from "../types"
-import CourseItem from "./courseItem"
+import { useGetCoursesQuery } from "features/courses/courses.api.slice"
 
-const mockCardData: CardItem[] = [
-  { id: 1, title: "Introduction to Linux", img: "https://placehold.co/600x400" },
-  { id: 2, title: "Working with bash", img: "https://placehold.co/600x400" },
-  { id: 3, title: "Development environment in Linux systems", img: "https://placehold.co/600x400" },
-  { id: 4, title: "Relational databases in Linux", img: "https://placehold.co/600x400" },
-  { id: 5, title: "Procesess", img: "https://placehold.co/600x400" },
-  { id: 6, title: "Procesess", img: "https://placehold.co/600x400" }
-]
+import CourseItem from "./courseItem"
+import CourseSkeleton from "./courseSkeleton"
+
+import { Course } from "shared/types"
 
 export default function CourseList() {
+  const { data, isLoading } = useGetCoursesQuery(undefined);
+
   return (
     <Box sx={{
       display: 'flex',
@@ -27,9 +24,12 @@ export default function CourseList() {
           px: 2
         }}
       >
-        {mockCardData.map((card: CardItem) => (
-          <CourseItem {...card} key={card.id} />
-        ))}
+        {isLoading ?
+          <CourseSkeleton /> :
+          data.map((course: Course) => (
+            <CourseItem {...course} key={course.id} />
+          ))
+        }
       </Grid>
     </Box>
   )
