@@ -3,7 +3,7 @@ import { lazy } from "react";
 import Path from "./paths";
 
 const Dashboard = lazy(() => import("pages/Dashboard/index"));
-const SettingsProfile = lazy(() => import("pages/Settings/Profile"));
+const SettingsProfile = lazy(() => import("pages/Settings"));
 
 const Courses = lazy(() => import("pages/Courses/index"))
 const SingleCourse = lazy(() => import("pages/Courses/SingleCourse/index"))
