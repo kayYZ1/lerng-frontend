@@ -2,7 +2,7 @@ import { Card, AspectRatio, Skeleton, Typography } from "@mui/joy"
 
 export default function CourseSkeleton() {
   return (
-    <Card variant="outlined" sx={{ width: 343, display: 'flex', gap: 2 }}>
+    <Card variant="outlined" sx={{ py: 2, px: 1, width: 320, gap: 1 }}>
       <AspectRatio ratio="21/9">
         <Skeleton variant="overlay">
           <img
