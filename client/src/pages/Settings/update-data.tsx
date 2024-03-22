@@ -5,7 +5,6 @@ import Divider from '@mui/joy/Divider';
 import FormControl from '@mui/joy/FormControl';
 import FormLabel from '@mui/joy/FormLabel';
 import Input from '@mui/joy/Input';
-import IconButton from '@mui/joy/IconButton';
 import Stack from '@mui/joy/Stack';
 import Typography from '@mui/joy/Typography';
 import Card from '@mui/joy/Card';
@@ -13,12 +12,13 @@ import CardActions from '@mui/joy/CardActions';
 import CardOverflow from '@mui/joy/CardOverflow';
 
 import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
-import EditRoundedIcon from '@mui/icons-material/EditRounded';
 import Person2RoundedIcon from '@mui/icons-material/Person2Rounded';
 import AdminPanelSettingsRoundedIcon from '@mui/icons-material/AdminPanelSettingsRounded';
 
 import { useGetMeQuery } from 'features/auth/auth.api.slice';
+
 import ProfileSkeleton from './components/profileSkeleton';
+import UpdateImageModal from './components/update-image.modal';
 
 export default function UpdateData() {
   const { data, isLoading } = useGetMeQuery(undefined);
@@ -51,23 +51,7 @@ export default function UpdateData() {
                   alt=""
                 />
               </AspectRatio>
-              <IconButton
-                aria-label="upload new picture"
-                size="sm"
-                variant="outlined"
-                color="neutral"
-                sx={{
-                  bgcolor: 'background.body',
-                  position: 'absolute',
-                  zIndex: 2,
-                  borderRadius: '50%',
-                  left: 100,
-                  top: 170,
-                  boxShadow: 'sm',
-                }}
-              >
-                <EditRoundedIcon />
-              </IconButton>
+              <UpdateImageModal />
             </Stack>
             <Stack sx={{ flexGrow: 1 }}>
               <Stack>
