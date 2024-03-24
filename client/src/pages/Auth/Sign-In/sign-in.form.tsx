@@ -34,7 +34,7 @@ export default function SignInForm() {
         password: values.password,
       }
       console.log(user);
-      const { accessToken } = await SignInFn(values).unwrap();
+      const { accessToken } = await SignInFn(user).unwrap();
       dispatch(setCredentials(accessToken))
       navigate(Path.DASHBOARD)
       resetForm();

@@ -2,10 +2,15 @@ import Stack from '@mui/joy/Stack';
 
 import SettingsLayout from 'layouts/Settings/layout';
 
+import { useGetMeQuery } from 'features/auth/auth.api.slice';
+
+import ProfileSkeleton from './components/profileSkeleton';
 import UpdatePassword from './update-password';
 import UpdateData from './update-data';
 
 export default function Profile() {
+  const { data, isLoading } = useGetMeQuery(undefined);
+
   return (
     <SettingsLayout>
       <Stack
@@ -19,7 +24,7 @@ export default function Profile() {
           py: { xs: 2, md: 3 },
         }}
       >
-        <UpdateData />
+        {isLoading ? <ProfileSkeleton /> : <UpdateData {...data} />}
         <UpdatePassword />
       </Stack>
     </SettingsLayout>

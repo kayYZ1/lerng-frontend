@@ -33,7 +33,7 @@ export default function SignUpForm() {
         username: values.username
       }
       console.log(user);
-      await SignUpFn(values);
+      await SignUpFn(user);
       resetForm();
     }
   })

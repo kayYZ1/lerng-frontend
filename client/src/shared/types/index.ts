@@ -25,3 +25,16 @@ export type CardItem = {
 	title: string;
 	img: string;
 };
+
+export type UpdateUser = {
+	username: string;
+	email: string;
+}
+
+export type UserData = {
+	id: number;
+	email: string;
+	username: string;
+	avatar: string;
+	role: string;
+}
