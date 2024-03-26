@@ -11,12 +11,12 @@ import Favorite from '@mui/icons-material/Favorite';
 import { Link } from 'react-router-dom';
 
 import { Course } from 'shared/types';
+import { ParseDate } from 'shared/lib/functions';
 
 import style from "../courses.module.css"
 
 export default function CourseItem(item: Course) {
-  const date = new Date(item.created);
-  const dateParsed = date.toISOString().split('T')[0];
+  const date = ParseDate(item.created);
 
   return (
     <Grid sx={{ py: 2, px: 1 }}>
@@ -58,7 +58,7 @@ export default function CourseItem(item: Course) {
           <CardContent orientation="horizontal">
             <Typography level="body-xs">Score: 4.4/5</Typography>
             <Divider orientation="vertical" />
-            <Typography level="body-xs">{dateParsed}</Typography>
+            <Typography level="body-xs">{date}</Typography>
           </CardContent>
         </CardOverflow>
       </Card>

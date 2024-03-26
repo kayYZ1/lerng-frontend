@@ -26,10 +26,15 @@ export type CardItem = {
 	img: string;
 };
 
+export type CourseModuleItem = {
+	id: number;
+	title: string;
+};
+
 export type UpdateUser = {
 	username: string;
 	email: string;
-}
+};
 
 export type UserData = {
 	id: number;
@@ -37,4 +42,4 @@ export type UserData = {
 	username: string;
 	avatar: string;
 	role: string;
-}
+};

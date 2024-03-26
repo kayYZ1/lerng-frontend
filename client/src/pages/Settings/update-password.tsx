@@ -106,7 +106,7 @@ export default function UpdatePassword() {
               </Button>
             </CardActions>
           </CardOverflow>
-          {error ? `${error}` : ""}
+          {error ? `${error}` : ""} {/* Specify the errors */}
         </form>
       </Stack>
     </Card>
