@@ -7,9 +7,11 @@ import { useNavigate } from "react-router-dom";
 import { setCredentials } from "features/auth/auth.slice";
 import { useSignInFnMutation } from "features/auth/auth.api.slice";
 import { UserSignIn } from "shared/types";
+import { handleApiError } from "shared/lib/functions";
 
 import style from "../auth.module.css"
 import Path from "routes/paths";
+import ErrorAlert from "shared/components/errorAlert";
 
 const validationSchema = yup.object().shape({
   email: yup.string().email('Invalid email').required('Email is required'),
@@ -21,6 +23,8 @@ export default function SignInForm() {
   const navigate = useNavigate();
 
   const [SignInFn, { isLoading, error }] = useSignInFnMutation();
+
+  const errorMessage = error && handleApiError(error);
 
   const formik = useFormik({
     initialValues: {
@@ -85,7 +89,7 @@ export default function SignInForm() {
           Sign in
         </Button>
       </Stack>
-      {error ? <div>Something went wrong</div> : ""}
+      {error ? <ErrorAlert message={errorMessage} /> : ""}
     </form>
   )
 }
