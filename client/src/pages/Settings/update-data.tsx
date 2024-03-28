@@ -23,7 +23,8 @@ import { useUpdateUserDataMutation } from 'features/users/users.api.slice';
 
 import UpdateImageModal from './components/update-image.modal';
 
-import { UpdateUser, UserData } from 'shared/types';
+import { CustomMutationError, UpdateUser, UserData } from 'shared/types';
+import WarningAlert from 'shared/components/warningAlert';
 
 const validationSchema = yup.object().shape({
   email: yup.string().email('Invalid email'),
@@ -32,6 +33,8 @@ const validationSchema = yup.object().shape({
 
 export default function UpdateData(data: UserData) {
   const [UpdateUserData, { error, isLoading }] = useUpdateUserDataMutation();
+
+  const errorMessage = error as CustomMutationError;
 
   const formik = useFormik({
     initialValues: {
@@ -122,16 +125,13 @@ export default function UpdateData(data: UserData) {
               </FormControl>
               <CardOverflow>
                 <CardActions sx={{ alignSelf: 'flex-end', pt: 2 }}>
-                  <Button size="sm" variant="outlined" color="neutral">
-                    Cancel
-                  </Button>
                   <Button size="sm" variant="solid" type="submit" loading={isLoading}>
                     Save
                   </Button>
                 </CardActions>
               </CardOverflow>
+              {error ? <WarningAlert type="Error occured while updating data" message={errorMessage.data.message} /> : ""}
             </form>
-            {error ? `${error}` : ""}
           </Stack>
         </Stack>
       </Stack>

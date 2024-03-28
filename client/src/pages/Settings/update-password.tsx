@@ -15,6 +15,8 @@ import LockResetRoundedIcon from '@mui/icons-material/LockResetRounded';
 import KeyRoundedIcon from '@mui/icons-material/KeyRounded';
 
 import { useUpdateUserPasswordMutation } from 'features/users/users.api.slice';
+import { CustomMutationError } from 'shared/types';
+import WarningAlert from 'shared/components/warningAlert';
 
 const validationSchema = yup.object().shape({
   password: yup.string().min(8, 'Password must be atleast 8 characters long').required('Password is required'),
@@ -25,6 +27,8 @@ const validationSchema = yup.object().shape({
 
 export default function UpdatePassword() {
   const [UpdateUserPassword, { error, isLoading }] = useUpdateUserPasswordMutation();
+
+  const errorMessage = error as CustomMutationError;
 
   const formik = useFormik({
     initialValues: {
@@ -98,15 +102,12 @@ export default function UpdatePassword() {
           </FormControl>
           <CardOverflow>
             <CardActions sx={{ alignSelf: 'flex-end', pt: 2 }}>
-              <Button size="sm" variant="outlined" color="neutral">
-                Cancel
-              </Button>
               <Button size="sm" variant="solid" type="submit" loading={isLoading}>
                 Save
               </Button>
             </CardActions>
           </CardOverflow>
-          {error ? `${error}` : ""} {/* Specify the errors */}
+          {error ? <WarningAlert type="Error while updating password" message={errorMessage.data.message} /> : "" }
         </form>
       </Stack>
     </Card>
