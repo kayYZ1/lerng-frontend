@@ -88,7 +88,7 @@ export default function SignInForm() {
           Sign in
         </Button>
       </Stack>
-      {error && 'status' in error ? <ErrorAlert message={errorMessage.data.message} /> : ""}
+      {error && 'status' in error ? <ErrorAlert type="Sign In Error" message={errorMessage.data.message} /> : ""}
     </form>
   )
 }

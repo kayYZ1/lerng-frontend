@@ -4,9 +4,10 @@ import { ReportOutlined, CloseRounded } from "@mui/icons-material";
 
 interface ErrorAlert {
   message: string | undefined;
+  type: string;
 }
 
-export default function ErrorAlert({ message }: ErrorAlert) {
+export default function ErrorAlert({ message, type }: ErrorAlert) {
   return (
     <Alert
       sx={{ alignItems: 'flex-start' }}
@@ -20,7 +21,7 @@ export default function ErrorAlert({ message }: ErrorAlert) {
       }
     >
       <div>
-        <div>Error</div>
+        <div>{type}</div>
         <Typography level="body-sm" color="danger">
           {message}
         </Typography>

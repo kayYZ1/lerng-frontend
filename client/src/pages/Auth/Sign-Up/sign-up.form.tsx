@@ -3,9 +3,10 @@ import { useFormik } from "formik";
 import * as yup from "yup"
 
 import { useSignUpFnMutation } from "features/auth/auth.api.slice";
-import { UserSignUp } from "shared/types";
+import { CustomMutationError, UserSignUp } from "shared/types";
 
 import style from "../auth.module.css"
+import ErrorAlert from "shared/components/errorAlert";
 
 const validationSchema = yup.object().shape({
   email: yup.string().email('Invalid email').required('Email is required'),
@@ -17,6 +18,8 @@ const validationSchema = yup.object().shape({
 
 export default function SignUpForm() {
   const [SignUpFn, { isLoading, error }] = useSignUpFnMutation();
+
+  const errorMessage = error as CustomMutationError;
 
   const formik = useFormik({
     initialValues: {
@@ -120,7 +123,7 @@ export default function SignUpForm() {
           Sign in
         </Button>
       </Stack>
-      {error ? <div>Something went wrong</div> : ""}
+      {error ? <ErrorAlert type="Sign Up Error" message={errorMessage.data.message} /> : ""}
     </form>
   )
 }
