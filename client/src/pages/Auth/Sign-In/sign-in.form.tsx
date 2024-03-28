@@ -6,8 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 import { setCredentials } from "features/auth/auth.slice";
 import { useSignInFnMutation } from "features/auth/auth.api.slice";
-import { UserSignIn } from "shared/types";
-import { handleApiError } from "shared/lib/functions";
+import { CustomMutationError, UserSignIn } from "shared/types";
 
 import style from "../auth.module.css"
 import Path from "routes/paths";
@@ -24,7 +23,7 @@ export default function SignInForm() {
 
   const [SignInFn, { isLoading, error }] = useSignInFnMutation();
 
-  const errorMessage = error && handleApiError(error);
+  const errorMessage = error as CustomMutationError;
 
   const formik = useFormik({
     initialValues: {
@@ -89,7 +88,7 @@ export default function SignInForm() {
           Sign in
         </Button>
       </Stack>
-      {error ? <ErrorAlert message={errorMessage} /> : ""}
+      {error && 'status' in error ? <ErrorAlert message={errorMessage.data.message} /> : ""}
     </form>
   )
 }

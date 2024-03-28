@@ -25,12 +25,16 @@ export function isErrorWithMessage(
 	);
 }
 
-export function handleApiError(
+export function apiError(
 	error: FetchBaseQueryError | SerializedError | undefined
 ) {
 	if (isFetchBaseQueryError(error)) {
-		// you can access all properties of `FetchBaseQueryError` here
-		const errMsg = "error" in error ? error.error : JSON.stringify(error.data);
-		return errMsg;
+		const errorMessage =
+			"error" in error ? error.error : JSON.stringify(error.data);
+		return errorMessage;
+	} else if (isErrorWithMessage(error)) {
+		return error.message;
+	} else {
+		return "Weird error has occured.";
 	}
 }

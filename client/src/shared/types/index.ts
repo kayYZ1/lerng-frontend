@@ -43,3 +43,12 @@ export type UserData = {
 	avatar: string;
 	role: string;
 };
+
+export type CustomMutationError = {
+	status: number;
+	data: {
+		error: string;
+		message: string;
+		statusCode: number;
+	};
+};
