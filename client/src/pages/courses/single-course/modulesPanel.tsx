@@ -1,14 +1,15 @@
 import { useParams } from 'react-router-dom';
 import Sheet from '@mui/joy/Sheet';
-import { Box } from '@mui/joy';
+import { Box, Table } from '@mui/joy';
 import { useSelector } from 'react-redux';
 
 import ProgressTable from './components/progressTable';
 import ModulesList from './components/modulesList';
-import ModuleItemSkeleton from './components/moduleItemSkeleton';
+import ModuleItemSkeleton from './components/skeletons/moduleItemSkeleton';
 
 import { selectModules } from 'features/modules/modules.slice';
 import { useGetModulesInCourseQuery } from 'features/modules/modules.api.slice';
+import TableSkeleton from './components/skeletons/tableSkeleton';
 
 export default function ModulesPanel() {
   const { id } = useParams<{ id: string }>();
@@ -34,7 +35,7 @@ export default function ModulesPanel() {
         {isLoading ? <ModuleItemSkeleton /> : <ModulesList modules={modules} />}
       </Box>
       <Box sx={{ px: 2, py: 2 }}>
-        {isLoading ? "Table loading" : <ProgressTable modules={modules} />}
+        {isLoading ? <TableSkeleton /> : <ProgressTable modules={modules} />}
       </Box>
       {error ? "Something went wrong please refresh" : ""}
     </Sheet>

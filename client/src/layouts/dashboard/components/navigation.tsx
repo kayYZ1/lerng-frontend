@@ -9,6 +9,7 @@ import ListItemContent from '@mui/joy/ListItemContent';
 
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import BookmarksIcon from '@mui/icons-material/Bookmarks';
+import FeedbackIcon from '@mui/icons-material/Feedback';
 
 import Path from 'routes/paths';
 import style from "../dashboard.module.css"
@@ -46,6 +47,16 @@ export default function Navigation() {
               </ListItemDecorator>
               <ListItemContent>
                 Enrolled
+              </ListItemContent>
+            </ListItemButton>
+          </ListItem>
+          <ListItem>
+            <ListItemButton>
+              <ListItemDecorator sx={{ color: 'neutral.500' }}>
+                <FeedbackIcon fontSize="small" />
+              </ListItemDecorator>
+              <ListItemContent>
+                Add a feedback
               </ListItemContent>
             </ListItemButton>
           </ListItem>

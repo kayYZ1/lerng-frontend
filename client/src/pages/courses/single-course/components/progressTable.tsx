@@ -24,7 +24,7 @@ export default function ProgressTable({ modules }: { modules: CourseModule[] }) 
       <tfoot>
         <tr>
           <th scope="row">Totals</th>
-          <td>??% avg from modules</td>
+          <td>??% course progress</td>
           <td>points / maximum points</td>
         </tr>
       </tfoot>

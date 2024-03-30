@@ -6,7 +6,7 @@ const Dashboard = lazy(() => import("pages/dashboard/index"));
 const SettingsProfile = lazy(() => import("pages/settings/index"));
 
 const Courses = lazy(() => import("pages/courses/index"))
-const SingleCourse = lazy(() => import("pages/courses/singleCourse/index"))
+const SingleCourse = lazy(() => import("pages/courses/single-course/index"))
 
 const dashboardRoutes = [
 	{

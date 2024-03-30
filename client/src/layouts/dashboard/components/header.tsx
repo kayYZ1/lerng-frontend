@@ -20,6 +20,8 @@ import { useDispatch } from 'react-redux';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import FeedbackIcon from '@mui/icons-material/Feedback';
 
 import TeamNav from "./navigation"
 import Path from 'routes/paths';
@@ -84,6 +86,7 @@ export default function Header() {
           alignItems: 'center',
         }}
       >
+        <NotificationsIcon />
         <ColorSchemeToggle />
         <Dropdown>
           <MenuButton
@@ -98,51 +101,59 @@ export default function Header() {
               <Skeleton loading={isLoading} />
             </Avatar>
           </MenuButton>
-          <Menu
-            placement="bottom-end"
-            size="sm"
-            sx={{
-              zIndex: '99999',
-              p: 1,
-              gap: 1,
-              '--ListItem-radius': 'var(--joy-radius-sm)',
-            }}
-          >
-            <MenuItem>
-              <Box
-                sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                }}
-              >
-                <Avatar
-                  src={isLoading ? '' : data.avatar}
-                  sx={{ borderRadius: '50%' }}
-                />
-                <Box sx={{ ml: 1.5 }}>
-                  <Typography level="title-sm" textColor="text.primary">
-                    {isLoading ? '' : data.username}
-                  </Typography>
-                  <Typography level="body-sm" textColor="text.tertiary">
-                    {isLoading ? '' : data.email}
-                  </Typography>
-                  <Typography level="body-xs">
-                    {isLoading ? '' : data.role}
-                  </Typography>
+          {isLoading ? "" :
+            <Menu
+              placement="bottom-end"
+              size="sm"
+              sx={{
+                zIndex: '99999',
+                p: 1,
+                gap: 1,
+                '--ListItem-radius': 'var(--joy-radius-sm)',
+              }}
+            >
+              <MenuItem>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                  }}
+                >
+                  <Avatar
+                    src={data.avatar}
+                    sx={{ borderRadius: '50%' }}
+                  />
+                  <Box sx={{ ml: 1.5 }}>
+                    <Typography level="title-sm" textColor="text.primary">
+                      {data.username}
+                    </Typography>
+                    <Typography level="body-sm" textColor="text.tertiary">
+                      {data.email}
+                    </Typography>
+                    <Typography level="body-xs">
+                      {data.role}
+                    </Typography>
+                  </Box>
                 </Box>
-              </Box>
-            </MenuItem>
-            <ListDivider />
-            <MenuItem>
-              <SettingsRoundedIcon />
-              <Link to={Path.SETTINGS} className={style.link}>Settings</Link>
-            </MenuItem>
-            <ListDivider />
-            <MenuItem>
-              <LogoutRoundedIcon />
-              <Link to={Path.SIGN_IN} className={style.link} onClick={signOutHandler}>Sign Out</Link>
-            </MenuItem>
-          </Menu>
+              </MenuItem>
+              <ListDivider />
+              <MenuItem>
+                <SettingsRoundedIcon />
+                <Link to={Path.SETTINGS} className={style.link}>Settings</Link>
+              </MenuItem>
+              {data.role === 'admin' ?
+                <MenuItem>
+                  <FeedbackIcon />
+                  <Link to={""} className={style.link}>User's feedback</Link>
+                </MenuItem> : ""
+              }
+              <ListDivider />
+              <MenuItem>
+                <LogoutRoundedIcon />
+                <Link to={Path.SIGN_IN} className={style.link} onClick={signOutHandler}>Sign Out</Link>
+              </MenuItem>
+            </Menu>
+          }
         </Dropdown>
       </Box>
     </Box>
