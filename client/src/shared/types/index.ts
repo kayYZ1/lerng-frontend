@@ -20,15 +20,15 @@ export type Course = {
 	created: Date;
 };
 
+export type CourseModule = {
+	id: number;
+	title: string;
+}
+
 export type CardItem = {
 	id: number;
 	title: string;
 	img: string;
-};
-
-export type CourseModuleItem = {
-	id: number;
-	title: string;
 };
 
 export type UpdateUser = {

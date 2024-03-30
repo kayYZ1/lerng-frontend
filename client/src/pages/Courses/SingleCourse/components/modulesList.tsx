@@ -1,15 +1,9 @@
-import { useParams } from 'react-router-dom';
 import Stack from '@mui/joy/Stack';
 
-import { useGetModulesInCourseQuery } from 'features/modules/modules.api.slice';
-import { CourseModuleItem } from 'shared/types';
+import { CourseModule } from 'shared/types';
 import ModuleItem from './moduleItem';
-import ModuleItemSkeleton from './moduleItemSkeleton';
 
-export default function ModulesList() {
-  const { id } = useParams<{ id: string }>();
-  const { data, isLoading, error } = useGetModulesInCourseQuery(id!);
-
+export default function ModulesList({ modules }: { modules: CourseModule[] }) {
   return (
     <Stack
       spacing={2}
@@ -17,10 +11,9 @@ export default function ModulesList() {
         maxWidth: '80ch',
       }}
     >
-      {isLoading ? <ModuleItemSkeleton /> : data.map((module: CourseModuleItem) => (
-        <ModuleItem {...module} key={module.id} />
+      {modules.map((item: CourseModule) => (
+        <ModuleItem {...item} key={item.id} />
       ))}
-      {error ? "Something went wrong please refresh" : ""}
     </Stack>
   )
 }
