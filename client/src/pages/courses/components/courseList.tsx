@@ -19,9 +19,8 @@ export default function CourseList() {
         direction="row"
         sx={{
           flexGrow: 1,
-          justifyContent: "center",
           flexWrap: "wrap",
-          px: 2
+          px: 4
         }}
       >
         {isLoading ?
