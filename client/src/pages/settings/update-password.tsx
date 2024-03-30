@@ -102,12 +102,15 @@ export default function UpdatePassword() {
           </FormControl>
           <CardOverflow>
             <CardActions sx={{ alignSelf: 'flex-end', pt: 2 }}>
+              <Button size="sm" variant="outlined" onClick={() => formik.resetForm()}>
+                Cancel
+              </Button>
               <Button size="sm" variant="solid" type="submit" loading={isLoading}>
                 Save
               </Button>
             </CardActions>
           </CardOverflow>
-          {error ? <WarningAlert type="Error while updating password" message={errorMessage.data.message} /> : "" }
+          {error ? <WarningAlert type="Error while updating password" message={errorMessage.data.message} /> : ""}
         </form>
       </Stack>
     </Card>

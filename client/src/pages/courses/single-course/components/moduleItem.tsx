@@ -1,7 +1,7 @@
-import { CourseModuleItem } from "shared/types";
+import { CourseModule } from "shared/types";
 import { Card, Typography, Box, Button } from "@mui/joy";
 
-export default function ModuleItem(item: CourseModuleItem) {
+export default function ModuleItem(item: CourseModule) {
   return (
     <Card>
       <Typography level="title-lg">

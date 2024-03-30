@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
-import DashboardLayout from "layouts/Dashboard/app"
-import AuthLayout from "layouts/Auth/layout"
+import DashboardLayout from "layouts/dashboard/app"
+import AuthLayout from "layouts/auth/layout"
 
 import Page404 from "pages/404"
 

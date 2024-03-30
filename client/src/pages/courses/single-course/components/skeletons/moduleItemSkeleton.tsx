@@ -3,10 +3,11 @@ import CardContent from '@mui/joy/CardContent';
 import Skeleton from '@mui/joy/Skeleton';
 
 export default function ModuleItemSkeleton() {
-  return (
+  return [1,2].map((index) => (
     <Card
+      key={index}
       variant="outlined"
-      sx={{ width: 'max(80ch)', borderRadius: 0, '--Card-radius': 0 }}
+      sx={{ width: 'max(80ch)', mt: 1, borderRadius: 0, '--Card-radius': 0 }}
     >
       <CardContent orientation="horizontal">
         <Skeleton variant="rectangular" width={44} height={44} />
@@ -21,5 +22,5 @@ export default function ModuleItemSkeleton() {
         <Skeleton level="body-xs" variant="text" width="96%" />
       </CardContent>
     </Card>
-  )
+  ));
 }
