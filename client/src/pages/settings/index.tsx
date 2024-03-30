@@ -1,6 +1,6 @@
 import Stack from '@mui/joy/Stack';
 
-import SettingsLayout from 'layouts/Settings/layout';
+import SettingsLayout from 'layouts/settings/layout';
 
 import { useGetMeQuery } from 'features/auth/auth.api.slice';
 

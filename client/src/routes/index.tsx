@@ -2,11 +2,11 @@ import { lazy } from "react";
 
 import Path from "./paths";
 
-const Dashboard = lazy(() => import("pages/Dashboard/index"));
-const SettingsProfile = lazy(() => import("pages/Settings"));
+const Dashboard = lazy(() => import("pages/dashboard/index"));
+const SettingsProfile = lazy(() => import("pages/settings/index"));
 
-const Courses = lazy(() => import("pages/Courses/index"))
-const SingleCourse = lazy(() => import("pages/Courses/SingleCourse/index"))
+const Courses = lazy(() => import("pages/courses/index"))
+const SingleCourse = lazy(() => import("pages/courses/singleCourse/index"))
 
 const dashboardRoutes = [
 	{
@@ -27,8 +27,8 @@ const dashboardRoutes = [
 	},
 ];
 
-const SignIn = lazy(() => import("pages/Auth/Sign-In"));
-const SignUp = lazy(() => import("pages/Auth/Sign-Up"));
+const SignIn = lazy(() => import("pages/auth/sign-in"));
+const SignUp = lazy(() => import("pages/auth/sign-up"));
 
 const authRoutes = [
 	{

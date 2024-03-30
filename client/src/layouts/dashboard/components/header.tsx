@@ -26,7 +26,7 @@ import Path from 'routes/paths';
 
 import style from "../dashboard.module.css"
 
-import ColorSchemeToggle from 'shared/components/ColorToggle';
+import ColorSchemeToggle from 'shared/components/colorToggle';
 
 import { useGetMeQuery } from 'features/auth/auth.api.slice';
 import { useSignOutFnMutation } from 'features/auth/auth.api.slice';

@@ -7,7 +7,7 @@ import CssBaseline from '@mui/joy/CssBaseline';
 import Box from '@mui/joy/Box';
 import Typography from '@mui/joy/Typography';
 import { Link } from '@mui/joy';
-import ColorSchemeToggle from 'shared/components/ColorToggle';
+import ColorSchemeToggle from 'shared/components/colorToggle';
 
 export default function AuthLayout() {
   return (
