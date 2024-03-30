@@ -13,7 +13,6 @@ import { useGetModulesInCourseQuery } from 'features/modules/modules.api.slice';
 export default function ModulesPanel() {
   const { id } = useParams<{ id: string }>();
   const { isLoading, error } = useGetModulesInCourseQuery(id!);
-
   const modules = useSelector(selectModules)
 
   return (
@@ -35,7 +34,7 @@ export default function ModulesPanel() {
         {isLoading ? <ModuleItemSkeleton /> : <ModulesList modules={modules} />}
       </Box>
       <Box sx={{ px: 2, py: 2 }}>
-        <ProgressTable />
+        {isLoading ? "Table loading" : <ProgressTable modules={modules} />}
       </Box>
       {error ? "Something went wrong please refresh" : ""}
     </Sheet>

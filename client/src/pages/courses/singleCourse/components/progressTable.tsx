@@ -1,42 +1,33 @@
 import Table from '@mui/joy/Table';
+import { CourseModule } from 'shared/types';
 
-export default function ProgressTable() {
+export default function ProgressTable({ modules }: { modules: CourseModule[] }) {
   return (
-    <Table aria-label="basic table">
+    <Table borderAxis="both">
+      <caption>Progress table for this course</caption>
       <thead>
         <tr>
           <th style={{ width: '50%' }}>Module name</th>
           <th>Progress&nbsp;(%)</th>
-          <th>Points&nbsp;(x/5)</th>
+          <th>Points&nbsp;(_ / 5)</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Frozen yoghurt</td>
-          <td>159</td>
-          <td>6</td>
-        </tr>
-        <tr>
-          <td>Ice cream sandwich</td>
-          <td>237</td>
-          <td>9</td>
-        </tr>
-        <tr>
-          <td>Eclair</td>
-          <td>262</td>
-          <td>16</td>
-        </tr>
-        <tr>
-          <td>Cupcake</td>
-          <td>305</td>
-          <td>3.7</td>
-        </tr>
-        <tr>
-          <td>Gingerbread</td>
-          <td>356</td>
-          <td>16</td>
-        </tr>
+        {modules.map((item: CourseModule) => (
+          <tr key={item.id}>
+            <td>{item.title}</td>
+            <td>?? / %</td>
+            <td>? / 5</td>
+          </tr>
+        ))}
       </tbody>
+      <tfoot>
+        <tr>
+          <th scope="row">Totals</th>
+          <td>??% avg from modules</td>
+          <td>points / maximum points</td>
+        </tr>
+      </tfoot>
     </Table>
   )
 }
