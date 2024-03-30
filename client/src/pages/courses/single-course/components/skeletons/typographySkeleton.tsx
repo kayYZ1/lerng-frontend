@@ -12,7 +12,7 @@ export default function TypographySkeleton() {
           level="h1"
           fontSize="xl"
         >
-          <Skeleton>A heading</Skeleton>
+          <Skeleton>Typography for a course name</Skeleton>
         </Typography>
       </Box>
     </Stack>

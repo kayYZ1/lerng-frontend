@@ -17,6 +17,12 @@ export default function TableSkeleton() {
             <td scope="row">
               <Skeleton animation="wave" variant="text" />
             </td>
+            <td scope="row">
+              <Skeleton animation="wave" variant="text" />
+            </td>
+            <td scope="row">
+              <Skeleton animation="wave" variant="text" />
+            </td>
           </tr>
         ))}
       </tbody>
