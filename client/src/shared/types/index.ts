@@ -14,22 +14,18 @@ export type RouteChild = {
 };
 
 export type Course = {
-	id: number;
+	id: string;
 	title: string;
+	description: string;
 	imageUrl: string;
 	created: Date;
 };
 
 export type CourseModule = {
-	id: number;
+	id: string;
 	title: string;
+	description: string;
 }
-
-export type CardItem = {
-	id: number;
-	title: string;
-	img: string;
-};
 
 export type UpdateUser = {
 	username: string;
@@ -37,7 +33,7 @@ export type UpdateUser = {
 };
 
 export type UserData = {
-	id: number;
+	id: string;
 	email: string;
 	username: string;
 	avatar: string;

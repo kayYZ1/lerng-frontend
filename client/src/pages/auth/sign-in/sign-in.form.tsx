@@ -9,8 +9,8 @@ import { useSignInFnMutation } from "features/auth/auth.api.slice";
 import { CustomMutationError, UserSignIn } from "shared/types";
 
 import style from "../auth.module.css"
-import Path from "routes/paths";
 import ErrorAlert from "shared/components/errorAlert";
+import { DashboardPath } from "routes/paths";
 
 const validationSchema = yup.object().shape({
   email: yup.string().email('Invalid email').required('Email is required'),
@@ -39,7 +39,7 @@ export default function SignInForm() {
       console.log(user);
       const { accessToken } = await SignInFn(user).unwrap();
       dispatch(setCredentials(accessToken))
-      navigate(Path.DASHBOARD)
+      navigate(DashboardPath.DASHBOARD)
       resetForm();
     }
   })

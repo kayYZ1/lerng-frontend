@@ -2,7 +2,7 @@ import { Stack, Typography, Divider } from "@mui/joy"
 
 import { Link } from "react-router-dom"
 
-import Path from "routes/paths"
+import { AuthPath } from "routes/paths"
 
 import style from "../auth.module.css"
 import SignUpForm from "./sign-up.form"
@@ -16,7 +16,7 @@ export default function SignUp() {
         </Typography>
         <Typography level="body-sm">
           Already have an account?{' '}
-          <Link to={Path.SIGN_IN} className={style.link}>Sign In</Link>
+          <Link to={AuthPath.SIGN_IN} className={style.link}>Sign In</Link>
         </Typography>
       </Stack>
     </Stack>
