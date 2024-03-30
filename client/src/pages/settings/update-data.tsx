@@ -125,6 +125,9 @@ export default function UpdateData(data: UserData) {
               </FormControl>
               <CardOverflow>
                 <CardActions sx={{ alignSelf: 'flex-end', pt: 2 }}>
+                  <Button size="sm" variant="outlined" onClick={() => formik.resetForm()}>
+                    Cancel
+                  </Button>
                   <Button size="sm" variant="solid" type="submit" loading={isLoading}>
                     Save
                   </Button>
