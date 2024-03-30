@@ -24,7 +24,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import FeedbackIcon from '@mui/icons-material/Feedback';
 
 import TeamNav from "./navigation"
-import Path from 'routes/paths';
+import { DashboardPath, AuthPath } from 'routes/paths';
 
 import style from "../dashboard.module.css"
 
@@ -139,7 +139,7 @@ export default function Header() {
               <ListDivider />
               <MenuItem>
                 <SettingsRoundedIcon />
-                <Link to={Path.SETTINGS} className={style.link}>Settings</Link>
+                <Link to={DashboardPath.SETTINGS} className={style.link}>Settings</Link>
               </MenuItem>
               {data.role === 'admin' ?
                 <MenuItem>
@@ -150,7 +150,7 @@ export default function Header() {
               <ListDivider />
               <MenuItem>
                 <LogoutRoundedIcon />
-                <Link to={Path.SIGN_IN} className={style.link} onClick={signOutHandler}>Sign Out</Link>
+                <Link to={AuthPath.SIGN_IN} className={style.link} onClick={signOutHandler}>Sign Out</Link>
               </MenuItem>
             </Menu>
           }

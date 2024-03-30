@@ -1,12 +1,25 @@
-const Path = {
-	DASHBOARD: "/dashboard",
-	SETTINGS: "/dashboard/settings",
+const AUTH = "/auth"
+const AuthPath = {
+	AUTH: AUTH,
+	SIGN_IN: `${AUTH}/sign-in`,
+	SIGN_UP: `${AUTH}/sign-up`,
+}
+
+const DASHBOARD = "/dashboard"
+const DashboardPath = {
+	DASHBOARD: DASHBOARD,
+	SETTINGS: `${DASHBOARD}/settings`,
 	COURSES: "/dashboard/courses",
 	COURSE: "/dashboard/courses/course/:id",
-	ENROLLED: "/dashboard/enrolled",
-	AUTH: "/auth",
-	SIGN_IN: "/auth/sign-in",
-	SIGN_UP: "/auth/sign-up",
-};
+	ENROLLED: `${DASHBOARD}/enrolled`,
+}
 
-export default Path;
+const COURSES = `${DASHBOARD}/courses`
+const CoursesPath = {
+	COURSES: COURSES,
+	COURSE: `${COURSES}/course/:id`
+}
+
+export {
+	AuthPath, DashboardPath, CoursesPath
+};

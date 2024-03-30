@@ -11,7 +11,7 @@ import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import BookmarksIcon from '@mui/icons-material/Bookmarks';
 import FeedbackIcon from '@mui/icons-material/Feedback';
 
-import Path from 'routes/paths';
+import { CoursesPath } from 'routes/paths';
 import style from "../dashboard.module.css"
 
 export default function Navigation() {
@@ -36,7 +36,7 @@ export default function Navigation() {
                 <LibraryBooksIcon fontSize="small" />
               </ListItemDecorator>
               <ListItemContent>
-                <Link to={Path.COURSES} className={style.link}>Courses</Link>
+                <Link to={CoursesPath.COURSES} className={style.link}>Courses</Link>
               </ListItemContent>
             </ListItemButton>
           </ListItem>

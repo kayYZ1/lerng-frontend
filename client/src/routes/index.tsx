@@ -1,6 +1,6 @@
 import { lazy } from "react";
 
-import Path from "./paths";
+import { AuthPath, DashboardPath, CoursesPath } from "./paths";
 
 const Dashboard = lazy(() => import("pages/dashboard/index"));
 const SettingsProfile = lazy(() => import("pages/settings/index"));
@@ -10,19 +10,19 @@ const SingleCourse = lazy(() => import("pages/courses/single-course/index"))
 
 const dashboardRoutes = [
 	{
-		path: Path.DASHBOARD,
+		path: DashboardPath.DASHBOARD,
 		element: <Dashboard />
 	},
 	{
-		path: Path.SETTINGS,
+		path: DashboardPath.SETTINGS,
 		element: <SettingsProfile />
 	},
 	{
-		path: Path.COURSES,
+		path: CoursesPath.COURSES,
 		element: <Courses />
 	},
 	{
-		path: Path.COURSE,
+		path: CoursesPath.COURSE,
 		element: <SingleCourse />
 	},
 ];
@@ -32,11 +32,11 @@ const SignUp = lazy(() => import("pages/auth/sign-up"));
 
 const authRoutes = [
 	{
-		path: Path.SIGN_IN,
+		path: AuthPath.SIGN_IN,
 		element: <SignIn />
 	},
 	{
-		path: Path.SIGN_UP,
+		path: AuthPath.SIGN_UP,
 		element: <SignUp />
 	}
 ]
