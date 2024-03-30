@@ -1,13 +1,10 @@
-import { useGetMeQuery } from "features/auth/auth.api.slice";
+import { selectCurrentUser } from "features/users/user.slice";
+import { useSelector } from "react-redux";
+import DashboardPanel from "./dashboardPanel";
+import { Navigate } from "react-router-dom";
+import { CoursesPath } from "routes/paths";
 
 export default function Dashboard() {
-  const { data, isLoading } = useGetMeQuery(undefined);
-
-  if (!isLoading) console.log(data)
-
-  return (
-    <div>
-      <h1>Dashboard</h1>
-    </div>
-  );
+  const currentUser = useSelector(selectCurrentUser);
+  return currentUser.role === 'admin' ? <DashboardPanel /> : <Navigate to={CoursesPath.COURSES} />
 }

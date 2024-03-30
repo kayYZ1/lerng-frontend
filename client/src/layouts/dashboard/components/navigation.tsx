@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-
+import { useSelector } from 'react-redux';
 import List from '@mui/joy/List';
 import ListSubheader from '@mui/joy/ListSubheader';
 import ListItem from '@mui/joy/ListItem';
@@ -10,11 +10,15 @@ import ListItemContent from '@mui/joy/ListItemContent';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import BookmarksIcon from '@mui/icons-material/Bookmarks';
 import FeedbackIcon from '@mui/icons-material/Feedback';
+import DashboardIcon from '@mui/icons-material/Dashboard';
 
-import { CoursesPath } from 'routes/paths';
+import { selectCurrentUser } from 'features/users/user.slice';
+import { CoursesPath, DashboardPath } from 'routes/paths';
 import style from "../dashboard.module.css"
 
 export default function Navigation() {
+  const currentUser = useSelector(selectCurrentUser);
+
   return (
     <List
       size="sm"
@@ -30,6 +34,19 @@ export default function Navigation() {
             '& .JoyListItemButton-root': { p: '8px' },
           }}
         >
+          {currentUser.role === 'admin' ?
+            <ListItem>
+              <ListItemButton>
+                <ListItemDecorator>
+                  <DashboardIcon fontSize="small" />
+                </ListItemDecorator>
+                <ListItemContent>
+                  <Link to={DashboardPath.DASHBOARD} className={style.link}>Admin panel</Link>
+                </ListItemContent>
+              </ListItemButton>
+            </ListItem>
+            : ""
+          }
           <ListItem>
             <ListItemButton>
               <ListItemDecorator>
@@ -42,7 +59,7 @@ export default function Navigation() {
           </ListItem>
           <ListItem>
             <ListItemButton>
-              <ListItemDecorator sx={{ color: 'neutral.500' }}>
+              <ListItemDecorator>
                 <BookmarksIcon fontSize="small" />
               </ListItemDecorator>
               <ListItemContent>
@@ -52,7 +69,7 @@ export default function Navigation() {
           </ListItem>
           <ListItem>
             <ListItemButton>
-              <ListItemDecorator sx={{ color: 'neutral.500' }}>
+              <ListItemDecorator>
                 <FeedbackIcon fontSize="small" />
               </ListItemDecorator>
               <ListItemContent>

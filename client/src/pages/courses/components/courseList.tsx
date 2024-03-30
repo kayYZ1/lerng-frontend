@@ -24,7 +24,7 @@ export default function CourseList() {
         }}
       >
         {isLoading ?
-          [1, 2, 3, 4, 5].map((index) => (
+          [1, 2, 3, 4].map((index) => (
             <CourseSkeleton key={index} />
           ))
           :
