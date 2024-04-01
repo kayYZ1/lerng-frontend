@@ -1,6 +1,7 @@
 import { Box, Typography, Tabs, TabPanel, TabList } from "@mui/joy"
 import Tab, { tabClasses } from '@mui/joy/Tab';
-import ManageCourses from "./manage-courses.tsx";
+
+import ManageCourses from "./manage-courses/index.tsx";
 import Statistics from "./statistics/index.tsx";
 
 export default function DashboardPanel() {

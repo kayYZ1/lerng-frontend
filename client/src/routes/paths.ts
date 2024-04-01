@@ -9,9 +9,8 @@ const DASHBOARD = "/dashboard";
 const DashboardPath = {
 	DASHBOARD: DASHBOARD,
 	SETTINGS: `${DASHBOARD}/settings`,
-	COURSES: "/dashboard/courses",
-	COURSE: "/dashboard/courses/course/:id",
 	ENROLLED: `${DASHBOARD}/enrolled`,
+	CREATE_COURSE: `${DASHBOARD}/course-creation`,
 };
 
 const COURSES = `${DASHBOARD}/courses`;
