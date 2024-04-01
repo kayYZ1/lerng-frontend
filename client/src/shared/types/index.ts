@@ -48,3 +48,7 @@ export type CustomMutationError = {
 		statusCode: number;
 	};
 };
+
+export type IsInstructor = {
+	instructor: boolean
+}

@@ -34,14 +34,14 @@ export default function Navigation() {
             '& .JoyListItemButton-root': { p: '8px' },
           }}
         >
-          {currentUser.role === 'admin' ?
+          {currentUser.role === 'instructor' ?
             <ListItem>
               <ListItemButton>
                 <ListItemDecorator>
                   <DashboardIcon fontSize="small" />
                 </ListItemDecorator>
                 <ListItemContent>
-                  <Link to={DashboardPath.DASHBOARD} className={style.link}>Admin panel</Link>
+                  <Link to={DashboardPath.DASHBOARD} className={style.link}>Instructor panel</Link>
                 </ListItemContent>
               </ListItemButton>
             </ListItem>

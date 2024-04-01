@@ -141,7 +141,7 @@ export default function Header() {
                 <SettingsRoundedIcon />
                 <Link to={DashboardPath.SETTINGS} className={style.link}>Settings</Link>
               </MenuItem>
-              {data.role === 'admin' ?
+              {data.role === 'instructor' ?
                 <MenuItem>
                   <FeedbackIcon />
                   <Link to={""} className={style.link}>User's feedback</Link>

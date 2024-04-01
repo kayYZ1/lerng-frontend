@@ -10,7 +10,7 @@ export default function DashboardPanel() {
       <Box>
         <Box sx={{ px: { xs: 2, md: 6 } }}>
           <Typography level="h2" component="h1" sx={{ mt: 4, mb: 2 }}>
-            Admin dashboard
+            Instructor dashboard
           </Typography>
         </Box>
         <Tabs

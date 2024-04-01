@@ -1,6 +1,7 @@
 import { Box, Button, Sheet, Typography } from "@mui/joy";
 import { Link } from "react-router-dom";
 
+import CourseList from "pages/courses/components/courseList";
 import CoursesTable from "./components/courses-table";
 import { DashboardPath } from "routes/paths";
 
@@ -28,15 +29,20 @@ export default function ManageCourses() {
         sx={{
           maxWidth: "1096px",
           borderRadius: 'sm',
-          gridColumn: '1/-1',
-          display: { xs: 'flex', md: 'flex' },
           mx: { xs: "none", md: 4 }
         }}>
-        <Box sx={{ px: 2, py: 2 }}>
+        <Box sx={{ px: 2, py: 2, display: "flex" }}>
           <Typography sx={{ px: 1, py: 1 }}>Create new course</Typography>
-          <Button><Link to={DashboardPath.CREATE_COURSE} style={{ textDecoration: "none", color: "inherit" }}>Create</Link></Button>
+          <Button>
+            <Link to={DashboardPath.CREATE_COURSE} style={{ textDecoration: "none", color: "inherit" }}>
+              Create
+            </Link>
+          </Button>
         </Box>
       </Sheet>
+      <Box>
+        <CourseList instructor={true} />
+      </Box>
     </Box>
   )
 }

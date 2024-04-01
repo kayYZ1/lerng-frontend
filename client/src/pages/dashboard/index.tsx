@@ -6,5 +6,5 @@ import { CoursesPath } from "routes/paths";
 
 export default function Dashboard() {
   const currentUser = useSelector(selectCurrentUser);
-  return currentUser.role === 'admin' ? <DashboardPanel /> : <Navigate to={CoursesPath.COURSES} />
+  return currentUser.role === 'instructor' ? <DashboardPanel /> : <Navigate to={CoursesPath.COURSES} />
 }

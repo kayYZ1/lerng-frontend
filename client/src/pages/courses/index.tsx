@@ -48,8 +48,8 @@ export default function Courses() {
         />
         <SelectFilter />
       </Sheet>
-      <Divider sx={{ my: 2}}/>
-      <CourseList />
+      <Divider sx={{ my: 2 }} />
+      <CourseList instructor={false} />
     </Box>
   )
 }
