@@ -20,7 +20,7 @@ export default function Course() {
         alignItems: { xs: 'start', sm: 'center' },
         flexWrap: 'wrap',
         justifyContent: 'space-between',
-        px: { xs: 2, md: 6 }
+        mx: { xs: 5, md: 8 }
       }}
       >
         <Typography level="h2" component="h1" sx={{ mt: 4, mb: 2 }}>

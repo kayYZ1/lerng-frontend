@@ -20,7 +20,7 @@ export default function CourseList() {
         sx={{
           flexGrow: 1,
           flexWrap: "wrap",
-          px: 4
+          mx: { xs: 2.5, md: 5 }
         }}
       >
         {isLoading ?
