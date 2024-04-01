@@ -4,13 +4,12 @@ import StepButton from '@mui/joy/StepButton';
 import StepIndicator from '@mui/joy/StepIndicator';
 import Check from '@mui/icons-material/Check';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { selectActiveStep, setActiveStep } from 'features/courses/course-stepper.slice';
+import { useSelector } from 'react-redux';
+import { selectActiveStep } from 'features/courses/course-stepper.slice';
 import { StepIndex } from 'shared/enum';
 
 export default function CreateCourseStepper() {
   const activeStep = useSelector(selectActiveStep);
-  const dispatch = useDispatch()
 
   const steps = Object.values(StepIndex);
 
@@ -34,7 +33,7 @@ export default function CreateCourseStepper() {
             },
           }}
         >
-          <StepButton onClick={() => dispatch(setActiveStep(step))}>{step}</StepButton>
+          <StepButton>{step}</StepButton>
         </Step>
       ))}
     </Stepper>

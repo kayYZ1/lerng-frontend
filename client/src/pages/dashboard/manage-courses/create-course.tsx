@@ -1,9 +1,10 @@
 import { Box, Sheet, Typography } from "@mui/joy"
 
 import CreateCourseStepper from "./components/create-course.stepper"
-import CreateCourseForm from "./components/forms/create-course.form"
+import RenderCourseForm from "./components/forms"
 
 export default function CreateCourse() {
+
   return (
     <Box sx={{
       display: "flex",
@@ -19,7 +20,7 @@ export default function CreateCourse() {
           <CreateCourseStepper />
         </Box>
         <Box>
-          <CreateCourseForm />
+          <RenderCourseForm />
         </Box>
       </Sheet>
     </Box>

@@ -21,4 +21,7 @@ export const selectActiveStep = (state: { courseStepper: StepIndex }) => {
 	return Object.values(StepIndex).indexOf(activeStep);
 };
 
+export const selectStepToRender = (state: { courseStepper: StepIndex }) =>
+	state.courseStepper;
+
 export default courseStepperSlice.reducer;
