@@ -1,14 +1,19 @@
-import * as React from 'react';
 import Stepper from '@mui/joy/Stepper';
 import Step from '@mui/joy/Step';
 import StepButton from '@mui/joy/StepButton';
 import StepIndicator from '@mui/joy/StepIndicator';
 import Check from '@mui/icons-material/Check';
 
-const steps = ['Create course', 'Add learning modules', 'Create module contents'];
+import { useDispatch, useSelector } from 'react-redux';
+import { selectActiveStep, setActiveStep } from 'features/courses/course-stepper.slice';
+import { StepIndex } from 'shared/enum';
 
 export default function CreateCourseStepper() {
-  const [activeStep, setActiveStep] = React.useState(1); // Going into redux
+  const activeStep = useSelector(selectActiveStep);
+  const dispatch = useDispatch()
+
+  const steps = Object.values(StepIndex);
+
   return (
     <Stepper sx={{ width: '100%' }}>
       {steps.map((step, index) => (
@@ -29,7 +34,7 @@ export default function CreateCourseStepper() {
             },
           }}
         >
-          <StepButton onClick={() => setActiveStep(index)}>{step}</StepButton>
+          <StepButton onClick={() => dispatch(setActiveStep(step))}>{step}</StepButton>
         </Step>
       ))}
     </Stepper>
