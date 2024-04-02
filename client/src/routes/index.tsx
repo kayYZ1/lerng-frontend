@@ -8,6 +8,7 @@ const CreateCourse = lazy(() => import("pages/dashboard/manage-courses/create-co
 
 const Courses = lazy(() => import("pages/courses/index"))
 const SingleCourse = lazy(() => import("pages/courses/single-course/index"))
+const CourseModule = lazy(() => import("pages/courses/single-course/course-module/index"))
 
 const dashboardRoutes = [
 	{
@@ -30,6 +31,10 @@ const dashboardRoutes = [
 		path: CoursesPath.COURSE,
 		element: <SingleCourse />
 	},
+	{
+		path: CoursesPath.MODULE,
+		element: <CourseModule />
+	}
 ];
 
 const SignIn = lazy(() => import("pages/auth/sign-in"));

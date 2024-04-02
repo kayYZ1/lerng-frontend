@@ -1,5 +1,6 @@
 import { CourseModule } from "shared/types";
 import { Card, Typography, Box, Button } from "@mui/joy";
+import { Link } from "react-router-dom";
 
 export default function ModuleItem(item: CourseModule) {
   return (
@@ -13,7 +14,9 @@ export default function ModuleItem(item: CourseModule) {
       </Typography>
       <Box sx={{ marginTop: 'auto', display: 'flex', justifyContent: 'flex-end' }}>
         <Button color="primary">
-          Enter
+          <Link to={`/dashboard/courses/course/module/${item.id}`} style={{ textDecoration: "none", color: "inherit" }}>
+            Enter
+          </Link>
         </Button>
       </Box>
     </Card>

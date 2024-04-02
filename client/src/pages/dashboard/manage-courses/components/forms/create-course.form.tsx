@@ -4,8 +4,9 @@ import Stack from '@mui/joy/Stack';
 import CardActions from '@mui/joy/CardActions';
 import CardOverflow from '@mui/joy/CardOverflow';
 import { FormControl, Input, FormLabel, Card, Typography, Box } from '@mui/joy';
-
 import { useDispatch } from 'react-redux';
+
+import AddImage from '../add-image';
 import { setActiveStep } from 'features/courses/course-stepper.slice';
 import { StepIndex } from 'shared/enum';
 
@@ -39,10 +40,7 @@ export default function CreateCourseForm() {
           </FormControl>
           <FormControl required>
             <FormLabel>Image</FormLabel>
-            <Input
-              type="text"
-              name="imageUrl"
-            />
+            <AddImage />
           </FormControl>
           <CardOverflow>
             <CardActions sx={{ alignSelf: 'flex-end', pt: 2 }}>

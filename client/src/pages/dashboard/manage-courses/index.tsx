@@ -2,7 +2,6 @@ import { Box, Button, Sheet, Typography } from "@mui/joy";
 import { Link } from "react-router-dom";
 
 import CourseList from "pages/courses/components/courseList";
-import CoursesTable from "./components/courses-table";
 import { DashboardPath } from "routes/paths";
 
 export default function ManageCourses() {
@@ -13,18 +12,6 @@ export default function ManageCourses() {
         gap: 2,
       }}
     >
-      <Sheet
-        variant="outlined"
-        sx={{
-          maxWidth: "1096px",
-          borderRadius: 'sm',
-          gridColumn: '1/-1',
-          display: { xs: 'flex', md: 'flex' },
-          mx: { xs: "none", md: 4 }
-        }}
-      >
-        <CoursesTable />
-      </Sheet>
       <Sheet
         sx={{
           maxWidth: "1096px",
@@ -41,6 +28,7 @@ export default function ManageCourses() {
         </Box>
       </Sheet>
       <Box>
+        <Typography sx={{ mx: { xs: "none", md: 4 } }}>Your current courses</Typography>
         <CourseList instructor={true} />
       </Box>
     </Box>

@@ -8,7 +8,13 @@ export const modulesApiSlice = authApi.injectEndpoints({
 				method: "GET",
 			}),
 		}),
+		GetModule: builder.query({
+			query: (moduleId: string) => ({
+				url: `/modules/module/${moduleId}`,
+				method: "GET",
+			}),
+		}),
 	}),
 });
 
-export const { useGetModulesInCourseQuery } = modulesApiSlice;
+export const { useGetModulesInCourseQuery, useGetModuleQuery } = modulesApiSlice;

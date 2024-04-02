@@ -17,6 +17,7 @@ const COURSES = `${DASHBOARD}/courses`;
 const CoursesPath = {
 	COURSES: COURSES,
 	COURSE: `${COURSES}/course/:id`,
+	MODULE: `${COURSES}/course/module/:id`
 };
 
 export { AuthPath, DashboardPath, CoursesPath };
