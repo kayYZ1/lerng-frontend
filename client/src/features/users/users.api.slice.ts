@@ -16,8 +16,18 @@ export const usersApiSlice = authApi.injectEndpoints({
 				body: data,
 			}),
 		}),
+		UpdateUserImage: builder.mutation({
+			query: (data) => ({
+				url: "/users/update/imageUrl",
+				method: "PATCH",
+				body: data,
+			}),
+		}),
 	}),
 });
 
-export const { useUpdateUserDataMutation, useUpdateUserPasswordMutation } =
-	usersApiSlice;
+export const {
+	useUpdateUserDataMutation,
+	useUpdateUserPasswordMutation,
+	useUpdateUserImageMutation,
+} = usersApiSlice;

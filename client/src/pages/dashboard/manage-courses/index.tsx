@@ -29,9 +29,9 @@ export default function ManageCourses() {
         sx={{
           maxWidth: "1096px",
           borderRadius: 'sm',
-          mx: { xs: "none", md: 4 }
+          mx: { xs: "none", md: 4 },
         }}>
-        <Box sx={{ px: 2, py: 2, display: "flex" }}>
+        <Box sx={{ px: 2, py: 2, display: "flex", justifyContent: "space-between" }}>
           <Typography sx={{ px: 1, py: 1 }}>Create new course</Typography>
           <Button>
             <Link to={DashboardPath.CREATE_COURSE} style={{ textDecoration: "none", color: "inherit" }}>
