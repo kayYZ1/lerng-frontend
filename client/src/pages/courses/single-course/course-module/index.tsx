@@ -3,6 +3,7 @@ import { Box, Typography, Divider } from "@mui/joy";
 
 import TypographySkeleton from "../components/skeletons/typographySkeleton";
 import { useGetModuleQuery } from "features/modules/modules.api.slice";
+import ModulePanel from "./courseModulePanel";
 
 export default function CourseModule() {
   const { id } = useParams<{ id: string }>();
@@ -29,6 +30,7 @@ export default function CourseModule() {
       </Box>
       <Divider sx={{ my: 1 }} />
       <Box sx={{ flex: 1 }}>
+        <ModulePanel />
       </Box>
     </Box>
   )

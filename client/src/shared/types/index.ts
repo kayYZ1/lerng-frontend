@@ -25,7 +25,17 @@ export type CourseModule = {
 	id: string;
 	title: string;
 	description: string;
-}
+};
+
+export type Content = {
+	id: string;
+	title: string;
+	description: string;
+	textFirst: string;
+	textSecond: string;
+	imageUrl?: string;
+	videoUrl?: string;
+};
 
 export type UpdateUser = {
 	username: string;
@@ -50,5 +60,5 @@ export type CustomMutationError = {
 };
 
 export type IsInstructor = {
-	instructor: boolean
-}
+	instructor: boolean;
+};

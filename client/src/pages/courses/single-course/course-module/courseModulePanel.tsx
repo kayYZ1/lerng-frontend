@@ -1,0 +1,35 @@
+import { useParams } from 'react-router-dom';
+import { Sheet, Box } from "@mui/joy"
+
+import ContentList from "./components/contentList"
+import { useGetContentsQuery } from 'features/contents/contents.api.slice';
+
+export default function CourseModulePanel() {
+  const { id } = useParams<{ id: string }>();
+  const { data, isLoading, error } = useGetContentsQuery(id!);
+
+  return (
+    <Box
+      sx={{
+        flex: 1,
+        width: '100%',
+        px: { xs: 2, md: 6 },
+        mx: 'auto',
+        pt: { xs: 'var(--Header-height)', sm: 0 },
+        display: 'grid',
+        gridTemplateColumns: {
+          xs: '1fr',
+          sm: 'minmax(min-content, min(25%, 1000px)) 1fr',
+        },
+      }}
+    >
+      <Sheet sx={{ my: 2, px: 2, py: 2 }}>
+        Module Contents
+        {isLoading ? "LOADING..." : <ContentList contents={data} />}
+      </Sheet>
+      <Sheet sx={{ my: 2, px: 2, py: 2, mx: { sm: 2, md: 2 } }}>
+        Content
+      </Sheet>
+    </Box>
+  )
+}
