@@ -3,6 +3,7 @@ import { Sheet, Box } from "@mui/joy"
 
 import ContentList from "./components/contentList"
 import { useGetContentsQuery } from 'features/contents/contents.api.slice';
+import ContentPanel from './components/contentPanel';
 
 export default function CourseModulePanel() {
   const { id } = useParams<{ id: string }>();
@@ -26,9 +27,10 @@ export default function CourseModulePanel() {
       <Sheet sx={{ my: 2, px: 2, py: 2 }}>
         Module Contents
         {isLoading ? "LOADING..." : <ContentList contents={data} />}
+        {error ? "ERROR WHILE LOADING..." : ""}
       </Sheet>
       <Sheet sx={{ my: 2, px: 2, py: 2, mx: { sm: 2, md: 2 } }}>
-        Content
+        <ContentPanel />
       </Sheet>
     </Box>
   )
