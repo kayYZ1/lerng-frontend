@@ -29,7 +29,8 @@ export default function Courses() {
           flexDirection: { xs: 'column', sm: 'row' },
           alignItems: 'center',
           justifyContent: { xs: 'space-between', sm: 'flex-start' },
-          px: { xs: 2, md: 6 }
+          px: { xs: 2, md: 6 },
+          py: { xs: 2, md: 2 }
         }}
       >
         <Input
