@@ -2,19 +2,19 @@ import { authApi } from "features/api/auth.api";
 
 export const modulesApiSlice = authApi.injectEndpoints({
 	endpoints: (builder) => ({
-		GetModulesInCourse: builder.query({
+		GetTopicsFromCourse: builder.query({
 			query: (courseId: string) => ({
-				url: `/modules/${courseId}`,
+				url: `/topics/${courseId}`,
 				method: "GET",
 			}),
 		}),
-		GetModule: builder.query({
+		GetTopic: builder.query({
 			query: (moduleId: string) => ({
-				url: `/modules/module/${moduleId}`,
+				url: `/topics/topic/${moduleId}`,
 				method: "GET",
 			}),
 		}),
 	}),
 });
 
-export const { useGetModulesInCourseQuery, useGetModuleQuery } = modulesApiSlice;
+export const { useGetTopicsFromCourseQuery, useGetTopicQuery } = modulesApiSlice;

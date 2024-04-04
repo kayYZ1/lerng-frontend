@@ -3,15 +3,15 @@ import Sheet from '@mui/joy/Sheet';
 import { Box } from '@mui/joy';
 
 import ProgressTable from './components/progressTable';
-import ModulesList from './components/modulesList';
-import ModuleItemSkeleton from './components/skeletons/moduleItemSkeleton';
 
-import { useGetModulesInCourseQuery } from 'features/modules/modules.api.slice';
+import { useGetTopicsFromCourseQuery } from 'features/topics/topics.api.slice';
 import TableSkeleton from './components/skeletons/tableSkeleton';
+import TopicsList from './components/topicsList';
+import TopicItemSkeleton from './components/skeletons/topicItemSkeleton';
 
-export default function ModulesPanel() {
+export default function TopicsPanel() {
   const { id } = useParams<{ id: string }>();
-  const { data, isLoading, error } = useGetModulesInCourseQuery(id!);
+  const { data, isLoading, error } = useGetTopicsFromCourseQuery(id!);
 
   return (
     <Sheet
@@ -29,10 +29,10 @@ export default function ModulesPanel() {
       }}
     >
       <Box sx={{ px: 2, py: 2 }}>
-        {isLoading ? <ModuleItemSkeleton /> : <ModulesList modules={data} />}
+        {isLoading ? <TopicItemSkeleton /> : <TopicsList topics={data} />}
       </Box>
       <Box sx={{ px: 2, py: 2 }}>
-        {isLoading ? <TableSkeleton /> : <ProgressTable modules={data} />}
+        {isLoading ? <TableSkeleton /> : <ProgressTable topics={data} />}
       </Box>
       {error ? "Something went wrong please refresh" : ""}
     </Sheet>

@@ -2,7 +2,6 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import authReducer from "./auth/auth.slice";
 import userReducer from "./users/user.slice";
-import coursesReducer from "./courses/courses.slice";
 import courseStepperReducer from "./courses/course-stepper.slice";
 import contentReducer from "./contents/contents.slice"
 
@@ -13,7 +12,6 @@ export const store = configureStore({
 		[authApi.reducerPath]: authApi.reducer,
 		auth: authReducer,
 		user: userReducer,
-		courses: coursesReducer,
 		courseStepper: courseStepperReducer,
 		content: contentReducer,
 	},

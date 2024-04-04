@@ -2,7 +2,7 @@ import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
 import Skeleton from '@mui/joy/Skeleton';
 
-export default function ModuleItemSkeleton() {
+export default function TopicItemSkeleton() {
   return [1,2].map((index) => (
     <Card
       key={index}

@@ -5,7 +5,7 @@ import ContentList from "./components/contentList"
 import { useGetContentsQuery } from 'features/contents/contents.api.slice';
 import ContentPanel from './components/contentPanel';
 
-export default function CourseModulePanel() {
+export default function TopicPanel() {
   const { id } = useParams<{ id: string }>();
   const { data, isLoading, error } = useGetContentsQuery(id!);
 

@@ -1,7 +1,7 @@
 import Table from '@mui/joy/Table';
-import { CourseModule } from 'shared/types';
+import { Topic } from 'shared/types';
 
-export default function ProgressTable({ modules }: { modules: CourseModule[] }) {
+export default function ProgressTable({ topics }: { topics: Topic[] }) {
   return (
     <Table borderAxis="both">
       <caption>Progress table for this course</caption>
@@ -13,7 +13,7 @@ export default function ProgressTable({ modules }: { modules: CourseModule[] }) 
         </tr>
       </thead>
       <tbody>
-        {modules.map((item: CourseModule) => (
+        {topics.map((item: Topic) => (
           <tr key={item.id}>
             <td>{item.title}</td>
             <td>?? / %</td>

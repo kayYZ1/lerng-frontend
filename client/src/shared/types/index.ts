@@ -21,7 +21,7 @@ export type Course = {
 	created: Date;
 };
 
-export type CourseModule = {
+export type Topic = {
 	id: string;
 	title: string;
 	description: string;

@@ -8,7 +8,7 @@ const CreateCourse = lazy(() => import("pages/dashboard/manage-courses/create-co
 
 const Courses = lazy(() => import("pages/courses/index"))
 const SingleCourse = lazy(() => import("pages/courses/single-course/index"))
-const CourseModule = lazy(() => import("pages/courses/single-course/course-module/index"))
+const Topic = lazy(() => import("pages/courses/single-course/topic/index"))
 
 const dashboardRoutes = [
 	{
@@ -32,8 +32,8 @@ const dashboardRoutes = [
 		element: <SingleCourse />
 	},
 	{
-		path: CoursesPath.MODULE,
-		element: <CourseModule />
+		path: CoursesPath.TOPIC,
+		element: <Topic />
 	}
 ];
 

@@ -2,12 +2,12 @@ import { useParams } from "react-router-dom";
 import { Box, Typography, Divider } from "@mui/joy";
 
 import TypographySkeleton from "../components/skeletons/typographySkeleton";
-import { useGetModuleQuery } from "features/modules/modules.api.slice";
-import ModulePanel from "./courseModulePanel";
+import { useGetTopicQuery } from "features/topics/topics.api.slice";
+import ModulePanel from "./topicPanel";
 
 export default function CourseModule() {
   const { id } = useParams<{ id: string }>();
-  const { data, isLoading, error } = useGetModuleQuery(id!);
+  const { data, isLoading, error } = useGetTopicQuery(id!);
 
   return (
     <Box sx={{ flex: 1, width: '100%' }}>

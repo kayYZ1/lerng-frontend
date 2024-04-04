@@ -1,8 +1,8 @@
-import { CourseModule } from "shared/types";
+import { Topic } from "shared/types";
 import { Card, Typography, Box, Button } from "@mui/joy";
 import { Link } from "react-router-dom";
 
-export default function ModuleItem(item: CourseModule) {
+export default function TopicItem(item: Topic) {
   return (
     <Card>
       <Typography level="title-lg">
