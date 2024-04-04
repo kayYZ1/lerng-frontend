@@ -20,6 +20,12 @@ export const coursesApiSlice = authApi.injectEndpoints({
 				method: "GET",
 			}),
 		}),
+		GetInstructorFromCourse: builder.query({
+			query: (courseId: string) => ({
+				url: `/courses/course/instructor/${courseId}`,
+				method: "GET",
+			}),
+		}),
 	}),
 });
 
@@ -27,4 +33,5 @@ export const {
 	useGetCoursesQuery,
 	useGetCourseQuery,
 	useGetInstructorCoursesQuery,
+	useGetInstructorFromCourseQuery,
 } = coursesApiSlice;
