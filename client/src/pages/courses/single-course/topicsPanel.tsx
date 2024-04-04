@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import Sheet from '@mui/joy/Sheet';
-import { Box } from '@mui/joy';
+import { Box, Typography } from '@mui/joy';
 
 import { useGetTopicsFromCourseQuery } from 'features/topics/topics.api.slice';
 
@@ -25,17 +25,32 @@ export default function TopicsPanel() {
         display: 'grid',
         gridTemplateColumns: {
           xs: '1fr',
-          sm: 'minmax(min-content, min(50%, 1000px)) 1fr',
+          sm: '1fr minmax(min-content, min(50%, 1000px))', // Swap the columns order
+        },
+        gridTemplateAreas: {
+          xs: `
+        "topicsList"
+        "progressTable"
+        "topicInstructor"
+      `,
+          sm: `
+        "topicsList progressTable"
+        "topicsList topicInstructor"
+      `,
         },
       }}
     >
-      <Box sx={{ px: 2, py: 2 }}>
+      <Box sx={{ gridArea: 'topicsList', px: 2, py: 2 }}>
         {isLoading ? <TopicItemSkeleton /> : <TopicsList topics={data} />}
       </Box>
-      <Box sx={{ px: 2, py: 2 }}>
+      <Box sx={{ gridArea: 'progressTable', px: 2, py: 2 }}>
         {isLoading ? <TableSkeleton /> : <ProgressTable topics={data} />}
       </Box>
-      <Box sx={{ gridColumn: { xs: '1', sm: '2' }, px: 2, py: 2 }}>
+      <Box sx={{
+        gridArea: 'topicInstructor', px: 2, py: 2,
+        display: 'flex', alignItems: 'center', flexDirection: "column"
+      }}>
+        <Typography level="title-md" sx={{ pb: 2, display: "flex" }}>The instructor for this course is</Typography>
         <TopicInstructor />
       </Box>
       {error ? "Something went wrong please refresh" : ""}

@@ -20,7 +20,7 @@ export default function CourseModule() {
         mx: { xs: 5, md: 8 }
       }}
       >
-        <Typography level="h2" sx={{ mt: 4, mb: 2 }}>
+        <Typography level="h2" sx={{ mt: 4 }}>
           {isLoading ? <TypographySkeleton /> : data.title}
           {error ? "Something went wrong please refresh" : ""}
         </Typography>

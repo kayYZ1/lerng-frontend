@@ -9,12 +9,11 @@ export default function TopicItem(item: Topic) {
         {item.title}
       </Typography>
       <Typography level="body-md">
-        This is the description of the component that contain some information of
-        it
+        {item.description} 
       </Typography>
       <Box sx={{ marginTop: 'auto', display: 'flex', justifyContent: 'flex-end' }}>
         <Button color="primary">
-          <Link to={`/dashboard/courses/course/module/${item.id}`} style={{ textDecoration: "none", color: "inherit" }}>
+          <Link to={`/dashboard/courses/course/topic/${item.id}`} style={{ textDecoration: "none", color: "inherit" }}>
             Enter
           </Link>
         </Button>
