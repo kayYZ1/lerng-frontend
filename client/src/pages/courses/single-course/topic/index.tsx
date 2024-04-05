@@ -5,7 +5,7 @@ import TypographySkeleton from "../components/skeletons/typographySkeleton";
 import { useGetTopicQuery } from "features/topics/topics.api.slice";
 import ModulePanel from "./topicPanel";
 
-export default function CourseModule() {
+export default function Topic() {
   const { id } = useParams<{ id: string }>();
   const { data, isLoading, error } = useGetTopicQuery(id!);
 

@@ -25,7 +25,6 @@ export default function TopicPanel() {
       }}
     >
       <Sheet sx={{ my: 2, px: 2, py: 2 }}>
-        Module Contents
         {isLoading ? "LOADING..." : <ContentList contents={data} />}
         {error ? "ERROR WHILE LOADING..." : ""}
       </Sheet>

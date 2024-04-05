@@ -14,7 +14,7 @@ export default function TopicItem(item: Topic) {
       <Box sx={{ marginTop: 'auto', display: 'flex', justifyContent: 'flex-end' }}>
         <Button color="primary">
           <Link to={`/dashboard/courses/course/topic/${item.id}`} style={{ textDecoration: "none", color: "inherit" }}>
-            Enter
+            Go
           </Link>
         </Button>
       </Box>
