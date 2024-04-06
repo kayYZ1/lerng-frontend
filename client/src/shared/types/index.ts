@@ -1,3 +1,5 @@
+import { QuestionType } from "shared/enum";
+
 export type UserSignUp = {
 	email: string;
 	password: string;
@@ -36,6 +38,13 @@ export type Content = {
 	imageUrl?: string;
 	videoUrl?: string;
 };
+
+export type Question = {
+	id: string;
+	question: string;
+	type: QuestionType;
+	answer: string;
+}
 
 export type UpdateUser = {
 	username: string;
