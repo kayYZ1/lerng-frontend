@@ -34,8 +34,8 @@ export default function QuizForm(questions: Question[]) {
     setActiveQuestionIdx((prev) => prev - 1);
   }
 
+  const questionsLength = Object.keys(questions).length;
   const activeQuestion = questions[activeQuestionIdx];
-  console.log(activeQuestionIdx, questions.length)
 
   return (
     <Card sx={{ flex: 1, width: { xs: 300, md: 400 } }}>
@@ -62,7 +62,7 @@ export default function QuizForm(questions: Question[]) {
               >
                 Previous
               </Button>
-              {activeQuestionIdx === questions.length - 1 ?
+              {activeQuestionIdx === questionsLength - 1 ?
                 <Button
                   size="sm"
                   variant="solid"
