@@ -29,6 +29,13 @@ export type Topic = {
 	description: string;
 };
 
+export type Progress = {
+	id: string;
+	title: string;
+	progress: number;
+	quizScore: number;
+}
+
 export type Content = {
 	id: string;
 	title: string;
@@ -44,7 +51,7 @@ export type Question = {
 	question: string;
 	type: QuestionType;
 	answer: string;
-}
+};
 
 export type UpdateUser = {
 	username: string;

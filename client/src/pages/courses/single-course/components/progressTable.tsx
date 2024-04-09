@@ -1,33 +1,44 @@
+import { useParams } from 'react-router-dom';
 import Table from '@mui/joy/Table';
-import { Topic } from 'shared/types';
+import { Progress } from 'shared/types';
+import { useGetProgressQuery } from 'features/progress/progress.api.slice';
+import { Box } from '@mui/joy';
+import TableSkeleton from './skeletons/tableSkeleton';
 
-export default function ProgressTable({ topics }: { topics: Topic[] }) {
+export default function ProgressTable() {
+  const { id } = useParams<{ id: string }>();
+  const { data, isLoading } = useGetProgressQuery(id!);
+
   return (
-    <Table borderAxis="both">
-      <caption>Progress table for this course</caption>
-      <thead>
-        <tr>
-          <th style={{ width: '50%' }}>Module name</th>
-          <th>Progress&nbsp;(%)</th>
-          <th>Points&nbsp;(_ / 5)</th>
-        </tr>
-      </thead>
-      <tbody>
-        {topics.map((item: Topic) => (
-          <tr key={item.id}>
-            <td>{item.title}</td>
-            <td>?? / %</td>
-            <td>? / 5</td>
-          </tr>
-        ))}
-      </tbody>
-      <tfoot>
-        <tr>
-          <th scope="row">Totals</th>
-          <td>??% course progress</td>
-          <td>points / maximum points</td>
-        </tr>
-      </tfoot>
-    </Table>
+    <Box>
+      {isLoading ? <TableSkeleton /> :
+        <Table borderAxis="both">
+          <caption>Progress table for this course</caption>
+          <thead>
+            <tr>
+              <th style={{ width: '50%' }}>Module name</th>
+              <th>Progress&nbsp;(%)</th>
+              <th>Points&nbsp;(_ / 5)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((progress: Progress) => (
+              <tr key={progress.id}>
+                <td>{progress.title}</td>
+                <td>{progress.progress}%</td>
+                <td>{progress.quizScore}/5</td>
+              </tr>
+            ))}
+          </tbody>
+          <tfoot>
+            <tr>
+              <th scope="row">Totals</th>
+              <td>??% course progress</td>
+              <td>points / maximum points</td>
+            </tr>
+          </tfoot>
+        </Table>
+      }
+    </Box>
   )
 }

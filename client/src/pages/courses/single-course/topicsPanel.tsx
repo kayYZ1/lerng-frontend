@@ -5,7 +5,6 @@ import { Box, Typography } from '@mui/joy';
 import { useGetTopicsFromCourseQuery } from 'features/topics/topics.api.slice';
 
 import ProgressTable from './components/progressTable';
-import TableSkeleton from './components/skeletons/tableSkeleton';
 import TopicsList from './components/topicsList';
 import TopicItemSkeleton from './components/skeletons/topicItemSkeleton';
 import TopicInstructor from './components/topicInstructor';
@@ -44,7 +43,7 @@ export default function TopicsPanel() {
         {isLoading ? <TopicItemSkeleton /> : <TopicsList topics={data} />}
       </Box>
       <Box sx={{ gridArea: 'progressTable', px: 2, py: 2 }}>
-        {isLoading ? <TableSkeleton /> : <ProgressTable topics={data} />}
+        <ProgressTable />
       </Box>
       <Box sx={{
         gridArea: 'topicInstructor', px: 2, py: 2,
