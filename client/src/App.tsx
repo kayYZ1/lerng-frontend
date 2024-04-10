@@ -3,10 +3,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import DashboardLayout from "layouts/dashboard/app"
 import AuthLayout from "layouts/auth/layout"
 
-import Page404 from "pages/404"
+import Page404 from "features/404"
 
 import { authRoutes, dashboardRoutes } from "routes"
-import AuthRoute from "shared/components/routes/AuthRoute"
+import AuthRoute from "shared/components/authRoute"
 
 export default function App() {
   const router = createBrowserRouter([

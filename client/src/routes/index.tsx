@@ -2,17 +2,17 @@ import { lazy } from "react";
 
 import { AuthPath, DashboardPath, CoursesPath } from "./paths";
 
-const Dashboard = lazy(() => import("pages/dashboard/index"));
-const SettingsProfile = lazy(() => import("pages/settings/index"));
-const CreateCourse = lazy(() => import("pages/dashboard/manage-courses/create-course"))
+const Dashboard = lazy(() => import("features/dashboard/index"));
+const SettingsProfile = lazy(() => import("features/settings/index"));
+const CreateCourse = lazy(() => import("features/dashboard/manage-courses/create-course"))
 
-const Courses = lazy(() => import("pages/courses/index"))
-const SingleCourse = lazy(() => import("pages/courses/single-course/index"))
-const Topic = lazy(() => import("pages/courses/single-course/topic/index"))
-const Quiz = lazy(() => import("pages/courses/single-course/quiz/index"))
+const Courses = lazy(() => import("features/courses/index"))
+const SingleCourse = lazy(() => import("features/courses/single-course/index"))
+const Topic = lazy(() => import("features/courses/single-course/topic/index"))
+const Quiz = lazy(() => import("features/courses/single-course/quiz/index"))
 
-const SignIn = lazy(() => import("pages/auth/sign-in"));
-const SignUp = lazy(() => import("pages/auth/sign-up"));
+const SignIn = lazy(() => import("features/auth/sign-in"));
+const SignUp = lazy(() => import("features/auth/sign-up"));
 
 const dashboardRoutes = [
 	{

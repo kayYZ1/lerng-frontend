@@ -31,9 +31,9 @@ import style from "../dashboard.module.css"
 
 import ColorSchemeToggle from 'shared/components/colorToggle';
 
-import { useGetMeQuery } from 'features/auth/auth.api.slice';
-import { useSignOutFnMutation } from 'features/auth/auth.api.slice';
-import { signOut } from 'features/auth/auth.slice';
+import { useGetMeQuery } from 'app/auth/auth.api.slice';
+import { useSignOutFnMutation } from 'app/auth/auth.api.slice';
+import { signOut } from 'app/auth/auth.slice';
 
 export default function Header() {
   const dispatch = useDispatch();

@@ -11,7 +11,7 @@ import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import FeedbackIcon from '@mui/icons-material/Feedback';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 
-import { selectCurrentUser } from 'features/users/user.slice';
+import { selectCurrentUser } from 'app/users/user.slice';
 import { CoursesPath, DashboardPath } from 'routes/paths';
 import style from "../dashboard.module.css"
 
