@@ -18,7 +18,7 @@ export default function ProgressTable() {
             <tr>
               <th style={{ width: '50%' }}>Module name</th>
               <th>Progress&nbsp;(%)</th>
-              <th>Points&nbsp;(_ / 5)</th>
+              <th>Points&nbsp;(_/5)</th>
             </tr>
           </thead>
           <tbody>
@@ -33,8 +33,8 @@ export default function ProgressTable() {
           <tfoot>
             <tr>
               <th scope="row">Totals</th>
-              <td>??% course progress</td>
-              <td>points / maximum points</td>
+              <td></td>
+              <td></td>
             </tr>
           </tfoot>
         </Table>

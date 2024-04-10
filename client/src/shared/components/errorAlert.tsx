@@ -1,6 +1,6 @@
-import { IconButton, Alert, Typography } from "@mui/joy";
+import { Alert, Typography } from "@mui/joy";
 
-import { ReportOutlined, CloseRounded } from "@mui/icons-material";
+import { ReportOutlined } from "@mui/icons-material";
 
 export interface IErrorAlert {
   message: string | undefined;
@@ -14,11 +14,6 @@ export default function ErrorAlert({ message, type }: IErrorAlert) {
       startDecorator={<ReportOutlined />}
       variant="soft"
       color="danger"
-      endDecorator={
-        <IconButton variant="soft" color="danger">
-          <CloseRounded />
-        </IconButton>
-      }
     >
       <div>
         <div>{type}</div>

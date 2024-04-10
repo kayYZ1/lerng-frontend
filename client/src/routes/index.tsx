@@ -11,6 +11,9 @@ const SingleCourse = lazy(() => import("pages/courses/single-course/index"))
 const Topic = lazy(() => import("pages/courses/single-course/topic/index"))
 const Quiz = lazy(() => import("pages/courses/single-course/quiz/index"))
 
+const SignIn = lazy(() => import("pages/auth/sign-in"));
+const SignUp = lazy(() => import("pages/auth/sign-up"));
+
 const dashboardRoutes = [
 	{
 		path: DashboardPath.DASHBOARD,
@@ -42,9 +45,6 @@ const dashboardRoutes = [
 	}
 ];
 
-const SignIn = lazy(() => import("pages/auth/sign-in"));
-const SignUp = lazy(() => import("pages/auth/sign-up"));
-
 const authRoutes = [
 	{
 		path: AuthPath.SIGN_IN,
@@ -54,7 +54,7 @@ const authRoutes = [
 		path: AuthPath.SIGN_UP,
 		element: <SignUp />
 	}
-]
+];
 
 
 export { dashboardRoutes, authRoutes };

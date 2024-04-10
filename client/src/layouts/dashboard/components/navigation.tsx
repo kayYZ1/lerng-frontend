@@ -8,7 +8,6 @@ import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import ListItemContent from '@mui/joy/ListItemContent';
 
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
-import BookmarksIcon from '@mui/icons-material/Bookmarks';
 import FeedbackIcon from '@mui/icons-material/Feedback';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 
@@ -54,16 +53,6 @@ export default function Navigation() {
               </ListItemDecorator>
               <ListItemContent>
                 <Link to={CoursesPath.COURSES} className={style.link}>Courses</Link>
-              </ListItemContent>
-            </ListItemButton>
-          </ListItem>
-          <ListItem>
-            <ListItemButton>
-              <ListItemDecorator>
-                <BookmarksIcon fontSize="small" />
-              </ListItemDecorator>
-              <ListItemContent>
-                Enrolled
               </ListItemContent>
             </ListItemButton>
           </ListItem>

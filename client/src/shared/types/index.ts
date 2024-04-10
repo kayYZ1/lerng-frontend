@@ -1,4 +1,4 @@
-import { QuestionType } from "shared/enum";
+import { QuestionType } from 'shared/enum';
 
 export type UserSignUp = {
 	email: string;
@@ -34,7 +34,7 @@ export type Progress = {
 	title: string;
 	progress: number;
 	quizScore: number;
-}
+};
 
 export type Content = {
 	id: string;
