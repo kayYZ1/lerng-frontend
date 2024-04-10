@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import * as yup from "yup"
 
 import { useSignUpFnMutation } from "app/auth/auth.api.slice";
-import { CustomMutationError, UserSignUp } from "shared/types";
+import { CustomMutationError, UserSignUp } from "shared/ts/types";
 
 import style from "../auth.module.css"
 import ErrorAlert from "shared/components/errorAlert";

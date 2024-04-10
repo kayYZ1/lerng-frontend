@@ -23,7 +23,7 @@ import { useUpdateUserDataMutation } from 'app/users/users.api.slice';
 
 import UpdateImageModal from './components/update-image.modal';
 
-import { CustomMutationError, UpdateUser, UserData } from 'shared/types';
+import { CustomMutationError, UpdateUser, UserData } from 'shared/ts/types';
 import WarningAlert from 'shared/components/warningAlert';
 
 const validationSchema = yup.object().shape({

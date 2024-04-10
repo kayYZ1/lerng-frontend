@@ -6,7 +6,7 @@ import CardActions from '@mui/joy/CardActions';
 import CardOverflow from '@mui/joy/CardOverflow';
 import { FormControl, Input, FormLabel, Card, Typography, Box, RadioGroup, Radio } from '@mui/joy';
 
-import { Question } from 'shared/types';
+import { Question } from 'shared/ts/types';
 import { QuestionType } from 'shared/enum';
 import QuizTime from './quizTime';
 

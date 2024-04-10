@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 import { setCredentials } from "app/auth/auth.slice";
 import { useSignInFnMutation } from "app/auth/auth.api.slice";
-import { CustomMutationError, UserSignIn } from "shared/types";
+import { CustomMutationError, UserSignIn } from "shared/ts/types";
 
 import style from "../auth.module.css"
 import ErrorAlert from "shared/components/errorAlert";

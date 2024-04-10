@@ -6,7 +6,7 @@ import QuizIcon from '@mui/icons-material/Quiz';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Content } from 'shared/types';
+import { Content } from 'shared/ts/types';
 import { selectActiveContent, setActiveContent } from 'app/contents/contents.slice';
 
 export default function ContentList({ contents }: { contents: Content[] }) {

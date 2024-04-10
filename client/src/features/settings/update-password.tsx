@@ -15,7 +15,7 @@ import LockResetRoundedIcon from '@mui/icons-material/LockResetRounded';
 import KeyRoundedIcon from '@mui/icons-material/KeyRounded';
 
 import { useUpdateUserPasswordMutation } from 'app/users/users.api.slice';
-import { CustomMutationError } from 'shared/types';
+import { CustomMutationError } from 'shared/ts/types';
 import WarningAlert from 'shared/components/warningAlert';
 
 const validationSchema = yup.object().shape({

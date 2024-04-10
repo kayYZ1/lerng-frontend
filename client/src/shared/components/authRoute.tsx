@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import { RouteChild } from "shared/types";
+import { RouteChild } from "shared/ts/types";
 import { selectCurrentToken } from "app/auth/auth.slice";
 import { AuthPath } from "routes/paths";
 
