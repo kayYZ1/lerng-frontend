@@ -1,4 +1,4 @@
-import { Topic } from "shared/types";
+import { Topic } from "shared/ts/types";
 import { Card, Typography, Box, Button } from "@mui/joy";
 import { Link } from "react-router-dom";
 
@@ -9,7 +9,7 @@ export default function TopicItem(item: Topic) {
         {item.title}
       </Typography>
       <Typography level="body-md">
-        {item.description} 
+        {item.description}
       </Typography>
       <Box sx={{ marginTop: 'auto', display: 'flex', justifyContent: 'flex-end' }}>
         <Button color="primary">

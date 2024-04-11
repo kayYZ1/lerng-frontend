@@ -1,6 +1,6 @@
 import Stack from '@mui/joy/Stack';
 
-import { Topic } from 'shared/types';
+import { Topic } from 'shared/ts/types';
 import TopicItem from './topicItem';
 
 export default function TopicsList({ topics }: { topics: Topic[] }) {
@@ -11,7 +11,7 @@ export default function TopicsList({ topics }: { topics: Topic[] }) {
         maxWidth: '80ch',
       }}
     >
-      {topics.map((item: Topic ) => (
+      {topics.map((item: Topic) => (
         <TopicItem {...item} key={item.id} />
       ))}
     </Stack>
