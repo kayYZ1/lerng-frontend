@@ -1,6 +1,6 @@
 import { lazy } from "react";
 
-import { AuthPath, DashboardPath, CoursesPath } from "./paths";
+import { AuthPath, DashboardPath, CoursesPath, DefaultPath } from "./paths";
 
 const Dashboard = lazy(() => import("features/dashboard/index"));
 const SettingsProfile = lazy(() => import("features/settings/index"));
@@ -13,6 +13,15 @@ const Quiz = lazy(() => import("features/courses/single-course/quiz/index"))
 
 const SignIn = lazy(() => import("features/auth/sign-in"));
 const SignUp = lazy(() => import("features/auth/sign-up"));
+
+const LandingPage = lazy(() => import("features/landing-page/index"))
+
+const defaultRoutes = [
+	{
+		path: DefaultPath.LANDING_PAGE,
+		element: <LandingPage />
+	}
+]
 
 const dashboardRoutes = [
 	{
@@ -57,6 +66,6 @@ const authRoutes = [
 ];
 
 
-export { dashboardRoutes, authRoutes };
+export { dashboardRoutes, authRoutes, defaultRoutes };
 
 

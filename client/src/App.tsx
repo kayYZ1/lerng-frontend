@@ -5,11 +5,17 @@ import AuthLayout from "layouts/auth/layout"
 
 import Page404 from "features/404"
 
-import { authRoutes, dashboardRoutes } from "routes"
+import { authRoutes, dashboardRoutes, defaultRoutes } from "routes"
 import AuthRoute from "shared/components/authRoute"
+import LandingPageLayout from "layouts/landing-page/layout"
 
 export default function App() {
   const router = createBrowserRouter([
+    {
+      element: <LandingPageLayout />,
+      errorElement: <Page404 />,
+      children: defaultRoutes
+    },
     {
       element: <AuthRoute><DashboardLayout /></AuthRoute>,
       errorElement: <Page404 />,

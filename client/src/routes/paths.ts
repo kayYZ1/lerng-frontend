@@ -1,3 +1,8 @@
+const DefaultPath = {
+  LANDING_PAGE: '/',
+  HOME: '/home',
+};
+
 const AUTH = '/auth';
 const AuthPath = {
   AUTH: AUTH,
@@ -21,4 +26,4 @@ const CoursesPath = {
   QUIZ: `${COURSES}/course/topic/quiz/:id`,
 };
 
-export { AuthPath, CoursesPath, DashboardPath };
+export { AuthPath, CoursesPath, DashboardPath, DefaultPath };
