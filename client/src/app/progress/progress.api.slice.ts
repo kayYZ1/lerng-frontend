@@ -15,8 +15,21 @@ export const progressApiSlice = authApi.injectEndpoints({
         method: 'GET',
       }),
     }),
+    SaveQuiz: builder.mutation({
+      query: (args) => {
+        const { topicId, values } = args;
+        return {
+          url: `/progress/save/quiz/${topicId}`,
+          method: 'PATCH',
+          body: values,
+        };
+      },
+    }),
   }),
 });
 
-export const { useSaveProgressMutation, useGetProgressQuery } =
-  progressApiSlice;
+export const {
+  useSaveProgressMutation,
+  useGetProgressQuery,
+  useSaveQuizMutation,
+} = progressApiSlice;

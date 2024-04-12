@@ -1,16 +1,16 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { Course } from "shared/types";
+import { createSlice } from '@reduxjs/toolkit';
+import { Course } from 'shared/ts/types';
 
 const courses: Course[] = [];
 
 const coursesSlice = createSlice({
-	name: "courses",
-	initialState: courses,
-	reducers: {
-		setCourses: (_state, action) => {
-			return action.payload;
-		},
-	},
+  name: 'courses',
+  initialState: courses,
+  reducers: {
+    setCourses: (_state, action) => {
+      return action.payload;
+    },
+  },
 });
 
 export const { setCourses } = coursesSlice.actions;

@@ -18,7 +18,7 @@ export default function ProgressTable() {
             <tr>
               <th style={{ width: '50%' }}>Module name</th>
               <th>Progress&nbsp;(%)</th>
-              <th>Points&nbsp;(_/5)</th>
+              <th>Final Quiz Score</th>
             </tr>
           </thead>
           <tbody>
@@ -26,7 +26,7 @@ export default function ProgressTable() {
               <tr key={progress.id}>
                 <td>{progress.title}</td>
                 <td>{progress.progress}%</td>
-                <td>{progress.quizScore}/5</td>
+                <td>{progress.quizScore}</td>
               </tr>
             ))}
           </tbody>

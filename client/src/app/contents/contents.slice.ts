@@ -1,22 +1,22 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
-import { Content } from "shared/types";
+import { Content } from 'shared/ts/types';
 
 const initialState: Content | null = null;
 
 const contentsSlice = createSlice({
-	name: "content",
-	initialState,
-	reducers: {
-		setActiveContent: (_state, action) => {
-			return action.payload;
-		},
-	},
+  name: 'content',
+  initialState,
+  reducers: {
+    setActiveContent: (_state, action) => {
+      return action.payload;
+    },
+  },
 });
 
 export const { setActiveContent } = contentsSlice.actions;
 
 export const selectActiveContent = (state: { content: Content }) =>
-	state.content;
+  state.content;
 
 export default contentsSlice.reducer;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Box from '@mui/joy/Box';
 import Typography from '@mui/joy/Typography';
@@ -22,7 +22,6 @@ import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import FeedbackIcon from '@mui/icons-material/Feedback';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 import TeamNav from "./navigation"
 import { DashboardPath, AuthPath } from 'routes/paths';
@@ -37,8 +36,6 @@ import { signOut } from 'app/auth/auth.slice';
 
 export default function Header() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-
   const [open, setOpen] = React.useState(false);
   const { data, isLoading } = useGetMeQuery(undefined);
   const [SignOutFn] = useSignOutFnMutation();
@@ -64,9 +61,6 @@ export default function Header() {
         sx={{ display: { xs: 'none', sm: 'flex' } }}
       >
         <Typography level="title-md">Learn-Linux.com</Typography>
-        <Stack direction="row">
-          <IconButton onClick={() => navigate(-1)}><ArrowBackIcon /></IconButton>
-        </Stack>
       </Stack>
       <Box sx={{ display: { xs: 'inline-flex', sm: 'none' } }}>
         <IconButton variant="plain" color="neutral" onClick={() => setOpen(true)}>
