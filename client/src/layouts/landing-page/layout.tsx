@@ -1,4 +1,3 @@
-import * as React from 'react';
 import AspectRatio from '@mui/joy/AspectRatio';
 import Box from '@mui/joy/Box';
 import Container from '@mui/joy/Container';
@@ -20,7 +19,7 @@ export default function LandingPageLayout() {
           flexDirection: 'column',
           alignItems: 'center',
           gap: '1rem',
-          maxWidth: '50ch',
+          maxWidth: '60ch',
           textAlign: 'center',
           flexShrink: 999,
           [theme.breakpoints.up(834)]: {
@@ -36,7 +35,7 @@ export default function LandingPageLayout() {
         <Outlet />
       </Box>
       <AspectRatio
-        ratio={600 / 520}
+        ratio={600 / 600}
         variant="outlined"
         maxHeight={300}
         sx={(theme) => ({
