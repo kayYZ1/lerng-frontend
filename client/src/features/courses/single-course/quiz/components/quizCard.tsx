@@ -52,10 +52,10 @@ export default function QuizCard() {
               Questions
             </Typography>
             <Typography fontSize="xl2" fontWeight="l" textColor="#fff" sx={{ pt: 1 }}>
-              5
+              ~1
             </Typography>
             <Typography textColor="primary.200">
-              minutes
+              minute
             </Typography>
           </CardOverflow>
           <CardContent>

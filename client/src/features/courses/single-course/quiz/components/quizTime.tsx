@@ -8,7 +8,7 @@ export default function QuizTime() {
 
   React.useEffect(() => {
     const timer = setInterval(() => {
-      setProgress((prevProgress) => (prevProgress < 0 ? 100 : prevProgress - 3));
+      setProgress((prevProgress) => (prevProgress < 0 ? 100 : prevProgress - 1));
     }, 1000);
 
     return () => {
