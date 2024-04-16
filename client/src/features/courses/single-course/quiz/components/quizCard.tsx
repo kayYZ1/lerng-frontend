@@ -17,7 +17,7 @@ export default function QuizCard() {
   const { id } = useParams<{ id: string }>();
   const [isQuizStarted, setIsQuizStarted] = useState(false);
 
-  const { data, isLoading } = useGetQuestionsQuery(id!);
+  const { data, isLoading, error } = useGetQuestionsQuery(id!);
 
   return (
     <Box>
@@ -68,12 +68,18 @@ export default function QuizCard() {
                 Ready?
               </Typography>
             </CardContent>
-            <Button variant="outlined" color="primary" onClick={() => setIsQuizStarted(true)}>
+            <Button
+              variant="outlined"
+              color="primary"
+              onClick={() => setIsQuizStarted(true)}
+              disabled={data && data.length === 0 ? true : false}
+            >
               Start
             </Button>
           </CardContent>
         </Card>
       }
+      {error ? "Something went wrong" : ""}
     </Box>
   );
 }

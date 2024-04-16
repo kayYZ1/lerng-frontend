@@ -104,7 +104,8 @@ export default function QuizForm(questions: Question[]) {
             </form>
             <QuizTime />
           </Stack>
-        </Card>}
+        </Card>
+      }
     </Box>
   )
 }

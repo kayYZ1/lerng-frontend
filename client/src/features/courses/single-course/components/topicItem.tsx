@@ -4,7 +4,13 @@ import { Link } from "react-router-dom";
 
 export default function TopicItem(item: Topic) {
   return (
-    <Card>
+    <Card sx={{
+      maxWidth: "75vh",
+      maxHeight: {
+        sm: "2vh",
+        md: "15vh"
+      }
+    }}>
       <Typography level="title-lg">
         {item.title}
       </Typography>
