@@ -4,6 +4,7 @@ import SvgIcon from '@mui/joy/SvgIcon';
 import { styled } from '@mui/joy';
 
 import { useUpdateUserImageMutation } from 'app/users/users.api.slice';
+import SuccessAlert from 'shared/components/successAlert';
 
 const VisuallyHiddenInput = styled('input')`
   clip: rect(0 0 0 0);
@@ -19,7 +20,7 @@ const VisuallyHiddenInput = styled('input')`
 
 export default function FileUploadInput() {
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const [UpdateUserImage, { isLoading, error }] = useUpdateUserImageMutation();
+  const [UpdateUserImage, { isLoading, error, isSuccess }] = useUpdateUserImageMutation();
 
   const handleFileUpload = () => {
     if (fileInputRef.current) {
@@ -89,6 +90,7 @@ export default function FileUploadInput() {
         Upload a file
         <VisuallyHiddenInput type="file" ref={fileInputRef} onChange={handleFileChange} accept='.png' />
       </Button>
+      {isSuccess ? <SuccessAlert /> : ""}
       {error ? "Something went wrong" : ""}
     </>
   );
