@@ -10,7 +10,7 @@ import Favorite from '@mui/icons-material/Favorite';
 
 import { Link } from 'react-router-dom';
 
-import { Course } from 'shared/types';
+import { Course } from 'shared/ts/types';
 import { ParseDate } from 'shared/lib/functions';
 
 import style from "../courses.module.css"
@@ -59,9 +59,7 @@ export default function CourseItem(item: Course) {
         <CardOverflow variant="soft">
           <Divider inset="context" />
           <CardContent orientation="horizontal">
-            <Typography level="body-xs">Score: 4.4/5</Typography>
-            <Divider orientation="vertical" />
-            <Typography level="body-xs">{date}</Typography>
+            <Typography level="body-xs">Added {date}</Typography>
           </CardContent>
         </CardOverflow>
       </Card>

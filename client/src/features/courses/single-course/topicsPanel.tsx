@@ -7,7 +7,7 @@ import { useGetTopicsFromCourseQuery } from 'app/topics/topics.api.slice';
 import ProgressTable from './components/progressTable';
 import TopicsList from './components/topicsList';
 import TopicItemSkeleton from './components/skeletons/topicItemSkeleton';
-import TopicInstructor from './components/topicInstructor';
+import CourseInstructor from './components/courseInstructor';
 
 export default function TopicsPanel() {
   const { id } = useParams<{ id: string }>();
@@ -50,7 +50,7 @@ export default function TopicsPanel() {
         display: 'flex', alignItems: 'center', flexDirection: "column"
       }}>
         <Typography level="title-md" sx={{ pb: 2, display: "flex" }}>The instructor for this course is</Typography>
-        <TopicInstructor />
+        <CourseInstructor />
       </Box>
       {error ? "Something went wrong please refresh" : ""}
     </Sheet>
