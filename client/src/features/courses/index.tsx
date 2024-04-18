@@ -1,4 +1,4 @@
-import { Box, Typography, Sheet, Input, IconButton, Divider } from "@mui/joy"
+import { Box, Typography, Sheet, Input, IconButton, Divider, Switch } from "@mui/joy"
 import { SearchRounded } from "@mui/icons-material"
 
 import CourseList from "./components/courseList"
@@ -48,6 +48,9 @@ export default function Courses() {
           }
         />
         <SelectFilter />
+        <Typography component="label" startDecorator={<Switch sx={{ ml: 1 }} />}>
+          Show all courses
+        </Typography>
       </Sheet>
       <Divider sx={{ my: 2 }} />
       <CourseList instructor={false} />

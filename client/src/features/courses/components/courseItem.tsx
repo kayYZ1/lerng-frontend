@@ -6,7 +6,7 @@ import Divider from '@mui/joy/Divider';
 import Grid from '@mui/joy/Grid'
 import Typography from '@mui/joy/Typography';
 import IconButton from '@mui/joy/IconButton';
-import Favorite from '@mui/icons-material/Favorite';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 import { Link } from 'react-router-dom';
 
@@ -23,17 +23,19 @@ export default function CourseItem(item: Course) {
       <Card variant="outlined" sx={{ width: 320 }}>
         <CardOverflow>
           <AspectRatio ratio="2">
-            <img
-              src={item.imageUrl}
-              loading="lazy"
-              alt={`${item.id}`}
-            />
+            <Link to={`/dashboard/courses/course/${item.id}`} className={style.link}>
+              <img
+                src={item.imageUrl}
+                loading="lazy"
+                alt={`${item.title}`}
+              />
+            </Link>
           </AspectRatio>
           <IconButton
-            aria-label="Like minimal photography"
             size="md"
             variant="solid"
-            color="danger"
+            color="primary"
+            disabled
             sx={{
               position: 'absolute',
               zIndex: 2,
@@ -43,14 +45,12 @@ export default function CourseItem(item: Course) {
               transform: 'translateY(50%)',
             }}
           >
-            <Favorite />
+            <ExitToAppIcon />
           </IconButton>
         </CardOverflow>
         <CardContent>
           <Typography level="title-md">
-            <Link to={`/dashboard/courses/course/${item.id}`} className={style.link}>
-              {item.title.length > 38 ? `${item.title.substring(0, 33)}...` : item.title}
-            </Link>
+            {item.title.length > 38 ? `${item.title.substring(0, 33)}...` : item.title}
           </Typography>
           <Typography level="body-sm">
             {item.description.length > 80 ? `${item.description.substring(0, 80)}...` : item.description}

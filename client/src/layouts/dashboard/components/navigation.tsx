@@ -10,6 +10,7 @@ import ListItemContent from '@mui/joy/ListItemContent';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import FeedbackIcon from '@mui/icons-material/Feedback';
 import DashboardIcon from '@mui/icons-material/Dashboard';
+import SignpostIcon from '@mui/icons-material/Signpost';
 
 import { selectCurrentUser } from 'app/users/user.slice';
 import { CoursesPath, DashboardPath } from 'routes/paths';
@@ -49,10 +50,20 @@ export default function Navigation() {
           <ListItem>
             <ListItemButton>
               <ListItemDecorator>
-                <LibraryBooksIcon fontSize="small" />
+                <SignpostIcon fontSize="small" />
               </ListItemDecorator>
               <ListItemContent>
                 <Link to={CoursesPath.COURSES} className={style.link}>Courses</Link>
+              </ListItemContent>
+            </ListItemButton>
+          </ListItem>
+          <ListItem>
+            <ListItemButton>
+              <ListItemDecorator>
+                <LibraryBooksIcon fontSize="small" />
+              </ListItemDecorator>
+              <ListItemContent>
+                <Link to={CoursesPath.COURSES} className={style.link}>Enrolled</Link>
               </ListItemContent>
             </ListItemButton>
           </ListItem>
