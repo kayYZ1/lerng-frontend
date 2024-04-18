@@ -1,4 +1,5 @@
 import Stack from '@mui/joy/Stack';
+import Grid from '@mui/joy/Grid'
 
 import SettingsLayout from 'layouts/settings/layout';
 
@@ -16,16 +17,19 @@ export default function Profile() {
       <Stack
         spacing={2}
         sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          maxWidth: '800px',
           mx: 'auto',
           px: { xs: 2, md: 6 },
           py: { xs: 2, md: 3 },
         }}
       >
-        {isLoading ? <ProfileSkeleton /> : <UpdateData {...data} />}
-        <UpdatePassword />
+        <Grid container spacing={2} alignItems="center">
+          <Grid xs={12} md={6}>
+            {isLoading ? <ProfileSkeleton /> : <UpdateData {...data} />}
+          </Grid>
+          <Grid xs={12} md={6}>
+            <UpdatePassword />
+          </Grid>
+        </Grid>
       </Stack>
     </SettingsLayout>
   );

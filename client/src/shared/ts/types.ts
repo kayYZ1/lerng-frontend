@@ -66,15 +66,6 @@ export type UserData = {
   role: string;
 };
 
-export type CustomMutationError = {
-  status: number;
-  data: {
-    error: string;
-    message: string;
-    statusCode: number;
-  };
-};
-
 export type IsInstructor = {
   instructor: boolean;
 };

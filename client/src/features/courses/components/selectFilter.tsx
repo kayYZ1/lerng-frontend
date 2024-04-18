@@ -30,8 +30,6 @@ export default function SelectFilter() {
     >
       <Option value="dateAsc">Date ascending</Option>
       <Option value="dateDesc">Date descending</Option>
-      <Option value="revBest">Reviews ascending</Option>
-      <Option value="revWorst">Reviews descending</Option>
     </Select>
   )
 }

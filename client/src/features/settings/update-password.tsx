@@ -15,7 +15,7 @@ import LockResetRoundedIcon from '@mui/icons-material/LockResetRounded';
 import KeyRoundedIcon from '@mui/icons-material/KeyRounded';
 
 import { useUpdateUserPasswordMutation } from 'app/users/users.api.slice';
-import { CustomMutationError } from 'shared/ts/types';
+import { ICustomMutationError } from 'shared/ts/interfaces';
 import WarningAlert from 'shared/components/warningAlert';
 
 const validationSchema = yup.object().shape({
@@ -28,7 +28,7 @@ const validationSchema = yup.object().shape({
 export default function UpdatePassword() {
   const [UpdateUserPassword, { error, isLoading }] = useUpdateUserPasswordMutation();
 
-  const errorMessage = error as CustomMutationError;
+  const errorMessage = error as ICustomMutationError;
 
   const formik = useFormik({
     initialValues: {
@@ -48,7 +48,9 @@ export default function UpdatePassword() {
   })
 
   return (
-    <Card>
+    <Card sx={{
+      height: "35vh"
+    }}>
       <Box sx={{ mb: 1 }}>
         <Typography level="title-md">Password settings</Typography>
         <Typography level="body-sm">

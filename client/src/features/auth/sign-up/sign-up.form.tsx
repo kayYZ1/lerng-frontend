@@ -3,7 +3,8 @@ import { useFormik } from "formik";
 import * as yup from "yup"
 
 import { useSignUpFnMutation } from "app/auth/auth.api.slice";
-import { CustomMutationError, UserSignUp } from "shared/ts/types";
+import { UserSignUp } from "shared/ts/types";
+import { ICustomMutationError } from "shared/ts/interfaces";
 
 import style from "../auth.module.css"
 import ErrorAlert from "shared/components/errorAlert";
@@ -19,7 +20,7 @@ const validationSchema = yup.object().shape({
 export default function SignUpForm() {
   const [SignUpFn, { isLoading, error }] = useSignUpFnMutation();
 
-  const errorMessage = error as CustomMutationError;
+  const errorMessage = error as ICustomMutationError;
 
   const formik = useFormik({
     initialValues: {

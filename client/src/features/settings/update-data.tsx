@@ -23,7 +23,8 @@ import { useUpdateUserDataMutation } from 'app/users/users.api.slice';
 
 import UpdateImageModal from './components/update-image.modal';
 
-import { CustomMutationError, UpdateUser, UserData } from 'shared/ts/types';
+import { UpdateUser, UserData } from 'shared/ts/types';
+import { ICustomMutationError } from 'shared/ts/interfaces';
 import WarningAlert from 'shared/components/warningAlert';
 
 const validationSchema = yup.object().shape({
@@ -34,7 +35,7 @@ const validationSchema = yup.object().shape({
 export default function UpdateData(data: UserData) {
   const [UpdateUserData, { error, isLoading }] = useUpdateUserDataMutation();
 
-  const errorMessage = error as CustomMutationError;
+  const errorMessage = error as ICustomMutationError;
 
   const formik = useFormik({
     initialValues: {
@@ -54,7 +55,7 @@ export default function UpdateData(data: UserData) {
   })
 
   return (
-    <Card sx={{ flex: 1 }}>
+    <Card sx={{ flex: 1, height: "35vh" }}>
       <Box>
         <Typography level="title-md">Personal info</Typography>
         <Typography level="body-sm">
