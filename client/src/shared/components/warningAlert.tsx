@@ -2,9 +2,9 @@ import { Alert, Typography } from "@mui/joy";
 
 import { WarningRounded } from "@mui/icons-material";
 
-import { IErrorAlert } from "./errorAlert";
+import { IAlert } from "shared/ts/interfaces";
 
-export default function WarningAlert({ type, message }: IErrorAlert) {
+export default function WarningAlert({ type, message }: IAlert) {
   return (
     <Alert
       sx={{ alignItems: 'flex-start' }}

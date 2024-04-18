@@ -6,3 +6,8 @@ export interface ICustomMutationError {
     statusCode: number;
   };
 }
+
+export interface IAlert {
+  message: string | undefined;
+  type: string;
+}

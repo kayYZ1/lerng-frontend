@@ -1,13 +1,9 @@
 import { Alert, Typography } from "@mui/joy";
 
 import { ReportOutlined } from "@mui/icons-material";
+import { IAlert } from "shared/ts/interfaces";
 
-export interface IErrorAlert {
-  message: string | undefined;
-  type: string;
-}
-
-export default function ErrorAlert({ message, type }: IErrorAlert) {
+export default function ErrorAlert({ message, type }: IAlert) {
   return (
     <Alert
       sx={{ alignItems: 'flex-start' }}
