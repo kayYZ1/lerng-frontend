@@ -3,6 +3,13 @@ import { setCourses } from './courses.slice';
 
 export const coursesApiSlice = authApi.injectEndpoints({
   endpoints: (builder) => ({
+    CreateCourse: builder.mutation({
+      query: (data) => ({
+        url: '/courses/create',
+        method: 'POST',
+        body: data,
+      }),
+    }),
     GetCourses: builder.query({
       query: () => ({
         url: '/courses/',
@@ -39,6 +46,7 @@ export const coursesApiSlice = authApi.injectEndpoints({
 });
 
 export const {
+  useCreateCourseMutation,
   useGetCoursesQuery,
   useGetCourseQuery,
   useGetInstructorCoursesQuery,

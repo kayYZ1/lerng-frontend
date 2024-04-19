@@ -37,7 +37,6 @@ export default function SignInForm() {
         email: values.email,
         password: values.password,
       }
-      console.log(user);
       const { accessToken } = await SignInFn(user).unwrap();
       dispatch(setCredentials(accessToken))
       navigate(CoursesPath.COURSES)

@@ -1,10 +1,11 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import Button from '@mui/joy/Button';
 import Stack from '@mui/joy/Stack';
-import SvgIcon from '@mui/joy/SvgIcon';
 import { styled } from '@mui/joy';
 
-import { useUpdateUserImageMutation } from 'app/users/users.api.slice';
+interface ISetModalImageUrl {
+  setModalImageUrl: (url: string) => void;
+}
 
 const VisuallyHiddenInput = styled('input')`
   clip: rect(0 0 0 0);
@@ -18,9 +19,10 @@ const VisuallyHiddenInput = styled('input')`
   width: 1px;
 `;
 
-export default function AddCourseImage() {
+export default function AddCourseImage({ setModalImageUrl }: ISetModalImageUrl) {
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const [UpdateUserImage, { isLoading, error }] = useUpdateUserImageMutation();
+  const [fileName, setFileName] = useState("");
+  const [isUploaded, setIsUploaded] = useState(false);
 
   const handleFileUpload = () => {
     if (fileInputRef.current) {
@@ -34,7 +36,7 @@ export default function AddCourseImage() {
       const selectedFile = fileList[0];
       const fileExtension = selectedFile.name.split('.').pop()?.toLowerCase(); // Get file extension
       if (fileExtension === 'png') {
-        const uploadPreset: string = import.meta.env.VITE_UPLOAD_PRESET;
+        const uploadPreset: string = import.meta.env.VITE_UPLOAD_PRESET_COURSE;
         const apiUrl: string = import.meta.env.VITE_API_URL;
 
         const formData = new FormData();
@@ -48,8 +50,10 @@ export default function AddCourseImage() {
           })
 
           const data = await response.json()
-          console.log(data.secure_url)
-          await UpdateUserImage({ imageUrl: data.secure_url });
+
+          setModalImageUrl(data.secure_url)
+          setFileName(selectedFile.name);
+          setIsUploaded(true)
         } catch (error) {
           console.error(error);
         }
@@ -68,29 +72,10 @@ export default function AddCourseImage() {
         tabIndex={-1}
         variant="outlined"
         color="neutral"
-        loading={isLoading}
-        startDecorator={
-          <SvgIcon>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"
-              />
-            </svg>
-          </SvgIcon>
-        }
       >
-        Upload a file
+        {isUploaded ? fileName : "Upload your file"}
         <VisuallyHiddenInput type="file" ref={fileInputRef} onChange={handleFileChange} accept='.png' />
       </Button>
-      {error ? "Something went wrong" : ""}
     </Stack>
   );
 }

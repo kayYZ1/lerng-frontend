@@ -11,8 +11,6 @@ export default function AddCourseImageModal() {
         Create course
       </Button>
       <Modal
-        aria-labelledby="modal-title"
-        aria-describedby="modal-desc"
         open={open}
         onClose={() => setOpen(false)}
         sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
