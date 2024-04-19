@@ -18,7 +18,7 @@ const VisuallyHiddenInput = styled('input')`
   width: 1px;
 `;
 
-export default function AddImage() {
+export default function AddCourseImage() {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [UpdateUserImage, { isLoading, error }] = useUpdateUserImageMutation();
 

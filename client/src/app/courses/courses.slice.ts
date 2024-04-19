@@ -15,4 +15,6 @@ const coursesSlice = createSlice({
 
 export const { setCourses } = coursesSlice.actions;
 
+export const selectCourses = (state: { courses: Course[] }) => state.courses;
+
 export default coursesSlice.reducer;

@@ -1,10 +1,11 @@
 import { Box, Grid } from "@mui/joy"
+import { useSelector } from "react-redux"
 
 import { useGetCoursesQuery, useGetInstructorCoursesQuery } from "app/courses/courses.api.slice"
 
 import CourseItem from "./courseItem"
 
-import { Course, IsInstructor } from "shared/types"
+import { Course, IsInstructor } from "shared/ts/types"
 import CourseSkeleton from "./courseSkeleton"
 
 export default function CourseList(instructorView: IsInstructor) {

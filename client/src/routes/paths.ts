@@ -15,7 +15,6 @@ const DashboardPath = {
   DASHBOARD: DASHBOARD,
   SETTINGS: `${DASHBOARD}/settings`,
   ENROLLED: `${DASHBOARD}/enrolled`,
-  CREATE_COURSE: `${DASHBOARD}/course-creation`,
 };
 
 const COURSES = `${DASHBOARD}/courses`;

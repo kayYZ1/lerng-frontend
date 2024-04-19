@@ -1,8 +1,7 @@
-import { Box, Button, Sheet, Typography } from "@mui/joy";
-import { Link } from "react-router-dom";
+import { Box, Sheet, Typography } from "@mui/joy";
 
 import CourseList from "features/courses/components/courseList";
-import { DashboardPath } from "routes/paths";
+import AddCourseImageModal from "./components/addCourseImageModal";
 
 export default function ManageCourses() {
   return (
@@ -20,11 +19,7 @@ export default function ManageCourses() {
         }}>
         <Box sx={{ px: 2, py: 2, display: "flex", justifyContent: "space-between" }}>
           <Typography sx={{ px: 1, py: 1 }}>Create new course</Typography>
-          <Button>
-            <Link to={DashboardPath.CREATE_COURSE} style={{ textDecoration: "none", color: "inherit" }}>
-              Create
-            </Link>
-          </Button>
+          <AddCourseImageModal />
         </Box>
       </Sheet>
       <Box>
