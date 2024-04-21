@@ -1,21 +1,24 @@
 import * as React from 'react';
-import Button from '@mui/joy/Button';
 import Modal from '@mui/joy/Modal';
-import CreateCourseForm from './forms/createCourseForm';
+import Sheet from '@mui/joy/Sheet';
+import IconButton from '@mui/joy/IconButton';
+import AddIcon from '@mui/icons-material/Add';
 
-export default function AddCourseImageModal() {
+import AddTopicForm from '../forms/addTopicForm';
+
+export default function AddTopicModal() {
   const [open, setOpen] = React.useState<boolean>(false);
   return (
     <React.Fragment>
-      <Button variant="solid" color="primary" onClick={() => setOpen(true)}>
-        Create course
-      </Button>
+      <IconButton onClick={() => setOpen(true)}>
+        <AddIcon />
+      </IconButton>
       <Modal
         open={open}
         onClose={() => setOpen(false)}
         sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
       >
-        <CreateCourseForm setOpen={setOpen} />
+        <AddTopicForm setOpen={setOpen} />
       </Modal>
     </React.Fragment>
   );
