@@ -14,8 +14,21 @@ export const modulesApiSlice = authApi.injectEndpoints({
         method: 'GET',
       }),
     }),
+    AddTopic: builder.mutation({
+      query: (args) => {
+        const { courseId, data } = args;
+        return {
+          url: `/topics/create/${courseId}`,
+          method: 'POST',
+          body: data,
+        };
+      },
+    }),
   }),
 });
 
-export const { useGetTopicsFromCourseQuery, useGetTopicQuery } =
-  modulesApiSlice;
+export const {
+  useGetTopicsFromCourseQuery,
+  useGetTopicQuery,
+  useAddTopicMutation,
+} = modulesApiSlice;
