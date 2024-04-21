@@ -16,11 +16,11 @@ export const modulesApiSlice = authApi.injectEndpoints({
     }),
     AddTopic: builder.mutation({
       query: (args) => {
-        const { courseId, data } = args;
+        const { courseId, values } = args;
         return {
           url: `/topics/create/${courseId}`,
           method: 'POST',
-          body: data,
+          body: values,
         };
       },
     }),

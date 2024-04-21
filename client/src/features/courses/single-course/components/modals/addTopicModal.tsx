@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Modal from '@mui/joy/Modal';
-import Sheet from '@mui/joy/Sheet';
 import IconButton from '@mui/joy/IconButton';
 import AddIcon from '@mui/icons-material/Add';
 

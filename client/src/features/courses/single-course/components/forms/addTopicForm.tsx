@@ -1,3 +1,4 @@
+import { useParams } from 'react-router-dom';
 import Button from '@mui/joy/Button';
 import Divider from '@mui/joy/Divider';
 import Stack from '@mui/joy/Stack';
@@ -14,6 +15,7 @@ interface ICloseModal {
 }
 
 export default function AddTopicForm({ setOpen }: ICloseModal) {
+  const { id } = useParams<{ id: string }>();
   const [AddTopic, { isLoading, error }] = useAddTopicMutation();
 
   const formik = useFormik({
@@ -22,7 +24,8 @@ export default function AddTopicForm({ setOpen }: ICloseModal) {
       description: "",
     },
     onSubmit: async (values) => {
-      await AddTopic(values);
+      await AddTopic({ courseId: id, values });
+      setOpen(false)
     }
   })
 
