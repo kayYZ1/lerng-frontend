@@ -1,9 +1,10 @@
-import { Box } from '@mui/joy';
+import { Box, Stack } from '@mui/joy';
 import Button from '@mui/joy/Button';
 import Typography from '@mui/joy/Typography';
 import ArrowForward from '@mui/icons-material/ArrowForward';
 import { useNavigate, Link } from 'react-router-dom';
 import { AuthPath } from 'routes/paths';
+import ColorSchemeToggle from 'shared/components/colorToggle';
 
 export default function LandingPage() {
   const navigate = useNavigate();
@@ -13,10 +14,10 @@ export default function LandingPage() {
       <Typography
         level="h1"
         fontWeight="xl"
-        fontSize="clamp(1.875rem, 1.3636rem + 2.1818vw, 3rem)"
       >
         Learn-Linux.com
       </Typography>
+      <ColorSchemeToggle />
       <Typography fontSize="lg" textColor="text.secondary" lineHeight="lg">
         Welcome to Learn-Linux, your ultimate destination for mastering the ins and outs of the Linux operating system.
       </Typography>
