@@ -10,6 +10,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Content } from 'shared/ts/types';
 import { selectActiveContent, setActiveContent } from 'app/contents/contents.slice';
 import { selectCurrentUser } from 'app/users/user.slice';
+import AddContentModal from './modals/addContentModal';
 
 export default function ContentList({ contents }: { contents: Content[] }) {
   const { id } = useParams<{ id: string }>();
@@ -29,7 +30,7 @@ export default function ContentList({ contents }: { contents: Content[] }) {
       {user.role === 'instructor' ?
         <ListItemButton>
           <ListItemDecorator>
-            <AddIcon />
+            <AddContentModal />
           </ListItemDecorator>
           Add new content
         </ListItemButton>
