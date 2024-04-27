@@ -3,7 +3,6 @@ import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import ListItemButton from '@mui/joy/ListItemButton';
 
 import QuizIcon from '@mui/icons-material/Quiz';
-import AddIcon from '@mui/icons-material/Add';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';

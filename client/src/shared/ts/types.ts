@@ -40,8 +40,9 @@ export type Content = {
   id: string;
   title: string;
   description: string;
-  textFirst: string;
-  textSecond: string;
+  paragraph500: string;
+  paragraph750: string;
+  paragraph300: string;
   imageUrl?: string;
   videoUrl?: string;
 };

@@ -8,13 +8,15 @@ import Sheet from "@mui/joy/Sheet"
 import { FormControl, Input, FormLabel, Card, Typography, Box, Textarea } from '@mui/joy';
 import { useFormik } from 'formik';
 
+import { useNewContentMutation } from 'app/contents/contents.api.slice';
+
 interface ICloseModal {
   setOpen: (value: boolean) => void
 }
 
-
 export default function AddContentForm({ setOpen }: ICloseModal) {
   const { id } = useParams<{ id: string }>();
+  const [NewContent, { error, isLoading }] = useNewContentMutation();
 
   const formik = useFormik({
     initialValues: {
@@ -27,7 +29,7 @@ export default function AddContentForm({ setOpen }: ICloseModal) {
       videoUrl: ""
     },
     onSubmit: async (values) => {
-      console.log(values)
+      await NewContent({ topicId: id, values })
     }
   })
 
@@ -39,7 +41,7 @@ export default function AddContentForm({ setOpen }: ICloseModal) {
         <Box>
           <Typography level="title-md">Add content</Typography>
           <Typography level="body-sm">
-            Add a new topic to the course
+            Add new content for selected topic
           </Typography>
         </Box>
         <Divider />
@@ -102,16 +104,6 @@ export default function AddContentForm({ setOpen }: ICloseModal) {
               />
             </FormControl>
             <FormControl required>
-              <FormLabel>Description</FormLabel>
-              <Input
-                type="text"
-                name="description"
-                value={formik.values.description}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-              />
-            </FormControl>
-            <FormControl required>
               <FormLabel>Image</FormLabel>
               <Input
                 type="text"
@@ -125,7 +117,7 @@ export default function AddContentForm({ setOpen }: ICloseModal) {
               <FormLabel>Video</FormLabel>
               <Input
                 type="text"
-                name="videUrl"
+                name="videoUrl"
                 placeholder="Link to your recorded video on youtube, etc.."
                 value={formik.values.videoUrl}
                 onChange={formik.handleChange}
@@ -137,14 +129,15 @@ export default function AddContentForm({ setOpen }: ICloseModal) {
                 <Button size="sm" variant="outlined" onClick={() => setOpen(false)}>
                   Cancel
                 </Button>
-                <Button size="sm" variant="solid" type="submit">
+                <Button size="sm" variant="solid" type="submit" loading={isLoading}>
                   Save
                 </Button>
               </CardActions>
             </CardOverflow>
           </form>
+          {error ? "Something went wrong" : ""}
         </Stack>
       </Card>
-    </Sheet>
+    </Sheet >
   )
 }

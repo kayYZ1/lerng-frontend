@@ -1,4 +1,4 @@
-import { Box, Stack } from '@mui/joy';
+import { Box } from '@mui/joy';
 import Button from '@mui/joy/Button';
 import Typography from '@mui/joy/Typography';
 import ArrowForward from '@mui/icons-material/ArrowForward';

@@ -8,7 +8,17 @@ export const contentsApiSlice = authApi.injectEndpoints({
         method: 'GET',
       }),
     }),
+    NewContent: builder.mutation({
+      query: (args) => {
+        const { topicId, values } = args;
+        return {
+          url: `/contents/create/${topicId}`,
+          method: 'POST',
+          body: values,
+        };
+      },
+    }),
   }),
 });
 
-export const { useGetContentsQuery } = contentsApiSlice;
+export const { useGetContentsQuery, useNewContentMutation } = contentsApiSlice;
