@@ -16,7 +16,7 @@ export default function AddContentModal() {
         onClose={() => setOpen(false)}
         sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
       >
-        <AddContentForm />
+        <AddContentForm setOpen={setOpen} />
       </Modal>
     </React.Fragment>
   );
