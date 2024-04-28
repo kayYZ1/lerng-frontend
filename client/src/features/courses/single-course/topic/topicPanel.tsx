@@ -7,7 +7,10 @@ import ContentPanel from './components/contentPanel';
 
 export default function TopicPanel() {
   const { id } = useParams<{ id: string }>();
-  const { data, isLoading, error } = useGetContentsQuery(id!);
+  const { data, isLoading, error } = useGetContentsQuery(id!, {
+    pollingInterval: 3000,
+    skipPollingIfUnfocused: true
+  });
 
   return (
     <Box

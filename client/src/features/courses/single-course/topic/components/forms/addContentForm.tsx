@@ -28,6 +28,7 @@ export default function AddContentForm({ setOpen }: ICloseModal) {
     },
     onSubmit: async (values) => {
       await NewContent({ topicId: id, values })
+      await setOpen(false)
     }
   })
 
@@ -105,8 +106,9 @@ export default function AddContentForm({ setOpen }: ICloseModal) {
               <FormLabel>Image</FormLabel>
               <Input
                 type="text"
-                name="description"
-                value={formik.values.description}
+                name="imageUrl"
+                placeholder="For now image url.."
+                value={formik.values.imageUrl}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
               />

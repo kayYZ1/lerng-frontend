@@ -11,7 +11,10 @@ import CourseInstructor from './components/courseInstructor';
 
 export default function TopicsPanel() {
   const { id } = useParams<{ id: string }>();
-  const { data, isLoading, error } = useGetTopicsFromCourseQuery(id!);
+  const { data, isLoading, error } = useGetTopicsFromCourseQuery(id!, {
+    pollingInterval: 3000,
+    skipPollingIfUnfocused: true
+  });
 
   return (
     <Sheet
