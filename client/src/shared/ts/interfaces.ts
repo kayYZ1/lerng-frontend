@@ -11,3 +11,7 @@ export interface IAlert {
   message: string | undefined;
   type: string;
 }
+
+export interface ICloseModal {
+  setOpen: (value: boolean) => void;
+}

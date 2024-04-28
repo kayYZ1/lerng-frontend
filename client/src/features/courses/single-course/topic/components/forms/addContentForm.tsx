@@ -10,9 +10,7 @@ import { useFormik } from 'formik';
 
 import { useNewContentMutation } from 'app/contents/contents.api.slice';
 
-interface ICloseModal {
-  setOpen: (value: boolean) => void
-}
+import { ICloseModal } from 'shared/ts/interfaces';
 
 export default function AddContentForm({ setOpen }: ICloseModal) {
   const { id } = useParams<{ id: string }>();

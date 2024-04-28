@@ -10,9 +10,7 @@ import { useFormik } from 'formik';
 
 import { useAddTopicMutation } from 'app/topics/topics.api.slice';
 
-interface ICloseModal {
-  setOpen: (value: boolean) => void
-}
+import { ICloseModal } from 'shared/ts/interfaces';
 
 export default function AddTopicForm({ setOpen }: ICloseModal) {
   const { id } = useParams<{ id: string }>();
