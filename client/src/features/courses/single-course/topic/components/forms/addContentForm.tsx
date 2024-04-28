@@ -28,7 +28,7 @@ export default function AddContentForm({ setOpen }: ICloseModal) {
     },
     onSubmit: async (values) => {
       await NewContent({ topicId: id, values })
-      await setOpen(false)
+      setOpen(false)
     }
   })
 
