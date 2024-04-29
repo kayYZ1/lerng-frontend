@@ -20,11 +20,11 @@ import Person2RoundedIcon from '@mui/icons-material/Person2Rounded';
 import AdminPanelSettingsRoundedIcon from '@mui/icons-material/AdminPanelSettingsRounded';
 
 import { useUpdateUserDataMutation } from 'app/users/users.api.slice';
+import { transformErrorResponse } from 'shared/lib/functions';
 
 import UpdateImageModal from './components/update-image.modal';
 
 import { UpdateUser, UserData } from 'shared/ts/types';
-import { ICustomMutationError } from 'shared/ts/interfaces';
 import WarningAlert from 'shared/components/warningAlert';
 
 const validationSchema = yup.object().shape({
@@ -35,7 +35,7 @@ const validationSchema = yup.object().shape({
 export default function UpdateData(data: UserData) {
   const [UpdateUserData, { error, isLoading }] = useUpdateUserDataMutation();
 
-  const errorMessage = error as ICustomMutationError;
+  const errorResponse = transformErrorResponse(error);
 
   const formik = useFormik({
     initialValues: {
@@ -48,7 +48,6 @@ export default function UpdateData(data: UserData) {
         email: values.email,
         username: values.username
       }
-      console.log(updatedUser);
       await UpdateUserData(updatedUser);
       resetForm();
     }
@@ -134,7 +133,7 @@ export default function UpdateData(data: UserData) {
                   </Button>
                 </CardActions>
               </CardOverflow>
-              {error ? <WarningAlert type="Error occured while updating data" message={errorMessage.data.message} /> : ""}
+              {error ? <WarningAlert type="Error occured while updating data" message={errorResponse} /> : ""}
             </form>
           </Stack>
         </Stack>

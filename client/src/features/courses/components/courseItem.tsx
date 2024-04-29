@@ -11,12 +11,12 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { Link } from 'react-router-dom';
 
 import { Course } from 'shared/ts/types';
-import { ParseDate } from 'shared/lib/functions';
+import { parseDate } from 'shared/lib/functions';
 
 import style from "../courses.module.css"
 
 export default function CourseItem(item: Course) {
-  const date = ParseDate(item.created);
+  const date = parseDate(item.created);
 
   return (
     <Grid sx={{ py: 2, px: 1 }}>

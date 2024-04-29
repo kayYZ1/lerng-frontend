@@ -36,7 +36,6 @@ export default function SignUpForm() {
         password: values.password,
         username: values.username
       }
-      console.log(user);
       await SignUpFn(user);
       resetForm();
     }
