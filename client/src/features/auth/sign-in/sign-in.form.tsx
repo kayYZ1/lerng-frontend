@@ -7,11 +7,11 @@ import { useNavigate } from "react-router-dom";
 import { setCredentials } from "app/auth/auth.slice";
 import { useSignInFnMutation } from "app/auth/auth.api.slice";
 import { UserSignIn } from "shared/ts/types";
-import { ICustomMutationError } from "shared/ts/interfaces";
 
 import style from "../auth.module.css"
 import ErrorAlert from "shared/components/errorAlert";
 import { CoursesPath } from "routes/paths";
+import { transformErrorResponse } from "shared/lib/functions";
 
 const validationSchema = yup.object().shape({
   email: yup.string().email('Invalid email').required('Email is required'),
@@ -24,7 +24,7 @@ export default function SignInForm() {
 
   const [SignInFn, { isLoading, error }] = useSignInFnMutation();
 
-  const errorMessage = error as ICustomMutationError;
+  const errorResponse = transformErrorResponse(error);
 
   const formik = useFormik({
     initialValues: {
@@ -88,7 +88,7 @@ export default function SignInForm() {
           Sign in
         </Button>
       </Stack>
-      {error && 'status' in error ? <ErrorAlert type="Sign In Error" message={errorMessage.data.message} /> : ""}
+      {error ? <ErrorAlert type="Sign In Error" message={errorResponse} /> : ""}
     </form>
   )
 }

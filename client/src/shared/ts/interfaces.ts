@@ -1,4 +1,4 @@
-export interface ICustomMutationError {
+export interface ICustomQueryError {
   status: number;
   data: {
     error: string;
