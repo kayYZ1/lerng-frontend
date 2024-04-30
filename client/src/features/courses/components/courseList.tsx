@@ -1,5 +1,4 @@
 import { Box, Grid } from "@mui/joy"
-import { useSelector } from "react-redux"
 
 import { useGetCoursesQuery, useGetInstructorCoursesQuery } from "app/courses/courses.api.slice"
 

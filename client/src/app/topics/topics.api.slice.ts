@@ -7,6 +7,7 @@ export const modulesApiSlice = authApi.injectEndpoints({
         url: `/topics/${courseId}`,
         method: 'GET',
       }),
+      providesTags: ['Topic'],
     }),
     GetTopic: builder.query({
       query: (moduleId: string) => ({
@@ -23,6 +24,7 @@ export const modulesApiSlice = authApi.injectEndpoints({
           body: values,
         };
       },
+      invalidatesTags: ['Topic'],
     }),
   }),
 });

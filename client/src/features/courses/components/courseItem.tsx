@@ -53,7 +53,7 @@ export default function CourseItem(item: Course) {
             {item.title.length > 38 ? `${item.title.substring(0, 33)}...` : item.title}
           </Typography>
           <Typography level="body-sm">
-            {item.description.length > 80 ? `${item.description.substring(0, 80)}...` : item.description}
+            {item.description.length > 80 ? `${item.description.substring(0, 75)}...` : item.description}
           </Typography>
         </CardContent>
         <CardOverflow variant="soft">

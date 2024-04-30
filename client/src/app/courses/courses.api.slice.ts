@@ -1,5 +1,4 @@
 import { authApi } from 'app/api/auth.api';
-import { setCourses } from './courses.slice';
 
 export const coursesApiSlice = authApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -9,20 +8,14 @@ export const coursesApiSlice = authApi.injectEndpoints({
         method: 'POST',
         body: data,
       }),
+      invalidatesTags: ['Course'],
     }),
     GetCourses: builder.query({
       query: () => ({
         url: '/courses/',
         method: 'GET',
       }),
-      async onQueryStarted(_, { dispatch, queryFulfilled }) {
-        try {
-          const { data } = await queryFulfilled;
-          dispatch(setCourses(data));
-        } catch (error) {
-          console.error(error); //maybe return a promise?
-        }
-      },
+      providesTags: ['Course'],
     }),
     GetCourse: builder.query({
       query: (courseId: string) => ({
@@ -35,6 +28,7 @@ export const coursesApiSlice = authApi.injectEndpoints({
         url: `/courses/instructor`,
         method: 'GET',
       }),
+      providesTags: ['Course'],
     }),
     GetInstructorFromCourse: builder.query({
       query: (courseId: string) => ({
