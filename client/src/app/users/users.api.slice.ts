@@ -8,6 +8,7 @@ export const usersApiSlice = authApi.injectEndpoints({
         method: 'PATCH',
         body: data,
       }),
+      invalidatesTags: ['User'],
     }),
     UpdateUserPassword: builder.mutation({
       query: (data) => ({
@@ -15,6 +16,7 @@ export const usersApiSlice = authApi.injectEndpoints({
         method: 'PATCH',
         body: data,
       }),
+      invalidatesTags: ['User'],
     }),
     UpdateUserImage: builder.mutation({
       query: (data) => ({
@@ -22,6 +24,7 @@ export const usersApiSlice = authApi.injectEndpoints({
         method: 'PATCH',
         body: data,
       }),
+      invalidatesTags: ['User'],
     }),
   }),
 });

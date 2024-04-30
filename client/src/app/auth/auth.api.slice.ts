@@ -29,13 +29,10 @@ export const authApiSlice = authApi.injectEndpoints({
         method: 'GET',
       }),
       async onQueryStarted(_, { dispatch, queryFulfilled }) {
-        try {
-          const { data } = await queryFulfilled;
-          dispatch(setCurrentUser(data));
-        } catch (error) {
-          console.error(error);
-        }
+        const { data } = await queryFulfilled;
+        dispatch(setCurrentUser(data));
       },
+      providesTags: ['User'],
     }),
   }),
 });
