@@ -13,8 +13,8 @@ import { useSaveQuizMutation } from 'app/progress/progress.api.slice';
 import { Question } from 'shared/ts/types';
 import { QuestionType } from 'shared/enum';
 
-import QuizTime from './quizTime';
-import ResultCard from './resultCard';
+import QuizTime from '../quizTime';
+import ResultCard from '../../resultCard';
 
 export default function QuizForm(questions: Question[]) {
   const { id } = useParams<{ id: string }>();
@@ -46,6 +46,7 @@ export default function QuizForm(questions: Question[]) {
     setShowResult(true)
   }
 
+  console.log(questions)
   const questionsLength = Object.keys(questions).length;
   const activeQuestion = questions[activeQuestionIdx];
 

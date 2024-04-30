@@ -1,5 +1,5 @@
 import { Box, Typography, Divider } from "@mui/joy"
-import QuizCard from "./components/quizCard"
+import QuizCard from "./quizCard"
 
 export default function Quiz() {
   return (
