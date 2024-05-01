@@ -12,7 +12,6 @@ import { Question } from "shared/ts/types";
 export default function QuestionsList(questions: Question[]) {
   const questionsArray = Object.values(questions);
 
-  console.log(questionsArray)
   return (
     <AccordionGroup
       variant="outlined"

@@ -7,17 +7,21 @@ import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
 import CardOverflow from '@mui/joy/CardOverflow';
 import Typography from '@mui/joy/Typography';
-import { CircularProgress } from '@mui/joy';
+import { CircularProgress, Stack } from '@mui/joy';
 
 import { QuizSharp } from '@mui/icons-material';
 import { useGetQuestionsQuery } from 'app/questions/questions.api.slice';
 import QuizForm from './components/forms/quizForm';
 import QuestionsList from './components/questionsList';
+import { useSelector } from 'react-redux';
+import { selectCurrentUser } from 'app/users/user.slice';
+import AddQuestionModal from './components/modals/addQuestionModal';
 
 export default function QuizCard() {
   const { id } = useParams<{ id: string }>();
   const [isQuizStarted, setIsQuizStarted] = useState(false);
 
+  const user = useSelector(selectCurrentUser);
   const { data, isLoading, error } = useGetQuestionsQuery(id!);
 
   return (
@@ -80,12 +84,16 @@ export default function QuizCard() {
               </Button>
             </CardContent>
           </Card>
-          <Box>
-            <Typography fontSize="sm" sx={{ py: 2 }}>
-              Set of questions
-            </Typography>
-            <QuestionsList {...data} />
-          </Box>
+          {user.role === 'instructor' ?
+            <Box>
+              <Stack flexDirection="row" justifyContent="space-between" alignItems="flex-start">
+                <Typography fontSize="sm" sx={{ py: 2 }}>
+                  Set of questions
+                </Typography>
+                <AddQuestionModal />
+              </Stack>
+              <QuestionsList {...data} />
+            </Box> : ""}
         </Box>
       }
       {error ? "Something went wrong" : ""}
