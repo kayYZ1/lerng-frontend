@@ -1,4 +1,3 @@
-import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 
 import Button from '@mui/joy/Button';
@@ -8,8 +7,6 @@ import CardActions from '@mui/joy/CardActions';
 import CardOverflow from '@mui/joy/CardOverflow';
 import { FormControl, Input, FormLabel, Card, Typography, Box, RadioGroup, Radio } from '@mui/joy';
 
-import { useSaveQuizMutation } from 'app/progress/progress.api.slice';
-
 import { Question } from 'shared/ts/types';
 import { QuestionType } from 'shared/enum';
 
@@ -17,9 +14,6 @@ import QuizTime from '../quizTime';
 import ResultCard from '../../resultCard';
 
 export default function QuizForm(questions: Question[]) {
-  const { id } = useParams<{ id: string }>();
-  const [SaveQuiz, { isLoading }] = useSaveQuizMutation();
-
   const [activeQuestionIdx, setActiveQuestionIdx] = useState(0);
   const [answer, setAnswer] = useState("");
   const [score, setScore] = useState(0);
@@ -38,15 +32,10 @@ export default function QuizForm(questions: Question[]) {
   }
 
   function saveScore() {
-    submitAnswer() //Submit last answer
-    const values: { quizScore: number } = {
-      quizScore: score
-    }
-    SaveQuiz({ topicId: id, values })
+    submitAnswer()
     setShowResult(true)
   }
 
-  console.log(questions)
   const questionsLength = Object.keys(questions).length;
   const activeQuestion = questions[activeQuestionIdx];
 
@@ -87,7 +76,6 @@ export default function QuizForm(questions: Question[]) {
                       size="sm"
                       variant="solid"
                       onClick={() => saveScore()}
-                      loading={isLoading}
                     >
                       Save
                     </Button>
@@ -103,7 +91,7 @@ export default function QuizForm(questions: Question[]) {
                 </CardActions>
               </CardOverflow>
             </form>
-            <QuizTime />
+            <QuizTime setShowResult={setShowResult} />
           </Stack>
         </Card>
       }

@@ -1,3 +1,4 @@
+import { useParams } from 'react-router-dom';
 import AspectRatio from '@mui/joy/AspectRatio';
 import Button from '@mui/joy/Button';
 import Card from '@mui/joy/Card';
@@ -5,8 +6,11 @@ import CardActions from '@mui/joy/CardActions';
 import CardContent from '@mui/joy/CardContent';
 import CardOverflow from '@mui/joy/CardOverflow';
 import Typography from '@mui/joy/Typography';
-import BakeryDiningIcon from '@mui/icons-material/BakeryDining';
 
+import SentimentDissatisfiedIcon from '@mui/icons-material/SentimentDissatisfied';
+import SentimentSatisfiedIcon from '@mui/icons-material/SentimentSatisfied';
+
+import { useSaveQuizMutation } from 'app/progress/progress.api.slice';
 import { useSelector } from 'react-redux';
 import { selectCurrentUser } from 'app/users/user.slice';
 import { useNavigate } from 'react-router-dom';
@@ -14,6 +18,18 @@ import { useNavigate } from 'react-router-dom';
 export default function ResultCard({ score }: { score: number }) {
   const user = useSelector(selectCurrentUser)
   const navigate = useNavigate()
+
+  const { id } = useParams<{ id: string }>();
+  const [SaveQuiz, { isLoading }] = useSaveQuizMutation();
+
+  const saveQuizProgress = async () => {
+    const values: { quizScore: number } = {
+      quizScore: score
+    }
+
+    await SaveQuiz({ topicId: id, values })
+    navigate(-2)
+  }
 
   return (
     <Card
@@ -40,7 +56,12 @@ export default function ResultCard({ score }: { score: number }) {
           }}
         >
           <div>
-            <BakeryDiningIcon color="primary" sx={{ fontSize: '4rem' }} />
+            {
+              score > 0 ?
+                <SentimentSatisfiedIcon sx={{ fontSize: "4rem" }} />
+                :
+                <SentimentDissatisfiedIcon sx={{ fontSize: "4rem" }} />
+            }
           </div>
         </AspectRatio>
       </CardOverflow>
@@ -57,7 +78,7 @@ export default function ResultCard({ score }: { score: number }) {
         <Button variant="solid" color="primary" disabled>
           Share
         </Button>
-        <Button variant="outlined" color="neutral" onClick={() => navigate(-2)}>
+        <Button variant="outlined" color="neutral" onClick={saveQuizProgress} loading={isLoading}>
           Back to course
         </Button>
       </CardActions>

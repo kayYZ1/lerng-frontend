@@ -14,6 +14,7 @@ export const progressApiSlice = authApi.injectEndpoints({
         url: `/progress/get/${courseId}`,
         method: 'GET',
       }),
+      providesTags: ['Progress'],
     }),
     SaveQuiz: builder.mutation({
       query: (args) => {
@@ -24,6 +25,7 @@ export const progressApiSlice = authApi.injectEndpoints({
           body: values,
         };
       },
+      invalidatesTags: ['Progress'],
     }),
   }),
 });

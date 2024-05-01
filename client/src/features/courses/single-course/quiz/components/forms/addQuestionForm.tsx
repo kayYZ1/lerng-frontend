@@ -24,7 +24,6 @@ export default function AddQuestionForm({ setOpen }: ICloseModal) {
       answer: ""
     },
     onSubmit: async (values) => {
-      console.log(values)
       await AddQuestion({ topicId: id, values })
       setOpen(false)
     }
