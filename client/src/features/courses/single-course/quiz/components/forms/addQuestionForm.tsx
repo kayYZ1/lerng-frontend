@@ -1,3 +1,4 @@
+import { useParams } from 'react-router-dom';
 import Button from '@mui/joy/Button';
 import Divider from '@mui/joy/Divider';
 import Stack from '@mui/joy/Stack';
@@ -10,8 +11,12 @@ import { useFormik } from 'formik';
 import { ICloseModal } from "shared/ts/interfaces";
 import { QuestionType } from 'shared/enum';
 import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
+import { useAddQuestionMutation } from 'app/questions/questions.api.slice';
 
 export default function AddQuestionForm({ setOpen }: ICloseModal) {
+  const { id } = useParams();
+  const [AddQuestion, { isLoading, error }] = useAddQuestionMutation();
+
   const formik = useFormik({
     initialValues: {
       question: "",
@@ -20,6 +25,7 @@ export default function AddQuestionForm({ setOpen }: ICloseModal) {
     },
     onSubmit: async (values) => {
       console.log(values)
+      await AddQuestion({ topicId: id, values })
       setOpen(false)
     }
   })
@@ -101,12 +107,13 @@ export default function AddQuestionForm({ setOpen }: ICloseModal) {
                 <Button size="sm" variant="outlined" onClick={() => setOpen(false)}>
                   Cancel
                 </Button>
-                <Button size="sm" variant="solid" type="submit">
+                <Button size="sm" variant="solid" type="submit" loading={isLoading}>
                   Save
                 </Button>
               </CardActions>
             </CardOverflow>
           </form>
+          {error ? "Something went wrong" : ""}
         </Stack>
       </Card>
     </Sheet >
