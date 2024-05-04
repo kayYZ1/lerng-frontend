@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import Button from '@mui/joy/Button';
 import Stack from '@mui/joy/Stack';
-import { styled } from '@mui/joy';
+import { styled, Typography } from '@mui/joy';
 
 interface ISetModalImageUrl {
   setModalImageUrl: (url: string) => void;
@@ -23,6 +23,7 @@ export default function AddCourseImage({ setModalImageUrl }: ISetModalImageUrl) 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [fileName, setFileName] = useState("");
   const [isUploaded, setIsUploaded] = useState(false);
+  const [uploadError, setUploadError] = useState("");
 
   const handleFileUpload = () => {
     if (fileInputRef.current) {
@@ -55,10 +56,10 @@ export default function AddCourseImage({ setModalImageUrl }: ISetModalImageUrl) 
           setFileName(selectedFile.name);
           setIsUploaded(true)
         } catch (error) {
-          console.error(error);
+          setUploadError("Error while uploading the file.")
         }
       } else {
-        console.log('Error: Only PNG files are allowed.');
+        setUploadError("Only .png files are allowed")
       }
     }
   };
@@ -76,6 +77,11 @@ export default function AddCourseImage({ setModalImageUrl }: ISetModalImageUrl) 
         {isUploaded ? fileName : "Upload your file"}
         <VisuallyHiddenInput type="file" ref={fileInputRef} onChange={handleFileChange} accept='.png' />
       </Button>
+      {uploadError ?
+        <Typography level="body-sm" sx={{ color: "red", textAlign: "center", pt: 1 }}>
+          {uploadError}
+        </Typography> : ""
+      }
     </Stack>
   );
 }
