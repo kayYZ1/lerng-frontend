@@ -8,6 +8,7 @@ import AccordionSummary, {
 } from '@mui/joy/AccordionSummary';
 
 import { Question } from "shared/ts/types";
+import { Typography } from '@mui/joy';
 
 export default function QuestionsList(questions: Question[]) {
   const questionsArray = Object.values(questions);
@@ -37,7 +38,11 @@ export default function QuestionsList(questions: Question[]) {
             {question.type}, {question.answer}
           </AccordionDetails>
         </Accordion>
-      )) : "No questions yet. Add one!"}
+      )) :
+        <Typography level='body-sm' sx={{ p: 1 }}>
+          No questions yet. Add one!
+        </Typography>
+      }
     </AccordionGroup>
   )
 }
