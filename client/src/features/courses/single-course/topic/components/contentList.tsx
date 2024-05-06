@@ -3,6 +3,7 @@ import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import ListItemButton from '@mui/joy/ListItemButton';
 
 import QuizIcon from '@mui/icons-material/Quiz';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -11,7 +12,11 @@ import { selectActiveContent, setActiveContent } from 'app/contents/contents.sli
 import { selectCurrentUser } from 'app/users/user.slice';
 import AddContentModal from './modals/addContentModal';
 
-export default function ContentList({ contents }: { contents: Content[] }) {
+interface IContentListProps {
+  contents: Content[],
+}
+
+export default function ContentList({ contents }: IContentListProps) {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -52,6 +57,12 @@ export default function ContentList({ contents }: { contents: Content[] }) {
           <QuizIcon />
         </ListItemDecorator>
         Quiz
+      </ListItemButton>
+      <ListItemButton>
+        <ListItemDecorator>
+          <ArrowBackIosIcon />
+        </ListItemDecorator>
+        Back to course
       </ListItemButton>
     </List>
   );

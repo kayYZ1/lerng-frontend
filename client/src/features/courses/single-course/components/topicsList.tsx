@@ -7,7 +7,11 @@ import TopicItem from './topicItem';
 import { selectCurrentUser } from 'app/users/user.slice';
 import AddTopicModal from './modals/addTopicModal';
 
-export default function TopicsList({ topics }: { topics: Topic[] }) {
+interface ITopicsListProps {
+  topics: Topic[],
+}
+
+export default function TopicsList({ topics }: ITopicsListProps) {
   const user = useSelector(selectCurrentUser)
 
   return (
