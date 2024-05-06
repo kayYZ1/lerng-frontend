@@ -7,7 +7,7 @@ import Grid from '@mui/joy/Grid'
 import Typography from '@mui/joy/Typography';
 import IconButton from '@mui/joy/IconButton';
 import Tooltip from "@mui/joy/Tooltip";
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import LoginIcon from '@mui/icons-material/Login';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 import { Link, useNavigate } from 'react-router-dom';
@@ -54,6 +54,7 @@ export default function CourseItem(item: Course) {
                 <IconButton
                   size="md"
                   variant="solid"
+                  color="danger"
                   sx={{
                     position: 'absolute',
                     zIndex: 2,
@@ -92,7 +93,7 @@ export default function CourseItem(item: Course) {
                   loading={isLoading}
                 >
                   <Tooltip title="Enroll" variant="soft">
-                    <ExitToAppIcon />
+                    <LoginIcon />
                   </Tooltip>
                 </IconButton>
               </Fragment>
