@@ -63,7 +63,7 @@ export default function Navigation() {
                 <LibraryBooksIcon fontSize="small" />
               </ListItemDecorator>
               <ListItemContent>
-                <Link to={CoursesPath.COURSES} className={style.link}>Enrolled</Link>
+                <Link to={DashboardPath.ENROLLED} className={style.link}>Enrolled</Link>
               </ListItemContent>
             </ListItemButton>
           </ListItem>

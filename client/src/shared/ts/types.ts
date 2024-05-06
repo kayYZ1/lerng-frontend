@@ -23,6 +23,11 @@ export type Course = {
   created: Date;
 };
 
+export type EnrolledCourses = {
+  id: string;
+  course: Course;
+};
+
 export type Topic = {
   id: string;
   title: string;
