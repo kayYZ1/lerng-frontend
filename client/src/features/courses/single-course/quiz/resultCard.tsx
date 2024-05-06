@@ -28,7 +28,7 @@ export default function ResultCard({ score }: { score: number }) {
     }
 
     await SaveQuiz({ topicId: id, values })
-    navigate(-2)
+    navigate(`/dashboard/courses/course/topic/${id}`)
   }
 
   return (
