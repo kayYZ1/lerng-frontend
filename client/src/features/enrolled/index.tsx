@@ -1,9 +1,23 @@
+import { Navigate } from "react-router-dom"
+import { useSelector } from "react-redux"
+import { selectCurrentUser } from "app/users/user.slice"
 import { Box, Typography, Sheet, Input, IconButton, Divider } from "@mui/joy"
 import { SearchRounded } from "@mui/icons-material"
 
 import EnrolledList from "./components/enrolledList"
+import { CoursesPath, DashboardPath } from "routes/paths"
 
-export default function Courses() {
+export default function Enrolled() {
+  const user = useSelector(selectCurrentUser);
+
+  switch (user.role) {
+    case 'user': return <MyCourses />
+    case 'instructor': return <Navigate to={DashboardPath.DASHBOARD} />
+    default: return <Navigate to={CoursesPath.COURSES} />
+  }
+}
+
+function MyCourses() {
   return (
     <Box sx={{ flex: 1, width: '100%' }}>
       <Box sx={{
