@@ -33,6 +33,7 @@ import ColorSchemeToggle from 'shared/components/colorToggle';
 import { useGetMeQuery } from 'app/auth/auth.api.slice';
 import { useSignOutFnMutation } from 'app/auth/auth.api.slice';
 import { signOut } from 'app/auth/auth.slice';
+import { setCurrentUser } from 'app/users/user.slice';
 
 export default function Header() {
   const dispatch = useDispatch();
