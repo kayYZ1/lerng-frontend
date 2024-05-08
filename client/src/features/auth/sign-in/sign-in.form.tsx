@@ -10,7 +10,7 @@ import { UserSignIn } from "shared/ts/types";
 
 import style from "../auth.module.css"
 import ErrorAlert from "shared/components/errorAlert";
-import { CoursesPath } from "routes/paths";
+import { DashboardPath } from "routes/paths";
 import { transformErrorResponse } from "shared/lib/functions";
 
 const validationSchema = yup.object().shape({
@@ -39,7 +39,7 @@ export default function SignInForm() {
       }
       const { accessToken } = await SignInFn(user).unwrap();
       dispatch(setCredentials(accessToken))
-      navigate(CoursesPath.COURSES)
+      navigate(DashboardPath.ENROLLED)
       resetForm();
     }
   })
