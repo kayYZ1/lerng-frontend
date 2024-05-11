@@ -45,11 +45,9 @@ export type Content = {
   id: string;
   title: string;
   description: string;
-  paragraph500: string;
-  paragraph750: string;
+  paragraph150: string;
   paragraph300: string;
-  imageUrl?: string;
-  videoUrl?: string;
+  videoUrl: string | null;
 };
 
 export type Question = {

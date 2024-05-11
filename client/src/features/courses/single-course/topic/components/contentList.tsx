@@ -3,7 +3,7 @@ import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import ListItemButton from '@mui/joy/ListItemButton';
 
 import QuizIcon from '@mui/icons-material/Quiz';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import HomeIcon from '@mui/icons-material/Home';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -29,6 +29,8 @@ export default function ContentList({ contents }: IContentListProps) {
       component="nav"
       sx={{
         maxWidth: 400,
+        overflow: "auto",
+        maxHeight: "75vh"
       }}
     >
       {user.role === 'instructor' ?
@@ -60,7 +62,7 @@ export default function ContentList({ contents }: IContentListProps) {
       </ListItemButton>
       <ListItemButton>
         <ListItemDecorator>
-          <ArrowBackIosIcon />
+          <HomeIcon />
         </ListItemDecorator>
         Back to course
       </ListItemButton>

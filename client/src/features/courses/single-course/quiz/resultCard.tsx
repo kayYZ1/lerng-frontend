@@ -79,7 +79,7 @@ export default function ResultCard({ score }: { score: number }) {
           Share
         </Button>
         <Button variant="outlined" color="neutral" onClick={saveQuizProgress} loading={isLoading}>
-          Back to course
+          Return
         </Button>
       </CardActions>
     </Card>

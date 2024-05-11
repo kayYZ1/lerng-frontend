@@ -9,12 +9,11 @@ export default function ContentPanel() {
   return (
     <Fragment>
       {activeContent !== null ?
-        <Box>
+        <Box sx={{ overflow: "auto", maxHeight: "75vh" }}>
           <Typography level="h3">{activeContent.title}</Typography>
           <Typography level="title-md">{activeContent.description}</Typography>
+          <Typography level="title-sm">{activeContent.paragraph150}</Typography>
           <Typography level="title-sm">{activeContent.paragraph300}</Typography>
-          <Typography level="title-sm">{activeContent.paragraph500}</Typography>
-          <Typography level="title-sm">{activeContent.paragraph750}</Typography>
         </Box>
         : "Module not selected."
       }
