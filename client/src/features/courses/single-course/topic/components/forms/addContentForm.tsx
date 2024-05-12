@@ -22,7 +22,7 @@ const validationSchema = yup.object().shape({
     /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
     "Please enter correct url"
   )
-})
+});
 
 export default function AddContentForm({ setOpen }: ICloseModal) {
   const { id } = useParams<{ id: string }>();
@@ -78,6 +78,7 @@ export default function AddContentForm({ setOpen }: ICloseModal) {
                 value={formik.values.description}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
+                error={formik.touched.description && !!formik.errors.description}
               />
               {formik.touched.description ?
                 <FormHelperText component="div">{formik.errors.description}</FormHelperText> : ""}
