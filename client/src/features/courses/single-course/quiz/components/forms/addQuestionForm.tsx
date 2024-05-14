@@ -5,13 +5,19 @@ import Stack from '@mui/joy/Stack';
 import CardActions from '@mui/joy/CardActions';
 import CardOverflow from '@mui/joy/CardOverflow';
 import Sheet from "@mui/joy/Sheet"
-import { FormControl, Input, FormLabel, Card, Typography, Box, Option, Radio, RadioGroup } from '@mui/joy';
+import { FormControl, FormHelperText, Input, FormLabel, Card, Typography, Box, Option, Radio, RadioGroup } from '@mui/joy';
 import Select, { selectClasses } from "@mui/joy/Select"
 import { useFormik } from 'formik';
 import { ICloseModal } from "shared/ts/interfaces";
 import { QuestionType } from 'shared/enum';
 import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
 import { useAddQuestionMutation } from 'app/questions/questions.api.slice';
+import * as yup from "yup";
+
+const validationSchema = yup.object().shape({
+  question: yup.string().required("Question is required").min(5, "Question to short").max(125, "Question too long"),
+  answer: yup.string().required("Answer is required").max(25, "Answer too long"),
+});
 
 export default function AddQuestionForm({ setOpen }: ICloseModal) {
   const { id } = useParams();
@@ -23,6 +29,7 @@ export default function AddQuestionForm({ setOpen }: ICloseModal) {
       type: "",
       answer: ""
     },
+    validationSchema: validationSchema,
     onSubmit: async (values) => {
       await AddQuestion({ topicId: id, values })
       setOpen(false)
@@ -52,7 +59,10 @@ export default function AddQuestionForm({ setOpen }: ICloseModal) {
                 value={formik.values.question}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
+                error={formik.touched.question && !!formik.errors.question}
               />
+              {formik.touched.question ?
+                <FormHelperText component="div">{formik.errors.question}</FormHelperText> : ""}
             </FormControl>
             <FormControl required>
               <FormLabel>Type</FormLabel>
@@ -86,7 +96,10 @@ export default function AddQuestionForm({ setOpen }: ICloseModal) {
                     value={formik.values.answer}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
+                    error={formik.touched.answer && !!formik.errors.answer}
                   />
+                  {formik.touched.answer ?
+                    <FormHelperText component="div">{formik.errors.answer}</FormHelperText> : ""}
                 </FormControl>
                 : ""
             }
