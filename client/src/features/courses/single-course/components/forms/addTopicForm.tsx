@@ -12,6 +12,8 @@ import * as yup from "yup";
 import { useAddTopicMutation } from 'app/topics/topics.api.slice';
 
 import { ICloseModal } from 'shared/ts/interfaces';
+import { transformErrorResponse } from 'shared/lib/functions';
+import WarningAlert from 'shared/components/warningAlert';
 
 const validationSchema = yup.object().shape({
   title: yup.string().required("Title is required").min(3, "Title to short").max(40, "Title too long"),
@@ -22,6 +24,8 @@ export default function AddTopicForm({ setOpen }: ICloseModal) {
   const { id } = useParams<{ id: string }>();
   const [AddTopic, { isLoading, error }] = useAddTopicMutation();
 
+  const errorResponse = transformErrorResponse(error);
+
   const formik = useFormik({
     initialValues: {
       title: "",
@@ -30,7 +34,7 @@ export default function AddTopicForm({ setOpen }: ICloseModal) {
     validationSchema,
     onSubmit: async (values) => {
       await AddTopic({ courseId: id, values });
-      setOpen(false)
+      if (!errorResponse) setOpen(false)
     }
   })
 
@@ -84,7 +88,7 @@ export default function AddTopicForm({ setOpen }: ICloseModal) {
               </CardActions>
             </CardOverflow>
           </form>
-          {error ? "Something went wrong" : ""}
+          {error ? <WarningAlert type="Topic creation error" message={errorResponse} /> : ""}
         </Stack>
       </Card>
     </Sheet>

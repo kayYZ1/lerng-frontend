@@ -69,7 +69,8 @@ function SideNav(props: BoxProps) {
           },
         },
         ...(Array.isArray(props.sx) ? props.sx : [props.sx]),
-      ]}
+      ]
+      }
     />
   );
 }

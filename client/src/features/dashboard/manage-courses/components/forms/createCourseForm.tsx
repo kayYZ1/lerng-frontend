@@ -11,6 +11,8 @@ import * as yup from "yup";
 
 import AddCourseImage from '../addCourseImage';
 import { useCreateCourseMutation } from 'app/courses/courses.api.slice';
+import { transformErrorResponse } from 'shared/lib/functions';
+import WarningAlert from 'shared/components/warningAlert';
 
 interface ICloseModal {
   setOpen: (value: boolean) => void
@@ -24,6 +26,8 @@ const validationSchema = yup.object().shape({
 export default function CreateCourseFormd({ setOpen }: ICloseModal) {
   const [CreateCourse, { isLoading, error }] = useCreateCourseMutation();
   const [imgUrl, setImgUrl] = useState("");
+
+  const errorResponse = transformErrorResponse(error);
 
   const setModalImageUrl = (url: string) => {
     setImgUrl(url)
@@ -98,7 +102,7 @@ export default function CreateCourseFormd({ setOpen }: ICloseModal) {
               </CardActions>
             </CardOverflow>
           </form>
-          {error ? "Something went wrong" : ""}
+          {error ? <WarningAlert type="Course creation error" message={errorResponse} /> : ""}
         </Stack>
       </Card>
     </Sheet>
