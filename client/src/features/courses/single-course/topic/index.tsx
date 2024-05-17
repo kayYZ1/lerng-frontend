@@ -3,7 +3,8 @@ import { Box, Typography, Divider } from "@mui/joy";
 
 import TypographySkeleton from "../components/skeletons/typographySkeleton";
 import { useGetTopicQuery } from "app/topics/topics.api.slice";
-import ModulePanel from "./topicPanel";
+import TopicPanel from "./topicPanel";
+import BreadcrumbsCustom from "shared/components/breadcrumbsCustom";
 
 export default function Topic() {
   const { id } = useParams<{ id: string }>();
@@ -12,15 +13,11 @@ export default function Topic() {
   return (
     <Box sx={{ flex: 1, width: '100%' }}>
       <Box sx={{
-        display: "flex",
-        mb: 1,
-        gap: 1,
-        flexDirection: { xs: 'column', sm: 'column' },
-        alignItems: { xs: 'start', sm: 'start' },
         mx: { xs: 5, md: 8 }
       }}
       >
-        <Typography level="h2" sx={{ mt: 4 }}>
+        <BreadcrumbsCustom />
+        <Typography level="h2" sx={{ mt: 1, mb: 1 }}>
           {isLoading ? <TypographySkeleton /> : data.title}
           {error ? "Something went wrong please refresh" : ""}
         </Typography>
@@ -30,7 +27,7 @@ export default function Topic() {
       </Box>
       <Divider sx={{ my: 1 }} />
       <Box sx={{ flex: 1 }}>
-        <ModulePanel />
+        <TopicPanel />
       </Box>
     </Box>
   )

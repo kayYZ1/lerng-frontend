@@ -24,7 +24,7 @@ export default function TopicsPanel() {
         display: 'grid',
         gridTemplateColumns: {
           xs: '1fr',
-          sm: '1fr minmax(min-content, min(50%, 1000px))', // Swap the columns order
+          sm: '1fr minmax(min-content, min(50%, 1000px))',
         },
         gridTemplateAreas: {
           xs: `

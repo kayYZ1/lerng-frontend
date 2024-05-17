@@ -1,5 +1,6 @@
 import Box from '@mui/joy/Box';
 import Typography from '@mui/joy/Typography'
+import BreadcrumbsCustom from 'shared/components/breadcrumbsCustom';
 
 interface LayoutChild {
   children: JSX.Element;
@@ -10,7 +11,6 @@ export default function SettingsLayout({ children }: LayoutChild) {
     <Box
       component="main"
       sx={{
-        pt: { xs: 'calc(16px + var(--Header-height))', md: 3 },
         pb: { xs: 2, sm: 2, md: 3 },
         flex: 1,
         display: 'flex',
@@ -27,7 +27,8 @@ export default function SettingsLayout({ children }: LayoutChild) {
           }}
         >
           <Box sx={{ px: { xs: 2, md: 6 } }}>
-            <Typography level="h2" component="h1" sx={{ mt: 1, mb: 2 }}>
+            <BreadcrumbsCustom />
+            <Typography level="h2" component="h1" sx={{ mt: 1, mb: 1 }}>
               Settings
             </Typography>
           </Box>

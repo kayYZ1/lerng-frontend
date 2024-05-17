@@ -5,6 +5,7 @@ import { useGetCourseQuery } from "app/courses/courses.api.slice";
 
 import TypographySkeleton from "./components/skeletons/typographySkeleton";
 import TopicsPanel from "./topicsPanel";
+import BreadcrumbsCustom from "shared/components/breadcrumbsCustom";
 
 export default function Course() {
   const { id } = useParams<{ id: string }>();
@@ -13,17 +14,11 @@ export default function Course() {
   return (
     <Box sx={{ flex: 1, width: '100%' }}>
       <Box sx={{
-        display: "flex",
-        mb: 1,
-        gap: 1,
-        flexDirection: { xs: 'column', sm: 'row' },
-        alignItems: { xs: 'start', sm: 'center' },
-        flexWrap: 'wrap',
-        justifyContent: 'space-between',
         mx: { xs: 5, md: 8 }
       }}
       >
-        <Typography level="h2" component="h1" sx={{ mt: 4, mb: 2 }}>
+        <BreadcrumbsCustom />
+        <Typography level="h2" component="h1" sx={{ mt: 1, mb: 2 }}>
           {isLoading ? <TypographySkeleton /> : data.title}
           {error ? "Something went wrong please refresh" : ""}
         </Typography>
