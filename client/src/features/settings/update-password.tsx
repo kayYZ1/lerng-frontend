@@ -47,10 +47,8 @@ export default function UpdatePassword() {
   })
 
   return (
-    <Card sx={{
-      height: "35vh"
-    }}>
-      <Box sx={{ mb: 1 }}>
+    <Card sx={{ flex: 1 }}>
+      <Box>
         <Typography level="title-md">Password settings</Typography>
         <Typography level="body-sm">
           You can update your password here

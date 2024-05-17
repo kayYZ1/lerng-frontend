@@ -1,21 +1,16 @@
 import { Box, Typography, Divider } from "@mui/joy"
 import QuizCard from "./quizCard"
+import BreadcrumbsCustom from "shared/components/breadcrumbsCustom"
 
 export default function Quiz() {
   return (
     <Box sx={{ flex: 1, width: '100%' }}>
       <Box sx={{
-        display: "flex",
-        mb: 1,
-        gap: 1,
-        flexDirection: { xs: 'column', sm: 'row' },
-        alignItems: { xs: 'start', sm: 'center' },
-        flexWrap: 'wrap',
-        justifyContent: 'space-between',
         mx: { xs: 5, md: 8 }
       }}
       >
-        <Typography level="h2" component="h1" sx={{ mt: 4 }}>
+        <BreadcrumbsCustom />
+        <Typography level="h2" component="h1" sx={{ mt: 1, mb: 1 }}>
           Quiz
         </Typography>
       </Box>

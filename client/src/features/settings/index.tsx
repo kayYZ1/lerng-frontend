@@ -1,5 +1,4 @@
 import Stack from '@mui/joy/Stack';
-import Grid from '@mui/joy/Grid'
 
 import SettingsLayout from 'layouts/settings/layout';
 
@@ -8,6 +7,7 @@ import { useGetMeQuery } from 'app/auth/auth.api.slice';
 import ProfileSkeleton from './components/profileSkeleton';
 import UpdatePassword from './update-password';
 import UpdateData from './update-data';
+import { Divider } from '@mui/joy';
 
 export default function Profile() {
   const { data, isLoading } = useGetMeQuery(undefined);
@@ -15,21 +15,13 @@ export default function Profile() {
   return (
     <SettingsLayout>
       <Stack
+        direction="column"
         spacing={2}
-        sx={{
-          mx: 'auto',
-          px: { xs: 2, md: 6 },
-          py: { xs: 2, md: 3 },
-        }}
+        sx={{ display: "flex", justifyContent: "center", alignItems: "center", my: 1 }}
       >
-        <Grid container spacing={2} alignItems="center">
-          <Grid xs={12} md={6}>
-            {isLoading ? <ProfileSkeleton /> : <UpdateData {...data} />}
-          </Grid>
-          <Grid xs={12} md={6}>
-            <UpdatePassword />
-          </Grid>
-        </Grid>
+        <Divider />
+        {isLoading ? <ProfileSkeleton /> : <UpdateData {...data} />}
+        <UpdatePassword />
       </Stack>
     </SettingsLayout>
   );

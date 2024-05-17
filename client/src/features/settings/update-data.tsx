@@ -54,7 +54,7 @@ export default function UpdateData(data: UserData) {
   })
 
   return (
-    <Card sx={{ flex: 1, height: "35vh" }}>
+    <Card sx={{ flex: 1 }}>
       <Box>
         <Typography level="title-md">Personal info</Typography>
         <Typography level="body-sm">
@@ -75,15 +75,21 @@ export default function UpdateData(data: UserData) {
             <img
               src={data.avatar}
               loading="lazy"
-              alt=""
+              alt="Avatar for your profile picture"
             />
           </AspectRatio>
           <UpdateImageModal />
         </Stack>
-        <Stack sx={{ flexGrow: 1 }}>
+        <Stack spacing={1} sx={{ flexGrow: 1 }}>
           <Stack>
             <form onSubmit={formik.handleSubmit}>
-              <FormControl>
+              <FormControl
+                sx={{
+                  display: {
+                    sm: 'flex-column',
+                    md: 'flex-row',
+                  },
+                }}>
                 <FormLabel>Email</FormLabel>
                 <Input
                   size="sm"
