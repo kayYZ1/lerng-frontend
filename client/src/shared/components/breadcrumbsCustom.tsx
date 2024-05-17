@@ -11,9 +11,6 @@ export default function BreadcrumbsCustom() {
 
   if (pathElements[pathElements.length - 1].includes("-")) pathElements.pop();
 
-  console.log(pathElements)
-
-
   return (
     <Breadcrumbs
       size="sm"
