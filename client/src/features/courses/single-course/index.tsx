@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom"
 import { Box, Typography, Divider } from "@mui/joy";
 
-import { useGetCourseQuery } from "app/courses/courses.api.slice";
+import { useGetCourseQuery } from "app/api/courses.api.slice";
 
 import TypographySkeleton from "./components/skeletons/typographySkeleton";
 import TopicsPanel from "./topicsPanel";

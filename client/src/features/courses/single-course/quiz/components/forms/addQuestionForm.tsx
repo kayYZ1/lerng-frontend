@@ -11,7 +11,7 @@ import { useFormik } from 'formik';
 import { ICloseModal } from "shared/ts/interfaces";
 import { QuestionType } from 'shared/enum';
 import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
-import { useAddQuestionMutation } from 'app/questions/questions.api.slice';
+import { useAddQuestionMutation } from 'app/api/questions.api.slice';
 import * as yup from "yup";
 
 const validationSchema = yup.object().shape({

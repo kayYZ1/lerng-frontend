@@ -1,5 +1,5 @@
-import { setCurrentUser } from 'app/users/user.slice';
-import { authApi } from '../api/auth.api';
+import { setCurrentUser } from 'app/slice/user.slice';
+import { authApi } from '../base/auth.api';
 
 export const authApiSlice = authApi.injectEndpoints({
   endpoints: (builder) => ({

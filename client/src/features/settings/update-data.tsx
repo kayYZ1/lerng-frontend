@@ -19,7 +19,7 @@ import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
 import Person2RoundedIcon from '@mui/icons-material/Person2Rounded';
 import AdminPanelSettingsRoundedIcon from '@mui/icons-material/AdminPanelSettingsRounded';
 
-import { useUpdateUserDataMutation } from 'app/users/users.api.slice';
+import { useUpdateUserDataMutation } from 'app/api/users.api.slice';
 import { transformErrorResponse } from 'shared/lib/functions';
 
 import UpdateImageModal from './components/update-image.modal';

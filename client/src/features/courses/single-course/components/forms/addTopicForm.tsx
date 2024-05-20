@@ -9,7 +9,7 @@ import { FormControl, FormHelperText, Input, FormLabel, Card, Typography, Box } 
 import { useFormik } from 'formik';
 import * as yup from "yup";
 
-import { useAddTopicMutation } from 'app/topics/topics.api.slice';
+import { useAddTopicMutation } from 'app/api/topics.api.slice';
 
 import { ICloseModal } from 'shared/ts/interfaces';
 import { transformErrorResponse } from 'shared/lib/functions';

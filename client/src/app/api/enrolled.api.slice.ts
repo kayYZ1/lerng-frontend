@@ -1,5 +1,5 @@
-import { authApi } from 'app/api/auth.api';
-import { setEnrolled } from './enrolled.slice';
+import { authApi } from 'app/base/auth.api';
+import { setEnrolled } from '../slice/enrolled.slice';
 
 export const enrolledApiSlice = authApi.injectEndpoints({
   endpoints: (builder) => ({

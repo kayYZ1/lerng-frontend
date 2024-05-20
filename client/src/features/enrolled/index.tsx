@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom"
 import { useSelector } from "react-redux"
-import { selectCurrentUser } from "app/users/user.slice"
+import { selectCurrentUser } from "app/slice/user.slice"
 import { Box, Typography, Sheet, Input, IconButton, Divider } from "@mui/joy"
 import { SearchRounded } from "@mui/icons-material"
 

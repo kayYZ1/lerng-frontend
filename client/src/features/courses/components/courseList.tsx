@@ -1,6 +1,6 @@
 import { Box, Grid } from "@mui/joy"
 
-import { useGetCoursesQuery, useGetInstructorCoursesQuery } from "app/courses/courses.api.slice"
+import { useGetCoursesQuery, useGetInstructorCoursesQuery } from "app/api/courses.api.slice"
 
 import CourseItem from "./courseItem"
 

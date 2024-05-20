@@ -9,7 +9,7 @@ import { Course } from 'shared/ts/types';
 import { parseDate } from 'shared/lib/functions';
 
 import { useSelector } from 'react-redux';
-import { selectMyCourses } from 'app/enrolled/enrolled.slice';
+import { selectMyCourses } from 'app/slice/enrolled.slice';
 import CourseCardType from './courseCardType';
 
 export default function CourseItem(item: Course) {

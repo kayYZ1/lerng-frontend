@@ -8,8 +8,8 @@ import HomeIcon from '@mui/icons-material/Home';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Content } from 'shared/ts/types';
-import { selectActiveContent, setActiveContent } from 'app/contents/contents.slice';
-import { selectCurrentUser } from 'app/users/user.slice';
+import { selectActiveContent, setActiveContent } from 'app/slice/contents.slice';
+import { selectCurrentUser } from 'app/slice/user.slice';
 import AddContentModal from './modals/addContentModal';
 
 interface IContentListProps {

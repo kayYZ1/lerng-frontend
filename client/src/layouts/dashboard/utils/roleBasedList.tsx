@@ -10,7 +10,7 @@ import FeedbackIcon from '@mui/icons-material/Feedback';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import SignpostIcon from '@mui/icons-material/Signpost';
 
-import { selectCurrentUser } from "app/users/user.slice";
+import { selectCurrentUser } from "app/slice/user.slice";
 import { useSelector } from "react-redux";
 import { CoursesPath, DashboardPath } from 'routes/paths';
 import style from "../dashboard.module.css"

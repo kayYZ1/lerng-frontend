@@ -2,7 +2,7 @@ import Stack from '@mui/joy/Stack';
 
 import SettingsLayout from 'layouts/settings/layout';
 
-import { useGetMeQuery } from 'app/auth/auth.api.slice';
+import { useGetMeQuery } from 'app/api/auth.api.slice';
 
 import ProfileSkeleton from './components/profileSkeleton';
 import UpdatePassword from './update-password';

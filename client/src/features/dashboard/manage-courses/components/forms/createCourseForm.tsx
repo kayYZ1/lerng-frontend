@@ -10,7 +10,7 @@ import { useFormik } from 'formik';
 import * as yup from "yup";
 
 import AddCourseImage from '../addCourseImage';
-import { useCreateCourseMutation } from 'app/courses/courses.api.slice';
+import { useCreateCourseMutation } from 'app/api/courses.api.slice';
 import { transformErrorResponse } from 'shared/lib/functions';
 import WarningAlert from 'shared/components/warningAlert';
 

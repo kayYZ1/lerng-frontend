@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { Box, Typography, Divider } from "@mui/joy";
 
 import TypographySkeleton from "../components/skeletons/typographySkeleton";
-import { useGetTopicQuery } from "app/topics/topics.api.slice";
+import { useGetTopicQuery } from "app/api/topics.api.slice";
 import TopicPanel from "./topicPanel";
 import BreadcrumbsCustom from "shared/components/breadcrumbsCustom";
 

@@ -2,7 +2,7 @@ import { FormControl, FormLabel, Input, Stack, Box, Checkbox, Button, Typography
 import { useFormik } from "formik";
 import * as yup from "yup"
 
-import { useSignUpFnMutation } from "app/auth/auth.api.slice";
+import { useSignUpFnMutation } from "app/api/auth.api.slice";
 import { UserSignUp } from "shared/ts/types";
 
 import style from "../auth.module.css"

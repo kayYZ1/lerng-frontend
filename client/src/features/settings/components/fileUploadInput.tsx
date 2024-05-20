@@ -3,7 +3,7 @@ import Button from '@mui/joy/Button';
 import SvgIcon from '@mui/joy/SvgIcon';
 import { styled } from '@mui/joy';
 
-import { useUpdateUserImageMutation } from 'app/users/users.api.slice';
+import { useUpdateUserImageMutation } from 'app/api/users.api.slice';
 import SuccessAlert from 'shared/components/successAlert';
 
 const VisuallyHiddenInput = styled('input')`

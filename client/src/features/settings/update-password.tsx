@@ -14,7 +14,7 @@ import PasswordRoundedIcon from '@mui/icons-material/PasswordRounded';
 import LockResetRoundedIcon from '@mui/icons-material/LockResetRounded';
 import KeyRoundedIcon from '@mui/icons-material/KeyRounded';
 
-import { useUpdateUserPasswordMutation } from 'app/users/users.api.slice';
+import { useUpdateUserPasswordMutation } from 'app/api/users.api.slice';
 import WarningAlert from 'shared/components/warningAlert';
 import { transformErrorResponse } from 'shared/lib/functions';
 

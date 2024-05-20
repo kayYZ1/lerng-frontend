@@ -1,6 +1,6 @@
 import { Box, Grid } from "@mui/joy"
 
-import { useGetEnrolledCoursesQuery } from "app/enrolled/enrolled.api.slice"
+import { useGetEnrolledCoursesQuery } from "app/api/enrolled.api.slice"
 import CourseItem from "features/courses/components/courseItem"
 
 import { EnrolledCourses } from "shared/ts/types"

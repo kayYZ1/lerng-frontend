@@ -1,4 +1,4 @@
-import { selectCurrentUser } from "app/users/user.slice";
+import { selectCurrentUser } from "app/slice/user.slice";
 import { useSelector } from "react-redux";
 import DashboardPanel from "./dashboardPanel";
 import { Navigate } from "react-router-dom";

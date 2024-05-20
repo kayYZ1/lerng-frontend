@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/joy";
 import { useSelector } from "react-redux"
-import { selectActiveContent } from "app/contents/contents.slice"
+import { selectActiveContent } from "app/slice/contents.slice"
 import { Fragment } from "react/jsx-runtime";
 
 export default function ContentPanel() {

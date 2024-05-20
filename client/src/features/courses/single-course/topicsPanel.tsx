@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import Sheet from '@mui/joy/Sheet';
 import { Box, Typography } from '@mui/joy';
 
-import { useGetTopicsFromCourseQuery } from 'app/topics/topics.api.slice';
+import { useGetTopicsFromCourseQuery } from 'app/api/topics.api.slice';
 
 import ProgressTable from './components/progressTable';
 import TopicsList from './components/topicsList';

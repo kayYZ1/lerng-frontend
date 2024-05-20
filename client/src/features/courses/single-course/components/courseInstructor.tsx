@@ -4,7 +4,7 @@ import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
 import Typography from '@mui/joy/Typography';
 
-import { useGetInstructorFromCourseQuery } from 'app/courses/courses.api.slice';
+import { useGetInstructorFromCourseQuery } from 'app/api/courses.api.slice';
 import InstructorCardSkeleton from './skeletons/instructorCardSkeleton';
 
 export default function CourseInstructor() {

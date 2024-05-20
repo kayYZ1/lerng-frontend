@@ -13,8 +13,8 @@ import { Course } from 'shared/ts/types';
 import style from "../courses.module.css"
 import { useSelector } from 'react-redux';
 import { Fragment } from 'react/jsx-runtime';
-import { selectCurrentUser } from 'app/users/user.slice';
-import { useAddToEnrolledMutation } from 'app/enrolled/enrolled.api.slice';
+import { selectCurrentUser } from 'app/slice/user.slice';
+import { useAddToEnrolledMutation } from 'app/api/enrolled.api.slice';
 
 interface ICourseEnrolled {
   isEnrolled: boolean;

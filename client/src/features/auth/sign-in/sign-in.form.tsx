@@ -5,8 +5,8 @@ import * as yup from "yup";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { setCredentials } from "app/auth/auth.slice";
-import { useSignInFnMutation } from "app/auth/auth.api.slice";
+import { setCredentials } from "app/slice/auth.slice";
+import { useSignInFnMutation } from "app/api/auth.api.slice";
 import { UserSignIn } from "shared/ts/types";
 
 import style from "../auth.module.css"

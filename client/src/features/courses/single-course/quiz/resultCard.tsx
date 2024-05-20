@@ -10,9 +10,9 @@ import Typography from '@mui/joy/Typography';
 import SentimentDissatisfiedIcon from '@mui/icons-material/SentimentDissatisfied';
 import SentimentSatisfiedIcon from '@mui/icons-material/SentimentSatisfied';
 
-import { useSaveQuizMutation } from 'app/progress/progress.api.slice';
+import { useSaveQuizMutation } from 'app/api/progress.api.slice';
 import { useSelector } from 'react-redux';
-import { selectCurrentUser } from 'app/users/user.slice';
+import { selectCurrentUser } from 'app/slice/user.slice';
 import { useNavigate } from 'react-router-dom';
 
 export default function ResultCard({ score }: { score: number }) {
