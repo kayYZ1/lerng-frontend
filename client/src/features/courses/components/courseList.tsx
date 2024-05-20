@@ -20,7 +20,7 @@ export default function CourseList(instructorView: IsInstructor) {
         sx={{
           flexGrow: 1,
           flexWrap: "wrap",
-          mx: { xs: 2, md: 5 }
+          mx: { xs: 3, sm: 4, md: 5 }
         }}
       >
         {isLoading ?

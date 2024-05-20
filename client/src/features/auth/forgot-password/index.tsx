@@ -1,23 +1,21 @@
+import { Link } from "react-router-dom"
 import { Stack, Typography, Divider } from "@mui/joy"
 
-import { Link } from "react-router-dom"
-
+import ForgotPasswordForm from "./forgot-password.form"
 import { AuthPath } from "routes/paths"
-import SignInForm from "./sign-in.form"
-
 import style from "../auth.module.css"
 
-export default function SignIn() {
+export default function ForgotPassword() {
   return (
     <div>
       <Stack gap={4} sx={{ mb: 2 }}>
         <Stack gap={1}>
           <Typography component="h1" level="h3">
-            Sign In
+            Reset password
           </Typography>
           <Typography level="body-sm">
-            New to the platform?{' '}
-            <Link to={AuthPath.SIGN_UP} className={style.link}>Sign Up</Link>
+            Go back?{' '}
+            <Link to={AuthPath.SIGN_IN} className={style.link}>Click here</Link>
           </Typography>
         </Stack>
       </Stack>
@@ -34,7 +32,7 @@ export default function SignIn() {
       >
       </Divider>
       <Stack gap={4} sx={{ mt: 2 }}>
-        <SignInForm />
+        <ForgotPasswordForm />
       </Stack>
     </div>
   )

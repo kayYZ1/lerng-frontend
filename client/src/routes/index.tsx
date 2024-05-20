@@ -13,6 +13,7 @@ const Quiz = lazy(() => import("features/courses/single-course/quiz/index"))
 
 const SignIn = lazy(() => import("features/auth/sign-in"));
 const SignUp = lazy(() => import("features/auth/sign-up"));
+const ForgotPassword = lazy(() => import("features/auth/forgot-password"));
 
 const LandingPage = lazy(() => import("features/landing-page/index"))
 
@@ -62,6 +63,10 @@ const authRoutes = [
 	{
 		path: AuthPath.SIGN_UP,
 		element: <SignUp />
+	},
+	{
+		path: AuthPath.FORGOT_PASSWORD,
+		element: <ForgotPassword />
 	}
 ];
 

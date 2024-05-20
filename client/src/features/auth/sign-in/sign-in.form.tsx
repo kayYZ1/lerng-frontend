@@ -1,4 +1,5 @@
-import { FormControl, FormLabel, Input, Stack, Box, Link, Button, FormHelperText } from "@mui/joy";
+import { Link } from "react-router-dom";
+import { FormControl, FormLabel, Input, Stack, Box, Button, FormHelperText } from "@mui/joy";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
@@ -10,7 +11,7 @@ import { UserSignIn } from "shared/ts/types";
 
 import style from "../auth.module.css"
 import ErrorAlert from "shared/components/errorAlert";
-import { DashboardPath } from "routes/paths";
+import { DashboardPath, AuthPath } from "routes/paths";
 import { transformErrorResponse } from "shared/lib/functions";
 
 const validationSchema = yup.object().shape({
@@ -80,9 +81,7 @@ export default function SignInForm() {
             alignItems: 'center',
           }}
         >
-          <Link level="title-sm" href="#replace-with-a-link">
-            Forgot your password?
-          </Link>
+          <Link to={AuthPath.FORGOT_PASSWORD} className={style.link}>Forgot your password?</Link>
         </Box>
         <Button type="submit" loading={isLoading} fullWidth>
           Sign in

@@ -8,33 +8,34 @@ import style from "../auth.module.css"
 import SignUpForm from "./sign-up.form"
 
 export default function SignUp() {
-  return (<div>
-    <Stack gap={4} sx={{ mb: 2 }}>
-      <Stack gap={1}>
-        <Typography component="h1" level="h3">
-          Sign Up
-        </Typography>
-        <Typography level="body-sm">
-          Already have an account?{' '}
-          <Link to={AuthPath.SIGN_IN} className={style.link}>Sign In</Link>
-        </Typography>
+  return (
+    <div>
+      <Stack gap={4} sx={{ mb: 2 }}>
+        <Stack gap={1}>
+          <Typography component="h1" level="h3">
+            Sign Up
+          </Typography>
+          <Typography level="body-sm">
+            Already have an account?{' '}
+            <Link to={AuthPath.SIGN_IN} className={style.link}>Sign In</Link>
+          </Typography>
+        </Stack>
       </Stack>
-    </Stack>
-    <Divider
-      sx={(theme) => ({
-        [theme.getColorSchemeSelector('light')]: {
-          color: { xs: '#FFF', md: 'text.tertiary' },
-          '--Divider-lineColor': {
-            xs: '#FFF',
-            md: 'var(--joy-palette-divider)',
+      <Divider
+        sx={(theme) => ({
+          [theme.getColorSchemeSelector('light')]: {
+            color: { xs: '#FFF', md: 'text.tertiary' },
+            '--Divider-lineColor': {
+              xs: '#FFF',
+              md: 'var(--joy-palette-divider)',
+            },
           },
-        },
-      })}
-    >
-    </Divider>
-    <Stack gap={4} sx={{ mt: 2 }}>
-      <SignUpForm />
-    </Stack>
-  </div>
+        })}
+      >
+      </Divider>
+      <Stack gap={4} sx={{ mt: 2 }}>
+        <SignUpForm />
+      </Stack>
+    </div>
   )
 }

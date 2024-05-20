@@ -20,8 +20,8 @@ export default function BreadcrumbsCustom() {
     >
       <HomeRounded />
       {
-        pathElements.map((element: string) => (
-          <Link to="#" style={{ textDecoration: "none", color: "inherit", textTransform: "capitalize" }}>{element}</Link>
+        pathElements.map((element: string, index: number) => (
+          <Link to="#" style={{ textDecoration: "none", color: "inherit", textTransform: "capitalize" }} key={index}>{element}</Link>
         ))
       }
     </Breadcrumbs>
