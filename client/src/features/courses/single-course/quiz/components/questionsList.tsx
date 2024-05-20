@@ -15,26 +15,24 @@ export default function QuestionsList(questions: Question[]) {
 
   return (
     <AccordionGroup
-      variant="outlined"
-      transition="0.2s"
+      transition={{
+        initial: "0.3s ease-out",
+        expanded: "0.2s ease",
+      }}
       sx={{
-        maxWidth: 400,
-        borderRadius: 'lg',
-        [`& .${accordionSummaryClasses.button}:hover`]: {
-          bgcolor: 'transparent',
+        maxWidth: 700,
+        [`& .${accordionSummaryClasses.indicator}`]: {
+          transition: '0.2s',
         },
-        [`& .${accordionDetailsClasses.content}`]: {
-          boxShadow: (theme) => `inset 0 1px ${theme.vars.palette.divider}`,
-          [`&.${accordionDetailsClasses.expanded}`]: {
-            paddingBlock: '0.75rem',
-          },
+        [`& [aria-expanded="true"] .${accordionSummaryClasses.indicator}`]: {
+          transform: 'rotate(180deg)',
         },
       }}
     >
       {questionsArray.length !== 0 ? questionsArray.map((question) => (
         <Accordion key={question.id}>
           <AccordionSummary>{question.question}</AccordionSummary>
-          <AccordionDetails variant='soft'>
+          <AccordionDetails>
             {question.type}, {question.answer}
           </AccordionDetails>
         </Accordion>
