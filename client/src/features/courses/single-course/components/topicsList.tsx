@@ -1,6 +1,8 @@
 import { useSelector } from 'react-redux';
 import Stack from '@mui/joy/Stack';
 import { Typography, Box } from '@mui/joy';
+import AccordionGroup from '@mui/joy/AccordionGroup';
+import { accordionSummaryClasses } from '@mui/joy/AccordionSummary';
 
 import { Topic } from 'shared/ts/types';
 import TopicItem from './topicItem';
@@ -13,7 +15,6 @@ interface ITopicsListProps {
 
 export default function TopicsList({ topics }: ITopicsListProps) {
   const user = useSelector(selectCurrentUser)
-
   return (
     <Stack
       spacing={2}
@@ -27,9 +28,25 @@ export default function TopicsList({ topics }: ITopicsListProps) {
           <AddTopicModal />
         </Box>
         : ""}
-      {topics.map((item: Topic) => (
-        <TopicItem {...item} key={item.id} />
-      ))}
+      <AccordionGroup
+        transition={{
+          initial: "0.3s ease-out",
+          expanded: "0.2s ease",
+        }}
+        sx={{
+          maxWidth: 700,
+          [`& .${accordionSummaryClasses.indicator}`]: {
+            transition: '0.2s',
+          },
+          [`& [aria-expanded="true"] .${accordionSummaryClasses.indicator}`]: {
+            transform: 'rotate(180deg)',
+          },
+        }}
+      >
+        {topics.map((item: Topic) => (
+          <TopicItem {...item} key={item.id} />
+        ))}
+      </AccordionGroup>
     </Stack>
   )
 }

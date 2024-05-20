@@ -21,38 +21,26 @@ export default function TopicsPanel() {
         px: { xs: 2, md: 6 },
         mx: 'auto',
         pt: { xs: 'var(--Header-height)', sm: 0 },
-        display: 'grid',
-        gridTemplateColumns: {
-          xs: '1fr',
-          sm: '1fr minmax(min-content, min(50%, 1000px))',
-        },
-        gridTemplateAreas: {
-          xs: `
-        "topicsList"
-        "progressTable"
-        "topicInstructor"
-      `,
-          sm: `
-        "topicsList progressTable"
-        "topicsList topicInstructor"
-      `,
-        },
+        display: 'flex',
+        flexDirection: { xs: 'column', sm: 'row' },
       }}
     >
-      <Box sx={{ gridArea: 'topicsList', px: 2, py: 2 }}>
+      <Box
+        sx={{
+          flex: { xs: '1 1 auto', sm: '1 1', md: '1 1' },
+          px: 2,
+          py: 2,
+        }}
+      >
         {isLoading ? <TopicItemSkeleton /> : <TopicsList topics={data} />}
       </Box>
-      <Box sx={{ gridArea: 'progressTable', px: 2, py: 2 }}>
+      <Box sx={{ flex: 1, px: 2, py: 2 }}>
         <ProgressTable />
-      </Box>
-      <Box sx={{
-        gridArea: 'topicInstructor', px: 2, py: 2,
-        display: 'flex', alignItems: 'center', flexDirection: "column"
-      }}>
-        <Typography level="title-md" sx={{ pb: 2, display: "flex" }}>The instructor for this course is</Typography>
-        <CourseInstructor />
+        <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", my: 2 }}>
+          <CourseInstructor />
+        </Box>
       </Box>
       {error ? "Something went wrong please refresh" : ""}
-    </Sheet>
+    </Sheet >
   )
 }
