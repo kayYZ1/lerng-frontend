@@ -1,5 +1,5 @@
 import { useLocation, Link } from "react-router-dom"
-import { Breadcrumbs } from "@mui/joy"
+import { Breadcrumbs, Typography } from "@mui/joy"
 import { ChevronRightOutlined, HomeRounded } from "@mui/icons-material"
 
 export default function BreadcrumbsCustom() {
@@ -21,7 +21,19 @@ export default function BreadcrumbsCustom() {
       <HomeRounded />
       {
         pathElements.map((element: string, index: number) => (
-          <Link to="#" style={{ textDecoration: "none", color: "inherit", textTransform: "capitalize" }} key={index}>{element}</Link>
+          <Link to="#" style={{
+            textDecoration: "none",
+            color: "inherit",
+            textTransform: "capitalize"
+          }}
+            key={index}>
+            {
+              element === pathElements[pathElements.length - 1] ?
+                <Typography sx={{ color: "rgb(67, 147, 228)" }}>{element}</Typography>
+                :
+                element
+            }
+          </Link>
         ))
       }
     </Breadcrumbs>

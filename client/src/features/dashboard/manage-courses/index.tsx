@@ -5,12 +5,7 @@ import AddCourseImageModal from "./components/addCourseImageModal";
 
 export default function ManageCourses() {
   return (
-    <Box
-      sx={{
-        display: 'grid',
-        gap: 2,
-      }}
-    >
+    <Box>
       <Sheet
         sx={{
           maxWidth: "1096px",
