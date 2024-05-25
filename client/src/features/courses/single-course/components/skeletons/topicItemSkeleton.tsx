@@ -3,7 +3,7 @@ import CardContent from '@mui/joy/CardContent';
 import Skeleton from '@mui/joy/Skeleton';
 
 export default function TopicItemSkeleton() {
-  return [1, 2, 3, 4, 5].map((index) => (
+  return [1, 2, 3].map((index) => (
     <Card
       key={index}
       variant="outlined"

@@ -3,7 +3,6 @@ import IconButton from '@mui/joy/IconButton';
 import Tooltip from "@mui/joy/Tooltip";
 
 import LoginIcon from '@mui/icons-material/Login';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 
 import { Link, useNavigate } from 'react-router-dom';
@@ -23,7 +22,6 @@ interface ICourseEnrolled {
 
 export default function CourseCardType({ isEnrolled, item }: ICourseEnrolled) {
   const user = useSelector(selectCurrentUser);
-  console.log(item)
 
   if (user.role === 'instructor') {
     return <CourseCardInstructor {...item} />
@@ -50,23 +48,6 @@ function CourseCardEnrolled(item: Course) {
           />
         </Link>
       </AspectRatio >
-      <IconButton
-        size="md"
-        variant="solid"
-        color="danger"
-        sx={{
-          position: 'absolute',
-          zIndex: 2,
-          borderRadius: '50%',
-          right: '1rem',
-          bottom: 0,
-          transform: 'translateY(50%)',
-        }}
-      >
-        <Tooltip title="Like" variant="soft">
-          <FavoriteIcon />
-        </Tooltip>
-      </IconButton>
     </Fragment>
   )
 }
