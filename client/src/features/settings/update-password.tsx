@@ -47,7 +47,7 @@ export default function UpdatePassword() {
   })
 
   return (
-    <Card sx={{ flex: 1 }}>
+    <Card sx={{ flex: 1, width: 490 }}>
       <Box>
         <Typography level="title-md">Password settings</Typography>
         <Typography level="body-sm">

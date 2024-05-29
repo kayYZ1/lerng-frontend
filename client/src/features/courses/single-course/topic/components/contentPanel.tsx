@@ -1,7 +1,9 @@
 import { Box, Typography } from "@mui/joy";
-import { useSelector } from "react-redux"
-import { selectActiveContent } from "app/slice/contents.slice"
+import { useSelector } from "react-redux";
 import { Fragment } from "react/jsx-runtime";
+import ReactPlayer from "react-player/lazy";
+
+import { selectActiveContent } from "app/slice/contents.slice"
 
 export default function ContentPanel() {
   const activeContent = useSelector(selectActiveContent);
@@ -14,6 +16,7 @@ export default function ContentPanel() {
           <Typography level="title-md">{activeContent.description}</Typography>
           <Typography level="title-sm">{activeContent.paragraph150}</Typography>
           <Typography level="title-sm">{activeContent.paragraph300}</Typography>
+          {activeContent.videoUrl ? <ReactPlayer url={activeContent.videoUrl} controls={true} /> : ""}
         </Box>
         : "Module not selected."
       }
