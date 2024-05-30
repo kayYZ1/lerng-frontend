@@ -47,7 +47,7 @@ export type Content = {
   description: string;
   paragraph150: string;
   paragraph300: string;
-  videoUrl: string | null;
+  videoUrl: string;
 };
 
 export type Question = {
