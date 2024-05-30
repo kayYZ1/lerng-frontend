@@ -14,7 +14,7 @@ export default function ContentPanel() {
     <Fragment>
       {activeContent !== null ?
         <Box sx={{ overflow: "auto", maxHeight: "75vh" }}>
-          <Stack direction="column" justifyContent="center" alignItems="center" spacing={2}>
+          <Stack direction="column" justifyContent="center" alignItems="center" spacing={2} px={2}>
             <Typography level="h1">
               {activeContent.title}
             </Typography>
@@ -49,11 +49,16 @@ export default function ContentPanel() {
                   <MovieOutlined />
                 </Chip>
               </Divider>
+              <Box display="flex" justifyContent="center" alignItems="center">
+                <Sheet variant="soft" sx={{ p: 1, m: 1 }}>
+                  <ReactPlayer controls pip width="100%" url={activeContent.videoUrl} />
+                </Sheet>
+              </Box>
             </Box>
-          </Box>
-        </Box>
+          </Box >
+        </Box >
         : "Module not selected."
       }
-    </Fragment>
+    </Fragment >
   )
 }
