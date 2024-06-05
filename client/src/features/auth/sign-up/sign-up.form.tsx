@@ -8,6 +8,7 @@ import { UserSignUp } from "shared/ts/types";
 import style from "../auth.module.css"
 import ErrorAlert from "shared/components/errorAlert";
 import { transformErrorResponse } from "shared/lib/functions";
+import { useNavigate } from "react-router-dom";
 
 const validationSchema = yup.object().shape({
   email: yup.string().email('Invalid email').required('Email is required'),
@@ -20,6 +21,7 @@ const validationSchema = yup.object().shape({
 export default function SignUpForm() {
   const [SignUpFn, { isLoading, error }] = useSignUpFnMutation();
 
+  const navigate = useNavigate()
   const errorResponse = transformErrorResponse(error);
 
   const formik = useFormik({
@@ -37,6 +39,7 @@ export default function SignUpForm() {
         username: values.username
       }
       await SignUpFn(user);
+      navigate("/auth/sign-in")
       resetForm();
     }
   })
