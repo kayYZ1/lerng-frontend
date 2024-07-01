@@ -14,6 +14,7 @@ const Quiz = lazy(() => import("features/courses/single-course/quiz/index"))
 const SignIn = lazy(() => import("features/auth/sign-in"));
 const SignUp = lazy(() => import("features/auth/sign-up"));
 const ForgotPassword = lazy(() => import("features/auth/forgot-password"));
+const ResetPassword = lazy(() => import("features/auth/forgot-password/reset-password"))
 
 const LandingPage = lazy(() => import("features/landing-page/index"))
 
@@ -67,6 +68,10 @@ const authRoutes = [
 	{
 		path: AuthPath.FORGOT_PASSWORD,
 		element: <ForgotPassword />
+	},
+	{
+		path: AuthPath.RESET_PASSWORD,
+		element: <ResetPassword />
 	}
 ];
 

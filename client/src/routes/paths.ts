@@ -9,6 +9,7 @@ const AuthPath = {
   SIGN_IN: `${AUTH}/sign-in`,
   SIGN_UP: `${AUTH}/sign-up`,
   FORGOT_PASSWORD: `${AUTH}/forgot-password`,
+  RESET_PASSWORD: `${AUTH}/forgot-password/:token`,
 };
 
 const DASHBOARD = '/dashboard';
