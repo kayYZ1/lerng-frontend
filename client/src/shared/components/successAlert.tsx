@@ -1,15 +1,22 @@
-import ImageIcon from '@mui/icons-material/Image';
 import Alert from '@mui/joy/Alert'
+import { Typography } from '@mui/joy';
+import { IAlert } from 'shared/ts/interfaces';
+import DoneIcon from '@mui/icons-material/Done';
 
-export default function SuccessAlert() {
+export default function SuccessAlert({ message, type }: IAlert) {
   return (
     <Alert
       variant="soft"
       color="success"
-      startDecorator={<ImageIcon />}
+      startDecorator={<DoneIcon />}
       sx={{ mt: 2 }}
     >
-      Success!
+      <div>
+        <div>{type}</div>
+        <Typography level="body-sm" color="success">
+          {message}
+        </Typography>
+      </div>
     </Alert>
   )
 }

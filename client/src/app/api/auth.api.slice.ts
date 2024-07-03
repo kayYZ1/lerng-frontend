@@ -34,6 +34,20 @@ export const authApiSlice = authApi.injectEndpoints({
       },
       providesTags: ['User'],
     }),
+    ForgotPasswordFn: builder.mutation({
+      query: (data) => ({
+        url: '/auth/forgot-password',
+        method: 'POST',
+        body: data,
+      }),
+    }),
+    ResetPasswordFn: builder.mutation({
+      query: (data) => ({
+        url: '/auth/reset-password',
+        method: 'POST',
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -41,5 +55,7 @@ export const {
   useSignInFnMutation,
   useSignUpFnMutation,
   useSignOutFnMutation,
+  useForgotPasswordFnMutation,
+  useResetPasswordFnMutation,
   useGetMeQuery,
 } = authApiSlice;

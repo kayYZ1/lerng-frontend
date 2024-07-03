@@ -1,8 +1,13 @@
+import { useParams } from "react-router-dom";
 import { FormControl, FormLabel, Input, Stack, Button, FormHelperText, Typography, Divider } from "@mui/joy";
 import { useFormik } from "formik";
 import * as yup from "yup";
 
 import style from "../auth.module.css"
+import { useResetPasswordFnMutation } from "app/api/auth.api.slice";
+import { transformErrorResponse } from "shared/lib/functions";
+import SuccessAlert from "shared/components/successAlert";
+import ErrorAlert from "shared/components/errorAlert";
 
 const validationSchema = yup.object().shape({
   password: yup.string().min(8, 'Password must be atleast 8 characters long').required('Password is required'),
@@ -11,14 +16,24 @@ const validationSchema = yup.object().shape({
 });
 
 export default function ResetPassword() {
+  const [ResetPasswordFn, { isLoading, error, isSuccess }] = useResetPasswordFnMutation();
+  const { token } = useParams<{ token: string }>();
+
+  const errorResponse = transformErrorResponse(error);
+
   const formik = useFormik({
     initialValues: {
       password: "",
       repeatPassword: ""
     },
     validationSchema,
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: async (values, { resetForm }) => {
+      const data = {
+        password: values.password,
+        token
+      }
+      await ResetPasswordFn(data)
+      resetForm();
     }
   })
 
@@ -75,11 +90,13 @@ export default function ResetPassword() {
               <FormHelperText component="div" className={style.formHelperError}>{formik.errors.repeatPassword}</FormHelperText> : ""}
           </FormControl>
           <Stack gap={4} sx={{ mt: 2 }}>
-            <Button type="submit" fullWidth>
+            <Button type="submit" fullWidth loading={isLoading}>
               Reset
             </Button>
           </Stack>
-        </form >
+          {error ? <ErrorAlert type="Reset password" message={errorResponse} /> : ""}
+          {isSuccess ? <SuccessAlert type="Reset password" message="Your password has been changed" /> : ""}
+        </form>
       </Stack>
     </div>
   )
