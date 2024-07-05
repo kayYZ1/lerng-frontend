@@ -1,13 +1,16 @@
 import { Box, Stack, Typography, AspectRatio, Container, Button, Avatar, AvatarGroup } from '@mui/joy';
 import { ArrowForward } from '@mui/icons-material';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AuthPath } from 'routes/paths';
 import ColorSchemeToggle from 'shared/components/colorToggle';
 
 import lpImage from "assets/landingpage_img.png";
+import { useGetLatestUsersQuery } from 'app/api/users.api.slice';
+import { UserLandingPage } from 'shared/ts/types';
 
 export default function LandingPage() {
-  const navigate = useNavigate();
+  const { data, isLoading } = useGetLatestUsersQuery(undefined);
+  console.log(data)
 
   return (
     <Box paddingTop={"1vh"}>
@@ -97,10 +100,10 @@ export default function LandingPage() {
               },
             }}
           >
-            <AvatarGroup size="lg">
-              <Avatar />
-              <Avatar />
-              <Avatar />
+            <AvatarGroup size="md">
+              {isLoading ? "" : data.map((user: UserLandingPage) => {
+                return <Avatar key={user.id} src={user.imageUrl} />
+              })}
             </AvatarGroup>
             <Typography textColor="text.secondary">
               Join a community of over <b>10K</b> <br />

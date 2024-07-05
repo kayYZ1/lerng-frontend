@@ -26,6 +26,12 @@ export const usersApiSlice = authApi.injectEndpoints({
       }),
       invalidatesTags: ['User'],
     }),
+    GetLatestUsers: builder.query({
+      query: () => ({
+        url: '/users/latest-users',
+        method: 'GET',
+      }),
+    }),
   }),
 });
 
@@ -33,4 +39,5 @@ export const {
   useUpdateUserDataMutation,
   useUpdateUserPasswordMutation,
   useUpdateUserImageMutation,
+  useGetLatestUsersQuery,
 } = usersApiSlice;

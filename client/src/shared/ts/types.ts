@@ -6,6 +6,11 @@ export type UserSignUp = {
   username: string;
 };
 
+export type UserLandingPage = {
+  id: string;
+  imageUrl: string;
+};
+
 export type UserSignIn = {
   email: string;
   password: string;
