@@ -7,10 +7,10 @@ import ColorSchemeToggle from 'shared/components/colorToggle';
 import lpImage from "assets/landingpage_img.png";
 import { useGetLatestUsersQuery } from 'app/api/users.api.slice';
 import { UserLandingPage } from 'shared/ts/types';
+import Carousel from './components/carousel';
 
 export default function LandingPage() {
-  const { data, isLoading } = useGetLatestUsersQuery(undefined);
-  console.log(data)
+  const { data, isLoading, error } = useGetLatestUsersQuery(undefined);
 
   return (
     <Box paddingTop={"1vh"}>
@@ -79,7 +79,7 @@ export default function LandingPage() {
               '& > *': { flex: 'auto' },
             }}
           >
-            <Button size="lg" variant="outlined" color="neutral">
+            <Button size="lg" variant="outlined" color="neutral" disabled>
               Learn More
             </Button>
             <Button size="lg" endDecorator={<ArrowForward />}>
@@ -101,13 +101,15 @@ export default function LandingPage() {
             }}
           >
             <AvatarGroup size="md">
-              {isLoading ? "" : data.map((user: UserLandingPage) => {
-                return <Avatar key={user.id} src={user.imageUrl} />
-              })}
+              {isLoading || error ?
+                [1, 2, 3].map((item) => <Avatar key={item} />) :
+                data.map((user: UserLandingPage) => {
+                  return <Avatar key={user.id} src={user.imageUrl} />
+                })}
             </AvatarGroup>
             <Typography textColor="text.secondary">
               Join a community of over <b>10K</b> <br />
-              designers and developers.
+              developers.
             </Typography>
           </Box>
         </Box>
@@ -129,10 +131,7 @@ export default function LandingPage() {
             flexBasis: '50%',
           })}
         >
-          <img
-            src={lpImage}
-            alt="Boy sitting in front of pc minding his bussiness."
-          />
+          <Carousel />
         </AspectRatio>
       </Container>
     </Box>
