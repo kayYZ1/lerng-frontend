@@ -1,23 +1,26 @@
 import { Suspense } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 import { CssVarsProvider } from '@mui/joy/styles';
 import GlobalStyles from '@mui/joy/GlobalStyles';
 import CssBaseline from '@mui/joy/CssBaseline';
 import Box from '@mui/joy/Box';
 import Typography from '@mui/joy/Typography';
-import { Link } from '@mui/joy';
+import { IconButton, Link } from '@mui/joy';
 import ColorSchemeToggle from 'shared/components/colorToggle';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 export default function AuthLayout() {
+  const navigate = useNavigate();
+
   return (
     <CssVarsProvider defaultMode="dark">
       <CssBaseline />
       <GlobalStyles
         styles={{
           ':root': {
-            '--Collapsed-breakpoint': '769px', // form will stretch when viewport is below `769px`
-            '--Cover-width': '50vw', // must be `vw` only
+            '--Collapsed-breakpoint': '769px',
+            '--Cover-width': '50vw',
             '--Form-maxWidth': '800px',
           },
         }}
@@ -55,6 +58,9 @@ export default function AuthLayout() {
             }}
           >
             <Box sx={{ gap: 2, display: 'flex', alignItems: 'center' }}>
+              <IconButton onClick={() => navigate(-1)}>
+                <ArrowBackIcon />
+              </IconButton>
               <Typography level="title-lg">Learn Linux</Typography>
             </Box>
             <ColorSchemeToggle />
