@@ -1,8 +1,6 @@
 import AccordionGroup from '@mui/joy/AccordionGroup';
 import Accordion from '@mui/joy/Accordion';
-import AccordionDetails, {
-  accordionDetailsClasses,
-} from '@mui/joy/AccordionDetails';
+import AccordionDetails from '@mui/joy/AccordionDetails';
 import AccordionSummary, {
   accordionSummaryClasses,
 } from '@mui/joy/AccordionSummary';

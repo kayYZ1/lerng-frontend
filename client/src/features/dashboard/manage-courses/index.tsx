@@ -18,7 +18,7 @@ export default function ManageCourses() {
         </Box>
       </Sheet>
       <Box>
-        <Typography sx={{ mx: { xs: "none", md: 4 } }}>Your current courses</Typography>
+        <Typography sx={{ mx: { xs: "none", md: 4 }, px: 2 }}>Your current courses</Typography>
         <CourseList instructor={true} />
       </Box>
     </Box>

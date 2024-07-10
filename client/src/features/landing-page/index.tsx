@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { AuthPath } from 'routes/paths';
 import ColorSchemeToggle from 'shared/components/colorToggle';
 
-import lpImage from "assets/landingpage_img.png";
 import { useGetLatestUsersQuery } from 'app/api/users.api.slice';
 import { UserLandingPage } from 'shared/ts/types';
 import Carousel from './components/carousel';

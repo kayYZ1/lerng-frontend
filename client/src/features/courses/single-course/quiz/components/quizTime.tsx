@@ -20,7 +20,7 @@ export default function QuizTime({ setShowResult }: IQuizResult) {
     return () => {
       clearInterval(timer);
     };
-  }, [progress]);
+  }, [progress, setShowResult]);
 
   return (
     <LinearProgress determinate value={progress} />

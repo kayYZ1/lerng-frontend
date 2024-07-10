@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import Sheet from '@mui/joy/Sheet';
-import { Box, Typography } from '@mui/joy';
+import { Box } from '@mui/joy';
 
 import { useGetTopicsFromCourseQuery } from 'app/api/topics.api.slice';
 
