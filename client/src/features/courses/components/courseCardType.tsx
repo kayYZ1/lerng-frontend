@@ -26,13 +26,11 @@ export default function CourseCardType({ isEnrolled, item }: ICourseEnrolled) {
   if (user.role === 'instructor') {
     return <CourseCardInstructor {...item} />
   }
+  if (isEnrolled) {
+    return <CourseCardEnrolled {...item} />
+  }
   else {
-    if (isEnrolled) {
-      return <CourseCardEnrolled {...item} />
-    }
-    else {
-      return <CourseCardEnroll {...item} />
-    }
+    return <CourseCardEnroll {...item} />
   }
 }
 

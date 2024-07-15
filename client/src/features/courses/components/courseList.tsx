@@ -1,14 +1,14 @@
 import { Box, Grid } from "@mui/joy"
 
-import { useGetCoursesQuery, useGetInstructorCoursesQuery } from "app/api/courses.api.slice"
+import { useGetCoursesQuery } from "app/api/courses.api.slice"
 
 import CourseItem from "./courseItem"
 
-import { Course, IsInstructor } from "shared/ts/types"
+import { Course } from "shared/ts/types"
 import CourseSkeleton from "./courseSkeleton"
 
-export default function CourseList(instructorView: IsInstructor) {
-  const { data, isLoading } = instructorView.instructor ? useGetInstructorCoursesQuery(undefined) : useGetCoursesQuery(undefined);
+export default function CourseList() {
+  const { data, isLoading } = useGetCoursesQuery(undefined);
 
   return (
     <Box sx={{

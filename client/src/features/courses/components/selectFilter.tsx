@@ -1,6 +1,8 @@
 import Select from '@mui/joy/Select';
 import Option from '@mui/joy/Option';
 
+import { useSearchParams } from 'react-router-dom';
+
 export default function SelectFilter() {
   return (
     <Select

@@ -1,11 +1,32 @@
-import { Box, Typography, Sheet, Input, IconButton, Divider, Switch } from "@mui/joy"
+import { Box, Typography, Sheet, Input, IconButton, Divider } from "@mui/joy"
 import { SearchRounded } from "@mui/icons-material"
+import Select from '@mui/joy/Select';
+import Option from '@mui/joy/Option';
+
+import { useSearchParams } from 'react-router-dom';
 
 import CourseList from "./components/courseList"
-import SelectFilter from "./components/selectFilter"
 import BreadcrumbsCustom from "shared/components/breadcrumbsCustom"
 
 export default function Courses() {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const handleSearchChange = (event: any) => {
+    const searchQuery = event.target.value;
+    if (searchQuery) {
+      searchParams.set('search', searchQuery);
+    } else {
+      searchParams.delete('search');
+    }
+    setSearchParams(searchParams);
+  };
+
+  const handleSortChange = (event: any) => {
+    const sortValue = event.target.value;
+    searchParams.set('sort', sortValue);
+    setSearchParams(searchParams);
+  };
+
   return (
     <Box sx={{ flex: 1, width: '100%' }}>
       <Box sx={{ px: { xs: 2, md: 6 } }}>
@@ -38,14 +59,29 @@ export default function Courses() {
               </Typography>
             </IconButton>
           }
+          onChange={handleSearchChange}
         />
-        <SelectFilter />
-        <Typography component="label" startDecorator={<Switch sx={{ ml: 1 }} />}>
-          Show all courses
-        </Typography>
+        <Select
+          size='sm'
+          placeholder="Sort by..."
+          sx={{
+            minWidth: '15rem',
+          }}
+          slotProps={{
+            listbox: {
+              sx: {
+                width: '100%',
+              },
+            },
+          }}
+          onChange={handleSortChange}
+        >
+          <Option value="dateAsc">Date ascending</Option>
+          <Option value="dateDesc">Date descending</Option>
+        </Select>
       </Sheet>
       <Divider sx={{ my: 2 }} />
-      <CourseList instructor={false} />
+      <CourseList />
     </Box>
   )
 }

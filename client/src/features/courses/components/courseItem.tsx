@@ -16,7 +16,7 @@ export default function CourseItem(item: Course) {
   const enrolled = useSelector(selectMyCourses);
 
   const date = parseDate(item.created);
-  const isEnrolled = enrolled.some((el) => el.course.id === item.id);
+  const isEnrolled = enrolled.some((course) => course.course.id === item.id);
 
   return (
     <Grid sx={{ py: 2, px: 1 }}>

@@ -1,9 +1,14 @@
-import { Box, Sheet, Typography } from "@mui/joy";
+import { Box, Sheet, Typography, Grid } from "@mui/joy";
 
-import CourseList from "features/courses/components/courseList";
 import AddCourseImageModal from "./components/addCourseImageModal";
+import CourseItem from "features/courses/components/courseItem";
+import CourseSkeleton from "features/courses/components/courseSkeleton";
+import { Course } from "shared/ts/types";
+import { useGetInstructorCoursesQuery } from "app/api/courses.api.slice";
 
 export default function ManageCourses() {
+  const { data, isLoading } = useGetInstructorCoursesQuery(undefined);
+
   return (
     <Box>
       <Sheet
@@ -19,8 +24,30 @@ export default function ManageCourses() {
       </Sheet>
       <Box>
         <Typography sx={{ mx: { xs: "none", md: 4 }, px: 2 }}>Your current courses</Typography>
-        <CourseList instructor={true} />
+        <Box sx={{
+          display: 'flex',
+        }}>
+          <Grid
+            container
+            direction="row"
+            sx={{
+              flexGrow: 1,
+              flexWrap: "wrap",
+              mx: { xs: 3, sm: 4, md: 5 }
+            }}
+          >
+            {isLoading ?
+              [1, 2, 3, 4].map((index) => (
+                <CourseSkeleton key={index} />
+              ))
+              :
+              data.map((course: Course) => (
+                <CourseItem {...course} key={course.id} />
+              ))
+            }
+          </Grid>
+        </Box>
       </Box>
-    </Box>
+    </Box >
   )
 }
