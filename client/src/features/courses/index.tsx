@@ -7,24 +7,27 @@ import { useSearchParams } from 'react-router-dom';
 
 import CourseList from "./components/courseList"
 import BreadcrumbsCustom from "shared/components/breadcrumbsCustom"
+import { useFilterCoursesQuery } from "app/api/courses.api.slice";
+import { useState } from "react";
 
 export default function Courses() {
+  const [searchQuery, setSearchQuery] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const handleSearchChange = (event: any) => {
-    const searchQuery = event.target.value;
-    if (searchQuery) {
-      searchParams.set('search', searchQuery);
-    } else {
-      searchParams.delete('search');
-    }
-    setSearchParams(searchParams);
-  };
+  const { refetch } = useFilterCoursesQuery(searchQuery, {
+    skip: searchQuery.length <= 3,
+  });
 
-  const handleSortChange = (event: any) => {
-    const sortValue = event.target.value;
-    searchParams.set('sort', sortValue);
+  const handleSearchChange = (event: any) => {
+    const searchQueryValue: string = event.target.value;
+    setSearchQuery(searchQueryValue);
+
+    searchParams.set('search', searchQuery);
     setSearchParams(searchParams);
+
+    if (searchQuery.length > 3) {
+      refetch();
+    }
   };
 
   return (
@@ -74,10 +77,9 @@ export default function Courses() {
               },
             },
           }}
-          onChange={handleSortChange}
         >
-          <Option value="dateAsc">Date ascending</Option>
-          <Option value="dateDesc">Date descending</Option>
+          <Option value="ASC">Date ascending</Option>
+          <Option value="DESC">Date descending</Option>
         </Select>
       </Sheet>
       <Divider sx={{ my: 2 }} />
