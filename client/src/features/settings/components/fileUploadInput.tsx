@@ -1,10 +1,11 @@
-import { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import Button from '@mui/joy/Button';
 import SvgIcon from '@mui/joy/SvgIcon';
-import { styled } from '@mui/joy';
+import { styled, Box } from '@mui/joy';
 
 import { useUpdateUserImageMutation } from 'app/api/users.api.slice';
 import SuccessAlert from 'shared/components/successAlert';
+import ErrorAlert from 'shared/components/errorAlert';
 
 const VisuallyHiddenInput = styled('input')`
   clip: rect(0 0 0 0);
@@ -20,49 +21,58 @@ const VisuallyHiddenInput = styled('input')`
 
 export default function FileUploadInput() {
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const [UpdateUserImage, { isLoading, error, isSuccess }] = useUpdateUserImageMutation();
 
-  const handleFileUpload = () => {
+  const [validationError, setValidationError] = useState("");
+  const [UpdateUserImage, { isLoading, isSuccess }] = useUpdateUserImageMutation();
+
+  const uploadPreset: string = import.meta.env.VITE_UPLOAD_PRESET;
+  const apiUrl: string = import.meta.env.VITE_API_URL;
+
+  const onFileUpload = () => {
     if (fileInputRef.current) {
       fileInputRef.current.click();
     }
   };
 
-  const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const fileList = event.target.files!;
-    if (fileList && fileList.length > 0) {
-      const selectedFile = fileList[0];
-      const fileExtension = selectedFile.name.split('.').pop()?.toLowerCase(); // Get file extension
-      if (fileExtension === 'png') {
-        const uploadPreset: string = import.meta.env.VITE_UPLOAD_PRESET;
-        const apiUrl: string = import.meta.env.VITE_API_URL;
+  const onFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const fileList = event.target.files;
+    if (!fileList) return;
 
-        const formData = new FormData();
-        formData.append("file", selectedFile);
-        formData.append("upload_preset", uploadPreset);
+    const selectedFile = fileList[0];
+    const fileExtension = selectedFile.name.split('.').pop()?.toLowerCase();
+    const maxFileSize = 1024 * 1024 * 5;
 
-        try {
-          const response = await fetch(apiUrl, {
-            method: "POST",
-            body: formData
-          })
-
-          const data = await response.json()
-          console.log(data.secure_url)
-          await UpdateUserImage({ imageUrl: data.secure_url });
-        } catch (error) {
-          console.error(error);
-        }
-      } else {
-        console.log('Error: Only PNG files are allowed.');
-      }
+    if (fileExtension !== "png") {
+      setValidationError("Only png files are allowed.")
+      return;
     }
-  };
+
+    if (selectedFile.size > maxFileSize) {
+      setValidationError("Only files up to 5mb are allowed.")
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("file", selectedFile);
+    formData.append("upload_preset", uploadPreset);
+
+    try {
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        body: formData
+      })
+      const data = await response.json()
+
+      await UpdateUserImage({ imageUrl: data.secure_url });
+    } catch (error) {
+      setValidationError("Something went wrong please try again.")
+    }
+  }
 
   return (
-    <>
+    <Box>
       <Button
-        onClick={handleFileUpload}
+        onClick={onFileUpload}
         component="label"
         role={undefined}
         tabIndex={-1}
@@ -88,10 +98,12 @@ export default function FileUploadInput() {
         }
       >
         Upload a file
-        <VisuallyHiddenInput type="file" ref={fileInputRef} onChange={handleFileChange} accept='.png' />
+        <VisuallyHiddenInput type="file" ref={fileInputRef} onChange={onFileChange} accept='.png' />
       </Button>
-      {isSuccess ? <SuccessAlert /> : ""}
-      {error ? "Something went wrong" : ""}
-    </>
+      <Box py={2}>
+        {isSuccess ? <SuccessAlert type="Image upload" message="Image upload was succesfull" /> : ""}
+        {validationError ? <ErrorAlert type="File upload error" message={validationError} /> : ""}
+      </Box>
+    </Box>
   );
 }
