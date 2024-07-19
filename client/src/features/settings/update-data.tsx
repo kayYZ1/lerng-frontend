@@ -22,7 +22,7 @@ import AdminPanelSettingsRoundedIcon from '@mui/icons-material/AdminPanelSetting
 import { useUpdateUserDataMutation } from 'app/api/users.api.slice';
 import { transformErrorResponse } from 'shared/lib/functions';
 
-import UpdateImageModal from './components/update-image.modal';
+import UpdateImageModal from './components/modals/update-image';
 
 import { UpdateUser, UserData } from 'shared/ts/types';
 import WarningAlert from 'shared/components/warningAlert';
