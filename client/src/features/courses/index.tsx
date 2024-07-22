@@ -51,17 +51,8 @@ export default function Courses() {
       >
         <Input
           size="sm"
-          placeholder="Search anything…"
+          placeholder="Search.."
           startDecorator={<SearchRounded color="primary" />}
-          endDecorator={
-            <IconButton
-              variant="outlined"
-            >
-              <Typography level="title-sm" textColor="text.icon">
-                ⌘ K
-              </Typography>
-            </IconButton>
-          }
           onChange={handleSearchChange}
         />
         <Select

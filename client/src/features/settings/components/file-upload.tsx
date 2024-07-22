@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import Button from '@mui/joy/Button';
-import { Box, Stack, Typography } from '@mui/joy';
+import { Box, Stack } from '@mui/joy';
 import { CloudUploadRounded } from '@mui/icons-material';
 
 import { useUpdateUserImageMutation } from 'app/api/users.api.slice';
@@ -63,7 +63,6 @@ export default function FileUploadComponent() {
   return (
     <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
       <Stack direction="column" width={"100%"}>
-        <Typography level="body-lg" py={1}>Change your look</Typography>
         <Button
           onClick={onFileUpload}
           component="label"
@@ -72,7 +71,8 @@ export default function FileUploadComponent() {
           loading={isLoading}
           startDecorator={<CloudUploadRounded />}
           sx={{
-            fontSize: "smaller"
+            fontSize: "smaller",
+            paddingTop: 1
           }}
         >
           Upload

@@ -15,12 +15,14 @@ import Drawer from '@mui/joy/Drawer';
 import ModalClose from '@mui/joy/ModalClose';
 import DialogTitle from '@mui/joy/DialogTitle';
 import Skeleton from '@mui/joy/Skeleton';
+import Input from '@mui/joy/Input';
 import { useDispatch } from 'react-redux';
 
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import { SearchRounded } from '@mui/icons-material';
 import FeedbackIcon from '@mui/icons-material/Feedback';
 
 import TeamNav from "./navigation"
@@ -86,6 +88,19 @@ export default function Header() {
           alignItems: 'center',
         }}
       >
+        <Input
+          size="sm"
+          placeholder="Search anything…"
+          startDecorator={<SearchRounded color="primary" />}
+          endDecorator={
+            <IconButton
+              variant="outlined"
+            >
+              <Typography level="title-sm" textColor="text.icon">
+                ⌘ K
+              </Typography>
+            </IconButton>
+          } />
         <NotificationsIcon />
         <ColorSchemeToggle />
         <Dropdown>
