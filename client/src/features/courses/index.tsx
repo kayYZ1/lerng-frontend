@@ -20,9 +20,7 @@ export default function Courses() {
     searchParams.set('search', searchQueryValue);
     setSearchParams(searchParams);
 
-    if (searchQueryValue.length > 3) {
-      useFilterCourse(searchQueryValue);
-    }
+    useFilterCourse(searchQueryValue);
   };
 
   return (

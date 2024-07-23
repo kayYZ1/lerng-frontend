@@ -6,9 +6,21 @@ import CourseItem from "./courseItem"
 
 import { Course } from "shared/ts/types"
 import CourseSkeleton from "./courseSkeleton"
+import { selectCourses } from "app/slice/courses.slice"
+import { useSelector } from "react-redux"
 
 export default function CourseList() {
   const { data, isLoading } = useGetCoursesQuery(undefined);
+
+  const filteredCourses = useSelector(selectCourses)
+
+  let courses = [];
+
+  if (filteredCourses.length !== 0) {
+    courses = filteredCourses;
+  } else {
+    courses = data;
+  }
 
   return (
     <Box sx={{
@@ -20,7 +32,7 @@ export default function CourseList() {
         sx={{
           flexGrow: 1,
           flexWrap: "wrap",
-          mx: { xs: 3, sm: 4, md: 5 }
+          px: { xs: 3, sm: 4, md: 5 }
         }}
       >
         {isLoading ?
@@ -28,7 +40,7 @@ export default function CourseList() {
             <CourseSkeleton key={index} />
           ))
           :
-          data.map((course: Course) => (
+          courses.map((course: Course) => (
             <CourseItem {...course} key={course.id} />
           ))
         }

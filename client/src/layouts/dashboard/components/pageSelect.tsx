@@ -10,9 +10,20 @@ export default function PageSelect() {
     <Autocomplete
       size='sm'
       placeholder="Search.."
-      sx={{ xs: { width: 100 }, md: { width: 250 } }}
+      sx={{ width: { xs: 150, sm: 200, md: 250 } }}
       options={SearchPageOptions}
       autoHighlight
+      startDecorator={
+        <IconButton
+          variant="outlined"
+          color="neutral"
+          sx={{ bgcolor: 'background.level1' }}
+        >
+          <Typography level="title-sm" textColor="text.icon">
+            ⌘ K
+          </Typography>
+        </IconButton>
+      }
       getOptionLabel={(option) => option.label}
       renderOption={(props, option) => (
         <AutocompleteOption {...props}>
