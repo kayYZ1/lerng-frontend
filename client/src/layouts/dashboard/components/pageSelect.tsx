@@ -9,7 +9,7 @@ export default function PageSelect() {
   return (
     <Autocomplete
       size='sm'
-      placeholder="Select page"
+      placeholder="Search.."
       sx={{ xs: { width: 100 }, md: { width: 250 } }}
       options={SearchPageOptions}
       autoHighlight

@@ -17,13 +17,13 @@ export const coursesApiSlice = authApi.injectEndpoints({
       }),
       providesTags: ['Course'],
     }),
-    FilterCourses: builder.query({
+    FilterCourses: builder.mutation({
       query: (search: string) => ({
-        url: '/courses/filter',
-        method: 'GET',
+        url: '/courses/query',
+        method: 'POST',
         params: { search },
       }),
-      providesTags: ['Course'],
+      invalidatesTags: ['Course'],
     }),
     GetCourse: builder.query({
       query: (courseId: string) => ({
@@ -51,7 +51,7 @@ export const {
   useCreateCourseMutation,
   useGetCoursesQuery,
   useGetCourseQuery,
-  useFilterCoursesQuery,
+  useFilterCoursesMutation,
   useGetInstructorCoursesQuery,
   useGetInstructorFromCourseQuery,
 } = coursesApiSlice;

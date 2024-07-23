@@ -1,4 +1,4 @@
-import { Box, Typography, Sheet, Input, IconButton, Divider } from "@mui/joy"
+import { Box, Typography, Sheet, Input, Divider } from "@mui/joy"
 import { SearchRounded } from "@mui/icons-material"
 import Select from '@mui/joy/Select';
 import Option from '@mui/joy/Option';
@@ -7,26 +7,21 @@ import { useSearchParams } from 'react-router-dom';
 
 import CourseList from "./components/courseList"
 import BreadcrumbsCustom from "shared/components/breadcrumbsCustom"
-import { useFilterCoursesQuery } from "app/api/courses.api.slice";
-import { useState } from "react";
+import { useFilterCoursesMutation } from "app/api/courses.api.slice";
 
 export default function Courses() {
-  const [searchQuery, setSearchQuery] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const { refetch } = useFilterCoursesQuery(searchQuery, {
-    skip: searchQuery.length <= 3,
-  });
+  const [useFilterCourse] = useFilterCoursesMutation();
 
   const handleSearchChange = (event: any) => {
     const searchQueryValue: string = event.target.value;
-    setSearchQuery(searchQueryValue);
 
-    searchParams.set('search', searchQuery);
+    searchParams.set('search', searchQueryValue);
     setSearchParams(searchParams);
 
-    if (searchQuery.length > 3) {
-      refetch();
+    if (searchQueryValue.length > 3) {
+      useFilterCourse(searchQueryValue);
     }
   };
 
