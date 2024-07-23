@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import authReducer from './slice/auth.slice';
 import contentReducer from './slice/contents.slice';
+import coursesReducer from './slice/courses.slice';
 import enrolledReducer from './slice/enrolled.slice';
 import userReducer from './slice/user.slice';
 
@@ -12,6 +13,7 @@ export const store = configureStore({
     [authApi.reducerPath]: authApi.reducer,
     auth: authReducer,
     user: userReducer,
+    courses: coursesReducer,
     enrolled: enrolledReducer,
     content: contentReducer,
   },
