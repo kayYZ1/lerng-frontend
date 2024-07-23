@@ -8,18 +8,22 @@ import { Course } from "shared/ts/types"
 import CourseSkeleton from "./courseSkeleton"
 import { selectCourses } from "app/slice/courses.slice"
 import { useSelector } from "react-redux"
+import { useSearchParams } from "react-router-dom"
 
 export default function CourseList() {
   const { data, isLoading } = useGetCoursesQuery(undefined);
+  const [searchParams] = useSearchParams();
 
   const filteredCourses = useSelector(selectCourses)
 
-  let courses = [];
+  let courses: Course[] = [];
 
-  if (filteredCourses.length !== 0) {
+  const sortExist = searchParams.get("sort")
+
+  if (sortExist || filteredCourses.length !== 0) {
     courses = filteredCourses;
   } else {
-    courses = data;
+    courses = data
   }
 
   return (

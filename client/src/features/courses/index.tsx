@@ -7,12 +7,13 @@ import { useSearchParams } from 'react-router-dom';
 
 import CourseList from "./components/courseList"
 import BreadcrumbsCustom from "shared/components/breadcrumbsCustom"
-import { useFilterCoursesMutation } from "app/api/courses.api.slice";
+import { useFilterCoursesMutation, useSortCoursesMutation } from "app/api/courses.api.slice";
 
 export default function Courses() {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const [useFilterCourse] = useFilterCoursesMutation();
+  const [useFilterCourses] = useFilterCoursesMutation();
+  const [useSortCourses] = useSortCoursesMutation();
 
   const handleSearchChange = (event: any) => {
     const searchQueryValue: string = event.target.value;
@@ -20,8 +21,17 @@ export default function Courses() {
     searchParams.set('search', searchQueryValue);
     setSearchParams(searchParams);
 
-    useFilterCourse(searchQueryValue);
+    useFilterCourses(searchQueryValue);
   };
+
+  const handleSortChange = (event: any, value: string | null) => {
+    if (value) {
+      searchParams.set('sort', value);
+      setSearchParams(searchParams);
+
+      useSortCourses(value);
+    }
+  }
 
   return (
     <Box sx={{ flex: 1, width: '100%' }}>
@@ -61,6 +71,7 @@ export default function Courses() {
               },
             },
           }}
+          onChange={handleSortChange}
         >
           <Option value="ASC">Date ascending</Option>
           <Option value="DESC">Date descending</Option>

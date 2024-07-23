@@ -30,6 +30,18 @@ export const coursesApiSlice = authApi.injectEndpoints({
       },
       invalidatesTags: ['Course'],
     }),
+    SortCourses: builder.mutation({
+      query: (sort: string) => ({
+        url: '/courses/filter',
+        method: 'POST',
+        params: { sort },
+      }),
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
+        const { data } = await queryFulfilled;
+        dispatch(setCourses(data));
+      },
+      invalidatesTags: ['Course'],
+    }),
     GetCourse: builder.query({
       query: (courseId: string) => ({
         url: `/courses/${courseId}`,
@@ -57,6 +69,7 @@ export const {
   useGetCoursesQuery,
   useGetCourseQuery,
   useFilterCoursesMutation,
+  useSortCoursesMutation,
   useGetInstructorCoursesQuery,
   useGetInstructorFromCourseQuery,
 } = coursesApiSlice;
