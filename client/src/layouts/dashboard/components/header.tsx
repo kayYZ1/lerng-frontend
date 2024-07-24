@@ -35,6 +35,8 @@ import { useSignOutFnMutation } from 'app/api/auth.api.slice';
 import { signOut } from 'app/slice/auth.slice';
 import PageSelect from './pageSelect';
 
+import LerngLogo from "assets/svg/logo-no-background.svg"
+
 export default function Header() {
   const dispatch = useDispatch();
   const [open, setOpen] = React.useState(false);
@@ -60,8 +62,9 @@ export default function Header() {
         alignItems="center"
         spacing={1}
         sx={{ display: { xs: 'none', sm: 'flex' } }}
+        paddingLeft={0.5}
       >
-        <Typography level="title-md">Learn-Linux.com</Typography>
+        <img src={LerngLogo} width={96} height={96} />
       </Stack>
       <Box sx={{ display: { xs: 'inline-flex', sm: 'none' } }}>
         <IconButton variant="plain" color="neutral" onClick={() => setOpen(true)}>

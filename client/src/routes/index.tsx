@@ -75,7 +75,6 @@ const authRoutes = [
 	}
 ];
 
-
 export { dashboardRoutes, authRoutes, defaultRoutes };
 
 
