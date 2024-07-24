@@ -88,7 +88,9 @@ export default function Header() {
           onClose={() => setOpen(false)}
         >
           <ModalClose />
-          <DialogTitle>Learn-Linux.com</DialogTitle>
+          <DialogTitle>
+            <img src={LerngLogo} width={96} height={96} />
+          </DialogTitle>
           <Box sx={{ px: 1 }}>
             <TeamNav />
           </Box>

@@ -7,6 +7,7 @@ import CssBaseline from '@mui/joy/CssBaseline';
 import Header from './components/header';
 import Navigation from './components/navigation';
 import Layout from './components/layout';
+import SuspenseCircle from 'shared/components/suspenseCircle';
 
 export default function DashboardLayout() {
   return (
@@ -20,7 +21,7 @@ export default function DashboardLayout() {
           <Navigation />
         </Layout.SideNav>
         <Layout.Main>
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<SuspenseCircle />}>
             <Outlet />
           </Suspense>
         </Layout.Main>
