@@ -6,8 +6,9 @@ import AuthLayout from "layouts/auth/layout"
 import Page404 from "features/404"
 
 import { authRoutes, dashboardRoutes, defaultRoutes } from "routes"
-import AuthRoute from "shared/components/authRoute"
 import LandingPageLayout from "layouts/landing-page/layout"
+import AuthGuard from "guards/authGuard"
+import AppGuard from "guards/appGuard"
 
 export default function App() {
   const router = createBrowserRouter([
@@ -17,12 +18,18 @@ export default function App() {
       children: defaultRoutes
     },
     {
-      element: <AuthRoute><DashboardLayout /></AuthRoute>,
+      element:
+        <AppGuard>
+          <DashboardLayout />
+        </AppGuard>,
       errorElement: <Page404 />,
       children: dashboardRoutes
     },
     {
-      element: <AuthLayout />,
+      element:
+        <AuthGuard>
+          <AuthLayout />
+        </AuthGuard>,
       errorElement: <Page404 />,
       children: authRoutes
     },

@@ -3,9 +3,9 @@ import { useSelector } from "react-redux";
 
 import { RouteChild } from "shared/ts/types";
 import { selectCurrentToken } from "app/slice/auth.slice";
-import { AuthPath } from "routes/paths";
+import { DashboardPath } from "routes/paths";
 
-export default function AuthRoute({ children }: RouteChild) {
+export default function AuthGuard({ children }: RouteChild) {
   const token = useSelector(selectCurrentToken);
-  return token ? children : <Navigate to={AuthPath.SIGN_IN} />
+  return token ? <Navigate to={DashboardPath.ENROLLED} /> : children
 }
