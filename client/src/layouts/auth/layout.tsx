@@ -61,7 +61,7 @@ export default function AuthLayout() {
               <IconButton onClick={() => navigate(-1)}>
                 <ArrowBackIcon />
               </IconButton>
-              <Typography level="title-lg">Learn Linux</Typography>
+              <Typography level="title-lg">LERNG</Typography>
             </Box>
             <ColorSchemeToggle />
           </Box>

@@ -90,7 +90,7 @@ function UserList() {
             <FeedbackIcon fontSize="small" />
           </ListItemDecorator>
           <ListItemContent>
-            Add a feedback
+            <Link to={DashboardPath.FEEDBACK} className={style.link}>Feedback</Link>
           </ListItemContent>
         </ListItemButton>
       </ListItem>
