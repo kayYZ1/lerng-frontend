@@ -8,7 +8,6 @@ import { MovieOutlined } from "@mui/icons-material";
 
 export default function ContentPanel() {
   const activeContent = useSelector(selectActiveContent);
-  console.log(activeContent)
 
   return (
     <Fragment>

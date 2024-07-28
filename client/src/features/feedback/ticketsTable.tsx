@@ -1,6 +1,4 @@
-import Avatar from '@mui/joy/Avatar';
 import Box from '@mui/joy/Box';
-import Link from '@mui/joy/Link';
 import Table from '@mui/joy/Table';
 import Sheet from '@mui/joy/Sheet';
 import Chip from '@mui/joy/Chip';
@@ -14,7 +12,6 @@ export default function TicketsTable() {
         display: "flex",
         flexDirection: "column",
         height: "100%",
-        maxHeight: "30vh",
       }}
     >
       <Box sx={{ flexGrow: 1, overflow: "auto" }}>
