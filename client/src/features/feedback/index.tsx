@@ -1,11 +1,10 @@
-import { Box, Typography, Divider, Sheet, Input, Avatar, IconButton, Tooltip } from "@mui/joy"
+import { Box, Typography, Divider, Sheet, Input, Avatar } from "@mui/joy"
 import List from '@mui/joy/List';
 import ListItem from '@mui/joy/ListItem';
 import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import ListItemContent from '@mui/joy/ListItemContent';
 
 import SearchIcon from "@mui/icons-material/Search";
-import AddIcon from "@mui/icons-material/Add";
 
 import BreadcrumbsCustom from "shared/components/breadcrumbsCustom"
 import TicketsTable from "./ticketsTable"
@@ -34,8 +33,7 @@ export default function Feedback() {
           </Typography>
           <List
             sx={{
-              width: 400,
-              maxWidth: 500,
+              width: { xs: 300, md: 400 },
               '--ListItemDecorator-size': '56px',
               gap: 1
             }}
@@ -46,11 +44,7 @@ export default function Feedback() {
               )) : data.map((enrolled: EnrolledCourses) => (
                 <ListItem
                   endAction={
-                    <Tooltip title="Add a ticket">
-                      <IconButton color="primary">
-                        <AddIcon />
-                      </IconButton>
-                    </Tooltip>
+                    <AddTicket {...enrolled} />
                   }
                 >
                   <ListItemDecorator>
@@ -87,7 +81,6 @@ export default function Feedback() {
               startDecorator={<SearchIcon />}
               sx={{ flexGrow: 1 }}
             />
-            <AddTicket />
           </Sheet>
           <TicketsTable />
         </Box>
