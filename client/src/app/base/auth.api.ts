@@ -8,6 +8,7 @@ export const authApi = createApi({
     'Auth',
     'Content',
     'Course',
+    'Feedback',
     'Progress',
     'Question',
     'Topic',

@@ -13,6 +13,7 @@ import { useFormik } from "formik";
 
 import AddIcon from "@mui/icons-material/Add";
 import { EnrolledCourses } from 'shared/ts/types';
+import { useAddFeedbackTicketMutation } from 'app/api/feedback.slice';
 
 const validationSchema = yup.object().shape({
   problem: yup.string().required('This field is required').max(40, "Too long"),
@@ -23,6 +24,7 @@ export default function AddTicket({ course }: EnrolledCourses) {
   const [layout, setLayout] = useState<ModalDialogProps['layout'] | undefined>(
     undefined,
   );
+  const [AddFeedbackTicket, { isLoading }] = useAddFeedbackTicketMutation();
 
   const formik = useFormik({
     initialValues: {
@@ -30,8 +32,15 @@ export default function AddTicket({ course }: EnrolledCourses) {
       details: "",
     },
     validationSchema,
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: async (values, { resetForm }) => {
+      const ticketFeedback = {
+        problem: values.problem,
+        details: values.details,
+        courseId: course.id,
+      }
+
+      await AddFeedbackTicket(ticketFeedback);
+      resetForm();
     }
   })
 
@@ -50,7 +59,7 @@ export default function AddTicket({ course }: EnrolledCourses) {
           <ModalClose />
           <DialogTitle>File a feedback ticket</DialogTitle>
           <DialogContent>
-            <Box display="flex" justifyContent="center" alignItems="center">
+            <Stack direction="column">
               <form onSubmit={formik.handleSubmit}>
                 <FormControl required>
                   <FormLabel>Describe your problem (short)</FormLabel>
@@ -74,13 +83,11 @@ export default function AddTicket({ course }: EnrolledCourses) {
                     error={formik.touched.details && !!formik.errors.details}
                   />
                 </FormControl>
-                <Stack gap={4} sx={{ mt: 2 }}>
-                  <Button type="submit" fullWidth>
-                    Send
-                  </Button>
-                </Stack>
+                <Button type="submit" fullWidth loading={isLoading} sx={{ marginTop: 2 }}>
+                  Send
+                </Button>
               </form>
-            </Box>
+            </Stack>
           </DialogContent>
         </ModalDialog >
       </Modal >
