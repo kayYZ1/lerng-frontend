@@ -78,3 +78,13 @@ export type UserData = {
 export type IsInstructor = {
   instructor: boolean;
 };
+
+export type FeedbackTicket = {
+  id: string;
+  ticket_id: string;
+  problem: string;
+  status: string;
+  details: string;
+  created: Date;
+  updated: Date;
+};

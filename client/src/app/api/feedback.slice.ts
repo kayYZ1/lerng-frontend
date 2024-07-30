@@ -10,7 +10,15 @@ export const feedbackApiSlice = authApi.injectEndpoints({
       }),
       invalidatesTags: ['Feedback'],
     }),
+    GetFeedbackTickets: builder.query({
+      query: () => ({
+        url: '/feedback/tickets',
+        method: 'GET',
+      }),
+      providesTags: ['Feedback'],
+    }),
   }),
 });
 
-export const { useAddFeedbackTicketMutation } = feedbackApiSlice;
+export const { useAddFeedbackTicketMutation, useGetFeedbackTicketsQuery } =
+  feedbackApiSlice;

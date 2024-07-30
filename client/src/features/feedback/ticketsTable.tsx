@@ -3,8 +3,15 @@ import Table from '@mui/joy/Table';
 import Sheet from '@mui/joy/Sheet';
 import Chip from '@mui/joy/Chip';
 import Typography from '@mui/joy/Typography';
+import { useGetFeedbackTicketsQuery } from 'app/api/feedback.slice';
+import { FeedbackTicket } from 'shared/ts/types';
+import { parseDate } from 'shared/lib/functions';
 
 export default function TicketsTable() {
+  const { data, isLoading } = useGetFeedbackTicketsQuery(undefined);
+
+  console.log(data)
+
   return (
     <Sheet
       variant="outlined"
@@ -28,35 +35,37 @@ export default function TicketsTable() {
           <thead>
             <tr>
               <th>Ticket Id.</th>
-              <th>Course</th>
+              <th>Problem</th>
               <th>Status</th>
               <th>Date</th>
               <th>Updated</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <Typography level="body-xs">BSH-3313</Typography>
-              </td>
-              <td>
-                <Typography level="body-xs">Bash whats it</Typography>
-              </td>
-              <td>
-                <Chip
-                  variant="soft"
-                  size="sm"
-                >
-                  Rejected
-                </Chip>
-              </td>
-              <td>
-                <Typography level="body-xs">22/02/2024</Typography>
-              </td>
-              <td>
-                <Typography level="body-xs">27/07/2024</Typography>
-              </td>
-            </tr>
+            {isLoading ? "" : data.map((ticket: FeedbackTicket) => (
+              <tr key={ticket.id}>
+                <td>
+                  <Typography level="body-xs">{ticket.ticket_id}</Typography>
+                </td>
+                <td>
+                  <Typography level="body-xs">{ticket.problem}</Typography>
+                </td>
+                <td>
+                  <Chip
+                    variant="soft"
+                    size="sm"
+                  >
+                    {ticket.status}
+                  </Chip>
+                </td>
+                <td>
+                  <Typography level="body-xs">{parseDate(ticket.created)}</Typography>
+                </td>
+                <td>
+                  <Typography level="body-xs">{parseDate(ticket.updated)}</Typography>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </Table>
       </Box>

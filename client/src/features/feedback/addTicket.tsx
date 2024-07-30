@@ -1,6 +1,5 @@
 import { useState, Fragment } from 'react';
 import * as yup from "yup";
-import Box from '@mui/joy/Box';
 import Modal from '@mui/joy/Modal';
 import ModalClose from '@mui/joy/ModalClose';
 import ModalDialog, { ModalDialogProps } from '@mui/joy/ModalDialog';
