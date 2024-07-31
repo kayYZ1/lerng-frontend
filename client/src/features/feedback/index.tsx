@@ -39,7 +39,7 @@ export default function Feedback() {
             }}
           >
             {
-              isLoading ? [1, 2, 3, 4, 5].map(x => (
+              isLoading ? [1, 2, 3].map(x => (
                 <EnrolledListSkeleton key={x} />
               )) : data.map((enrolled: EnrolledCourses) => (
                 <ListItem

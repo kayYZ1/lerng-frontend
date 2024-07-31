@@ -8,6 +8,8 @@ import Skeleton from '@mui/joy/Skeleton';
 import { useGetFeedbackTicketsQuery } from 'app/api/feedback.slice';
 import { FeedbackTicket } from 'shared/ts/types';
 import { parseDate } from 'shared/lib/functions';
+import { ColorPaletteProp, IconButton } from '@mui/joy';
+import { ZoomIn } from '@mui/icons-material';
 
 export default function TicketsTable() {
   const { data, isLoading } = useGetFeedbackTicketsQuery(undefined);
@@ -38,6 +40,7 @@ export default function TicketsTable() {
               <th>Status</th>
               <th>Date</th>
               <th>Updated</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -73,6 +76,13 @@ export default function TicketsTable() {
                     <Chip
                       variant="soft"
                       size="sm"
+                      color={
+                        {
+                          active: 'success',
+                          rejected: 'danger',
+                          resolved: 'neutral'
+                        }[ticket.status] as ColorPaletteProp
+                      }
                     >
                       {ticket.status}
                     </Chip>
@@ -82,6 +92,11 @@ export default function TicketsTable() {
                   </td>
                   <td>
                     <Typography level="body-xs">{parseDate(ticket.updated)}</Typography>
+                  </td>
+                  <td>
+                    <IconButton>
+                      <ZoomIn />
+                    </IconButton>
                   </td>
                 </tr>
               ))}

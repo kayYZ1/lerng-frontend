@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { Sheet, Box } from "@mui/joy"
+import { Sheet, Box, Skeleton } from "@mui/joy"
 
 import ContentList from "./components/contentList"
 import { useGetContentsQuery } from 'app/api/contents.api.slice';
@@ -25,8 +25,14 @@ export default function TopicPanel() {
       }}
     >
       <Sheet sx={{ my: 2, px: 2, py: 2 }}>
-        {isLoading ? "LOADING..." : <ContentList contents={data} />}
-        {error ? "ERROR WHILE LOADING..." : ""}
+        {isLoading ?
+          <Box mb={8}>
+            {[1, 2, 3].map(x => (
+              <Skeleton variant="rectangular" width={320} height="1em" sx={{ mb: 1 }} key={x} />
+            ))}
+          </Box> :
+          <ContentList contents={data} />}
+        {error ? "Could not load the contents of the list, please try again." : ""}
       </Sheet>
       <Sheet sx={{ my: 2, px: 2, py: 2, mx: { sm: 2, md: 2 } }}>
         <ContentPanel />
