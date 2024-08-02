@@ -24,7 +24,7 @@ export default function Courses() {
     useFilterCourses(searchQueryValue);
   };
 
-  const handleSortChange = (event: any, value: string | null) => {
+  const handleSortChange = (_: any, value: string | null) => {
     if (value) {
       searchParams.set('sort', value);
       setSearchParams(searchParams);

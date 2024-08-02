@@ -25,22 +25,25 @@ export default function PageSelect() {
         </IconButton>
       }
       getOptionLabel={(option) => option.label}
-      renderOption={(props, option) => (
-        <AutocompleteOption {...props}>
-          <ListItemDecorator>
-            <IconButton size='sm' sx={{ paddingRight: 1 }}>
-              {option.icon}
-            </IconButton>
-          </ListItemDecorator>
-          <ListItemContent sx={{ fontSize: 'sm' }}>
-            {option.label}
-            <Typography level="body-xs">
-              {option.desc}
-            </Typography>
-          </ListItemContent>
-        </AutocompleteOption>
-      )}
-      onChange={(e, value) => {
+      renderOption={(props, option) => {
+        const { key, ...rest }: any = props; //Temporary solution - key has no exported type (mui/joy thingy)
+        return (
+          <AutocompleteOption key={key} {...rest}>
+            <ListItemDecorator>
+              <IconButton size='sm' sx={{ paddingRight: 1 }}>
+                {option.icon}
+              </IconButton>
+            </ListItemDecorator>
+            <ListItemContent sx={{ fontSize: 'sm' }}>
+              {option.label}
+              <Typography level="body-xs">
+                {option.desc}
+              </Typography>
+            </ListItemContent>
+          </AutocompleteOption>
+        )
+      }}
+      onChange={(_, value) => {
         if (value) {
           navigate(`${value.link}`)
         }
