@@ -24,7 +24,7 @@ export default function TopicPanel() {
         },
       }}
     >
-      <Sheet sx={{ my: 2, px: 2, py: 2 }}>
+      <Sheet sx={{ my: 2, px: 2 }}>
         {isLoading ?
           <Box mb={8}>
             {[1, 2, 3].map(x => (

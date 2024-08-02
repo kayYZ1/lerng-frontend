@@ -18,7 +18,7 @@ export default function Course() {
       }}
       >
         <BreadcrumbsCustom />
-        <Typography level="h2" component="h1" sx={{ mt: 1, mb: 2 }}>
+        <Typography component={"div"} level="h2" sx={{ mt: 1, mb: 2 }}>
           {isLoading ? <TypographySkeleton /> : data.title}
           {error ? "Something went wrong please refresh" : ""}
         </Typography>

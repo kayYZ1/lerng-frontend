@@ -34,12 +34,7 @@ export default function ContentList({ contents }: IContentListProps) {
       }}
     >
       {user.role === 'instructor' ?
-        <ListItemButton>
-          <ListItemDecorator>
-            <AddContentModal />
-          </ListItemDecorator>
-          Add new content
-        </ListItemButton>
+        <AddContentModal />
         : ""
       }
       {contents.map((content: Content, index: number) => (
@@ -48,7 +43,7 @@ export default function ContentList({ contents }: IContentListProps) {
           onClick={() => dispatch(setActiveContent(content))}
           selected={activeContent && activeContent.id === content.id ? true : false}
         >
-          <ListItemDecorator>
+          <ListItemDecorator sx={{ paddingLeft: 0.7 }}>
             {index + 1}
           </ListItemDecorator>
           {content.title}

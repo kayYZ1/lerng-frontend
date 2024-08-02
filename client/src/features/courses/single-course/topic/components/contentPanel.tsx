@@ -1,7 +1,6 @@
 import { Box, Stack, Typography, Divider, Chip, Sheet } from "@mui/joy";
 import { useSelector } from "react-redux";
 import { Fragment } from "react/jsx-runtime";
-import ReactPlayer from "react-player/lazy";
 
 import { selectActiveContent } from "app/slice/contents.slice"
 import { MovieOutlined } from "@mui/icons-material";
@@ -50,7 +49,13 @@ export default function ContentPanel() {
               </Divider>
               <Box display="flex" justifyContent="center" alignItems="center">
                 <Sheet variant="soft" sx={{ p: 1, m: 1 }}>
-                  <ReactPlayer controls pip width="100%" url={activeContent.videoUrl} />
+                  {/*<ReactPlayer controls pip width="100%" url={activeContent.videoUrl} config={{
+                    file: {
+                      attributes: {
+                        crossOriginIsolated: false
+                      }
+                    }
+                  }} />*/}
                 </Sheet>
               </Box>
             </Box>

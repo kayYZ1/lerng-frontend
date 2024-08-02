@@ -17,11 +17,11 @@ export default function Topic() {
       }}
       >
         <BreadcrumbsCustom />
-        <Typography level="h2" sx={{ mt: 1, mb: 1 }}>
+        <Typography component={"div"} level="h2" sx={{ mt: 1, mb: 1 }}>
           {isLoading ? <TypographySkeleton /> : data.title}
           {error ? "Something went wrong please refresh" : ""}
         </Typography>
-        <Typography level="body-md">
+        <Typography component={"div"} level="body-md">
           {isLoading ? <TypographySkeleton /> : data.description}
         </Typography>
       </Box>

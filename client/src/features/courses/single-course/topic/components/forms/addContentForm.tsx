@@ -45,7 +45,7 @@ export default function AddContentForm({ setOpen }: ICloseModal) {
 
   return (
     <Sheet sx={{
-      width: "45vh"
+      width: "45vw"
     }} >
       <Card sx={{ flex: 1 }}>
         <Box>

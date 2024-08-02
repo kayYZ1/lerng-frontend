@@ -1,6 +1,5 @@
 import React from "react";
-import { IconButton, Modal } from "@mui/joy";
-import AddIcon from '@mui/icons-material/Add';
+import { ListItemButton, ListItemDecorator, Modal } from "@mui/joy";
 
 import AddContentForm from "../forms/addContentForm";
 
@@ -8,9 +7,11 @@ export default function AddContentModal() {
   const [open, setOpen] = React.useState<boolean>(false);
   return (
     <React.Fragment>
-      <IconButton onClick={() => setOpen(true)}>
-        <AddIcon />
-      </IconButton>
+      <ListItemButton onClick={() => setOpen(true)}>
+        <ListItemDecorator>
+        </ListItemDecorator>
+        Add new content
+      </ListItemButton>
       <Modal
         open={open}
         onClose={() => setOpen(false)}

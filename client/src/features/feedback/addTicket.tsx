@@ -13,6 +13,8 @@ import { useFormik } from "formik";
 import AddIcon from "@mui/icons-material/Add";
 import { EnrolledCourses } from 'shared/ts/types';
 import { useAddFeedbackTicketMutation } from 'app/api/feedback.slice';
+import { transformErrorResponse } from 'shared/lib/functions';
+import ErrorAlert from 'shared/components/errorAlert';
 
 const validationSchema = yup.object().shape({
   problem: yup.string().required('This field is required').max(40, "Too long"),
@@ -23,7 +25,9 @@ export default function AddTicket({ course }: EnrolledCourses) {
   const [layout, setLayout] = useState<ModalDialogProps['layout'] | undefined>(
     undefined,
   );
-  const [AddFeedbackTicket, { isLoading }] = useAddFeedbackTicketMutation();
+  const [AddFeedbackTicket, { isLoading, error }] = useAddFeedbackTicketMutation();
+
+  const errorMessage = transformErrorResponse(error);
 
   const formik = useFormik({
     initialValues: {
@@ -87,9 +91,10 @@ export default function AddTicket({ course }: EnrolledCourses) {
                 </Button>
               </form>
             </Stack>
+            {error ? <ErrorAlert message={errorMessage} type="Add ticket error" /> : ""}
           </DialogContent>
-        </ModalDialog >
-      </Modal >
-    </Fragment >
+        </ModalDialog>
+      </Modal>
+    </Fragment>
   );
 }

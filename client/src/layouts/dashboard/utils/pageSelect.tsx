@@ -1,6 +1,6 @@
 import Autocomplete from '@mui/joy/Autocomplete';
 import { Typography, AutocompleteOption, ListItemDecorator, ListItemContent, IconButton } from '@mui/joy';
-import { SearchPageOptions } from '../utils/searchPageOptions';
+import { SearchPageOptions } from './searchPageOptions';
 import { useNavigate } from 'react-router-dom';
 
 export default function PageSelect() {

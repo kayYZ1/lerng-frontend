@@ -35,7 +35,7 @@ import ColorSchemeToggle from 'shared/components/colorToggle';
 import { useGetMeQuery } from 'app/api/auth.api.slice';
 import { useSignOutFnMutation } from 'app/api/auth.api.slice';
 import { signOut } from 'app/slice/auth.slice';
-import PageSelect from './pageSelect';
+import PageSelect from '../utils/pageSelect';
 
 import LerngLogo from "assets/svg/logo-no-background.svg"
 
