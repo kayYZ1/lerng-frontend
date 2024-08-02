@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Modal from '@mui/joy/Modal';
+import ModalDialog from '@mui/joy/ModalDialog';
 import IconButton from '@mui/joy/IconButton';
 import AddIcon from '@mui/icons-material/Add';
 
@@ -17,7 +18,9 @@ export default function AddTopicModal() {
         onClose={() => setOpen(false)}
         sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
       >
-        <AddTopicForm setOpen={setOpen} />
+        <ModalDialog>
+          <AddTopicForm setOpen={setOpen} />
+        </ModalDialog>
       </Modal>
     </React.Fragment>
   );

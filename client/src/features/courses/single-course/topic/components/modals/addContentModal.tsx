@@ -1,5 +1,6 @@
 import React from "react";
 import { ListItemButton, ListItemDecorator, Modal } from "@mui/joy";
+import ModalDialog from "@mui/joy/ModalDialog";
 
 import AddContentForm from "../forms/addContentForm";
 
@@ -17,7 +18,9 @@ export default function AddContentModal() {
         onClose={() => setOpen(false)}
         sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
       >
-        <AddContentForm setOpen={setOpen} />
+        <ModalDialog>
+          <AddContentForm setOpen={setOpen} />
+        </ModalDialog>
       </Modal>
     </React.Fragment>
   );

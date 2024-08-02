@@ -1,6 +1,8 @@
 import * as React from 'react';
 import Button from '@mui/joy/Button';
 import Modal from '@mui/joy/Modal';
+import ModalDialog from '@mui/joy/ModalDialog';
+
 import CreateCourseForm from './forms/createCourseForm';
 
 export default function AddCourseImageModal() {
@@ -15,7 +17,9 @@ export default function AddCourseImageModal() {
         onClose={() => setOpen(false)}
         sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
       >
-        <CreateCourseForm setOpen={setOpen} />
+        <ModalDialog>
+          <CreateCourseForm setOpen={setOpen} />
+        </ModalDialog>
       </Modal>
     </React.Fragment>
   );
