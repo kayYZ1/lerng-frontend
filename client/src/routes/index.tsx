@@ -5,7 +5,8 @@ import { AuthPath, DashboardPath, CoursesPath, DefaultPath } from "./paths";
 const Dashboard = lazy(() => import("features/dashboard/index"));
 const SettingsProfile = lazy(() => import("features/settings/index"));
 const Enrolled = lazy(() => import("features/enrolled/index"));
-const Feedback = lazy(() => import("features/feedback/index"))
+const Feedback = lazy(() => import("features/feedback/index"));
+const FeedbackInstructor = lazy(() => import("features/feedback/feedback-instructor/index"))
 
 const Courses = lazy(() => import("features/courses/index"))
 const SingleCourse = lazy(() => import("features/courses/single-course/index"))
@@ -42,6 +43,10 @@ const dashboardRoutes = [
 	{
 		path: DashboardPath.FEEDBACK,
 		element: <Feedback />
+	},
+	{
+		path: DashboardPath.FEEDBACK_INSTRUCTOR,
+		element: <FeedbackInstructor />
 	},
 	{
 		path: CoursesPath.COURSES,

@@ -4,22 +4,23 @@ import Sheet from '@mui/joy/Sheet';
 import Chip from '@mui/joy/Chip';
 import Typography from '@mui/joy/Typography';
 import Skeleton from '@mui/joy/Skeleton';
-
-import { useGetFeedbackTicketsQuery } from 'app/api/feedback.slice';
-import { FeedbackTicket } from 'shared/ts/types';
-import { parseDate } from 'shared/lib/functions';
+import Stack from '@mui/joy/Stack';
 import { ColorPaletteProp } from '@mui/joy';
 
-import ViewTicketModal from './components/viewTicketModal';
+import { useInstructorTicketsQuery } from 'app/api/feedback.slice';
+import { FeedbackTicket } from 'shared/ts/types';
+import { parseDate } from 'shared/lib/functions';
+import ChangeStatusModal from './statusChangeModal';
 
-export default function TicketsTable() {
-  const { data, isLoading } = useGetFeedbackTicketsQuery(undefined);
+export default function InstructorTickets() {
+  const { data, isLoading } = useInstructorTicketsQuery(undefined);
 
   return (
     <Sheet
       variant="outlined"
       sx={{
         display: "flex",
+        justifyContent: "center",
         flexDirection: "column",
       }}
     >
@@ -95,7 +96,9 @@ export default function TicketsTable() {
                     <Typography level="body-xs">{parseDate(ticket.updated)}</Typography>
                   </td>
                   <td>
-                    <ViewTicketModal />
+                    <Stack direction="row" p={1}>
+                      <ChangeStatusModal {...ticket} />
+                    </Stack>
                   </td>
                 </tr>
               ))}

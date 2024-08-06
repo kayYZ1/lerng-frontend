@@ -17,8 +17,27 @@ export const feedbackApiSlice = authApi.injectEndpoints({
       }),
       providesTags: ['Feedback'],
     }),
+    InstructorTickets: builder.query({
+      query: () => ({
+        url: '/feedback/tickets/instructor',
+        method: 'GET',
+      }),
+      providesTags: ['Feedback'],
+    }),
+    ChangeTicketStatus: builder.mutation({
+      query: (values) => ({
+        url: '/feedback/tickets/status',
+        method: 'PATCH',
+        body: values,
+      }),
+      invalidatesTags: ['Feedback'],
+    }),
   }),
 });
 
-export const { useAddFeedbackTicketMutation, useGetFeedbackTicketsQuery } =
-  feedbackApiSlice;
+export const {
+  useAddFeedbackTicketMutation,
+  useGetFeedbackTicketsQuery,
+  useInstructorTicketsQuery,
+  useChangeTicketStatusMutation,
+} = feedbackApiSlice;

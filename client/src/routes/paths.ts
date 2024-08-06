@@ -18,6 +18,7 @@ const DashboardPath = {
   SETTINGS: `${DASHBOARD}/settings`,
   ENROLLED: `${DASHBOARD}/enrolled`,
   FEEDBACK: `${DASHBOARD}/feedback`,
+  FEEDBACK_INSTRUCTOR: `${DASHBOARD}/feedback/instructor`,
 };
 
 const COURSES = `${DASHBOARD}/courses`;

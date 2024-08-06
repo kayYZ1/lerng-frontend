@@ -46,6 +46,7 @@ export default function Feedback() {
                   endAction={
                     <AddTicket {...enrolled} />
                   }
+                  key={enrolled.id}
                 >
                   <ListItemDecorator>
                     <Avatar src={enrolled.course.imageUrl} />

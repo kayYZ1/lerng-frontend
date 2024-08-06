@@ -163,7 +163,7 @@ export default function Header() {
               {data.role === 'instructor' ?
                 <MenuItem>
                   <FeedbackIcon />
-                  <Link to={""} className={style.link}>User's feedback</Link>
+                  <Link to={DashboardPath.FEEDBACK_INSTRUCTOR} className={style.link}>Feedback</Link>
                 </MenuItem> : ""
               }
               <ListDivider />
