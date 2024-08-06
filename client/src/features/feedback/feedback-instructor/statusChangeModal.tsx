@@ -29,7 +29,7 @@ export default function ChangeStatusModal(feedbackTicket: FeedbackTicket) {
 
   return (
     <Fragment>
-      <IconButton size='sm' color='primary' onClick={() => setOpen(true)}>Change status</IconButton>
+      <IconButton size='sm' color='primary' onClick={() => setOpen(true)} sx={{ padding: 1 }}>Change status</IconButton>
       <Modal
         open={open}
         onClose={() => setOpen(false)}
