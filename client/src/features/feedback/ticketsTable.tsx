@@ -95,7 +95,7 @@ export default function TicketsTable() {
                     <Typography level="body-xs">{parseDate(ticket.updated)}</Typography>
                   </td>
                   <td>
-                    <ViewTicketModal />
+                    <ViewTicketModal {...ticket} />
                   </td>
                 </tr>
               ))}

@@ -87,4 +87,5 @@ export type FeedbackTicket = {
   details: string;
   created: Date;
   updated: Date;
+  feedbackMessage: string | null;
 };
