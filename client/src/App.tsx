@@ -5,7 +5,10 @@ import AuthLayout from "layouts/auth/layout"
 
 import Page404 from "features/404"
 
-import { authRoutes, dashboardRoutes, defaultRoutes } from "routes"
+import DashboardRoutes from "routes/dashboard";
+import DefaultRoutes from "routes/default";
+import AuthRoutes from "routes/auth";
+
 import LandingPageLayout from "layouts/landing-page/layout"
 import AuthGuard from "guards/authGuard"
 import AppGuard from "guards/appGuard"
@@ -15,7 +18,7 @@ export default function App() {
     {
       element: <LandingPageLayout />,
       errorElement: <Page404 />,
-      children: defaultRoutes
+      children: DefaultRoutes
     },
     {
       element:
@@ -23,7 +26,7 @@ export default function App() {
           <DashboardLayout />
         </AppGuard>,
       errorElement: <Page404 />,
-      children: dashboardRoutes
+      children: DashboardRoutes
     },
     {
       element:
@@ -31,7 +34,7 @@ export default function App() {
           <AuthLayout />
         </AuthGuard>,
       errorElement: <Page404 />,
-      children: authRoutes
+      children: AuthRoutes
     },
   ])
 

@@ -1,15 +1,15 @@
-import React from "react";
+import { useState, Fragment } from "react";
 import { IconButton, Modal, Sheet } from "@mui/joy";
 
 import ZoomIn from '@mui/icons-material/ZoomIn';
+
 import { FeedbackTicket } from "shared/ts/types";
 
 export default function ViewTicketModal(feedbackTicket: FeedbackTicket) {
-  const [open, setOpen] = React.useState<boolean>(false);
+  const [open, setOpen] = useState<boolean>(false);
 
-  console.log(feedbackTicket)
   return (
-    <React.Fragment>
+    <Fragment>
       <IconButton onClick={() => setOpen(true)}>
         <ZoomIn />
       </IconButton>
@@ -22,6 +22,6 @@ export default function ViewTicketModal(feedbackTicket: FeedbackTicket) {
           {feedbackTicket.feedbackMessage ? feedbackTicket.feedbackMessage : ""}
         </Sheet>
       </Modal>
-    </React.Fragment>
+    </Fragment>
   );
 }

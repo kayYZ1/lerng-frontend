@@ -1,3 +1,4 @@
+import { ChangeEvent } from "react";
 import { Box, Typography, Sheet, Input, Divider } from "@mui/joy"
 import { SearchRounded } from "@mui/icons-material"
 import Select from '@mui/joy/Select';
@@ -12,24 +13,24 @@ import { useFilterCoursesMutation, useSortCoursesMutation } from "app/api/course
 export default function Courses() {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const [useFilterCourses] = useFilterCoursesMutation();
-  const [useSortCourses] = useSortCoursesMutation();
+  const [FilterCourses] = useFilterCoursesMutation();
+  const [SortCourses] = useSortCoursesMutation();
 
-  const handleSearchChange = (event: any) => {
+  const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
     const searchQueryValue: string = event.target.value;
 
     searchParams.set('search', searchQueryValue);
     setSearchParams(searchParams);
 
-    useFilterCourses(searchQueryValue);
+    FilterCourses(searchQueryValue);
   };
 
-  const handleSortChange = (_: any, value: string | null) => {
+  const handleSortChange = (_: unknown, value: string | null) => {
     if (value) {
       searchParams.set('sort', value);
       setSearchParams(searchParams);
 
-      useSortCourses(value);
+      SortCourses(value);
     }
   }
 
