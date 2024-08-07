@@ -88,4 +88,11 @@ export type FeedbackTicket = {
   created: Date;
   updated: Date;
   feedbackMessage: string | null;
+  course: {
+    title: string;
+  };
+  user?: {
+    email: string;
+    username: string;
+  };
 };

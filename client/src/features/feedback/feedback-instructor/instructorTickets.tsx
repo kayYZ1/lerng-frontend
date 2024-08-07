@@ -15,6 +15,8 @@ import ChangeStatusModal from './statusChangeModal';
 export default function InstructorTickets() {
   const { data, isLoading } = useInstructorTicketsQuery(undefined);
 
+  console.log(data)
+
   return (
     <Sheet
       variant="outlined"
@@ -38,6 +40,7 @@ export default function InstructorTickets() {
           <thead>
             <tr>
               <th>Ticket Id.</th>
+              <th>Course</th>
               <th>Problem</th>
               <th>Status</th>
               <th>Submit date</th>
@@ -64,12 +67,18 @@ export default function InstructorTickets() {
                   <td scope="row">
                     <Skeleton animation="wave" variant="text" />
                   </td>
+                  <td scope="row">
+                    <Skeleton animation="wave" variant="text" />
+                  </td>
                 </tr>
               ))
               : data.map((ticket: FeedbackTicket) => (
                 <tr key={ticket.id}>
                   <td>
                     <Typography level="body-xs">{ticket.ticket_id}</Typography>
+                  </td>
+                  <td>
+                    <Typography level="body-xs">{ticket.course.title}</Typography>
                   </td>
                   <td>
                     <Typography level="body-xs">{ticket.problem}</Typography>

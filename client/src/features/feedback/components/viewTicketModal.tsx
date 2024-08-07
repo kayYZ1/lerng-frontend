@@ -1,5 +1,5 @@
 import { useState, Fragment } from "react";
-import { IconButton, Modal, Sheet } from "@mui/joy";
+import { IconButton, Modal, Sheet, Typography } from "@mui/joy";
 
 import ZoomIn from '@mui/icons-material/ZoomIn';
 
@@ -19,7 +19,9 @@ export default function ViewTicketModal(feedbackTicket: FeedbackTicket) {
         sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
       >
         <Sheet>
-          {feedbackTicket.feedbackMessage ? feedbackTicket.feedbackMessage : ""}
+          <Typography level="title-md" padding={4}>
+            {feedbackTicket.user?.username} says {feedbackTicket.feedbackMessage}
+          </Typography>
         </Sheet>
       </Modal>
     </Fragment>
