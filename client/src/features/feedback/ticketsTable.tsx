@@ -86,9 +86,9 @@ export default function TicketsTable() {
                       size="sm"
                       color={
                         {
-                          active: 'success',
+                          active: 'neutral',
                           rejected: 'danger',
-                          resolved: 'neutral'
+                          resolved: 'success'
                         }[ticket.status] as ColorPaletteProp
                       }
                     >

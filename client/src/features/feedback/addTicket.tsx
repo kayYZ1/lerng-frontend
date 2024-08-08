@@ -60,39 +60,37 @@ export default function AddTicket({ course }: EnrolledCourses) {
       <Modal open={!!layout} onClose={() => setLayout(undefined)}>
         <ModalDialog layout={layout}>
           <ModalClose />
-          <DialogTitle>File a feedback ticket</DialogTitle>
-          <DialogContent>
-            <Stack direction="column">
-              <form onSubmit={formik.handleSubmit}>
-                <FormControl required>
-                  <FormLabel>Describe your problem (short)</FormLabel>
-                  <Input
-                    type="text"
-                    name="problem"
-                    value={formik.values.problem}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    error={formik.touched.problem && !!formik.errors.problem}
-                  />
-                </FormControl>
-                <FormControl required>
-                  <FormLabel>Details of the problem</FormLabel>
-                  <Textarea
-                    minRows={2}
-                    name="details"
-                    value={formik.values.details}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    error={formik.touched.details && !!formik.errors.details}
-                  />
-                </FormControl>
-                <Button type="submit" fullWidth loading={isLoading} sx={{ marginTop: 2 }}>
-                  Send
-                </Button>
-              </form>
+          <DialogTitle component="p" level="body-md">File a feedback ticket</DialogTitle>
+          <form onSubmit={formik.handleSubmit}>
+            <Stack direction="column" gap={1}>
+              <FormControl required>
+                <FormLabel>Describe your problem (short)</FormLabel>
+                <Input
+                  type="text"
+                  name="problem"
+                  value={formik.values.problem}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  error={formik.touched.problem && !!formik.errors.problem}
+                />
+              </FormControl>
+              <FormControl required>
+                <FormLabel>Details of the problem</FormLabel>
+                <Textarea
+                  minRows={2}
+                  name="details"
+                  value={formik.values.details}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  error={formik.touched.details && !!formik.errors.details}
+                />
+              </FormControl>
+              <Button type="submit" fullWidth loading={isLoading} sx={{ marginTop: 2 }}>
+                Send
+              </Button>
             </Stack>
-            {error ? <ErrorAlert message={errorMessage} type="Add ticket error" /> : ""}
-          </DialogContent>
+          </form>
+          {error ? <ErrorAlert message={errorMessage} type="Add ticket error" /> : ""}
         </ModalDialog>
       </Modal>
     </Fragment>

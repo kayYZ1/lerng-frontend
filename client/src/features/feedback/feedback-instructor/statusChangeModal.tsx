@@ -46,7 +46,9 @@ export default function ChangeStatusModal(feedbackTicket: FeedbackTicket) {
         sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
       >
         <ModalDialog>
-          <Sheet>
+          <Sheet sx={{
+            maxWidth: 400
+          }}>
             <Typography level="title-md" pb={1}>Change status</Typography>
             <form onSubmit={formik.handleSubmit}>
               <FormControl required>
@@ -57,11 +59,11 @@ export default function ChangeStatusModal(feedbackTicket: FeedbackTicket) {
                   <Radio value="resolved" label="Resolved" variant="outlined" />
                 </RadioGroup>
               </FormControl>
-              <FormControl required>
+              <FormControl>
                 <FormLabel>Feedback message</FormLabel>
                 <Textarea
                   name="feedbackMessage"
-                  placeholder="Write a response to the user"
+                  placeholder={feedbackTicket.feedbackMessage ? feedbackTicket.feedbackMessage : "Write response to the user here."}
                   value={formik.values.feedbackMessage}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}

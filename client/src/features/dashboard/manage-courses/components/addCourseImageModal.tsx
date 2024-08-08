@@ -9,7 +9,7 @@ export default function AddCourseImageModal() {
   const [open, setOpen] = React.useState<boolean>(false);
   return (
     <React.Fragment>
-      <Button variant="solid" color="primary" onClick={() => setOpen(true)}>
+      <Button color="primary" onClick={() => setOpen(true)} size='sm'>
         Create course
       </Button>
       <Modal
