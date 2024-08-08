@@ -64,7 +64,7 @@ export default function ViewTicketModal(feedbackTicket: FeedbackTicket) {
               </Box>
               <Box display="flex" justifyContent="flex-end">
                 <Typography level="body-xs">
-                  Last update at {parseDate(feedbackTicket.updated)}
+                  Last update: {parseDate(feedbackTicket.updated)}
                 </Typography>
               </Box>
             </Stack>

@@ -2,8 +2,9 @@ import { Box, Stack, Typography, AspectRatio, Container, Button, Avatar, AvatarG
 import { ArrowForward } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import { AuthPath } from 'routes/paths';
-import ColorSchemeToggle from 'shared/components/colorToggle';
 
+import LerngLogo from "assets/svg/logo-no-background.svg";
+import ColorSchemeToggle from 'shared/components/colorToggle';
 import { useGetLatestUsersQuery } from 'app/api/users.api.slice';
 import { UserLandingPage } from 'shared/ts/types';
 import Carousel from './components/carousel';
@@ -12,15 +13,11 @@ export default function LandingPage() {
   const { data, isLoading, error } = useGetLatestUsersQuery(undefined);
 
   return (
-    <Box paddingTop={"1vh"}>
-      <Box component={"nav"} sx={{
-        height: "5vh", boxShadow: "-4px -4px 50px -20px rgba(66, 68, 90, 1);", padding: "1vh 1vw 1vh 1vw"
-      }}>
+    <Box>
+      <Box p={2}>
         <Stack direction={"row"} justifyContent={"space-between"}>
-          <Typography level="title-md" paddingTop={"0.5vh"}>Learn Linux</Typography>
-          <Box>
-            <ColorSchemeToggle />
-          </Box>
+          <img src={LerngLogo} width={96} height={96} />
+          <ColorSchemeToggle />
         </Stack>
       </Box>
       <Container
@@ -64,7 +61,7 @@ export default function LandingPage() {
             fontWeight="xl"
             fontSize="clamp(1.875rem, 1.3636rem + 2.1818vw, 3rem)"
           >
-            Learn Linux is a complex e-learning web application
+            LERNG is a complex e-learning web application
           </Typography>
           <Typography fontSize="lg" textColor="text.secondary" lineHeight="lg">
             Allowing to learn specialized knowledge about linux and it's distrubution systems from professionals.
