@@ -91,8 +91,4 @@ export type FeedbackTicket = {
   course: {
     title: string;
   };
-  user?: {
-    email: string;
-    username: string;
-  };
 };

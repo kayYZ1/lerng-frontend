@@ -4,7 +4,7 @@ export const feedbackApiSlice = authApi.injectEndpoints({
   endpoints: (builder) => ({
     AddFeedbackTicket: builder.mutation({
       query: (values) => ({
-        url: `/feedback/add-ticket`,
+        url: `/feedback/tickets/add`,
         method: 'POST',
         body: values,
       }),

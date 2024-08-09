@@ -44,6 +44,7 @@ export default function AddTicket({ course }: EnrolledCourses) {
 
       await AddFeedbackTicket(ticketFeedback);
       resetForm();
+      setLayout(undefined);
     }
   })
 
