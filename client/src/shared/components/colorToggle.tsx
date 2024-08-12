@@ -1,12 +1,13 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import { useColorScheme } from "@mui/joy";
 import { IconButton, Tooltip } from "@mui/joy";
 import { DarkModeRounded, LightModeRounded } from "@mui/icons-material";
 
 export default function ColorSchemeToggle() {
   const { mode, setMode } = useColorScheme();
-  const [mounted, setMounted] = React.useState(false);
-  React.useEffect(() => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
     setMounted(true);
   }, []);
   if (!mounted) {

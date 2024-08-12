@@ -1,14 +1,14 @@
-import { CssBaseline, CssVarsProvider } from '@mui/joy';
 import Container from '@mui/joy/Container';
 import { Outlet } from 'react-router-dom';
 
+import RootLayout from 'layouts/rootLayout';
+
 export default function LandingPageLayout() {
   return (
-    <CssVarsProvider>
-      <CssBaseline />
+    <RootLayout>
       <Container>
         <Outlet />
       </Container>
-    </CssVarsProvider>
+    </RootLayout>
   );
 }

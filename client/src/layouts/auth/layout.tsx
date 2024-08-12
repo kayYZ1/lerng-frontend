@@ -1,30 +1,18 @@
 import { Suspense } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 
-import { CssVarsProvider } from '@mui/joy/styles';
-import GlobalStyles from '@mui/joy/GlobalStyles';
-import CssBaseline from '@mui/joy/CssBaseline';
 import Box from '@mui/joy/Box';
 import Typography from '@mui/joy/Typography';
 import { IconButton, Link } from '@mui/joy';
 import ColorSchemeToggle from 'shared/components/colorToggle';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import RootLayout from 'layouts/rootLayout';
 
 export default function AuthLayout() {
   const navigate = useNavigate();
 
   return (
-    <CssVarsProvider defaultMode="dark">
-      <CssBaseline />
-      <GlobalStyles
-        styles={{
-          ':root': {
-            '--Collapsed-breakpoint': '769px',
-            '--Cover-width': '50vw',
-            '--Form-maxWidth': '800px',
-          },
-        }}
-      />
+    <RootLayout>
       <Box
         sx={(theme) => ({
           width: '100vw',
@@ -96,6 +84,6 @@ export default function AuthLayout() {
           </Box>
         </Box>
       </Box>
-    </CssVarsProvider>
+    </RootLayout>
   );
 }

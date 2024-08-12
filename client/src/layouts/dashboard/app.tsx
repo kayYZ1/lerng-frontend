@@ -1,9 +1,6 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
-import { CssVarsProvider } from '@mui/joy/styles';
-import CssBaseline from '@mui/joy/CssBaseline';
-
 import Root from './wrappers/root';
 import TopNav from './wrappers/topNav';
 import SideNav from './wrappers/sideNav';
@@ -12,11 +9,11 @@ import Main from './wrappers/main';
 import Header from './components/header';
 import Navigation from './components/navigation';
 import SuspenseCircle from 'shared/components/suspenseCircle';
+import RootLayout from 'layouts/rootLayout';
 
 export default function DashboardLayout() {
   return (
-    <CssVarsProvider disableTransitionOnChange>
-      <CssBaseline />
+    <RootLayout>
       <Root>
         <TopNav>
           <Header />
@@ -30,6 +27,6 @@ export default function DashboardLayout() {
           </Suspense>
         </Main>
       </Root>
-    </CssVarsProvider>
+    </RootLayout>
   );
 }
