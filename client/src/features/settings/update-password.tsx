@@ -57,58 +57,60 @@ export default function UpdatePassword() {
       <Divider />
       <Stack spacing={2} sx={{ my: 1 }}>
         <form onSubmit={formik.handleSubmit}>
-          <FormControl required>
-            <FormLabel>Current password</FormLabel>
-            <Input
-              type="password"
-              name="password"
-              startDecorator={<KeyRoundedIcon />}
-              value={formik.values.password}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.password && !!formik.errors.password}
-            />
-            {formik.touched.password ?
-              <FormHelperText component="div">{formik.errors.password}</FormHelperText> : ""}
-          </FormControl>
-          <FormControl required>
-            <FormLabel>Repeat current password</FormLabel>
-            <Input
-              type="password"
-              name="repeatPassword"
-              startDecorator={<LockResetRoundedIcon />}
-              value={formik.values.repeatPassword}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.repeatPassword && !!formik.errors.repeatPassword}
-            />
-            {formik.touched.repeatPassword ?
-              <FormHelperText component="div">{formik.errors.repeatPassword}</FormHelperText> : ""}
-          </FormControl>
-          <FormControl required>
-            <FormLabel>New password</FormLabel>
-            <Input
-              type="password"
-              name="newPassword"
-              startDecorator={<PasswordRoundedIcon />}
-              value={formik.values.newPassword}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.newPassword && !!formik.errors.newPassword}
-            />
-            {formik.touched.newPassword ?
-              <FormHelperText component="div">{formik.errors.newPassword}</FormHelperText> : ""}
-          </FormControl>
-          <CardOverflow>
-            <CardActions sx={{ alignSelf: 'flex-end', pt: 2 }}>
-              <Button size="sm" variant="outlined" onClick={() => formik.resetForm()}>
-                Cancel
-              </Button>
-              <Button size="sm" variant="solid" type="submit" loading={isLoading}>
-                Save
-              </Button>
-            </CardActions>
-          </CardOverflow>
+          <Stack direction="column" gap={1}>
+            <FormControl required>
+              <FormLabel>Current password</FormLabel>
+              <Input
+                type="password"
+                name="password"
+                startDecorator={<KeyRoundedIcon />}
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={formik.touched.password && !!formik.errors.password}
+              />
+              {formik.touched.password ?
+                <FormHelperText component="div">{formik.errors.password}</FormHelperText> : ""}
+            </FormControl>
+            <FormControl required>
+              <FormLabel>Repeat current password</FormLabel>
+              <Input
+                type="password"
+                name="repeatPassword"
+                startDecorator={<LockResetRoundedIcon />}
+                value={formik.values.repeatPassword}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={formik.touched.repeatPassword && !!formik.errors.repeatPassword}
+              />
+              {formik.touched.repeatPassword ?
+                <FormHelperText component="div">{formik.errors.repeatPassword}</FormHelperText> : ""}
+            </FormControl>
+            <FormControl required>
+              <FormLabel>New password</FormLabel>
+              <Input
+                type="password"
+                name="newPassword"
+                startDecorator={<PasswordRoundedIcon />}
+                value={formik.values.newPassword}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={formik.touched.newPassword && !!formik.errors.newPassword}
+              />
+              {formik.touched.newPassword ?
+                <FormHelperText component="div">{formik.errors.newPassword}</FormHelperText> : ""}
+            </FormControl>
+            <CardOverflow>
+              <CardActions sx={{ alignSelf: 'flex-end', pt: 2 }}>
+                <Button size="sm" variant="outlined" onClick={() => formik.resetForm()}>
+                  Cancel
+                </Button>
+                <Button size="sm" variant="solid" type="submit" loading={isLoading}>
+                  Save
+                </Button>
+              </CardActions>
+            </CardOverflow>
+          </Stack>
           {error ? <WarningAlert type="Error while updating password" message={errorResponse} /> : ""}
         </form>
       </Stack>

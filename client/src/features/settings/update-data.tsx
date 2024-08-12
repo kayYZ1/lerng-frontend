@@ -81,8 +81,8 @@ export default function UpdateData(data: UserData) {
           <UpdateImageModal />
         </Stack>
         <Stack spacing={1} sx={{ flexGrow: 1 }}>
-          <Stack>
-            <form onSubmit={formik.handleSubmit}>
+          <form onSubmit={formik.handleSubmit}>
+            <Stack direction="column" gap={1}>
               <FormControl
                 sx={{
                   display: {
@@ -139,11 +139,11 @@ export default function UpdateData(data: UserData) {
                   </Button>
                 </CardActions>
               </CardOverflow>
-              {error ? <WarningAlert type="Error occured while updating data" message={errorResponse} /> : ""}
-            </form>
-          </Stack>
+            </Stack>
+            {error ? <WarningAlert type="Error occured while updating data" message={errorResponse} /> : ""}
+          </form>
         </Stack>
       </Stack>
-    </Card>
+    </Card >
   )
 }

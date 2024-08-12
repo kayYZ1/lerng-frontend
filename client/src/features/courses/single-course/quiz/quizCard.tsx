@@ -31,8 +31,8 @@ export default function QuizCard() {
         :
         <Box>
           <Card
-            size="md"
-            variant="plain"
+            size="sm"
+            variant="outlined"
             orientation="horizontal"
             sx={{
               textAlign: 'center',
@@ -85,9 +85,9 @@ export default function QuizCard() {
             </CardContent>
           </Card>
           {user.role === 'instructor' ?
-            <Box>
+            <Box py={2}>
               <Stack flexDirection="row" justifyContent="space-between" alignItems="flex-start">
-                <Typography fontSize="sm" sx={{ py: 2 }}>
+                <Typography fontSize="sm" py={1} pl={1}>
                   Set of questions
                 </Typography>
                 <AddQuestionModal />

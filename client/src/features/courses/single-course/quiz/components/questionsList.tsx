@@ -18,7 +18,7 @@ export default function QuestionsList(questions: Question[]) {
         expanded: "0.2s ease",
       }}
       sx={{
-        maxWidth: 700,
+        maxWidth: 400,
         [`& .${accordionSummaryClasses.indicator}`]: {
           transition: '0.2s',
         },

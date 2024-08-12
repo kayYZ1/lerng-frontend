@@ -44,8 +44,8 @@ export default function AddQuestionForm({ setOpen }: ICloseModal) {
         </Typography>
       </Box>
       <Divider />
-      <Stack gap={1}>
-        <form onSubmit={formik.handleSubmit}>
+      <form onSubmit={formik.handleSubmit}>
+        <Stack direction="column" gap={1}>
           <FormControl required>
             <FormLabel>Question</FormLabel>
             <Input
@@ -120,9 +120,9 @@ export default function AddQuestionForm({ setOpen }: ICloseModal) {
               </Button>
             </CardActions>
           </CardOverflow>
-        </form>
-        {error ? "Something went wrong" : ""}
-      </Stack>
+        </Stack>
+      </form>
+      {error ? "Something went wrong" : ""}
     </Card>
   )
 }

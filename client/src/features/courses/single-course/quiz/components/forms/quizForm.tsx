@@ -51,8 +51,8 @@ export default function QuizForm(questions: Question[]) {
             </Typography>
           </Box>
           <Divider />
-          <Stack sx={{ my: 1 }} gap={1}>
-            <form>
+          <form>
+            <Stack sx={{ my: 1 }} gap={1}>
               <FormControl required>
                 <FormLabel>Answer</FormLabel>
                 {
@@ -90,11 +90,11 @@ export default function QuizForm(questions: Question[]) {
                   }
                 </CardActions>
               </CardOverflow>
-            </form>
+            </Stack>
             <QuizTime setShowResult={setShowResult} />
-          </Stack>
+          </form>
         </Card>
       }
-    </Box>
+    </Box >
   )
 }

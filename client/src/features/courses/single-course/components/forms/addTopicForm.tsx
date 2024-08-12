@@ -46,8 +46,8 @@ export default function AddTopicForm({ setOpen }: ICloseModal) {
         </Typography>
       </Box>
       <Divider />
-      <Stack>
-        <form onSubmit={formik.handleSubmit}>
+      <form onSubmit={formik.handleSubmit}>
+        <Stack direction="column" gap={1}>
           <FormControl required>
             <FormLabel>Title</FormLabel>
             <Input
@@ -83,9 +83,9 @@ export default function AddTopicForm({ setOpen }: ICloseModal) {
               </Button>
             </CardActions>
           </CardOverflow>
-        </form>
-        {error ? <WarningAlert type="Topic creation error" message={errorResponse} /> : ""}
-      </Stack>
+        </Stack>
+      </form>
+      {error ? <WarningAlert type="Topic creation error" message={errorResponse} /> : ""}
     </Card>
   )
 }

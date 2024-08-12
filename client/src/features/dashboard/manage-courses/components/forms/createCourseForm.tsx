@@ -55,8 +55,8 @@ export default function CreateCourseFormd({ setOpen }: ICloseModal) {
         </Typography>
       </Box>
       <Divider />
-      <Stack>
-        <form onSubmit={formik.handleSubmit}>
+      <form onSubmit={formik.handleSubmit}>
+        <Stack direction="column" gap={1}>
           <FormControl required>
             <FormLabel>Course title</FormLabel>
             <Input
@@ -97,9 +97,9 @@ export default function CreateCourseFormd({ setOpen }: ICloseModal) {
               </Button>
             </CardActions>
           </CardOverflow>
-        </form>
-        {error ? <WarningAlert type="Course creation error" message={errorResponse} /> : ""}
-      </Stack>
-    </Card>
+        </Stack>
+      </form>
+      {error ? <WarningAlert type="Course creation error" message={errorResponse} /> : ""}
+    </Card >
   )
 }

@@ -51,8 +51,8 @@ export default function AddContentForm({ setOpen }: ICloseModal) {
         </Typography>
       </Box>
       <Divider />
-      <Stack>
-        <form onSubmit={formik.handleSubmit}>
+      <form onSubmit={formik.handleSubmit}>
+        <Stack direction="column" gap={1}>
           <FormControl required>
             <FormLabel>Title</FormLabel>
             <Input
@@ -130,9 +130,9 @@ export default function AddContentForm({ setOpen }: ICloseModal) {
               </Button>
             </CardActions>
           </CardOverflow>
-        </form>
-        {error ? "Something went wrong" : ""}
-      </Stack>
-    </Card>
+        </Stack>
+      </form>
+      {error ? "Something went wrong" : ""}
+    </Card >
   )
 }
