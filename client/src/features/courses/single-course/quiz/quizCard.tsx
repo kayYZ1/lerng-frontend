@@ -31,7 +31,7 @@ export default function QuizCard() {
         :
         <Box>
           <Card
-            size="lg"
+            size="md"
             variant="plain"
             orientation="horizontal"
             sx={{

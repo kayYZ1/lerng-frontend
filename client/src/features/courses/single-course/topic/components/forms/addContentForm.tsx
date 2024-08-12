@@ -4,7 +4,6 @@ import Divider from '@mui/joy/Divider';
 import Stack from '@mui/joy/Stack';
 import CardActions from '@mui/joy/CardActions';
 import CardOverflow from '@mui/joy/CardOverflow';
-import Sheet from "@mui/joy/Sheet"
 import { FormControl, FormHelperText, Input, FormLabel, Card, Typography, Box, Textarea } from '@mui/joy';
 import { useFormik } from 'formik';
 import * as yup from "yup"
@@ -44,100 +43,96 @@ export default function AddContentForm({ setOpen }: ICloseModal) {
   })
 
   return (
-    <Sheet sx={{
-      width: "45vw"
-    }} >
-      <Card sx={{ flex: 1 }}>
-        <Box>
-          <Typography level="title-md">Add content</Typography>
-          <Typography level="body-sm">
-            Add new content for selected topic
-          </Typography>
-        </Box>
-        <Divider />
-        <Stack sx={{ my: 1 }}>
-          <form onSubmit={formik.handleSubmit}>
-            <FormControl required>
-              <FormLabel>Title</FormLabel>
-              <Input
-                type="text"
-                name="title"
-                value={formik.values.title}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                error={formik.touched.title && !!formik.errors.title}
-              />
-              {formik.touched.title ?
-                <FormHelperText component="div">{formik.errors.title}</FormHelperText> : ""}
-            </FormControl>
-            <FormControl required>
-              <FormLabel>Description</FormLabel>
-              <Input
-                type="text"
-                name="description"
-                value={formik.values.description}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                error={formik.touched.description && !!formik.errors.description}
-              />
-              {formik.touched.description ?
-                <FormHelperText component="div">{formik.errors.description}</FormHelperText> : ""}
-            </FormControl>
-            <FormControl required>
-              <FormLabel>First paragraph</FormLabel>
-              <Textarea
-                name="paragraph150"
-                placeholder="First paragraph of text"
-                value={formik.values.paragraph150}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                minRows={2}
-                maxRows={4}
-              />
-              {formik.touched.paragraph150 ?
-                <FormHelperText component="div">{formik.errors.paragraph150}</FormHelperText> : ""}
-            </FormControl>
-            <FormControl required>
-              <FormLabel>Third paragraph</FormLabel>
-              <Textarea
-                name="paragraph300"
-                placeholder="Another paragraph of text"
-                value={formik.values.paragraph300}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                minRows={2}
-                maxRows={4}
-              />
-              {formik.touched.paragraph300 ?
-                <FormHelperText component="div">{formik.errors.paragraph300}</FormHelperText> : ""}
-            </FormControl>
-            <FormControl required>
-              <FormLabel>Video</FormLabel>
-              <Input
-                type="text"
-                name="videoUrl"
-                placeholder="Link to your recorded video on youtube, etc.."
-                value={formik.values.videoUrl}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-              />
-              {formik.touched.videoUrl ?
-                <FormHelperText component="div">{formik.errors.videoUrl}</FormHelperText> : ""}
-            </FormControl>
-            <CardOverflow>
-              <CardActions sx={{ alignSelf: 'flex-end', pt: 2 }}>
-                <Button size="sm" variant="outlined" onClick={() => setOpen(false)}>
-                  Cancel
-                </Button>
-                <Button size="sm" variant="solid" type="submit" loading={isLoading}>
-                  Save
-                </Button>
-              </CardActions>
-            </CardOverflow>
-          </form>
-          {error ? "Something went wrong" : ""}
-        </Stack>
-      </Card>
-    </Sheet >
+    <Card sx={{ flex: 1 }} variant="plain">
+      <Box>
+        <Typography level="title-md">Add content</Typography>
+        <Typography level="body-sm">
+          Add new content for selected topic
+        </Typography>
+      </Box>
+      <Divider />
+      <Stack>
+        <form onSubmit={formik.handleSubmit}>
+          <FormControl required>
+            <FormLabel>Title</FormLabel>
+            <Input
+              type="text"
+              name="title"
+              value={formik.values.title}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              error={formik.touched.title && !!formik.errors.title}
+            />
+            {formik.touched.title ?
+              <FormHelperText component="div">{formik.errors.title}</FormHelperText> : ""}
+          </FormControl>
+          <FormControl required>
+            <FormLabel>Description</FormLabel>
+            <Input
+              type="text"
+              name="description"
+              value={formik.values.description}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              error={formik.touched.description && !!formik.errors.description}
+            />
+            {formik.touched.description ?
+              <FormHelperText component="div">{formik.errors.description}</FormHelperText> : ""}
+          </FormControl>
+          <FormControl required>
+            <FormLabel>First paragraph</FormLabel>
+            <Textarea
+              name="paragraph150"
+              placeholder="First paragraph of text"
+              value={formik.values.paragraph150}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              minRows={2}
+              maxRows={4}
+            />
+            {formik.touched.paragraph150 ?
+              <FormHelperText component="div">{formik.errors.paragraph150}</FormHelperText> : ""}
+          </FormControl>
+          <FormControl required>
+            <FormLabel>Third paragraph</FormLabel>
+            <Textarea
+              name="paragraph300"
+              placeholder="Another paragraph of text"
+              value={formik.values.paragraph300}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              minRows={2}
+              maxRows={4}
+            />
+            {formik.touched.paragraph300 ?
+              <FormHelperText component="div">{formik.errors.paragraph300}</FormHelperText> : ""}
+          </FormControl>
+          <FormControl required>
+            <FormLabel>Video</FormLabel>
+            <Input
+              type="text"
+              name="videoUrl"
+              placeholder="Link to your recorded video on youtube, etc.."
+              value={formik.values.videoUrl}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            />
+            {formik.touched.videoUrl ?
+              <FormHelperText component="div">{formik.errors.videoUrl}</FormHelperText> : ""}
+          </FormControl>
+          <CardOverflow>
+            <CardActions sx={{ alignSelf: 'flex-end', pt: 2 }}>
+              <Button size="sm" variant="outlined" onClick={() => setOpen(false)}>
+                Cancel
+              </Button>
+              <Button size="sm" variant="solid" type="submit" loading={isLoading}>
+                Save
+              </Button>
+            </CardActions>
+          </CardOverflow>
+        </form>
+        {error ? "Something went wrong" : ""}
+      </Stack>
+    </Card>
   )
 }

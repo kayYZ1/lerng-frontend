@@ -51,7 +51,7 @@ export default function QuizForm(questions: Question[]) {
             </Typography>
           </Box>
           <Divider />
-          <Stack sx={{ my: 1 }}>
+          <Stack sx={{ my: 1 }} gap={1}>
             <form>
               <FormControl required>
                 <FormLabel>Answer</FormLabel>

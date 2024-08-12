@@ -4,7 +4,6 @@ import Divider from '@mui/joy/Divider';
 import Stack from '@mui/joy/Stack';
 import CardActions from '@mui/joy/CardActions';
 import CardOverflow from '@mui/joy/CardOverflow';
-import Sheet from "@mui/joy/Sheet"
 import { FormControl, FormHelperText, Input, FormLabel, Card, Typography, Box } from '@mui/joy';
 import { useFormik } from 'formik';
 import * as yup from "yup";
@@ -39,58 +38,54 @@ export default function AddTopicForm({ setOpen }: ICloseModal) {
   })
 
   return (
-    <Sheet sx={{
-      width: "45vh"
-    }}>
-      <Card sx={{ flex: 1 }}>
-        <Box>
-          <Typography level="title-md">Add topic</Typography>
-          <Typography level="body-sm">
-            Add a new topic to the course
-          </Typography>
-        </Box>
-        <Divider />
-        <Stack sx={{ my: 1 }}>
-          <form onSubmit={formik.handleSubmit}>
-            <FormControl required>
-              <FormLabel>Title</FormLabel>
-              <Input
-                type="text"
-                name="title"
-                value={formik.values.title}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                error={formik.touched.title && !!formik.errors.title}
-              />
-              {formik.touched.title ?
-                <FormHelperText component="div">{formik.errors.title}</FormHelperText> : ""}
-            </FormControl>
-            <FormControl required>
-              <FormLabel>Description</FormLabel>
-              <Input
-                type="text"
-                name="description"
-                value={formik.values.description}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-              />
-              {formik.touched.description ?
-                <FormHelperText component="div">{formik.errors.description}</FormHelperText> : ""}
-            </FormControl>
-            <CardOverflow>
-              <CardActions sx={{ alignSelf: 'flex-end', pt: 2 }}>
-                <Button size="sm" variant="outlined" onClick={() => setOpen(false)}>
-                  Cancel
-                </Button>
-                <Button size="sm" variant="solid" type="submit" loading={isLoading}>
-                  Save
-                </Button>
-              </CardActions>
-            </CardOverflow>
-          </form>
-          {error ? <WarningAlert type="Topic creation error" message={errorResponse} /> : ""}
-        </Stack>
-      </Card>
-    </Sheet>
+    <Card sx={{ flex: 1 }} variant='plain'>
+      <Box>
+        <Typography level="title-md">Add topic</Typography>
+        <Typography level="body-sm">
+          Add a new topic to the course
+        </Typography>
+      </Box>
+      <Divider />
+      <Stack>
+        <form onSubmit={formik.handleSubmit}>
+          <FormControl required>
+            <FormLabel>Title</FormLabel>
+            <Input
+              type="text"
+              name="title"
+              value={formik.values.title}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              error={formik.touched.title && !!formik.errors.title}
+            />
+            {formik.touched.title ?
+              <FormHelperText component="div">{formik.errors.title}</FormHelperText> : ""}
+          </FormControl>
+          <FormControl required>
+            <FormLabel>Description</FormLabel>
+            <Input
+              type="text"
+              name="description"
+              value={formik.values.description}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            />
+            {formik.touched.description ?
+              <FormHelperText component="div">{formik.errors.description}</FormHelperText> : ""}
+          </FormControl>
+          <CardOverflow>
+            <CardActions sx={{ alignSelf: 'flex-end', pt: 2 }}>
+              <Button size="sm" variant="outlined" onClick={() => setOpen(false)}>
+                Cancel
+              </Button>
+              <Button size="sm" variant="solid" type="submit" loading={isLoading}>
+                Save
+              </Button>
+            </CardActions>
+          </CardOverflow>
+        </form>
+        {error ? <WarningAlert type="Topic creation error" message={errorResponse} /> : ""}
+      </Stack>
+    </Card>
   )
 }
