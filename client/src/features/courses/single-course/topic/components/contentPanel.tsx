@@ -20,7 +20,7 @@ export default function ContentPanel() {
               {activeContent.description}
             </Typography>
           </Stack>
-          <Box mx={2} my={2}>
+          <Box p={2}>
             <Box sx={{ textAlign: "center" }}>
               <Divider>
                 <Chip variant="soft" color="neutral" size="sm">

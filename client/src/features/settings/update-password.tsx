@@ -103,7 +103,7 @@ export default function UpdatePassword() {
             <CardOverflow>
               <CardActions sx={{ alignSelf: 'flex-end', pt: 2 }}>
                 <Button size="sm" variant="outlined" onClick={() => formik.resetForm()}>
-                  Cancel
+                  Clear
                 </Button>
                 <Button size="sm" variant="solid" type="submit" loading={isLoading}>
                   Save

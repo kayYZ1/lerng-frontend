@@ -32,7 +32,7 @@ export default function QuizCard() {
         <Box>
           <Card
             size="sm"
-            variant="outlined"
+            variant="plain"
             orientation="horizontal"
             sx={{
               textAlign: 'center',
