@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import Button from '@mui/joy/Button';
-import { Box, Stack } from '@mui/joy';
+import { Box, Sheet, Stack, Typography } from '@mui/joy';
 import { CloudUploadRounded } from '@mui/icons-material';
 
 import { useUpdateUserImageMutation } from 'app/api/users.api.slice';
@@ -13,6 +13,7 @@ export default function FileUploadComponent() {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [validationError, setValidationError] = useState("");
+  const [file, setFile] = useState<File>();
   const [UpdateUserImage, { isLoading, isSuccess }] = useUpdateUserImageMutation();
 
   const uploadPreset: string = import.meta.env.VITE_UPLOAD_PRESET;
@@ -31,6 +32,8 @@ export default function FileUploadComponent() {
     const selectedFile = fileList[0];
     const fileExtension = selectedFile.name.split('.').pop()?.toLowerCase();
     const maxFileSize = 1024 * 1024 * 5;
+
+    setFile(selectedFile);
 
     if (fileExtension !== "png") {
       setValidationError("Only png files are allowed.")
@@ -62,7 +65,16 @@ export default function FileUploadComponent() {
 
   return (
     <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
-      <Stack direction="column" width={"100%"}>
+      <Stack direction="column" width={"100%"} gap={1}>
+        <Sheet variant='outlined' color="neutral" sx={{ p: 2 }}>
+          {file ?
+            <Typography level="body-sm" sx={{
+              color: validationError ? "red" : "green"
+            }}>
+              {file.name}
+            </Typography> :
+            "Upload image..."}
+        </Sheet>
         <Button
           onClick={onFileUpload}
           component="label"
@@ -78,10 +90,8 @@ export default function FileUploadComponent() {
           Upload
           <input type="file" className={style.visuallyHiddenInput} ref={fileInputRef} onChange={onFileChange} accept='.png' />
         </Button>
-        <Box py={1}>
-          {isSuccess ? <SuccessAlert type="Image upload" message="Image upload was succesfull" /> : ""}
-          {validationError ? <ErrorAlert type="File upload error" message={validationError} /> : ""}
-        </Box>
+        {isSuccess ? <SuccessAlert type="Image upload" message="Image upload was succesfull" /> : ""}
+        {validationError ? <ErrorAlert type="File upload error" message={validationError} /> : ""}
       </Stack>
     </Box >
   );
