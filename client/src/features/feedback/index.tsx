@@ -73,15 +73,8 @@ export default function Feedback() {
               flexDirection: { xs: 'column', sm: 'row' },
               alignItems: 'center',
               justifyContent: { xs: 'space-between', sm: 'flex-start' },
-              paddingBottom: 2
             }}
           >
-            <Input
-              size="sm"
-              placeholder="Search"
-              startDecorator={<SearchIcon />}
-              sx={{ flexGrow: 1 }}
-            />
           </Sheet>
           <TicketsTable />
         </Box>

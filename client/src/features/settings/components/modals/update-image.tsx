@@ -5,6 +5,7 @@ import IconButton from "@mui/joy/IconButton";
 
 import EditRounded from '@mui/icons-material/EditRounded';
 import FileUploadComponent from '../file-upload';
+import { ModalClose, Typography } from '@mui/joy';
 
 export default function UpdateImageModal() {
   const [open, setOpen] = React.useState<boolean>(false);
@@ -29,6 +30,10 @@ export default function UpdateImageModal() {
       </IconButton>
       <Modal open={open} onClose={() => setOpen(false)}>
         <ModalDialog>
+          <ModalClose sx={{
+            marginTop: 1
+          }} />
+          <Typography pb={1}>Update your avatar</Typography>
           <form
             onSubmit={(event: React.FormEvent<HTMLFormElement>) => {
               event.preventDefault();

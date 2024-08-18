@@ -9,7 +9,6 @@ export default function SuccessAlert({ message, type }: IAlert) {
       variant="soft"
       color="success"
       startDecorator={<DoneIcon />}
-      sx={{ mt: 2 }}
     >
       <div>
         <div>{type}</div>

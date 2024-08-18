@@ -26,6 +26,8 @@ export default function FileUploadComponent() {
   };
 
   const onFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    setValidationError("")
+
     const fileList = event.target.files;
     if (!fileList) return;
 
