@@ -1,9 +1,11 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { FormControl, FormLabel, Input, Stack, Button, FormHelperText, Typography, Divider } from "@mui/joy";
 import { useFormik } from "formik";
 import * as yup from "yup";
 
 import style from "../auth.module.css"
+
+import { AuthPath } from "routes/paths";
 import { useResetPasswordFnMutation } from "app/api/auth.api.slice";
 import { transformErrorResponse } from "shared/lib/functions";
 import SuccessAlert from "shared/components/successAlert";
@@ -18,6 +20,7 @@ const validationSchema = yup.object().shape({
 export default function ResetPassword() {
   const [ResetPasswordFn, { isLoading, error, isSuccess }] = useResetPasswordFnMutation();
   const { token } = useParams<{ token: string }>();
+  const navigate = useNavigate();
 
   const errorResponse = transformErrorResponse(error);
 
@@ -32,8 +35,9 @@ export default function ResetPassword() {
         password: values.password,
         token
       }
-      await ResetPasswordFn(data)
+      await ResetPasswordFn(data);
       resetForm();
+      navigate(AuthPath.SIGN_IN);
     }
   })
 

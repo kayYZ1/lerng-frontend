@@ -31,9 +31,9 @@ export default function UpdateImageModal() {
       <Modal open={open} onClose={() => setOpen(false)}>
         <ModalDialog>
           <ModalClose sx={{
-            marginTop: 1
+            marginTop: 0.5
           }} />
-          <Typography pb={1}>Update your avatar</Typography>
+          <Typography pb={0.5}>Update your avatar</Typography>
           <form
             onSubmit={(event: React.FormEvent<HTMLFormElement>) => {
               event.preventDefault();
