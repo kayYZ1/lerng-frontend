@@ -20,7 +20,6 @@ import { useDispatch } from 'react-redux';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import FeedbackIcon from '@mui/icons-material/Feedback';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
@@ -105,7 +104,6 @@ export default function Header() {
         }}
       >
         <PageSelect />
-        <NotificationsIcon />
         <ColorSchemeToggle />
         <Dropdown>
           <MenuButton

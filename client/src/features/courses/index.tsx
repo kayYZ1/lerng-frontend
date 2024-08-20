@@ -21,7 +21,6 @@ export default function Courses() {
 
     searchParams.set('search', searchQueryValue);
     setSearchParams(searchParams);
-
     FilterCourses(searchQueryValue);
   };
 
@@ -29,7 +28,6 @@ export default function Courses() {
     if (value) {
       searchParams.set('sort', value);
       setSearchParams(searchParams);
-
       SortCourses(value);
     }
   }

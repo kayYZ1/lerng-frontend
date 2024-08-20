@@ -7,8 +7,8 @@ export default function TableSkeleton() {
       <thead>
         <tr>
           <th style={{ width: '50%' }}>Module name</th>
-          <th>Progress&nbsp;(%)</th>
-          <th>Points&nbsp;(_ / 5)</th>
+          <th>Progress</th>
+          <th>Points</th>
         </tr>
       </thead>
       <tbody>
@@ -26,13 +26,6 @@ export default function TableSkeleton() {
           </tr>
         ))}
       </tbody>
-      <tfoot>
-        <tr>
-          <th scope="row">Totals</th>
-          <td>??% course progress</td>
-          <td>points / maximum points</td>
-        </tr>
-      </tfoot>
     </Table>
   )
 }

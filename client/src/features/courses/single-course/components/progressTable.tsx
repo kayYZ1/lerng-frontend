@@ -17,7 +17,7 @@ export default function ProgressTable() {
           <thead>
             <tr>
               <th style={{ width: '50%' }}>Module name</th>
-              <th>Progress&nbsp;(%)</th>
+              <th>Progress</th>
               <th>Quiz Score</th>
             </tr>
           </thead>
@@ -30,13 +30,6 @@ export default function ProgressTable() {
               </tr>
             ))}
           </tbody>
-          <tfoot>
-            <tr>
-              <th scope="row">Totals</th>
-              <td></td>
-              <td></td>
-            </tr>
-          </tfoot>
         </Table>
       }
     </Box>
