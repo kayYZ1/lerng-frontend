@@ -1,10 +1,8 @@
-import { Box, Typography, Divider, Sheet, Input, Avatar } from "@mui/joy"
+import { Box, Typography, Divider, Sheet, Avatar } from "@mui/joy"
 import List from '@mui/joy/List';
 import ListItem from '@mui/joy/ListItem';
 import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import ListItemContent from '@mui/joy/ListItemContent';
-
-import SearchIcon from "@mui/icons-material/Search";
 
 import BreadcrumbsCustom from "shared/components/breadcrumbsCustom"
 import TicketsTable from "./ticketsTable"
