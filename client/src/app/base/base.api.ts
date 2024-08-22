@@ -8,8 +8,10 @@ import { RootState } from 'app/store';
 import { getCookie } from 'shared/lib/cookies';
 import { setCredentials, setRefreshToken, signOut } from '../slice/auth.slice';
 
+const prodUrl = import.meta.env.VITE_PROD_URL;
+
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'http://localhost:3000',
+  baseUrl: prodUrl || 'http://localhost:3000',
   prepareHeaders: (headers, { getState }) => {
     const state = getState() as RootState;
     const token = state.auth.token;
