@@ -9,23 +9,24 @@ export default function ProgressTable() {
   const { id } = useParams<{ id: string }>();
   const { data, isLoading } = useGetProgressQuery(id!);
 
+  console.log(data)
+
   return (
     <Box>
       {isLoading ? <TableSkeleton /> :
         <Table borderAxis="both">
-          <caption>Progress table for this course</caption>
           <thead>
             <tr>
               <th style={{ width: '50%' }}>Module name</th>
-              <th>Progress</th>
-              <th>Quiz Score</th>
+              <th>Percentage</th>
+              <th>Score</th>
             </tr>
           </thead>
           <tbody>
             {data.map((progress: Progress) => (
               <tr key={progress.id}>
                 <td>{progress.title}</td>
-                <td>{progress.progress}%</td>
+                <td>{progress.scorePercentage}%</td>
                 <td>{progress.quizScore}</td>
               </tr>
             ))}

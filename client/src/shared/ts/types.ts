@@ -42,7 +42,7 @@ export type Topic = {
 export type Progress = {
   id: string;
   title: string;
-  progress: number;
+  scorePercentage: number;
   quizScore: number;
 };
 

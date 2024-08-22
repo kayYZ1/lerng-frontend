@@ -7,8 +7,8 @@ export default function TableSkeleton() {
       <thead>
         <tr>
           <th style={{ width: '50%' }}>Module name</th>
-          <th>Progress</th>
-          <th>Points</th>
+          <th>Percentage</th>
+          <th>Score</th>
         </tr>
       </thead>
       <tbody>
