@@ -1,6 +1,15 @@
 import { useState, Fragment } from "react";
-import { IconButton, Modal, ModalDialog, Sheet, Box, Typography, Stack, Input, Textarea, ColorPaletteProp, Alert }
-  from "@mui/joy";
+
+import IconButton from "@mui/joy/IconButton";
+import Modal from "@mui/joy/Modal";
+import ModalDialog from "@mui/joy/ModalDialog";
+import Sheet from "@mui/joy/Sheet";
+import Box from "@mui/joy/Box";
+import Typography from "@mui/joy/Typography";
+import Stack from "@mui/joy/Stack";
+import Input from "@mui/joy/Input";
+import Textarea from "@mui/joy/Textarea";
+import { ColorPaletteProp, Alert } from "@mui/joy";
 
 import ZoomIn from '@mui/icons-material/ZoomIn';
 

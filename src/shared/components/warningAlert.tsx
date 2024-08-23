@@ -1,8 +1,9 @@
-import { Alert, Typography } from "@mui/joy";
+import Alert from '@mui/joy/Alert';
+import Typography from '@mui/joy/Typography';
 
-import { WarningRounded } from "@mui/icons-material";
+import WarningRounded from '@mui/icons-material/WarningRounded';
 
-import { IAlert } from "shared/ts/interfaces";
+import { IAlert } from 'shared/ts/interfaces';
 
 export default function WarningAlert({ type, message }: IAlert) {
   return (

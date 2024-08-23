@@ -1,8 +1,10 @@
-import { selectCurrentUser } from "app/slice/user.slice";
 import { useSelector } from "react-redux";
-import DashboardPanel from "./dashboardPanel";
 import { Navigate } from "react-router-dom";
+
+import { selectCurrentUser } from "app/slice/user.slice";
 import { CoursesPath } from "routes/paths";
+
+import DashboardPanel from "./dashboardPanel";
 
 export default function Dashboard() {
   const currentUser = useSelector(selectCurrentUser);

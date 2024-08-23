@@ -1,15 +1,24 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { FormControl, FormLabel, Input, Stack, Button, FormHelperText, Typography, Divider } from "@mui/joy";
+
+import FormControl from "@mui/joy/FormControl";
+import FormLabel from "@mui/joy/FormLabel";
+import Input from "@mui/joy/Input";
+import Stack from "@mui/joy/Stack";
+import Button from "@mui/joy/Button";
+import FormHelperText from "@mui/joy/FormHelperText";
+import Typography from "@mui/joy/Typography";
+import Divider from "@mui/joy/Divider";
+
 import { useFormik } from "formik";
 import * as yup from "yup";
-
-import style from "../auth.module.css"
 
 import { AuthPath } from "routes/paths";
 import { useResetPasswordFnMutation } from "app/api/auth.api.slice";
 import { transformErrorResponse } from "shared/lib/functions";
 import SuccessAlert from "shared/components/successAlert";
 import ErrorAlert from "shared/components/errorAlert";
+
+import style from "../auth.module.css";
 
 const validationSchema = yup.object().shape({
   password: yup.string().min(8, 'Password must be atleast 8 characters long').required('Password is required'),

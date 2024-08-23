@@ -1,14 +1,20 @@
 import { ChangeEvent } from "react";
-import { Box, Typography, Sheet, Input, Divider } from "@mui/joy"
-import { SearchRounded } from "@mui/icons-material"
+import { useSearchParams } from 'react-router-dom';
+
+import Box from "@mui/joy/Box";
+import Typography from "@mui/joy/Typography";
+import Sheet from "@mui/joy/Sheet";
+import Input from "@mui/joy/Input";
+import Divider from "@mui/joy/Divider";
 import Select from '@mui/joy/Select';
 import Option from '@mui/joy/Option';
 
-import { useSearchParams } from 'react-router-dom';
+import { SearchRounded } from "@mui/icons-material";
 
-import CourseList from "./components/courseList"
-import BreadcrumbsCustom from "shared/components/breadcrumbsCustom"
 import { useFilterCoursesMutation, useSortCoursesMutation } from "app/api/courses.api.slice";
+
+import CourseList from "./components/courseList";
+import BreadcrumbsCustom from "shared/components/breadcrumbsCustom";
 
 export default function Courses() {
   const [searchParams, setSearchParams] = useSearchParams();

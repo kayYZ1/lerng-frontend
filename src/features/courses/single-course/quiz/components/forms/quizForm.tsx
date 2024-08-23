@@ -5,7 +5,14 @@ import Divider from '@mui/joy/Divider';
 import Stack from '@mui/joy/Stack';
 import CardActions from '@mui/joy/CardActions';
 import CardOverflow from '@mui/joy/CardOverflow';
-import { FormControl, Input, FormLabel, Card, Typography, Box, RadioGroup, Radio } from '@mui/joy';
+import FormControl from '@mui/joy/FormControl';
+import Input from '@mui/joy/Input';
+import FormLabel from '@mui/joy/FormLabel';
+import Card from '@mui/joy/Card';
+import Typography from '@mui/joy/Typography';
+import Box from '@mui/joy/Box';
+import RadioGroup from '@mui/joy/RadioGroup';
+import Radio from '@mui/joy/Radio';
 
 import { Question } from 'shared/ts/types';
 import { QuestionType } from 'shared/enum';

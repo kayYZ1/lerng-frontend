@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom';
+
 import Avatar from '@mui/joy/Avatar';
 import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';

@@ -1,13 +1,19 @@
-import { Box, Stack, Typography, Divider, Chip, Sheet } from "@mui/joy";
+import { Fragment } from "react";
 import { useSelector } from "react-redux";
-import { Fragment } from "react/jsx-runtime";
 
-import { selectActiveContent } from "app/slice/contents.slice"
+import Box from "@mui/joy/Box";
+import Stack from "@mui/joy/Stack";
+import Typography from "@mui/joy/Typography";
+import Divider from "@mui/joy/Divider";
+import Chip from "@mui/joy/Chip";
+import Sheet from "@mui/joy/Sheet";
+
 import { MovieOutlined } from "@mui/icons-material";
+
+import { selectActiveContent } from "app/slice/contents.slice";
 
 export default function ContentPanel() {
   const activeContent = useSelector(selectActiveContent);
-
   return (
     <Fragment>
       {activeContent !== null ?

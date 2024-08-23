@@ -1,7 +1,9 @@
-import Alert from '@mui/joy/Alert'
-import { Typography } from '@mui/joy';
-import { IAlert } from 'shared/ts/interfaces';
+import Alert from '@mui/joy/Alert';
+import Typography from '@mui/joy/Typography';
+
 import DoneIcon from '@mui/icons-material/Done';
+
+import { IAlert } from 'shared/ts/interfaces';
 
 export default function SuccessAlert({ message, type }: IAlert) {
   return (

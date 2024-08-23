@@ -1,8 +1,11 @@
 import { useParams } from 'react-router-dom';
+
 import Table from '@mui/joy/Table';
+import Box from '@mui/joy/Box';
+
 import { Progress } from 'shared/ts/types';
 import { useGetProgressQuery } from 'app/api/progress.api.slice';
-import { Box } from '@mui/joy';
+
 import TableSkeleton from './skeletons/tableSkeleton';
 
 export default function ProgressTable() {

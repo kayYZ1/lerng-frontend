@@ -4,9 +4,9 @@ import AccordionDetails from '@mui/joy/AccordionDetails';
 import AccordionSummary, {
   accordionSummaryClasses,
 } from '@mui/joy/AccordionSummary';
+import Typography from '@mui/joy/Typography';
 
-import { Question } from "shared/ts/types";
-import { Typography } from '@mui/joy';
+import { Question } from 'shared/ts/types';
 
 export default function QuestionsList(questions: Question[]) {
   const questionsArray = Object.values(questions);

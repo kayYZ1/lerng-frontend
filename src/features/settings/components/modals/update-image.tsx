@@ -1,16 +1,19 @@
-import * as React from 'react';
+import { useState, Fragment } from 'react';
+
 import Modal from '@mui/joy/Modal';
 import ModalDialog from '@mui/joy/ModalDialog';
-import IconButton from "@mui/joy/IconButton";
+import IconButton from '@mui/joy/IconButton';
+import ModalClose from '@mui/joy/ModalClose';
+import Typography from '@mui/joy/Typography';
 
 import EditRounded from '@mui/icons-material/EditRounded';
+
 import FileUploadComponent from '../file-upload';
-import { ModalClose, Typography } from '@mui/joy';
 
 export default function UpdateImageModal() {
-  const [open, setOpen] = React.useState<boolean>(false);
+  const [open, setOpen] = useState<boolean>(false);
   return (
-    <React.Fragment>
+    <Fragment>
       <IconButton
         size="sm"
         variant="outlined"
@@ -44,6 +47,6 @@ export default function UpdateImageModal() {
           </form>
         </ModalDialog>
       </Modal>
-    </React.Fragment>
+    </Fragment>
   );
 }

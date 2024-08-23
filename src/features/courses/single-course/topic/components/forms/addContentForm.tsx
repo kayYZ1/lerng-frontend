@@ -1,12 +1,21 @@
 import { useParams } from 'react-router-dom';
+
 import Button from '@mui/joy/Button';
 import Divider from '@mui/joy/Divider';
 import Stack from '@mui/joy/Stack';
 import CardActions from '@mui/joy/CardActions';
 import CardOverflow from '@mui/joy/CardOverflow';
-import { FormControl, FormHelperText, Input, FormLabel, Card, Typography, Box, Textarea } from '@mui/joy';
+import FormControl from '@mui/joy/FormControl';
+import FormHelperText from '@mui/joy/FormHelperText';
+import Input from '@mui/joy/Input';
+import FormLabel from '@mui/joy/FormLabel';
+import Card from '@mui/joy/Card';
+import Typography from '@mui/joy/Typography';
+import Box from '@mui/joy/Box';
+import Textarea from '@mui/joy/Textarea';
+
 import { useFormik } from 'formik';
-import * as yup from "yup"
+import * as yup from 'yup';
 
 import { useNewContentMutation } from 'app/api/contents.api.slice';
 

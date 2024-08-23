@@ -1,16 +1,24 @@
 import { useState } from 'react';
+import { useFormik } from 'formik';
+import * as yup from "yup";
+
 import Button from '@mui/joy/Button';
 import Divider from '@mui/joy/Divider';
 import Stack from '@mui/joy/Stack';
 import CardActions from '@mui/joy/CardActions';
 import CardOverflow from '@mui/joy/CardOverflow';
-import { FormControl, FormHelperText, Input, FormLabel, Card, Typography, Box } from '@mui/joy';
-import { useFormik } from 'formik';
-import * as yup from "yup";
+import FormControl from '@mui/joy/FormControl';
+import FormHelperText from '@mui/joy/FormHelperText';
+import Input from '@mui/joy/Input';
+import FormLabel from '@mui/joy/FormLabel';
+import Card from '@mui/joy/Card';
+import Typography from '@mui/joy/Typography';
+import Box from '@mui/joy/Box';
 
-import AddCourseImage from '../addCourseImage';
 import { useCreateCourseMutation } from 'app/api/courses.api.slice';
 import { transformErrorResponse } from 'shared/lib/functions';
+
+import AddCourseImage from '../addCourseImage';
 import WarningAlert from 'shared/components/warningAlert';
 
 interface ICloseModal {

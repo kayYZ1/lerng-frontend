@@ -1,3 +1,7 @@
+import { Fragment } from 'react/jsx-runtime';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 import AspectRatio from '@mui/joy/AspectRatio';
 import IconButton from '@mui/joy/IconButton';
 import Tooltip from "@mui/joy/Tooltip";
@@ -5,15 +9,11 @@ import Tooltip from "@mui/joy/Tooltip";
 import LoginIcon from '@mui/icons-material/Login';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 
-import { Link, useNavigate } from 'react-router-dom';
-
 import { Course } from 'shared/ts/types';
-
-import style from "../courses.module.css"
-import { useSelector } from 'react-redux';
-import { Fragment } from 'react/jsx-runtime';
 import { selectCurrentUser } from 'app/slice/user.slice';
 import { useAddToEnrolledMutation } from 'app/api/enrolled.api.slice';
+
+import style from "../courses.module.css";
 
 interface ICourseEnrolled {
   isEnrolled: boolean;

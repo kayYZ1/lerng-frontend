@@ -1,3 +1,6 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
+
 import List from '@mui/joy/List';
 import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import ListItemButton from '@mui/joy/ListItemButton';
@@ -5,11 +8,10 @@ import ListItemButton from '@mui/joy/ListItemButton';
 import QuizIcon from '@mui/icons-material/Quiz';
 import HomeIcon from '@mui/icons-material/Home';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
 import { Content } from 'shared/ts/types';
 import { selectActiveContent, setActiveContent } from 'app/slice/contents.slice';
 import { selectCurrentUser } from 'app/slice/user.slice';
+
 import AddContentModal from './modals/addContentModal';
 
 interface IContentListProps {

@@ -1,6 +1,10 @@
 import { useLocation, Link } from "react-router-dom"
-import { Breadcrumbs, Typography } from "@mui/joy"
-import { ChevronRightOutlined, HomeRounded } from "@mui/icons-material"
+
+import Breadcrumbs from "@mui/joy/Breadcrumbs";
+import Typography from "@mui/joy/Typography";
+
+import ChevronRightOutlined from "@mui/icons-material/ChevronRightOutlined";
+import HomeRounded from "@mui/icons-material/HomeRounded";
 
 export default function BreadcrumbsCustom() {
   const location = useLocation();

@@ -1,12 +1,15 @@
 import { useSelector } from 'react-redux';
+
 import Stack from '@mui/joy/Stack';
-import { Typography, Box } from '@mui/joy';
+import Typography from '@mui/joy/Typography';
+import Box from '@mui/joy/Box';
 import AccordionGroup from '@mui/joy/AccordionGroup';
 import { accordionSummaryClasses } from '@mui/joy/AccordionSummary';
 
 import { Topic } from 'shared/ts/types';
-import TopicItem from './topicItem';
 import { selectCurrentUser } from 'app/slice/user.slice';
+
+import TopicItem from './topicItem';
 import AddTopicModal from './modals/addTopicModal';
 
 interface ITopicsListProps {

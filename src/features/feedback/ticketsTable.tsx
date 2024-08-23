@@ -4,12 +4,12 @@ import Sheet from '@mui/joy/Sheet';
 import Chip from '@mui/joy/Chip';
 import Typography from '@mui/joy/Typography';
 import Skeleton from '@mui/joy/Skeleton';
-
-import { useGetFeedbackTicketsQuery } from 'app/api/feedback.slice';
-import { FeedbackTicket } from 'shared/ts/types';
-import { parseDate } from 'shared/lib/functions';
 import { ColorPaletteProp } from '@mui/joy';
 
+import { useGetFeedbackTicketsQuery } from 'app/api/feedback.slice';
+
+import { FeedbackTicket } from 'shared/ts/types';
+import { parseDate } from 'shared/lib/functions';
 import ViewTicketModal from './components/viewTicketModal';
 
 export default function TicketsTable() {

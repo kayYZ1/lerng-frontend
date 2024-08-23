@@ -1,11 +1,21 @@
-import { Box, Stack, Typography, AspectRatio, Container, Button, Avatar, AvatarGroup } from '@mui/joy';
-import { ArrowForward } from '@mui/icons-material';
+import Box from '@mui/joy/Box';
+import Stack from '@mui/joy/Stack';
+import Typography from '@mui/joy/Typography';
+import AspectRatio from '@mui/joy/AspectRatio';
+import Container from '@mui/joy/Container';
+import Button from '@mui/joy/Button';
+import Avatar from '@mui/joy/Avatar';
+import AvatarGroup from '@mui/joy/AvatarGroup';
+
+import ArrowForward from '@mui/icons-material/ArrowForward';
+
 import { Link } from 'react-router-dom';
 import { AuthPath } from 'routes/paths';
 
-import LerngLogo from "assets/svg/logo-no-background.svg";
-import ColorSchemeToggle from 'shared/components/colorToggle';
 import { useGetLatestUsersQuery } from 'app/api/users.api.slice';
+
+import LerngLogo from 'assets/svg/logo-no-background.svg';
+import ColorSchemeToggle from 'shared/components/colorToggle';
 import { UserLandingPage } from 'shared/ts/types';
 import Carousel from './components/carousel';
 

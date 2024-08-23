@@ -1,7 +1,9 @@
-import { Box, Typography, Divider } from "@mui/joy"
+import Box from "@mui/joy/Box";
+import Typography from "@mui/joy/Typography";
+import Divider from "@mui/joy/Divider";
 
-import BreadcrumbsCustom from "shared/components/breadcrumbsCustom"
-import InstructorTickets from "./instructorTickets"
+import BreadcrumbsCustom from "shared/components/breadcrumbsCustom";
+import InstructorTickets from "./instructorTickets";
 
 export default function FeedbackInstructor() {
   return (

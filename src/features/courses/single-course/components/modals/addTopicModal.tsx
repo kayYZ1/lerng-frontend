@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState, Fragment } from 'react';
 import Modal from '@mui/joy/Modal';
 import ModalDialog from '@mui/joy/ModalDialog';
 import IconButton from '@mui/joy/IconButton';
@@ -7,9 +7,9 @@ import AddIcon from '@mui/icons-material/Add';
 import AddTopicForm from '../forms/addTopicForm';
 
 export default function AddTopicModal() {
-  const [open, setOpen] = React.useState<boolean>(false);
+  const [open, setOpen] = useState<boolean>(false);
   return (
-    <React.Fragment>
+    <Fragment>
       <IconButton onClick={() => setOpen(true)}>
         <AddIcon />
       </IconButton>
@@ -22,6 +22,6 @@ export default function AddTopicModal() {
           <AddTopicForm setOpen={setOpen} />
         </ModalDialog>
       </Modal>
-    </React.Fragment>
+    </Fragment>
   );
 }

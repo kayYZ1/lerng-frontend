@@ -1,7 +1,13 @@
-import Autocomplete from '@mui/joy/Autocomplete';
-import { Typography, AutocompleteOption, ListItemDecorator, ListItemContent, IconButton } from '@mui/joy';
-import { SearchPageOptions } from './searchPageOptions';
 import { useNavigate } from 'react-router-dom';
+
+import Autocomplete from '@mui/joy/Autocomplete';
+import Typography from '@mui/joy/Typography';
+import AutocompleteOption from '@mui/joy/AutocompleteOption';
+import ListItemDecorator from '@mui/joy/ListItemDecorator';
+import ListItemContent from '@mui/joy/ListItemContent';
+import IconButton from '@mui/joy/IconButton';
+
+import { SearchPageOptions } from './searchPageOptions';
 
 export default function PageSelect() {
   const navigate = useNavigate();

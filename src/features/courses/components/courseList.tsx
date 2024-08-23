@@ -1,14 +1,14 @@
-import { Box, Grid } from "@mui/joy"
+import { useSelector } from "react-redux";
+import { useSearchParams } from "react-router-dom";
 
-import { useGetCoursesQuery } from "app/api/courses.api.slice"
+import { Box, Grid } from "@mui/joy";
 
-import CourseItem from "./courseItem"
+import { useGetCoursesQuery } from "app/api/courses.api.slice";
+import { selectCourses } from "app/slice/courses.slice";
 
-import { Course } from "shared/ts/types"
-import CourseSkeleton from "./courseSkeleton"
-import { selectCourses } from "app/slice/courses.slice"
-import { useSelector } from "react-redux"
-import { useSearchParams } from "react-router-dom"
+import { Course } from "shared/ts/types";
+import CourseItem from "./courseItem";
+import CourseSkeleton from "./courseSkeleton";
 
 export default function CourseList() {
   const { data, isLoading } = useGetCoursesQuery(undefined);

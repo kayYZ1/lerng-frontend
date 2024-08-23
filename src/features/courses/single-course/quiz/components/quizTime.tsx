@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState, useEffect } from 'react';
 import LinearProgress from '@mui/joy/LinearProgress';
 
 interface IQuizResult {
@@ -6,9 +6,9 @@ interface IQuizResult {
 }
 
 export default function QuizTime({ setShowResult }: IQuizResult) {
-  const [progress, setProgress] = React.useState(100);
+  const [progress, setProgress] = useState(100);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const timer = setInterval(() => {
       setProgress((prevProgress) => (prevProgress < 0 ? 100 : prevProgress - 1));
     }, 1000);

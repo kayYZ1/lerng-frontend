@@ -1,4 +1,5 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+
 import AspectRatio from '@mui/joy/AspectRatio';
 import Button from '@mui/joy/Button';
 import Card from '@mui/joy/Card';
@@ -13,7 +14,6 @@ import SentimentSatisfiedIcon from '@mui/icons-material/SentimentSatisfied';
 import { useSaveQuizMutation } from 'app/api/progress.api.slice';
 import { useSelector } from 'react-redux';
 import { selectCurrentUser } from 'app/slice/user.slice';
-import { useNavigate } from 'react-router-dom';
 
 export default function ResultCard({ score }: { score: number }) {
   const user = useSelector(selectCurrentUser)

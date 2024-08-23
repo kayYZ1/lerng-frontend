@@ -1,4 +1,5 @@
-import * as React from 'react';
+import { useState } from 'react';
+
 import Modal from '@mui/joy/Modal';
 import IconButton from '@mui/joy/IconButton';
 import AddIcon from '@mui/icons-material/Add';
@@ -8,7 +9,7 @@ import ModalDialog from '@mui/joy/ModalDialog';
 import AddQuestionForm from '../forms/addQuestionForm';
 
 export default function AddQuestionModal() {
-  const [open, setOpen] = React.useState<boolean>(false);
+  const [open, setOpen] = useState<boolean>(false);
   return (
     <Box>
       <IconButton onClick={() => setOpen(true)}>

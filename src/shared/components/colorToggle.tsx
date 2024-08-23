@@ -1,7 +1,11 @@
-import { useEffect, useState } from "react";
-import { useColorScheme } from "@mui/joy";
-import { IconButton, Tooltip } from "@mui/joy";
-import { DarkModeRounded, LightModeRounded } from "@mui/icons-material";
+import { useEffect, useState } from 'react';
+
+import { useColorScheme } from '@mui/joy';
+import IconButton from '@mui/joy/IconButton';
+import Tooltip from '@mui/joy/Tooltip';
+
+import DarkModeRounded from '@mui/icons-material/DarkModeRounded';
+import LightModeRounded from '@mui/icons-material/LightModeRounded';
 
 export default function ColorSchemeToggle() {
   const { mode, setMode } = useColorScheme();

@@ -1,6 +1,9 @@
-import { Box, Typography, Divider } from "@mui/joy"
-import QuizCard from "./quizCard"
-import BreadcrumbsCustom from "shared/components/breadcrumbsCustom"
+import Box from "@mui/joy/Box";
+import Typography from "@mui/joy/Typography";
+import Divider from "@mui/joy/Divider";
+
+import QuizCard from "./quizCard";
+import BreadcrumbsCustom from "shared/components/breadcrumbsCustom";
 
 export default function Quiz() {
   return (

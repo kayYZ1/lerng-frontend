@@ -1,10 +1,13 @@
-import { Topic } from "shared/ts/types";
-import { Box, Button, Typography } from "@mui/joy";
 import { Link } from "react-router-dom";
 
+import Box from "@mui/joy/Box";
+import Button from "@mui/joy/Button";
+import Typography from "@mui/joy/Typography";
 import Accordion from '@mui/joy/Accordion';
 import AccordionDetails from '@mui/joy/AccordionDetails';
 import AccordionSummary from '@mui/joy/AccordionSummary';
+
+import { Topic } from "shared/ts/types";
 
 export default function TopicItem(item: Topic) {
   return (

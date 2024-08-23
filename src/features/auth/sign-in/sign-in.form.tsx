@@ -1,18 +1,26 @@
-import { Link } from "react-router-dom";
-import { FormControl, FormLabel, Input, Stack, Box, Button, FormHelperText } from "@mui/joy";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+import FormControl from "@mui/joy/FormControl";
+import FormLabel from "@mui/joy/FormLabel";
+import Input from "@mui/joy/Input";
+import Stack from "@mui/joy/Stack";
+import Box from "@mui/joy/Box";
+import Button from "@mui/joy/Button";
+import FormHelperText from "@mui/joy/FormHelperText";
+
 import { useFormik } from "formik";
 import * as yup from "yup";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 
 import { setCredentials } from "app/slice/auth.slice";
 import { useSignInFnMutation } from "app/api/auth.api.slice";
 import { UserSignIn } from "shared/ts/types";
 
-import style from "../auth.module.css"
 import ErrorAlert from "shared/components/errorAlert";
 import { DashboardPath, AuthPath } from "routes/paths";
 import { transformErrorResponse } from "shared/lib/functions";
+
+import style from "../auth.module.css";
 
 const validationSchema = yup.object().shape({
   email: yup.string().email('Invalid email').required('Email is required'),

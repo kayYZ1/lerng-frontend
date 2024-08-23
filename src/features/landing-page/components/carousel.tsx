@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
-import lpImage from "assets/png/imagelp1.png";
-import lpImage2 from "assets/png/imagelp2.png";
-import lpImage3 from "assets/png/imagelp3.png";
+import lpImage from "assets/svg/imagelp1.svg";
+import lpImage2 from "assets/svg/imagelp2.svg";
+import lpImage3 from "assets/svg/imagelp3.svg";
 
 const images = [
   lpImage, lpImage2, lpImage3

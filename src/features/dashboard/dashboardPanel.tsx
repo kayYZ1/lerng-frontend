@@ -1,4 +1,8 @@
-import { Box, Typography, Tabs, TabPanel, TabList } from "@mui/joy"
+import Box from "@mui/joy/Box";
+import Typography from "@mui/joy/Typography";
+import Tabs from "@mui/joy/Tabs";
+import TabPanel from "@mui/joy/TabPanel";
+import TabList from "@mui/joy/TabList";
 import Tab, { tabClasses } from '@mui/joy/Tab';
 
 import ManageCourses from "./manage-courses/index.tsx";

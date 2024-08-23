@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
+
 import AspectRatio from '@mui/joy/AspectRatio';
 import Button from '@mui/joy/Button';
 import Box from '@mui/joy/Box';
@@ -10,11 +11,13 @@ import Typography from '@mui/joy/Typography';
 import { CircularProgress, Stack } from '@mui/joy';
 
 import { QuizSharp } from '@mui/icons-material';
+
 import { useGetQuestionsQuery } from 'app/api/questions.api.slice';
-import QuizForm from './components/forms/quizForm';
-import QuestionsList from './components/questionsList';
 import { useSelector } from 'react-redux';
 import { selectCurrentUser } from 'app/slice/user.slice';
+
+import QuizForm from './components/forms/quizForm';
+import QuestionsList from './components/questionsList';
 import AddQuestionModal from './components/modals/addQuestionModal';
 
 export default function QuizCard() {

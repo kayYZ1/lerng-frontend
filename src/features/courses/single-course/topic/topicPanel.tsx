@@ -1,8 +1,12 @@
 import { useParams } from 'react-router-dom';
-import { Sheet, Box, Skeleton } from "@mui/joy"
 
-import ContentList from "./components/contentList"
+import Sheet from "@mui/joy/Sheet";
+import Box from "@mui/joy/Box";
+import Skeleton from "@mui/joy/Skeleton";
+
 import { useGetContentsQuery } from 'app/api/contents.api.slice';
+
+import ContentList from "./components/contentList";
 import ContentPanel from './components/contentPanel';
 
 export default function TopicPanel() {

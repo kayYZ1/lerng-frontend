@@ -1,4 +1,5 @@
-import { Skeleton, Table } from "@mui/joy";
+import Skeleton from "@mui/joy/Skeleton";
+import Table from "@mui/joy/Table";
 
 export default function TableSkeleton() {
   return (

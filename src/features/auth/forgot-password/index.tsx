@@ -1,9 +1,13 @@
-import { Link } from "react-router-dom"
-import { Stack, Typography, Divider } from "@mui/joy"
+import { Link } from "react-router-dom";
 
-import ForgotPasswordForm from "./forgot-password.form"
-import { AuthPath } from "routes/paths"
-import style from "../auth.module.css"
+import Stack from "@mui/joy/Stack";
+import Typography from "@mui/joy/Typography";
+import Divider from "@mui/joy/Divider";
+
+import ForgotPasswordForm from "./forgot-password.form";
+import { AuthPath } from "routes/paths";
+
+import style from "../auth.module.css";
 
 export default function ForgotPassword() {
   return (

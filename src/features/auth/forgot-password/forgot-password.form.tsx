@@ -1,12 +1,18 @@
-import { FormControl, FormLabel, Input, Stack, Button, FormHelperText } from "@mui/joy";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import FormControl from "@mui/joy/FormControl";
+import FormLabel from "@mui/joy/FormLabel";
+import Input from "@mui/joy/Input";
+import Stack from "@mui/joy/Stack";
+import Button from "@mui/joy/Button";
+import FormHelperText from "@mui/joy/FormHelperText";
 
-import style from "../auth.module.css"
 import { useForgotPasswordFnMutation } from "app/api/auth.api.slice";
 import { transformErrorResponse } from "shared/lib/functions";
 import ErrorAlert from "shared/components/errorAlert";
 import SuccessAlert from "shared/components/successAlert";
+
+import style from "../auth.module.css";
 
 const validationSchema = yup.object().shape({
   email: yup.string().email('Invalid email').required('Email is required'),

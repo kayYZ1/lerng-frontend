@@ -1,6 +1,7 @@
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import SignpostIcon from '@mui/icons-material/Signpost';
 import SettingsIcon from '@mui/icons-material/Settings';
+
 import { CoursesPath, DashboardPath } from 'routes/paths';
 
 export const SearchPageOptions = [

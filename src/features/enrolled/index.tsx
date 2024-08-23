@@ -1,12 +1,20 @@
-import { Navigate } from "react-router-dom"
-import { useSelector } from "react-redux"
-import { selectCurrentUser } from "app/slice/user.slice"
-import { Box, Typography, Sheet, Input, IconButton, Divider } from "@mui/joy"
-import { SearchRounded } from "@mui/icons-material"
+import { useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
 
-import EnrolledList from "./components/enrolledList"
-import { CoursesPath, DashboardPath } from "routes/paths"
-import BreadcrumbsCustom from "shared/components/breadcrumbsCustom"
+import { selectCurrentUser } from "app/slice/user.slice";
+import { CoursesPath, DashboardPath } from "routes/paths";
+
+import Box from "@mui/joy/Box";
+import Typography from "@mui/joy/Typography";
+import Sheet from "@mui/joy/Sheet";
+import Input from "@mui/joy/Input";
+import IconButton from "@mui/joy/IconButton";
+import Divider from "@mui/joy/Divider";
+
+import SearchRounded from "@mui/icons-material/SearchRounded";
+
+import EnrolledList from "./components/enrolledList";
+import BreadcrumbsCustom from "shared/components/breadcrumbsCustom";
 
 export default function Enrolled() {
   const user = useSelector(selectCurrentUser);

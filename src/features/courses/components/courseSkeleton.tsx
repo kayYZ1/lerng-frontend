@@ -1,4 +1,7 @@
-import { Card, AspectRatio, Skeleton, Typography } from "@mui/joy"
+import Card from "@mui/joy/Card";
+import AspectRatio from "@mui/joy/AspectRatio";
+import Skeleton from "@mui/joy/Skeleton";
+import Typography from "@mui/joy/Typography";
 
 export default function CourseSkeleton() {
   return (

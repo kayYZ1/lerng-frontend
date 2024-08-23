@@ -1,15 +1,16 @@
+import { useSelector } from 'react-redux';
+
 import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
 import CardOverflow from '@mui/joy/CardOverflow';
 import Divider from '@mui/joy/Divider';
-import Grid from '@mui/joy/Grid'
+import Grid from '@mui/joy/Grid';
 import Typography from '@mui/joy/Typography';
 
 import { Course } from 'shared/ts/types';
 import { parseDate } from 'shared/lib/functions';
-
-import { useSelector } from 'react-redux';
 import { selectMyCourses } from 'app/slice/enrolled.slice';
+
 import CourseCardType from './courseCardType';
 
 export default function CourseItem(item: Course) {

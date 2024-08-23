@@ -6,13 +6,17 @@ import Typography from '@mui/joy/Typography';
 import Card from '@mui/joy/Card';
 import CardActions from '@mui/joy/CardActions';
 import CardOverflow from '@mui/joy/CardOverflow';
-import { FormControl, Input, FormLabel, FormHelperText } from '@mui/joy';
-import { useFormik } from 'formik';
-import * as yup from "yup";
+import FormControl from '@mui/joy/FormControl';
+import Input from '@mui/joy/Input';
+import FormLabel from '@mui/joy/FormLabel';
+import FormHelperText from '@mui/joy/FormHelperText';
 
 import PasswordRoundedIcon from '@mui/icons-material/PasswordRounded';
 import LockResetRoundedIcon from '@mui/icons-material/LockResetRounded';
 import KeyRoundedIcon from '@mui/icons-material/KeyRounded';
+
+import { useFormik } from 'formik';
+import * as yup from 'yup';
 
 import { useUpdateUserPasswordMutation } from 'app/api/users.api.slice';
 import WarningAlert from 'shared/components/warningAlert';

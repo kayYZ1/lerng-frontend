@@ -1,4 +1,5 @@
 import Stack from '@mui/joy/Stack';
+import Divider from '@mui/joy/Divider';
 
 import SettingsLayout from 'layouts/settings/layout';
 
@@ -7,11 +8,9 @@ import { useGetMeQuery } from 'app/api/auth.api.slice';
 import ProfileSkeleton from './components/profileSkeleton';
 import UpdatePassword from './update-password';
 import UpdateData from './update-data';
-import { Divider } from '@mui/joy';
 
 export default function Profile() {
   const { data, isLoading } = useGetMeQuery(undefined);
-
   return (
     <SettingsLayout>
       <Stack

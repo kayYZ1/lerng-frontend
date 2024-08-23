@@ -15,7 +15,6 @@ import Drawer from '@mui/joy/Drawer';
 import ModalClose from '@mui/joy/ModalClose';
 import DialogTitle from '@mui/joy/DialogTitle';
 import Skeleton from '@mui/joy/Skeleton';
-import { useDispatch } from 'react-redux';
 
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
@@ -24,19 +23,16 @@ import FeedbackIcon from '@mui/icons-material/Feedback';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
-import TeamNav from "./navigation"
+import TeamNav from "./navigation";
 import { DashboardPath, AuthPath } from 'routes/paths';
-
-import style from "../dashboard.module.css"
-
+import style from "../dashboard.module.css";
 import ColorSchemeToggle from 'shared/components/colorToggle';
-
-import { useGetMeQuery } from 'app/api/auth.api.slice';
-import { useSignOutFnMutation } from 'app/api/auth.api.slice';
+import { useGetMeQuery, useSignOutFnMutation } from 'app/api/auth.api.slice';
 import { signOut } from 'app/slice/auth.slice';
 import PageSelect from '../utils/pageSelect';
+import LerngLogo from "assets/svg/logo-no-background.svg";
 
-import LerngLogo from "assets/svg/logo-no-background.svg"
+import { useDispatch } from 'react-redux';
 
 export default function Header() {
   const dispatch = useDispatch();

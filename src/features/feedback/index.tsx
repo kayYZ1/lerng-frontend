@@ -1,16 +1,20 @@
-import { Box, Typography, Divider, Sheet, Avatar } from "@mui/joy"
+import Box from '@mui/joy/Box';
+import Typography from '@mui/joy/Typography';
+import Divider from '@mui/joy/Divider';
+import Sheet from '@mui/joy/Sheet';
+import Avatar from '@mui/joy/Avatar';
 import List from '@mui/joy/List';
 import ListItem from '@mui/joy/ListItem';
 import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import ListItemContent from '@mui/joy/ListItemContent';
 
-import BreadcrumbsCustom from "shared/components/breadcrumbsCustom"
-import TicketsTable from "./ticketsTable"
-import AddTicket from "./addTicket"
+import BreadcrumbsCustom from 'shared/components/breadcrumbsCustom';
+import TicketsTable from './ticketsTable';
+import AddTicket from './addTicket';
 
-import { useGetEnrolledCoursesQuery } from "app/api/enrolled.api.slice";
-import { EnrolledCourses } from "shared/ts/types";
-import EnrolledListSkeleton from "./components/enrolledListSkeleton";
+import { useGetEnrolledCoursesQuery } from 'app/api/enrolled.api.slice';
+import { EnrolledCourses } from 'shared/ts/types';
+import EnrolledListSkeleton from './components/enrolledListSkeleton';
 
 export default function Feedback() {
   const { data, isLoading } = useGetEnrolledCoursesQuery(undefined);

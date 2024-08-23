@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+
 import List from '@mui/joy/List';
 import ListItem from '@mui/joy/ListItem';
 import ListItemButton from '@mui/joy/ListItemButton';
@@ -10,10 +11,11 @@ import FeedbackIcon from '@mui/icons-material/Feedback';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import SignpostIcon from '@mui/icons-material/Signpost';
 
-import { selectCurrentUser } from "app/slice/user.slice";
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
+import { selectCurrentUser } from 'app/slice/user.slice';
+
 import { CoursesPath, DashboardPath } from 'routes/paths';
-import style from "../dashboard.module.css"
+import style from '../dashboard.module.css';
 
 export default function RoleBasedList() {
   const user = useSelector(selectCurrentUser);

@@ -1,13 +1,16 @@
-import React from "react";
-import { ListItemButton, ListItemDecorator, Modal } from "@mui/joy";
+import { useState, Fragment } from "react";
+
+import ListItemButton from "@mui/joy/ListItemButton";
+import ListItemDecorator from "@mui/joy/ListItemDecorator";
+import Modal from "@mui/joy/Modal";
 import ModalDialog from "@mui/joy/ModalDialog";
 
 import AddContentForm from "../forms/addContentForm";
 
 export default function AddContentModal() {
-  const [open, setOpen] = React.useState<boolean>(false);
+  const [open, setOpen] = useState<boolean>(false);
   return (
-    <React.Fragment>
+    <Fragment>
       <ListItemButton onClick={() => setOpen(true)}>
         <ListItemDecorator>
         </ListItemDecorator>
@@ -22,6 +25,6 @@ export default function AddContentModal() {
           <AddContentForm setOpen={setOpen} />
         </ModalDialog>
       </Modal>
-    </React.Fragment>
+    </Fragment>
   );
 }

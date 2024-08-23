@@ -1,4 +1,6 @@
-import { Box, Sheet } from "@mui/joy"
+import Box from "@mui/joy/Box";
+import Sheet from "@mui/joy/Sheet";
+
 import CoursesTable from "./courses-table"
 
 export default function Statistics() {

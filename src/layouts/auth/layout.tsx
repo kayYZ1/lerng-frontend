@@ -3,9 +3,12 @@ import { Outlet, useNavigate } from 'react-router-dom';
 
 import Box from '@mui/joy/Box';
 import Typography from '@mui/joy/Typography';
-import { IconButton, Link } from '@mui/joy';
-import ColorSchemeToggle from 'shared/components/colorToggle';
+import IconButton from '@mui/joy/IconButton';
+import Link from '@mui/joy/Link';
+
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+
+import ColorSchemeToggle from 'shared/components/colorToggle';
 import RootLayout from 'layouts/rootLayout';
 
 export default function AuthLayout() {
