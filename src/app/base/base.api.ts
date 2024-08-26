@@ -12,7 +12,7 @@ const prodUrl = import.meta.env.VITE_PROD_URL;
 const localUrl = import.meta.env.VITE_DEV_URL;
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: localUrl || prodUrl,
+  baseUrl: import.meta.env.MODE === 'development' ? localUrl : prodUrl,
   prepareHeaders: (headers, { getState }) => {
     const state = getState() as RootState;
     const token = state.auth.token;

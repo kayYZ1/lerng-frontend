@@ -12,8 +12,6 @@ export default function ProgressTable() {
   const { id } = useParams<{ id: string }>();
   const { data, isLoading } = useGetProgressQuery(id!);
 
-  console.log(data)
-
   return (
     <Box>
       {isLoading ? <TableSkeleton /> :
