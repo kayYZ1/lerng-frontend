@@ -10,4 +10,8 @@ export default defineConfig({
     strictPort: true,
     port: 8080,
   },
+  preview: {
+    port: 8080,
+    strictPort: true,
+  },
 });
