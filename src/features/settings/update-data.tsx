@@ -64,9 +64,9 @@ export default function UpdateData(data: UserData) {
       <Divider />
       <Stack
         direction="row"
-        spacing={2}
+        spacing={1}
       >
-        <Stack direction="column" spacing={1}>
+        <Stack direction="column" spacing={0.5}>
           <AspectRatio
             ratio="1"
             maxHeight={200}
@@ -80,9 +80,9 @@ export default function UpdateData(data: UserData) {
           </AspectRatio>
           <UpdateImageModal />
         </Stack>
-        <Stack spacing={1} sx={{ flexGrow: 1 }}>
+        <Stack sx={{ flexGrow: 1 }}>
           <form onSubmit={formik.handleSubmit}>
-            <Stack direction="column" gap={1}>
+            <Stack direction="column" gap={0.5}>
               <FormControl
                 sx={{
                   display: {
