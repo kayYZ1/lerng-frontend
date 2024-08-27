@@ -56,7 +56,11 @@ export default function Feedback() {
                   <ListItemContent>
                     <Typography level="title-sm">{enrolled.course.title}</Typography>
                     <Typography level="body-sm" noWrap>
-                      {enrolled.course.description}
+                      {
+                        enrolled.course.description.length > 35 ?
+                          enrolled.course.description.slice(0, 35) + "..." :
+                          enrolled.course.description
+                      }
                     </Typography>
                   </ListItemContent>
                 </ListItem>

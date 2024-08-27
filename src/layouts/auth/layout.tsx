@@ -10,6 +10,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 import ColorSchemeToggle from 'shared/components/colorToggle';
 import RootLayout from 'layouts/rootLayout';
+import SuspenseCircle from 'shared/components/suspenseCircle';
 
 export default function AuthLayout() {
   const navigate = useNavigate();
@@ -76,7 +77,7 @@ export default function AuthLayout() {
               },
             }}
           >
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<SuspenseCircle />}>
               <Outlet />
             </Suspense>
           </Box>

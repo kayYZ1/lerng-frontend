@@ -15,8 +15,8 @@ export default function Profile() {
     <SettingsLayout>
       <Stack
         direction="column"
-        spacing={2}
-        sx={{ display: "flex", justifyContent: "center", alignItems: "center", my: 1 }}
+        spacing={1}
+        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
         <Divider />
         {isLoading ? <ProfileSkeleton /> : <UpdateData {...data} />}

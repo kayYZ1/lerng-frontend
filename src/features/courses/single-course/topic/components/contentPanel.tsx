@@ -1,3 +1,4 @@
+import ReactPlayer from "react-player/youtube";
 import { Fragment } from "react";
 import { useSelector } from "react-redux";
 
@@ -27,22 +28,10 @@ export default function ContentPanel() {
             </Typography>
           </Stack>
           <Box p={2}>
-            <Box sx={{ textAlign: "center" }}>
-              <Divider>
-                <Chip variant="soft" color="neutral" size="sm">
-                  1
-                </Chip>
-              </Divider>
+            <Box>
               <Typography fontWeight={300} py={1}>
                 {activeContent.paragraph150}
               </Typography>
-            </Box>
-            <Box sx={{ textAlign: "center" }}>
-              <Divider>
-                <Chip variant="soft" color="neutral" size="sm">
-                  2
-                </Chip>
-              </Divider>
               <Typography fontWeight={300} py={1}>
                 {activeContent.paragraph300}
               </Typography>
@@ -54,14 +43,8 @@ export default function ContentPanel() {
                 </Chip>
               </Divider>
               <Box display="flex" justifyContent="center" alignItems="center">
-                <Sheet variant="soft" sx={{ p: 1, m: 1 }}>
-                  {/*<ReactPlayer controls pip width="100%" url={activeContent.videoUrl} config={{
-                    file: {
-                      attributes: {
-                        crossOriginIsolated: false
-                      }
-                    }
-                  }} />*/}
+                <Sheet variant="soft" sx={{ p: 2, mt: 1, width: "100%" }}>
+                  <ReactPlayer pip stopOnUnmount light width="100%" url={activeContent.videoUrl} />
                 </Sheet>
               </Box>
             </Box>

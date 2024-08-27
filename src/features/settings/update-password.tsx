@@ -59,9 +59,9 @@ export default function UpdatePassword() {
         </Typography>
       </Box>
       <Divider />
-      <Stack spacing={2} sx={{ my: 1 }}>
+      <Stack spacing={1}>
         <form onSubmit={formik.handleSubmit}>
-          <Stack direction="column" gap={1}>
+          <Stack direction="column" gap={0.5}>
             <FormControl required>
               <FormLabel>Current password</FormLabel>
               <Input
