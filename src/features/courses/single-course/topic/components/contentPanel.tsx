@@ -44,7 +44,7 @@ export default function ContentPanel() {
               </Divider>
               <Box display="flex" justifyContent="center" alignItems="center">
                 <Sheet variant="soft" sx={{ p: 2, mt: 1, width: "100%" }}>
-                  <ReactPlayer controls pip width="100%" url={activeContent.videoUrl} />
+                  <ReactPlayer pip stopOnUnmount light width="100%" url={activeContent.videoUrl} />
                 </Sheet>
               </Box>
             </Box>
