@@ -32,7 +32,7 @@ export default function PageSelect() {
       }
       getOptionLabel={(option) => option.label}
       renderOption={(props, option) => {
-        const { key, ...rest }: any = props; //Temporary solution - key has no exported type (mui/joy thingy)
+        const { key, ...rest } = props;
         return (
           <AutocompleteOption key={key} {...rest}>
             <ListItemDecorator>

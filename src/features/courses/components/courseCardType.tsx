@@ -45,7 +45,7 @@ function CourseCardEnrolled(item: Course) {
             alt={`${item.title}`}
           />
         </Link>
-      </AspectRatio >
+      </AspectRatio>
     </Fragment>
   )
 }
@@ -86,7 +86,7 @@ function CourseCardEnroll(item: Course) {
           <LoginIcon />
         </Tooltip>
       </IconButton>
-    </Fragment >
+    </Fragment>
   )
 }
 
@@ -101,7 +101,7 @@ function CourseCardInstructor(item: Course) {
             alt={`${item.title}`}
           />
         </Link>
-      </AspectRatio >
+      </AspectRatio>
       <IconButton
         size="md"
         variant="solid"

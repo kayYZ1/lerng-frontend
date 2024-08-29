@@ -1,4 +1,4 @@
-import { lazy } from "react";
+import { lazy, createElement } from "react";
 
 import { AuthPath } from "./paths";
 
@@ -10,19 +10,19 @@ const ResetPassword = lazy(() => import("features/auth/forgot-password/reset-pas
 const routes = [
   {
     path: AuthPath.SIGN_IN,
-    element: <SignIn />
+    element: createElement(SignIn)
   },
   {
     path: AuthPath.SIGN_UP,
-    element: <SignUp />
+    element: createElement(SignUp)
   },
   {
     path: AuthPath.FORGOT_PASSWORD,
-    element: <ForgotPassword />
+    element: createElement(ForgotPassword)
   },
   {
     path: AuthPath.RESET_PASSWORD,
-    element: <ResetPassword />
+    element: createElement(ResetPassword)
   }
 ];
 

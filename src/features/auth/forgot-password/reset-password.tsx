@@ -46,7 +46,10 @@ export default function ResetPassword() {
       }
       await ResetPasswordFn(data);
       resetForm();
-      navigate(AuthPath.SIGN_IN);
+
+      if (!errorResponse) {
+        navigate(AuthPath.SIGN_IN);
+      }
     }
   })
 
