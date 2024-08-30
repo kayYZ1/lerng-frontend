@@ -14,9 +14,11 @@ export default function ColorSchemeToggle() {
   useEffect(() => {
     setMounted(true);
   }, []);
+
   if (!mounted) {
     return <IconButton size="sm" variant="outlined" color="primary" />;
   }
+
   return (
     <Tooltip title="Change theme" variant="outlined">
       <IconButton
