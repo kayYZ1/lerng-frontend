@@ -32,7 +32,7 @@ export default function PageSelect() {
       }
       getOptionLabel={(option) => option.label}
       renderOption={(props, option) => {
-        const { key, ...rest } = props;
+        const { key, ...rest }: any = props; //Temporary fix, Joy-ui does not export key into type.
         return (
           <AutocompleteOption key={key} {...rest}>
             <ListItemDecorator>
