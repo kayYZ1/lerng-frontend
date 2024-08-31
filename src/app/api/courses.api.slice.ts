@@ -11,6 +11,14 @@ export const coursesApiSlice = authApi.injectEndpoints({
       }),
       invalidatesTags: ['Course'],
     }),
+    EditCourse: builder.mutation({
+      query: (data) => ({
+        url: '/courses/edit',
+        method: 'PATCH',
+        body: data,
+      }),
+      invalidatesTags: ['Course'],
+    }),
     GetCourses: builder.query({
       query: () => ({
         url: '/courses/',
@@ -66,6 +74,7 @@ export const coursesApiSlice = authApi.injectEndpoints({
 
 export const {
   useCreateCourseMutation,
+  useEditCourseMutation,
   useGetCoursesQuery,
   useGetCourseQuery,
   useFilterCoursesMutation,

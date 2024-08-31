@@ -12,13 +12,15 @@ import { parseDate } from 'shared/lib/functions';
 import { selectMyCourses } from 'app/slice/enrolled.slice';
 
 import CourseCardType from './courseCardType';
+import { selectCurrentUser } from 'app/slice/user.slice';
+import EditCourseModal from 'features/dashboard/manage-courses/components/modals/editCourseModal';
 
 export default function CourseItem(item: Course) {
   const enrolled = useSelector(selectMyCourses);
+  const user = useSelector(selectCurrentUser);
 
   const date = parseDate(item.created);
   const isEnrolled = enrolled.some((course) => course.course.id === item.id);
-
   return (
     <Grid sx={{ py: 2, px: 1 }}>
       <Card variant="outlined" sx={{ width: 320 }}>
@@ -37,9 +39,10 @@ export default function CourseItem(item: Course) {
           <Divider inset="context" />
           <CardContent orientation="horizontal">
             <Typography level="body-xs">Added {date}</Typography>
+            {user.role === 'instructor' ? <EditCourseModal {...item} /> : ""}
           </CardContent>
         </CardOverflow>
       </Card>
-    </Grid>
+    </Grid >
   )
 }
