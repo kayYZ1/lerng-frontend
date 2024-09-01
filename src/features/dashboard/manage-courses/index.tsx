@@ -4,7 +4,7 @@ import { useGetInstructorCoursesQuery } from "app/api/courses.api.slice";
 
 import CourseItem from "features/courses/components/courseItem";
 import CourseSkeleton from "features/courses/components/courseSkeleton";
-import AddCourseImageModal from "./components/addCourseImageModal";
+import AddCourseImageModal from "./components/modals/addCourseImageModal";
 
 import { Course } from "shared/ts/types";
 
@@ -25,7 +25,7 @@ export default function ManageCourses() {
         </Box>
       </Sheet>
       <Box>
-        <Typography sx={{ mx: { xs: "none", md: 4 }, px: 2 }}>Your current courses</Typography>
+        <Typography sx={{ mx: { xs: "none", md: 4 }, px: 2, py: 2 }}>Your current courses</Typography>
         <Box sx={{
           display: 'flex',
         }}>

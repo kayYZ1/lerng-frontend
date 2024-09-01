@@ -4,7 +4,7 @@ import Button from '@mui/joy/Button';
 import Modal from '@mui/joy/Modal';
 import ModalDialog from '@mui/joy/ModalDialog';
 
-import CreateCourseForm from './forms/createCourseForm';
+import CreateCourseForm from '../forms/createCourseForm';
 
 export default function AddCourseImageModal() {
   const [open, setOpen] = useState<boolean>(false);

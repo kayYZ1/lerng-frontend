@@ -16,8 +16,6 @@ import ChangeStatusModal from './statusChangeModal';
 export default function InstructorTickets() {
   const { data, isLoading } = useInstructorTicketsQuery(undefined);
 
-  console.log(data)
-
   return (
     <Sheet
       variant="outlined"
