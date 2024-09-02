@@ -20,7 +20,7 @@ import { useAddTopicMutation } from 'app/api/topics.api.slice';
 
 import { ICloseModal } from 'shared/ts/interfaces';
 import { transformErrorResponse } from 'shared/lib/functions';
-import WarningAlert from 'shared/components/warningAlert';
+import WarningAlert from 'shared/components/alerts/warningAlert';
 
 const validationSchema = yup.object().shape({
   title: yup.string().required("Title is required").min(3, "Title to short").max(40, "Title too long"),

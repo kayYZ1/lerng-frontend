@@ -9,8 +9,8 @@ import Typography from '@mui/joy/Typography';
 import CloudUploadRounded from '@mui/icons-material/CloudUploadRounded';
 
 import { useUpdateUserImageMutation } from 'app/api/users.api.slice';
-import SuccessAlert from 'shared/components/successAlert';
-import ErrorAlert from 'shared/components/errorAlert';
+import SuccessAlert from 'shared/components/alerts/successAlert';
+import ErrorAlert from 'shared/components/alerts/errorAlert';
 
 import style from '../styles/file-upload.module.css';
 

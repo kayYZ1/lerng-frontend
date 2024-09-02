@@ -15,8 +15,8 @@ import * as yup from "yup";
 import { AuthPath } from "routes/paths";
 import { useResetPasswordFnMutation } from "app/api/auth.api.slice";
 import { transformErrorResponse } from "shared/lib/functions";
-import SuccessAlert from "shared/components/successAlert";
-import ErrorAlert from "shared/components/errorAlert";
+import SuccessAlert from "shared/components/alerts/successAlert";
+import ErrorAlert from "shared/components/alerts/errorAlert";
 
 import style from "../auth.module.css";
 

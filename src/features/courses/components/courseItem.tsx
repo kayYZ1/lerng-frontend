@@ -21,11 +21,12 @@ export default function CourseItem(item: Course) {
 
   const date = parseDate(item.created);
   const isEnrolled = enrolled.some((course) => course.course.id === item.id);
+
   return (
     <Grid sx={{ py: 2, px: 1 }}>
       <Card variant="outlined" sx={{ width: 320 }}>
         <CardOverflow>
-          <CourseCardType isEnrolled={isEnrolled} item={item} />
+          <CourseCardType isEnrolled={isEnrolled} item={item} user={user} />
         </CardOverflow>
         <CardContent>
           <Typography level="title-md">

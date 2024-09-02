@@ -6,7 +6,7 @@ import { useSignUpFnMutation } from "app/api/auth.api.slice";
 import { UserSignUp } from "shared/ts/types";
 
 import style from "../auth.module.css"
-import ErrorAlert from "shared/components/errorAlert";
+import ErrorAlert from "shared/components/alerts/errorAlert";
 import { transformErrorResponse } from "shared/lib/functions";
 import { useNavigate } from "react-router-dom";
 

@@ -10,6 +10,7 @@ import { EnrolledCourses } from "shared/ts/types";
 
 export default function EnrolledList() {
   const { data, isLoading } = useGetEnrolledCoursesQuery(undefined);
+
   return (
     <Box sx={{
       display: 'flex',
