@@ -26,7 +26,13 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 import { useGetMeQuery, useSignOutFnMutation } from 'app/api/auth.api.slice';
 import { signOut } from 'app/slice/auth.slice';
+<<<<<<< HEAD
 import { authApi } from 'app/base/auth.api';
+=======
+import PageSelect from '../utils/pageSelect';
+
+import LerngLogo from "assets/svg/logo-no-background.svg";
+>>>>>>> a7e0719 (fix(build): remove setCourses)
 
 import { DashboardPath, AuthPath } from 'routes/paths';
 
@@ -42,7 +48,12 @@ export default function Header() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+<<<<<<< HEAD
   const { data, isLoading } = useGetMeQuery("User");
+=======
+  const [open, setOpen] = useState(false);
+  const { data, isLoading } = useGetMeQuery(undefined);
+>>>>>>> a7e0719 (fix(build): remove setCourses)
   const [SignOutFn] = useSignOutFnMutation();
 
   const [open, setOpen] = useState(false);
