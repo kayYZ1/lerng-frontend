@@ -9,8 +9,8 @@ import FormHelperText from "@mui/joy/FormHelperText";
 
 import { useForgotPasswordFnMutation } from "app/api/auth.api.slice";
 import { transformErrorResponse } from "shared/lib/functions";
-import ErrorAlert from "shared/components/errorAlert";
-import SuccessAlert from "shared/components/successAlert";
+import ErrorAlert from "shared/components/alerts/errorAlert";
+import SuccessAlert from "shared/components/alerts/successAlert";
 
 import style from "../auth.module.css";
 

@@ -19,7 +19,7 @@ import { transformErrorResponse } from 'shared/lib/functions';
 import { useEditCourseMutation } from 'app/api/courses.api.slice';
 
 import AddCourseImage from '../addCourseImage';
-import WarningAlert from 'shared/components/warningAlert';
+import WarningAlert from 'shared/components/alerts/warningAlert';
 import { Course } from 'shared/ts/types';
 
 interface IEditCourseFormProps {

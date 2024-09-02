@@ -4,6 +4,7 @@ import { baseQueryWithReauth } from './base.api';
 
 export const authApi = createApi({
   baseQuery: baseQueryWithReauth,
+  keepUnusedDataFor: 30,
   tagTypes: [
     'Auth',
     'Content',
