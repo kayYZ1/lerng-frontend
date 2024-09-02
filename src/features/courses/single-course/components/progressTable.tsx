@@ -1,15 +1,14 @@
-import { useParams } from 'react-router-dom';
-
 import Table from '@mui/joy/Table';
 import Box from '@mui/joy/Box';
 
 import { Progress } from 'shared/ts/types';
+import { IdProps } from '../shared/types';
+
 import { useGetProgressQuery } from 'app/api/progress.api.slice';
 
 import TableSkeleton from './skeletons/tableSkeleton';
 
-export default function ProgressTable() {
-  const { id } = useParams<{ id: string }>();
+export default function ProgressTable({ id }: IdProps) {
   const { data, isLoading } = useGetProgressQuery(id!);
 
   return (

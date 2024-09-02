@@ -1,18 +1,25 @@
-import { useParams } from 'react-router-dom';
-
 import Sheet from '@mui/joy/Sheet';
 import Box from '@mui/joy/Box';
 
+import { setActiveCourseId } from 'app/slice/courses.slice';
 import { useGetTopicsFromCourseQuery } from 'app/api/topics.api.slice';
+import { useDispatch } from 'react-redux';
 
 import ProgressTable from './components/progressTable';
 import TopicsList from './components/topicsList';
 import TopicItemSkeleton from './components/skeletons/topicItemSkeleton';
 import CourseInstructor from './components/courseInstructor';
 
-export default function TopicsPanel() {
-  const { id } = useParams<{ id: string }>();
+import { IdProps } from './shared/types';
+import { useEffect } from 'react';
+
+export default function TopicsPanel({ id }: IdProps) {
   const { data, isLoading, error } = useGetTopicsFromCourseQuery(id!);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setActiveCourseId(id));
+  }, [dispatch])
 
   return (
     <Sheet
@@ -36,7 +43,7 @@ export default function TopicsPanel() {
         {isLoading ? <TopicItemSkeleton /> : <TopicsList topics={data} />}
       </Box>
       <Box sx={{ flex: 1, px: 2, py: 2 }}>
-        <ProgressTable />
+        <ProgressTable id={id} />
         <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", my: 2 }}>
           <CourseInstructor />
         </Box>

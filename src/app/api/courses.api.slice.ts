@@ -32,10 +32,6 @@ export const coursesApiSlice = authApi.injectEndpoints({
         method: 'POST',
         params: { search },
       }),
-      async onQueryStarted(_, { dispatch, queryFulfilled }) {
-        const { data } = await queryFulfilled;
-        dispatch(setCourses(data));
-      },
       invalidatesTags: ['Course'],
     }),
     SortCourses: builder.mutation({
@@ -44,10 +40,6 @@ export const coursesApiSlice = authApi.injectEndpoints({
         method: 'POST',
         params: { sort },
       }),
-      async onQueryStarted(_, { dispatch, queryFulfilled }) {
-        const { data } = await queryFulfilled;
-        dispatch(setCourses(data));
-      },
       invalidatesTags: ['Course'],
     }),
     GetCourse: builder.query({

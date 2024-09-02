@@ -11,6 +11,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import { Content } from 'shared/ts/types';
 import { selectActiveContent, setActiveContent } from 'app/slice/contents.slice';
 import { selectCurrentUser } from 'app/slice/user.slice';
+import { selectActiveCourseId } from 'app/slice/courses.slice';
 
 import AddContentModal from './modals/addContentModal';
 
@@ -25,6 +26,7 @@ export default function ContentList({ contents }: IContentListProps) {
 
   const activeContent = useSelector(selectActiveContent)
   const user = useSelector(selectCurrentUser)
+  const activeCourseId = useSelector(selectActiveCourseId);
 
   return (
     <List
@@ -57,7 +59,7 @@ export default function ContentList({ contents }: IContentListProps) {
         </ListItemDecorator>
         Quiz
       </ListItemButton>
-      <ListItemButton>
+      <ListItemButton onClick={() => navigate(`/dashboard/courses/course/${activeCourseId}`)}>
         <ListItemDecorator>
           <HomeIcon />
         </ListItemDecorator>

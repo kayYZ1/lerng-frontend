@@ -1,5 +1,3 @@
-import { useParams } from 'react-router-dom';
-
 import Sheet from "@mui/joy/Sheet";
 import Box from "@mui/joy/Box";
 import Skeleton from "@mui/joy/Skeleton";
@@ -8,9 +6,9 @@ import { useGetContentsQuery } from 'app/api/contents.api.slice';
 
 import ContentList from "./components/contentList";
 import ContentPanel from './components/contentPanel';
+import { IdProps } from "../shared/types";
 
-export default function TopicPanel() {
-  const { id } = useParams<{ id: string }>();
+export default function TopicPanel({ id }: IdProps) {
   const { data, isLoading, error } = useGetContentsQuery(id!);
 
   return (

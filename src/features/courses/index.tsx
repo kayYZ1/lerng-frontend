@@ -1,6 +1,3 @@
-import { ChangeEvent } from "react";
-import { useSearchParams } from 'react-router-dom';
-
 import Box from "@mui/joy/Box";
 import Typography from "@mui/joy/Typography";
 import Sheet from "@mui/joy/Sheet";
@@ -11,33 +8,10 @@ import Option from '@mui/joy/Option';
 
 import { SearchRounded } from "@mui/icons-material";
 
-import { useFilterCoursesMutation, useSortCoursesMutation } from "app/api/courses.api.slice";
-
 import CourseList from "./components/courseList";
 import BreadcrumbsCustom from "shared/components/breadcrumbsCustom";
 
 export default function Courses() {
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const [FilterCourses] = useFilterCoursesMutation();
-  const [SortCourses] = useSortCoursesMutation();
-
-  const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const searchQueryValue: string = event.target.value;
-
-    searchParams.set('search', searchQueryValue);
-    setSearchParams(searchParams);
-    FilterCourses(searchQueryValue);
-  };
-
-  const handleSortChange = (_: unknown, value: string | null) => {
-    if (value) {
-      searchParams.set('sort', value);
-      setSearchParams(searchParams);
-      SortCourses(value);
-    }
-  }
-
   return (
     <Box sx={{ flex: 1, width: '100%' }}>
       <Box sx={{ px: { xs: 2, md: 6 } }}>
@@ -61,7 +35,6 @@ export default function Courses() {
           size="sm"
           placeholder="Search.."
           startDecorator={<SearchRounded color="primary" />}
-          onChange={handleSearchChange}
         />
         <Select
           size='sm'
@@ -76,7 +49,6 @@ export default function Courses() {
               },
             },
           }}
-          onChange={handleSortChange}
         >
           <Option value="ASC">Date ascending</Option>
           <Option value="DESC">Date descending</Option>
