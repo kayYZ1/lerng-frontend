@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import Box from '@mui/joy/Box';
@@ -30,6 +30,7 @@ import ColorSchemeToggle from 'shared/components/colorToggle';
 import { useGetMeQuery, useSignOutFnMutation } from 'app/api/auth.api.slice';
 import { signOut } from 'app/slice/auth.slice';
 import PageSelect from '../utils/pageSelect';
+
 import LerngLogo from "assets/svg/logo-no-background.svg";
 
 import { useDispatch } from 'react-redux';
@@ -38,7 +39,7 @@ export default function Header() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const { data, isLoading } = useGetMeQuery(undefined);
   const [SignOutFn] = useSignOutFnMutation();
 
