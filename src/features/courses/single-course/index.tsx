@@ -13,7 +13,6 @@ import BreadcrumbsCustom from "shared/components/breadcrumbsCustom";
 export default function Course() {
   const { id } = useParams<{ id: string }>();
   const { data, isLoading, error } = useGetCourseQuery(id!);
-
   return (
     <Box sx={{ flex: 1, width: '100%' }}>
       <Box sx={{
@@ -28,7 +27,7 @@ export default function Course() {
       </Box>
       <Divider sx={{ my: 1 }} />
       <Box sx={{ flex: 1 }}>
-        <TopicsPanel />
+        <TopicsPanel id={id} />
       </Box>
     </Box>
   )
