@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
+import { useGetEnrolledCoursesQuery } from "app/api/enrolled.api.slice";
 import { selectCurrentUser } from "app/slice/user.slice";
 import { CoursesPath, DashboardPath } from "routes/paths";
 
@@ -8,12 +9,11 @@ import Box from "@mui/joy/Box";
 import Typography from "@mui/joy/Typography";
 import Sheet from "@mui/joy/Sheet";
 import Input from "@mui/joy/Input";
-import IconButton from "@mui/joy/IconButton";
 import Divider from "@mui/joy/Divider";
 
 import SearchRounded from "@mui/icons-material/SearchRounded";
 
-import EnrolledList from "./components/enrolledList";
+import EnrolledList from "./components/enrolled-list";
 import BreadcrumbsCustom from "shared/components/breadcrumbsCustom";
 
 export default function Enrolled() {
@@ -27,6 +27,8 @@ export default function Enrolled() {
 }
 
 function MyCourses() {
+  const { data, isLoading } = useGetEnrolledCoursesQuery("Enrolled");
+
   return (
     <Box sx={{ flex: 1, width: '100%' }}>
       <Box sx={{
@@ -54,19 +56,10 @@ function MyCourses() {
           sx={{ width: "25em" }}
           placeholder="Search through enrolled courses"
           startDecorator={<SearchRounded color="primary" />}
-          endDecorator={
-            <IconButton
-              variant="outlined"
-            >
-              <Typography level="title-sm" textColor="text.icon">
-                ⌘ K
-              </Typography>
-            </IconButton>
-          }
         />
       </Sheet>
       <Divider sx={{ my: 2 }} />
-      <EnrolledList />
+      <EnrolledList data={data} isLoading={isLoading} />
     </Box>
   )
 }
