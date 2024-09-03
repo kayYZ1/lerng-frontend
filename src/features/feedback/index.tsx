@@ -9,12 +9,12 @@ import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import ListItemContent from '@mui/joy/ListItemContent';
 
 import BreadcrumbsCustom from 'shared/components/breadcrumbsCustom';
-import TicketsTable from './ticketsTable';
-import AddTicket from './addTicket';
+import TicketsTable from './tickets-table';
+import AddTicket from './add-ticket';
 
 import { useGetEnrolledCoursesQuery } from 'app/api/enrolled.api.slice';
 import { EnrolledCourses } from 'shared/ts/types';
-import EnrolledListSkeleton from './components/enrolledListSkeleton';
+import EnrolledListSkeleton from './components/skeletons/enrolled-list';
 
 export default function Feedback() {
   const { data, isLoading } = useGetEnrolledCoursesQuery(undefined);
