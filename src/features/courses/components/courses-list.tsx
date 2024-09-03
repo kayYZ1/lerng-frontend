@@ -1,13 +1,15 @@
 import { Box, Grid } from "@mui/joy";
 
-import { useGetCoursesQuery } from "app/api/courses.api.slice";
-
 import { Course } from "shared/ts/types";
-import CourseItem from "./courseItem";
-import CourseSkeleton from "./courseSkeleton";
+import CourseItem from "./course-item";
+import CourseSkeleton from "./course-skeleton";
 
-export default function CourseList() {
-  const { data, isLoading } = useGetCoursesQuery(undefined);
+interface Props {
+  data: Course[]
+  isLoading: boolean
+}
+
+export default function CoursesList({ data, isLoading }: Props) {
   return (
     <Box sx={{
       display: 'flex',
@@ -26,7 +28,7 @@ export default function CourseList() {
             <CourseSkeleton key={index} />
           ))
           :
-          data.map((course: Course) => (
+          data.map((course) => (
             <CourseItem {...course} key={course.id} />
           ))
         }

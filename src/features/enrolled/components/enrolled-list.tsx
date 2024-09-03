@@ -1,16 +1,17 @@
 import Box from "@mui/joy/Box";
 import Grid from "@mui/joy/Grid";
 
-import { useGetEnrolledCoursesQuery } from "app/api/enrolled.api.slice";
-
-import CourseItem from "features/courses/components/courseItem";
-import CourseSkeleton from "features/courses/components/courseSkeleton";
+import CourseItem from "features/courses/components/course-item";
+import CourseSkeleton from "features/courses/components/course-skeleton";
 
 import { EnrolledCourses } from "shared/ts/types";
 
-export default function EnrolledList() {
-  const { data, isLoading } = useGetEnrolledCoursesQuery(undefined);
+interface Props {
+  data: EnrolledCourses[],
+  isLoading: boolean
+}
 
+export default function EnrolledList({ data, isLoading }: Props) {
   return (
     <Box sx={{
       display: 'flex',
@@ -29,7 +30,7 @@ export default function EnrolledList() {
             <CourseSkeleton key={index} />
           ))
           :
-          data.map((el: EnrolledCourses) => (
+          data.map((el) => (
             <CourseItem {...el.course} key={el.id} />
           ))
         }

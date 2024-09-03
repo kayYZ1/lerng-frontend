@@ -1,8 +1,8 @@
 import { Course, UserData } from 'shared/ts/types';
 
-import InstructorCard from './cards/instructorCard';
-import EnrolledCard from './cards/enrolledCard';
-import CourseCard from './cards/courseCard';
+import InstructorCard from './cards/instructor-card';
+import EnrolledCard from './cards/enrolled-card';
+import CourseCard from './cards/course-card';
 
 interface ICourseEnrolled {
   isEnrolled: boolean;
@@ -10,7 +10,7 @@ interface ICourseEnrolled {
   user: UserData;
 }
 
-export default function CourseCardType({ isEnrolled, item, user }: ICourseEnrolled) {
+export default function CardType({ isEnrolled, item, user }: ICourseEnrolled) {
   if (user.role === 'instructor') {
     return <InstructorCard {...item} />
   }

@@ -11,7 +11,7 @@ import { Course } from 'shared/ts/types';
 import { parseDate } from 'shared/lib/functions';
 import { selectMyCourses } from 'app/slice/enrolled.slice';
 
-import CourseCardType from './courseCardType';
+import CardType from './card-type';
 import { selectCurrentUser } from 'app/slice/user.slice';
 import EditCourseModal from 'features/dashboard/manage-courses/components/modals/editCourseModal';
 
@@ -26,7 +26,7 @@ export default function CourseItem(item: Course) {
     <Grid sx={{ py: 2, px: 1 }}>
       <Card variant="outlined" sx={{ width: 320 }}>
         <CardOverflow>
-          <CourseCardType isEnrolled={isEnrolled} item={item} user={user} />
+          <CardType isEnrolled={isEnrolled} item={item} user={user} />
         </CardOverflow>
         <CardContent>
           <Typography level="title-md">

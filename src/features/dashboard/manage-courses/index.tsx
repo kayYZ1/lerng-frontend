@@ -2,8 +2,8 @@ import { Box, Sheet, Typography, Grid } from "@mui/joy";
 
 import { useGetInstructorCoursesQuery } from "app/api/courses.api.slice";
 
-import CourseItem from "features/courses/components/courseItem";
-import CourseSkeleton from "features/courses/components/courseSkeleton";
+import CourseItem from "features/courses/components/course-item";
+import CourseSkeleton from "features/courses/components/course-skeleton";
 import AddCourseImageModal from "./components/modals/addCourseImageModal";
 
 import { Course } from "shared/ts/types";
