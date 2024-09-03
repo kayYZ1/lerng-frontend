@@ -15,14 +15,16 @@ import Card from '@mui/joy/Card';
 import Typography from '@mui/joy/Typography';
 import Box from '@mui/joy/Box';
 
-import { useCreateCourseMutation } from 'app/api/courses.api.slice';
 import { transformErrorResponse } from 'shared/lib/functions';
+import { useEditCourseMutation } from 'app/api/courses.api.slice';
 
-import AddCourseImage from '../addCourseImage';
+import AddCourseImage from '../add-course-image';
 import WarningAlert from 'shared/components/alerts/warningAlert';
+import { Course } from 'shared/ts/types';
 
-interface ICloseModal {
+interface IEditCourseFormProps {
   setOpen: (value: boolean) => void
+  course: Course
 }
 
 const validationSchema = yup.object().shape({
@@ -30,8 +32,8 @@ const validationSchema = yup.object().shape({
   description: yup.string().required("Description is required").min(5, "Description too short").max(120, "Description too long"),
 })
 
-export default function CreateCourseForm({ setOpen }: ICloseModal) {
-  const [CreateCourse, { isLoading, error }] = useCreateCourseMutation();
+export default function EditCourseForm({ setOpen, course }: IEditCourseFormProps) {
+  const [EditCourse, { isLoading, error }] = useEditCourseMutation();
   const [imgUrl, setImgUrl] = useState("");
 
   const errorResponse = transformErrorResponse(error);
@@ -42,14 +44,22 @@ export default function CreateCourseForm({ setOpen }: ICloseModal) {
 
   const formik = useFormik({
     initialValues: {
-      title: "",
-      description: "",
-      imageUrl: ""
+      title: course.title,
+      description: course.description,
+      imageUrl: course.imageUrl
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
-      values.imageUrl = imgUrl;
-      await CreateCourse(values);
+      values.imageUrl = imgUrl === "" ? values.imageUrl : imgUrl
+
+      const body = {
+        title: values.title,
+        description: values.description,
+        imageUrl: values.imageUrl,
+        courseId: course.id
+      }
+
+      await EditCourse(body);
       setOpen(false);
     }
   })
@@ -57,15 +67,15 @@ export default function CreateCourseForm({ setOpen }: ICloseModal) {
   return (
     <Card sx={{ flex: 1 }} variant="plain">
       <Box>
-        <Typography level="title-md">Course creation</Typography>
+        <Typography level="title-md">Edit course</Typography>
         <Typography level="body-sm">
-          Create course here
+          Edit course information
         </Typography>
       </Box>
       <Divider />
       <form onSubmit={formik.handleSubmit}>
         <Stack direction="column" gap={1}>
-          <FormControl required>
+          <FormControl>
             <FormLabel>Course title</FormLabel>
             <Input
               type="text"
@@ -78,7 +88,7 @@ export default function CreateCourseForm({ setOpen }: ICloseModal) {
             {formik.touched.title ?
               <FormHelperText component="div">{formik.errors.title}</FormHelperText> : ""}
           </FormControl>
-          <FormControl required>
+          <FormControl>
             <FormLabel>Description</FormLabel>
             <Input
               type="text"
@@ -91,23 +101,23 @@ export default function CreateCourseForm({ setOpen }: ICloseModal) {
             {formik.touched.description ?
               <FormHelperText component="div">{formik.errors.description}</FormHelperText> : ""}
           </FormControl>
-          <FormControl required>
+          <FormControl>
             <FormLabel>Image</FormLabel>
             <AddCourseImage setModalImageUrl={setModalImageUrl} />
           </FormControl>
           <CardOverflow>
             <CardActions sx={{ alignSelf: 'flex-end', pt: 2 }}>
-              <Button size="sm" variant="outlined" onClick={() => setOpen(false)}>
+              <Button size="sm" variant="outlined" onClick={() => setOpen(false)} loading={isLoading}>
                 Cancel
               </Button>
-              <Button size="sm" variant="solid" type="submit" loading={isLoading}>
+              <Button size="sm" variant="solid" type="submit">
                 Save
               </Button>
             </CardActions>
           </CardOverflow>
         </Stack>
       </form>
-      {error ? <WarningAlert type="Course creation error" message={errorResponse} /> : ""}
-    </Card >
+      {error ? <WarningAlert type="Course edition error" message={errorResponse} /> : ""}
+    </Card>
   )
 }
