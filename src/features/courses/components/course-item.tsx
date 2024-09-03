@@ -23,8 +23,8 @@ export default function CourseItem(item: Course) {
   const isEnrolled = enrolled.some((course) => course.course.id === item.id);
 
   return (
-    <Grid sx={{ py: 2, px: 1 }}>
-      <Card variant="outlined" sx={{ width: 320 }}>
+    <Grid sx={{ py: 2 }}>
+      <Card variant="outlined" sx={{ width: 350 }}>
         <CardOverflow>
           <CardType isEnrolled={isEnrolled} item={item} user={user} />
         </CardOverflow>

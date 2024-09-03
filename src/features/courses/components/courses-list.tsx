@@ -16,11 +16,16 @@ export default function CoursesList({ data, isLoading }: Props) {
     }}>
       <Grid
         container
+        spacing={1}
         direction="row"
         sx={{
           flexGrow: 1,
-          flexWrap: "wrap",
-          px: { xs: 3, sm: 4, md: 5 }
+          px: {
+            xs: 4,
+            sm: 4,
+            md: 5,
+            lg: 5
+          }
         }}
       >
         {isLoading ?

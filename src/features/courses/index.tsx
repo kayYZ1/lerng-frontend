@@ -1,3 +1,5 @@
+import { useSearchParams } from "react-router-dom";
+
 import Box from "@mui/joy/Box";
 import Typography from "@mui/joy/Typography";
 import Sheet from "@mui/joy/Sheet";
@@ -14,11 +16,12 @@ import CoursesList from "./components/courses-list";
 import BreadcrumbsCustom from "shared/components/breadcrumbsCustom";
 
 export default function Courses() {
+  const [searchParams, setSearchParams] = useSearchParams({ query: "", sort: "" });
   const { data, isLoading } = useGetCoursesQuery("Course");
 
   return (
-    <Box sx={{ flex: 1, width: '100%' }}>
-      <Box sx={{ px: { xs: 2, md: 6 } }}>
+    <Box sx={{ flex: 1, width: '99%' }}>
+      <Box sx={{ px: { xs: 4, md: 6 } }}>
         <BreadcrumbsCustom />
         <Typography level="h2" component="h1" sx={{ mt: 1, mb: 2 }}>
           Courses
@@ -37,8 +40,13 @@ export default function Courses() {
       >
         <Input
           size="sm"
-          placeholder="Search.."
-          startDecorator={<SearchRounded color="primary" />}
+          placeholder="Search..."
+          value={searchParams.get('query')!}
+          onChange={(event) => setSearchParams(prev => {
+            prev.set("query", event.target.value);
+            return prev;
+          }, { replace: true })}
+          startDecorator={< SearchRounded color="primary" />}
         />
         <Select
           size='sm'

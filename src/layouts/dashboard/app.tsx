@@ -9,7 +9,7 @@ import Main from './wrappers/main';
 import Header from './components/header';
 import Navigation from './components/navigation';
 import SuspenseCircle from 'shared/components/suspenseCircle';
-import RootLayout from 'layouts/rootLayout';
+import RootLayout from 'layouts/root-layout';
 
 export default function DashboardLayout() {
   return (

@@ -30,24 +30,28 @@ function MyCourses() {
   const { data, isLoading } = useGetEnrolledCoursesQuery("Enrolled");
 
   return (
-    <Box sx={{ flex: 1, width: '100%' }}>
+    <Box sx={{
+      flex: 1, width: '99%'
+    }}>
       <Box sx={{
-        px: { xs: 2, md: 6 }
+        px: {
+          xs: 4, md: 6
+        }
       }}
       >
         <BreadcrumbsCustom />
         <Typography level="h2" component="h1" sx={{ mt: 1, mb: 2 }}>
           My courses
         </Typography>
-      </Box>
+      </Box >
       <Sheet
         sx={{
           display: { xs: 'flex' },
           gap: 1,
-          flexDirection: { xs: 'column', sm: 'row' },
+          flexDirection: 'row',
           alignItems: 'center',
           justifyContent: { xs: 'space-between', sm: 'flex-start' },
-          px: { xs: 2, md: 6 },
+          px: { xs: 4, sm: 4, md: 6, lg: 6 },
           py: { xs: 2, md: 2 }
         }}
       >
@@ -60,6 +64,6 @@ function MyCourses() {
       </Sheet>
       <Divider sx={{ my: 2 }} />
       <EnrolledList data={data} isLoading={isLoading} />
-    </Box>
+    </Box >
   )
 }
