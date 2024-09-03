@@ -17,7 +17,7 @@ export default function RootLayout({ children }: IRootLayout) {
           ':root': {
             '--Collapsed-breakpoint': '769px',
             '--Cover-width': '50vw',
-            '--Form-maxWidth': '800px',
+            '--Form-maxWidth': '700px',
           },
         }}
       />

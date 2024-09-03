@@ -9,7 +9,7 @@ import Link from '@mui/joy/Link';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 import ColorSchemeToggle from 'shared/components/colorToggle';
-import RootLayout from 'layouts/rootLayout';
+import RootLayout from 'layouts/root-layout';
 import SuspenseCircle from 'shared/components/suspenseCircle';
 
 export default function AuthLayout() {

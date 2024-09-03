@@ -6,10 +6,17 @@ type CoursesState = {
   activeCourseId: string | null;
 };
 
-const initialState: CoursesState = {
-  courses: [],
-  activeCourseId: null,
+const getInitialState = (): CoursesState => {
+  const storedCourses = sessionStorage.getItem('courses');
+  return storedCourses
+    ? JSON.parse(storedCourses)
+    : {
+        courses: [],
+        activeCourseId: null,
+      };
 };
+
+const initialState: CoursesState = getInitialState();
 
 const coursesSlice = createSlice({
   name: 'courses',
@@ -17,9 +24,11 @@ const coursesSlice = createSlice({
   reducers: {
     setCourses: (state, action) => {
       state.courses = action.payload;
+      sessionStorage.setItem('courses', JSON.stringify(state));
     },
     setActiveCourseId: (state, action) => {
       state.activeCourseId = action.payload;
+      sessionStorage.setItem('courses', JSON.stringify(state));
     },
   },
 });
