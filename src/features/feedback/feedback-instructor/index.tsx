@@ -3,7 +3,7 @@ import Typography from "@mui/joy/Typography";
 import Divider from "@mui/joy/Divider";
 
 import BreadcrumbsCustom from "shared/components/breadcrumbsCustom";
-import InstructorTickets from "./instructorTickets";
+import InstructorTickets from "./instructor-tickets";
 
 export default function FeedbackInstructor() {
   return (
