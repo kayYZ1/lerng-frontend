@@ -6,7 +6,7 @@ import AddIcon from '@mui/icons-material/Add';
 import Box from '@mui/joy/Box';
 import ModalDialog from '@mui/joy/ModalDialog';
 
-import AddQuestionForm from '../forms/addQuestionForm';
+import AddQuestionForm from '../forms/add-question';
 
 export default function AddQuestionModal() {
   const [open, setOpen] = useState<boolean>(false);

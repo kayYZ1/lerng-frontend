@@ -17,8 +17,8 @@ import Radio from '@mui/joy/Radio';
 import { Question } from 'shared/ts/types';
 import { QuestionType } from 'shared/enum';
 
-import QuizTime from '../quizTime';
-import ResultCard from '../../resultCard';
+import QuizTime from '../quiz-time';
+import ResultCard from '../../result-card';
 
 export default function QuizForm(questions: Question[]) {
   const [activeQuestionIdx, setActiveQuestionIdx] = useState(0);

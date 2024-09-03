@@ -13,7 +13,7 @@ import { selectActiveContent, setActiveContent } from 'app/slice/contents.slice'
 import { selectCurrentUser } from 'app/slice/user.slice';
 import { selectActiveCourseId } from 'app/slice/courses.slice';
 
-import AddContentModal from './modals/addContentModal';
+import AddContentModal from './modals/add-content';
 
 interface IContentListProps {
   contents: Content[],

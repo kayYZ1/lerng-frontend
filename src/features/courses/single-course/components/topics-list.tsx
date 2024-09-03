@@ -9,8 +9,8 @@ import { accordionSummaryClasses } from '@mui/joy/AccordionSummary';
 import { Topic } from 'shared/ts/types';
 import { selectCurrentUser } from 'app/slice/user.slice';
 
-import TopicItem from './topicItem';
-import AddTopicModal from './modals/addTopicModal';
+import TopicItem from './topic-item';
+import AddTopicModal from './modals/add-topic';
 
 interface ITopicsListProps {
   topics: Topic[],

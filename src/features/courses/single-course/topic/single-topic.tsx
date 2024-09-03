@@ -4,11 +4,11 @@ import Skeleton from "@mui/joy/Skeleton";
 
 import { useGetContentsQuery } from 'app/api/contents.api.slice';
 
-import ContentList from "./components/contentList";
-import ContentPanel from './components/contentPanel';
+import ContentList from "./components/content-list";
+import ContentPanel from './components/content-panel';
 import { IdProps } from "../shared/types";
 
-export default function TopicPanel({ id }: IdProps) {
+export default function SingleTopic({ id }: IdProps) {
   const { data, isLoading, error } = useGetContentsQuery(id!);
 
   return (
