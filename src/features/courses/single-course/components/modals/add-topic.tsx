@@ -4,7 +4,7 @@ import ModalDialog from '@mui/joy/ModalDialog';
 import IconButton from '@mui/joy/IconButton';
 import AddIcon from '@mui/icons-material/Add';
 
-import AddTopicForm from '../forms/addTopicForm';
+import AddTopicForm from '../forms/add-topic';
 
 export default function AddTopicModal() {
   const [open, setOpen] = useState<boolean>(false);

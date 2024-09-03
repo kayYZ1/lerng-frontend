@@ -5,10 +5,10 @@ import { setActiveCourseId } from 'app/slice/courses.slice';
 import { useGetTopicsFromCourseQuery } from 'app/api/topics.api.slice';
 import { useDispatch } from 'react-redux';
 
-import ProgressTable from './components/progressTable';
-import TopicsList from './components/topicsList';
-import TopicItemSkeleton from './components/skeletons/topicItemSkeleton';
-import CourseInstructor from './components/courseInstructor';
+import ProgressTable from './components/progress-table';
+import TopicsList from './components/topics-list';
+import TopicItemSkeleton from './components/skeletons/topic-item';
+import CourseInstructor from './components/course-instructor';
 
 import { IdProps } from './shared/types';
 import { useEffect } from 'react';

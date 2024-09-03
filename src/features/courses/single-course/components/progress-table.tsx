@@ -6,7 +6,7 @@ import { IdProps } from '../shared/types';
 
 import { useGetProgressQuery } from 'app/api/progress.api.slice';
 
-import TableSkeleton from './skeletons/tableSkeleton';
+import TableSkeleton from './skeletons/table';
 
 export default function ProgressTable({ id }: IdProps) {
   const { data, isLoading } = useGetProgressQuery(id!);

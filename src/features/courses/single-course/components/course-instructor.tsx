@@ -6,7 +6,7 @@ import CardContent from '@mui/joy/CardContent';
 import Typography from '@mui/joy/Typography';
 
 import { useGetInstructorFromCourseQuery } from 'app/api/courses.api.slice';
-import InstructorCardSkeleton from './skeletons/instructorCardSkeleton';
+import InstructorCardSkeleton from './skeletons/instructor-card';
 
 export default function CourseInstructor() {
   const { id } = useParams<{ id: string }>();

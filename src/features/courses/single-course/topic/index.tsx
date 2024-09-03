@@ -6,8 +6,8 @@ import Divider from "@mui/joy/Divider";
 
 import { useGetTopicQuery } from "app/api/topics.api.slice";
 
-import TypographySkeleton from "../components/skeletons/typographySkeleton";
-import TopicPanel from "./topicPanel";
+import TypographySkeleton from "../components/skeletons/typography";
+import TopicPanel from "./single-topic";
 import BreadcrumbsCustom from "shared/components/breadcrumbsCustom";
 
 export default function Topic() {

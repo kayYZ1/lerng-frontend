@@ -16,9 +16,9 @@ import { useGetQuestionsQuery } from 'app/api/questions.api.slice';
 import { useSelector } from 'react-redux';
 import { selectCurrentUser } from 'app/slice/user.slice';
 
-import QuizForm from './components/forms/quizForm';
-import QuestionsList from './components/questionsList';
-import AddQuestionModal from './components/modals/addQuestionModal';
+import QuizForm from './components/forms/quiz-form';
+import QuestionsList from './components/questions-list';
+import AddQuestionModal from './components/modals/add-question';
 
 export default function QuizCard() {
   const { id } = useParams<{ id: string }>();

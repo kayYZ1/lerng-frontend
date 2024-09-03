@@ -2,7 +2,7 @@ import Box from "@mui/joy/Box";
 import Typography from "@mui/joy/Typography";
 import Divider from "@mui/joy/Divider";
 
-import QuizCard from "./quizCard";
+import QuizCard from "./quiz-card";
 import BreadcrumbsCustom from "shared/components/breadcrumbsCustom";
 
 export default function Quiz() {

@@ -5,7 +5,7 @@ import ListItemDecorator from "@mui/joy/ListItemDecorator";
 import Modal from "@mui/joy/Modal";
 import ModalDialog from "@mui/joy/ModalDialog";
 
-import AddContentForm from "../forms/addContentForm";
+import AddContentForm from "../forms/add-content";
 
 export default function AddContentModal() {
   const [open, setOpen] = useState<boolean>(false);

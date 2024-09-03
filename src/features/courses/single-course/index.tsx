@@ -6,8 +6,8 @@ import Divider from "@mui/joy/Divider";
 
 import { useGetCourseQuery } from "app/api/courses.api.slice";
 
-import TypographySkeleton from "./components/skeletons/typographySkeleton";
-import TopicsPanel from "./topicsPanel";
+import TypographySkeleton from "./components/skeletons/typography";
+import TopicsPanel from "./topics-panel";
 import BreadcrumbsCustom from "shared/components/breadcrumbsCustom";
 
 export default function Course() {
