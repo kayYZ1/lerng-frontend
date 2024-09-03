@@ -15,16 +15,14 @@ import Card from '@mui/joy/Card';
 import Typography from '@mui/joy/Typography';
 import Box from '@mui/joy/Box';
 
+import { useCreateCourseMutation } from 'app/api/courses.api.slice';
 import { transformErrorResponse } from 'shared/lib/functions';
-import { useEditCourseMutation } from 'app/api/courses.api.slice';
 
-import AddCourseImage from '../addCourseImage';
+import AddCourseImage from '../add-course-image';
 import WarningAlert from 'shared/components/alerts/warningAlert';
-import { Course } from 'shared/ts/types';
 
-interface IEditCourseFormProps {
+interface ICloseModal {
   setOpen: (value: boolean) => void
-  course: Course
 }
 
 const validationSchema = yup.object().shape({
@@ -32,8 +30,8 @@ const validationSchema = yup.object().shape({
   description: yup.string().required("Description is required").min(5, "Description too short").max(120, "Description too long"),
 })
 
-export default function EditCourseForm({ setOpen, course }: IEditCourseFormProps) {
-  const [EditCourse, { isLoading, error }] = useEditCourseMutation();
+export default function CreateCourseForm({ setOpen }: ICloseModal) {
+  const [CreateCourse, { isLoading, error }] = useCreateCourseMutation();
   const [imgUrl, setImgUrl] = useState("");
 
   const errorResponse = transformErrorResponse(error);
@@ -44,22 +42,14 @@ export default function EditCourseForm({ setOpen, course }: IEditCourseFormProps
 
   const formik = useFormik({
     initialValues: {
-      title: course.title,
-      description: course.description,
-      imageUrl: course.imageUrl
+      title: "",
+      description: "",
+      imageUrl: ""
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
-      values.imageUrl = imgUrl === "" ? values.imageUrl : imgUrl
-
-      const body = {
-        title: values.title,
-        description: values.description,
-        imageUrl: values.imageUrl,
-        courseId: course.id
-      }
-
-      await EditCourse(body);
+      values.imageUrl = imgUrl;
+      await CreateCourse(values);
       setOpen(false);
     }
   })
@@ -67,15 +57,15 @@ export default function EditCourseForm({ setOpen, course }: IEditCourseFormProps
   return (
     <Card sx={{ flex: 1 }} variant="plain">
       <Box>
-        <Typography level="title-md">Edit course</Typography>
+        <Typography level="title-md">Course creation</Typography>
         <Typography level="body-sm">
-          Edit course information
+          Create course here
         </Typography>
       </Box>
       <Divider />
       <form onSubmit={formik.handleSubmit}>
         <Stack direction="column" gap={1}>
-          <FormControl>
+          <FormControl required>
             <FormLabel>Course title</FormLabel>
             <Input
               type="text"
@@ -88,7 +78,7 @@ export default function EditCourseForm({ setOpen, course }: IEditCourseFormProps
             {formik.touched.title ?
               <FormHelperText component="div">{formik.errors.title}</FormHelperText> : ""}
           </FormControl>
-          <FormControl>
+          <FormControl required>
             <FormLabel>Description</FormLabel>
             <Input
               type="text"
@@ -101,23 +91,23 @@ export default function EditCourseForm({ setOpen, course }: IEditCourseFormProps
             {formik.touched.description ?
               <FormHelperText component="div">{formik.errors.description}</FormHelperText> : ""}
           </FormControl>
-          <FormControl>
+          <FormControl required>
             <FormLabel>Image</FormLabel>
             <AddCourseImage setModalImageUrl={setModalImageUrl} />
           </FormControl>
           <CardOverflow>
             <CardActions sx={{ alignSelf: 'flex-end', pt: 2 }}>
-              <Button size="sm" variant="outlined" onClick={() => setOpen(false)} loading={isLoading}>
+              <Button size="sm" variant="outlined" onClick={() => setOpen(false)}>
                 Cancel
               </Button>
-              <Button size="sm" variant="solid" type="submit">
+              <Button size="sm" variant="solid" type="submit" loading={isLoading}>
                 Save
               </Button>
             </CardActions>
           </CardOverflow>
         </Stack>
       </form>
-      {error ? <WarningAlert type="Course edition error" message={errorResponse} /> : ""}
-    </Card>
+      {error ? <WarningAlert type="Course creation error" message={errorResponse} /> : ""}
+    </Card >
   )
 }

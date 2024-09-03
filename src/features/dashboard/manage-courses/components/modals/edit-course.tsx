@@ -4,7 +4,7 @@ import Typography from '@mui/joy/Typography';
 import { ModalDialog } from '@mui/joy';
 
 import { Course } from 'shared/ts/types';
-import EditCourseForm from '../forms/editCourseForm';
+import EditCourseForm from '../forms/edit-course';
 
 export default function EditCourseModal(course: Course) {
   const [open, setOpen] = useState<boolean>(false);

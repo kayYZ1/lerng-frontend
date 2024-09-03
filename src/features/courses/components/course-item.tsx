@@ -13,7 +13,7 @@ import { selectMyCourses } from 'app/slice/enrolled.slice';
 
 import CardType from './card-type';
 import { selectCurrentUser } from 'app/slice/user.slice';
-import EditCourseModal from 'features/dashboard/manage-courses/components/modals/editCourseModal';
+import EditCourseModal from 'features/dashboard/manage-courses/components/modals/edit-course';
 
 export default function CourseItem(item: Course) {
   const enrolled = useSelector(selectMyCourses);
