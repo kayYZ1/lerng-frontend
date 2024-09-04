@@ -25,17 +25,18 @@ export default function ManageCourses() {
         </Box>
       </Sheet>
       <Box>
-        <Typography sx={{ mx: { xs: "none", md: 4 }, px: 2, py: 2 }}>Your current courses</Typography>
+        <Typography sx={{ mx: { xs: "none", md: 4.5 }, py: 2 }}>Courses created by you</Typography>
         <Box sx={{
           display: 'flex',
         }}>
           <Grid
             container
             direction="row"
+            spacing={2}
             sx={{
               flexGrow: 1,
               flexWrap: "wrap",
-              mx: { xs: 3, sm: 4, md: 5 }
+              mx: { xs: 3, sm: 4, md: 4 }
             }}
           >
             {isLoading ?

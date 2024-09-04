@@ -13,7 +13,7 @@ import { parseDate } from 'shared/lib/functions';
 import ViewTicketModal from './components/view-ticket';
 
 export default function TicketsTable() {
-  const { data, isLoading } = useGetFeedbackTicketsQuery(undefined);
+  const { data, isLoading } = useGetFeedbackTicketsQuery("Feedback");
 
   return (
     <Sheet

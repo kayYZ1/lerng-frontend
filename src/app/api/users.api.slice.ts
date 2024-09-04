@@ -31,6 +31,7 @@ export const usersApiSlice = authApi.injectEndpoints({
         url: '/users/latest-users',
         method: 'GET',
       }),
+      providesTags: ['User'],
     }),
   }),
 });

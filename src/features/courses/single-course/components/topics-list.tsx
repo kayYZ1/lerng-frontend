@@ -17,7 +17,8 @@ interface ITopicsListProps {
 }
 
 export default function TopicsList({ topics }: ITopicsListProps) {
-  const user = useSelector(selectCurrentUser)
+  const user = useSelector(selectCurrentUser);
+
   return (
     <Stack
       spacing={2}
