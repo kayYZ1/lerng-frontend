@@ -7,7 +7,7 @@ import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import ListItemContent from '@mui/joy/ListItemContent';
 import IconButton from '@mui/joy/IconButton';
 
-import { SearchPageOptions } from './searchPageOptions';
+import PageSelectOptions from './page-select-options';
 
 export default function PageSelect() {
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ export default function PageSelect() {
       size='sm'
       placeholder="Search.."
       sx={{ width: { xs: 150, sm: 200, md: 250 } }}
-      options={SearchPageOptions}
+      options={PageSelectOptions}
       autoHighlight
       startDecorator={
         <IconButton

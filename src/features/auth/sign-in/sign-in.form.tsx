@@ -16,7 +16,7 @@ import { setCredentials } from "app/slice/auth.slice";
 import { useSignInFnMutation } from "app/api/auth.api.slice";
 import { UserSignIn } from "shared/ts/types";
 
-import ErrorAlert from "shared/components/alerts/errorAlert";
+import ErrorAlert from "shared/components/alerts/error";
 import { DashboardPath, AuthPath } from "routes/paths";
 import { transformErrorResponse } from "shared/lib/functions";
 

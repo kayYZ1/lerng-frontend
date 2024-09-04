@@ -15,7 +15,7 @@ import { AuthPath } from 'routes/paths';
 import { useGetLatestUsersQuery } from 'app/api/users.api.slice';
 
 import LerngLogo from 'assets/svg/logo-no-background.svg';
-import ColorSchemeToggle from 'shared/components/colorToggle';
+import ColorSchemeToggle from 'shared/components/color-toggle';
 import { UserLandingPage } from 'shared/ts/types';
 import Carousel from './components/carousel';
 

@@ -7,7 +7,7 @@ import Tab, { tabClasses } from '@mui/joy/Tab';
 
 import ManageCourses from "./manage-courses/index.tsx";
 import Statistics from "./statistics/index.tsx";
-import BreadcrumbsCustom from "shared/components/breadcrumbsCustom.tsx";
+import BreadcrumbsCustom from "shared/components/breadcrumbs-custom.tsx";
 
 export default function DashboardPanel() {
   return (

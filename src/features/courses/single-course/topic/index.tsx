@@ -8,7 +8,7 @@ import { useGetTopicQuery } from "app/api/topics.api.slice";
 
 import TypographySkeleton from "../components/skeletons/typography";
 import TopicPanel from "./single-topic";
-import BreadcrumbsCustom from "shared/components/breadcrumbsCustom";
+import BreadcrumbsCustom from "shared/components/breadcrumbs-custom";
 
 export default function Topic() {
   const { id } = useParams<{ id: string }>();

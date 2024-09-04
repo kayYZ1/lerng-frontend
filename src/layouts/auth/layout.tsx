@@ -8,9 +8,9 @@ import Link from '@mui/joy/Link';
 
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
-import ColorSchemeToggle from 'shared/components/colorToggle';
+import ColorSchemeToggle from 'shared/components/color-toggle';
 import RootLayout from 'layouts/root-layout';
-import SuspenseCircle from 'shared/components/suspenseCircle';
+import SuspenseCircle from 'shared/components/suspense-circle';
 
 export default function AuthLayout() {
   const navigate = useNavigate();

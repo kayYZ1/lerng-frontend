@@ -20,7 +20,7 @@ import AddIcon from '@mui/icons-material/Add';
 import { EnrolledCourses } from 'shared/ts/types';
 import { useAddFeedbackTicketMutation } from 'app/api/feedback.slice';
 import { transformErrorResponse } from 'shared/lib/functions';
-import ErrorAlert from 'shared/components/alerts/errorAlert';
+import ErrorAlert from 'shared/components/alerts/error';
 
 const validationSchema = yup.object().shape({
   problem: yup.string().required('This field is required').max(40, "Too long"),

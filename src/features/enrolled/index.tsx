@@ -14,7 +14,7 @@ import Divider from "@mui/joy/Divider";
 import SearchRounded from "@mui/icons-material/SearchRounded";
 
 import EnrolledList from "./components/enrolled-list";
-import BreadcrumbsCustom from "shared/components/breadcrumbsCustom";
+import BreadcrumbsCustom from "shared/components/breadcrumbs-custom";
 import { EnrolledCourses } from "shared/ts/types";
 
 export default function Enrolled() {
