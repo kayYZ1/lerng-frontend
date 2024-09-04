@@ -1,4 +1,5 @@
 import { authApi } from 'app/base/auth.api';
+import { setCourses } from 'app/slice/courses.slice';
 
 export const coursesApiSlice = authApi.injectEndpoints({
   endpoints: (builder) => ({
