@@ -18,6 +18,7 @@ export const enrolledApiSlice = authApi.injectEndpoints({
       async onQueryStarted(_, { dispatch, queryFulfilled }) {
         const { data } = await queryFulfilled;
         dispatch(setEnrolled(data));
+        sessionStorage.setItem('enrolled', JSON.stringify(data));
       },
       providesTags: ['Enrolled'],
     }),

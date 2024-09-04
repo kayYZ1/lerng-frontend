@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { setCurrentUser } from './user.slice';
 
 const initialState = {
   token: JSON.parse(sessionStorage.getItem('accessToken')!) || null,
@@ -18,6 +19,9 @@ const authSlice = createSlice({
     signOut: (state) => {
       state.token = null;
       sessionStorage.removeItem('accessToken');
+      setCurrentUser({
+        user: null,
+      });
     },
   },
 });

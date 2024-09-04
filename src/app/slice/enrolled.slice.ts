@@ -14,7 +14,7 @@ const enrolledSlice = createSlice({
   reducers: {
     setEnrolled: (state, action) => {
       state = action.payload;
-      sessionStorage.setItem('enrolled', JSON.stringify(state));
+      return state;
     },
   },
 });

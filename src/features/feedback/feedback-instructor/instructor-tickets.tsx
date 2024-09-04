@@ -14,7 +14,7 @@ import { parseDate } from 'shared/lib/functions';
 import ChangeStatusModal from './status-change';
 
 export default function InstructorTickets() {
-  const { data, isLoading } = useInstructorTicketsQuery(undefined);
+  const { data, isLoading } = useInstructorTicketsQuery("Feedback");
 
   return (
     <Sheet

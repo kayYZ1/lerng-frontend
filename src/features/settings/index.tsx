@@ -10,7 +10,8 @@ import UpdatePassword from './update-password';
 import UpdateData from './update-data';
 
 export default function Profile() {
-  const { data, isLoading } = useGetMeQuery(undefined);
+  const { data, isLoading } = useGetMeQuery("User");
+
   return (
     <SettingsLayout>
       <Stack
