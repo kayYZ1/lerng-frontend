@@ -14,10 +14,17 @@ import { useGetCoursesQuery } from "app/api/courses.api.slice";
 
 import CoursesList from "./components/courses-list";
 import BreadcrumbsCustom from "shared/components/breadcrumbsCustom";
+import { Course } from "shared/ts/types";
 
 export default function Courses() {
   const [searchParams, setSearchParams] = useSearchParams({ query: "", sort: "" });
   const { data, isLoading } = useGetCoursesQuery("Course");
+
+  const query = searchParams.get("query") || "";
+
+  const filteredCourses: Course[] = query.length > 3 ? data.filter((course: Course) =>
+    course.title.toLowerCase().includes(query.toLowerCase())
+  ) : data;
 
   return (
     <Box sx={{ flex: 1, width: '99%' }}>
@@ -41,7 +48,7 @@ export default function Courses() {
         <Input
           size="sm"
           placeholder="Search..."
-          value={searchParams.get('query')!}
+          value={query}
           onChange={(event) => setSearchParams(prev => {
             prev.set("query", event.target.value);
             return prev;
@@ -49,8 +56,9 @@ export default function Courses() {
           startDecorator={< SearchRounded color="primary" />}
         />
         <Select
+          disabled
           size='sm'
-          placeholder="Sort by..."
+          placeholder="Sort by... (Coming soon)"
           sx={{
             minWidth: '15rem',
           }}
@@ -67,7 +75,7 @@ export default function Courses() {
         </Select>
       </Sheet>
       <Divider sx={{ my: 2 }} />
-      <CoursesList data={data} isLoading={isLoading} />
+      <CoursesList data={filteredCourses} isLoading={isLoading} />
     </Box>
   )
 }
