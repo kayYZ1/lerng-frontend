@@ -74,7 +74,7 @@ export default function Courses() {
             return prev;
           }, { replace: true })}
           sx={{
-            minWidth: { xs: '100%', sm: '200px' },
+            minWidth: { xs: '60%', sm: '200px' },
           }}
           slotProps={{
             listbox: {
