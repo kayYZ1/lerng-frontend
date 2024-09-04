@@ -25,7 +25,7 @@ import { transformErrorResponse } from 'shared/lib/functions';
 import UpdateImageModal from './components/modals/update-image';
 
 import { UpdateUser, UserData } from 'shared/ts/types';
-import WarningAlert from 'shared/components/alerts/warningAlert';
+import WarningAlert from 'shared/components/alerts/warning';
 
 const validationSchema = yup.object().shape({
   email: yup.string().email('Invalid email'),

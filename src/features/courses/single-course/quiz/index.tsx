@@ -3,7 +3,7 @@ import Typography from "@mui/joy/Typography";
 import Divider from "@mui/joy/Divider";
 
 import QuizCard from "./quiz-card";
-import BreadcrumbsCustom from "shared/components/breadcrumbsCustom";
+import BreadcrumbsCustom from "shared/components/breadcrumbs-custom";
 
 export default function Quiz() {
   return (

@@ -8,7 +8,7 @@ import { useGetCourseQuery } from "app/api/courses.api.slice";
 
 import TypographySkeleton from "./components/skeletons/typography";
 import TopicsPanel from "./topics-panel";
-import BreadcrumbsCustom from "shared/components/breadcrumbsCustom";
+import BreadcrumbsCustom from "shared/components/breadcrumbs-custom";
 
 export default function Course() {
   const { id } = useParams<{ id: string }>();

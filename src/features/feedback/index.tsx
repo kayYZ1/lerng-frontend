@@ -8,7 +8,7 @@ import ListItem from '@mui/joy/ListItem';
 import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import ListItemContent from '@mui/joy/ListItemContent';
 
-import BreadcrumbsCustom from 'shared/components/breadcrumbsCustom';
+import BreadcrumbsCustom from 'shared/components/breadcrumbs-custom';
 import TicketsTable from './tickets-table';
 import AddTicket from './add-ticket';
 

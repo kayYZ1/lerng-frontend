@@ -13,7 +13,7 @@ import { SearchRounded } from "@mui/icons-material";
 import { useGetCoursesQuery } from "app/api/courses.api.slice";
 
 import CoursesList from "./components/courses-list";
-import BreadcrumbsCustom from "shared/components/breadcrumbsCustom";
+import BreadcrumbsCustom from "shared/components/breadcrumbs-custom";
 import { Course } from "shared/ts/types";
 
 export default function Courses() {

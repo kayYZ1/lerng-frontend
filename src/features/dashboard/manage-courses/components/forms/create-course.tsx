@@ -19,7 +19,7 @@ import { useCreateCourseMutation } from 'app/api/courses.api.slice';
 import { transformErrorResponse } from 'shared/lib/functions';
 
 import AddCourseImage from '../add-course-image';
-import WarningAlert from 'shared/components/alerts/warningAlert';
+import WarningAlert from 'shared/components/alerts/warning';
 
 interface ICloseModal {
   setOpen: (value: boolean) => void

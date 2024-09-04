@@ -19,7 +19,7 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 
 import { useUpdateUserPasswordMutation } from 'app/api/users.api.slice';
-import WarningAlert from 'shared/components/alerts/warningAlert';
+import WarningAlert from 'shared/components/alerts/warning';
 import { transformErrorResponse } from 'shared/lib/functions';
 
 const validationSchema = yup.object().shape({
