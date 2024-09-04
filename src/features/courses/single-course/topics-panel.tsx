@@ -48,7 +48,7 @@ export default function TopicsPanel({ id }: IdProps) {
           <CourseInstructor />
         </Box>
       </Box>
-      {error ? "Something went wrong please refresh" : ""}
+      {error ? "Something went wrong" : ""}
     </Sheet >
   )
 }

@@ -22,28 +22,31 @@ export default function CourseItem(item: Course) {
   const date = parseDate(item.created);
   const isEnrolled = enrolled.some((course) => course.course.id === item.id);
 
+  const truncateText = (text: string, maxLength: number) =>
+    text.length > maxLength ? `${text.substring(0, maxLength - 5)}...` : text;
+
   return (
     <Grid sx={{ py: 2 }}>
-      <Card variant="outlined" sx={{ width: 350 }}>
+      <Card variant="outlined" sx={{ width: 350, display: 'flex', flexDirection: 'column' }}>
         <CardOverflow>
           <CardType isEnrolled={isEnrolled} item={item} user={user} />
         </CardOverflow>
-        <CardContent>
-          <Typography level="title-md">
-            {item.title.length > 38 ? `${item.title.substring(0, 33)}...` : item.title}
+        <CardContent sx={{ flexGrow: 1 }}>
+          <Typography level="title-md" mb={1}>
+            {truncateText(item.title, 38)}
           </Typography>
           <Typography level="body-sm">
-            {item.description.length > 80 ? `${item.description.substring(0, 75)}...` : item.description}
+            {truncateText(item.description, 80)}
           </Typography>
         </CardContent>
         <CardOverflow variant="soft">
           <Divider inset="context" />
-          <CardContent orientation="horizontal">
+          <CardContent orientation="horizontal" sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
             <Typography level="body-xs">Added {date}</Typography>
-            {user.role === 'instructor' ? <EditCourseModal {...item} /> : ""}
+            {user.role === 'instructor' && <EditCourseModal {...item} />}
           </CardContent>
         </CardOverflow>
       </Card>
-    </Grid >
+    </Grid>
   )
 }
