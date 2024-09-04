@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { Navigate, useSearchParams } from "react-router-dom";
 
 import { useGetEnrolledCoursesQuery } from "app/api/enrolled.api.slice";
 import { selectCurrentUser } from "app/slice/user.slice";
@@ -15,6 +15,7 @@ import SearchRounded from "@mui/icons-material/SearchRounded";
 
 import EnrolledList from "./components/enrolled-list";
 import BreadcrumbsCustom from "shared/components/breadcrumbsCustom";
+import { EnrolledCourses } from "shared/ts/types";
 
 export default function Enrolled() {
   const user = useSelector(selectCurrentUser);
@@ -27,7 +28,14 @@ export default function Enrolled() {
 }
 
 function MyCourses() {
+  const [searchParams, setSearchParams] = useSearchParams({ query: "" });
   const { data, isLoading } = useGetEnrolledCoursesQuery("Enrolled");
+
+  const query = searchParams.get("query") || "";
+
+  const filteredCourses: EnrolledCourses[] = query.length > 3 ? data.filter((enrolled: EnrolledCourses) =>
+    enrolled.course.title.toLowerCase().includes(query.toLowerCase())
+  ) : data;
 
   return (
     <Box sx={{
@@ -59,11 +67,16 @@ function MyCourses() {
           size="sm"
           sx={{ width: "25em" }}
           placeholder="Search through enrolled courses"
+          value={query}
+          onChange={(event) => setSearchParams(prev => {
+            prev.set("query", event.target.value);
+            return prev;
+          }, { replace: true })}
           startDecorator={<SearchRounded color="primary" />}
         />
       </Sheet>
       <Divider sx={{ my: 2 }} />
-      <EnrolledList data={data} isLoading={isLoading} />
+      <EnrolledList data={filteredCourses} isLoading={isLoading} />
     </Box >
   )
 }
