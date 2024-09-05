@@ -8,7 +8,8 @@ import ModalDialog from "@mui/joy/ModalDialog";
 import AddContentForm from "../forms/add-content";
 
 export default function AddContentModal() {
-  const [open, setOpen] = useState<boolean>(false);
+  const [open, setOpen] = useState(false);
+
   return (
     <Fragment>
       <ListItemButton onClick={() => setOpen(true)}>

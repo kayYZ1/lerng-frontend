@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import Button from '@mui/joy/Button';
 import Divider from '@mui/joy/Divider';
@@ -17,52 +17,71 @@ import Textarea from '@mui/joy/Textarea';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
-import { useNewContentMutation } from 'app/api/contents.api.slice';
+import { transformErrorResponse } from 'shared/lib/functions';
+import WarningAlert from 'shared/components/alerts/warning';
+import { Content } from 'shared/ts/types';
 
-import { ICloseModal } from 'shared/ts/interfaces';
+import { setActiveContent } from 'app/slice/contents.slice';
+import { useEditContentMutation } from 'app/api/contents.api.slice';
 
 const validationSchema = yup.object().shape({
-  title: yup.string().required("Title is required").min(3, "Title to short").max(40, "Title too long"),
-  description: yup.string().required("Description is required").min(5, "Description too short").max(80, "Description too long"),
-  paragraph150: yup.string().required("This is required").max(150, "Too long"),
-  paragraph300: yup.string().required("This is required").max(300, "Too long"),
+  title: yup.string().min(3, "Title to short").max(40, "Title too long"),
+  description: yup.string().min(5, "Description too short").max(80, "Description too long"),
+  paragraph150: yup.string().max(150, "Too long"),
+  paragraph300: yup.string().max(300, "Too long"),
   videoUrl: yup.string().matches(
     /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
     "Please enter correct url"
   )
 });
 
-export default function AddContentForm({ setOpen }: ICloseModal) {
-  const { id } = useParams<{ id: string }>();
-  const [NewContent, { error, isLoading }] = useNewContentMutation();
+interface IEditContentFormProps {
+  setOpen: (open: boolean) => void
+  content: Content
+}
+
+export default function EditContentForm({ setOpen, content }: IEditContentFormProps) {
+  const [EditContent, { isLoading, error }] = useEditContentMutation();
+  const dispatch = useDispatch();
+
+  const errorMessage = error && transformErrorResponse(error);
 
   const formik = useFormik({
     initialValues: {
-      title: "",
-      description: "",
-      paragraph150: "",
-      paragraph300: "",
-      videoUrl: ""
+      title: content.title,
+      description: content.description,
+      paragraph150: content.paragraph150,
+      paragraph300: content.paragraph300,
+      videoUrl: content.videoUrl
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
-      await NewContent({ topicId: id, values })
-      setOpen(false)
+      const body = {
+        title: values.title,
+        description: values.description,
+        paragraph150: values.paragraph150,
+        paragraph300: values.paragraph300,
+        videoUrl: values.videoUrl,
+        contentId: content.id
+      }
+      await EditContent(body);
+      dispatch(setActiveContent(values));
+      setOpen(false);
     }
   })
 
   return (
     <Card sx={{ flex: 1, minWidth: { xs: 300, md: 600 } }} variant="plain">
       <Box>
-        <Typography level="title-md">Add content</Typography>
+        <Typography level="title-md">Edit content</Typography>
         <Typography level="body-sm">
-          Add new content for selected topic
+          Edit content for this topic
         </Typography>
       </Box>
       <Divider />
       <form onSubmit={formik.handleSubmit}>
         <Stack direction="column" gap={1}>
-          <FormControl required>
+          <FormControl>
             <FormLabel>Title</FormLabel>
             <Input
               type="text"
@@ -75,7 +94,7 @@ export default function AddContentForm({ setOpen }: ICloseModal) {
             {formik.touched.title ?
               <FormHelperText component="div">{formik.errors.title}</FormHelperText> : ""}
           </FormControl>
-          <FormControl required>
+          <FormControl>
             <FormLabel>Description</FormLabel>
             <Input
               type="text"
@@ -88,11 +107,10 @@ export default function AddContentForm({ setOpen }: ICloseModal) {
             {formik.touched.description ?
               <FormHelperText component="div">{formik.errors.description}</FormHelperText> : ""}
           </FormControl>
-          <FormControl required>
+          <FormControl>
             <FormLabel>First paragraph</FormLabel>
             <Textarea
               name="paragraph150"
-              placeholder="First paragraph of text"
               value={formik.values.paragraph150}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -102,11 +120,10 @@ export default function AddContentForm({ setOpen }: ICloseModal) {
             {formik.touched.paragraph150 ?
               <FormHelperText component="div">{formik.errors.paragraph150}</FormHelperText> : ""}
           </FormControl>
-          <FormControl required>
+          <FormControl>
             <FormLabel>Third paragraph</FormLabel>
             <Textarea
               name="paragraph300"
-              placeholder="Another paragraph of text"
               value={formik.values.paragraph300}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -116,12 +133,11 @@ export default function AddContentForm({ setOpen }: ICloseModal) {
             {formik.touched.paragraph300 ?
               <FormHelperText component="div">{formik.errors.paragraph300}</FormHelperText> : ""}
           </FormControl>
-          <FormControl required>
+          <FormControl>
             <FormLabel>Video</FormLabel>
             <Input
               type="text"
               name="videoUrl"
-              placeholder="Link to your recorded video on youtube, etc.."
               value={formik.values.videoUrl}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -141,7 +157,7 @@ export default function AddContentForm({ setOpen }: ICloseModal) {
           </CardOverflow>
         </Stack>
       </form>
-      {error ? "Something went wrong" : ""}
-    </Card >
+      {errorMessage && <WarningAlert type="Edit content error" message={errorMessage} />}
+    </Card>
   )
 }
