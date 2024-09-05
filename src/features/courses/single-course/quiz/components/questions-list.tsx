@@ -4,9 +4,11 @@ import AccordionDetails from '@mui/joy/AccordionDetails';
 import AccordionSummary, {
   accordionSummaryClasses,
 } from '@mui/joy/AccordionSummary';
+import Box from '@mui/joy/Box';
 import Typography from '@mui/joy/Typography';
 
 import { Question } from 'shared/ts/types';
+import EditQuestionModal from './modals/edit-question';
 
 export default function QuestionsList(questions: Question[]) {
   const questionsArray = Object.values(questions);
@@ -31,7 +33,10 @@ export default function QuestionsList(questions: Question[]) {
         <Accordion key={question.id}>
           <AccordionSummary>{question.question}</AccordionSummary>
           <AccordionDetails>
-            {question.type}, {question.answer}
+            <Box display="flex" justifyContent="space-between">
+              <Typography level='body-sm'>{question.type} - {question.answer}</Typography>
+              <EditQuestionModal {...question} />
+            </Box>
           </AccordionDetails>
         </Accordion>
       )) :

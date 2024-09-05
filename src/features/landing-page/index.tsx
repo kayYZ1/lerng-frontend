@@ -36,7 +36,7 @@ export default function LandingPage() {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          py: 10,
+          py: 8,
           gap: 4,
           [theme.breakpoints.up(834)]: {
             flexDirection: 'row',
@@ -64,17 +64,17 @@ export default function LandingPage() {
           })}
         >
           <Typography color="primary" fontSize="lg" fontWeight="lg">
-            Embrace the power of learning
+            Ready to start learning?
           </Typography>
           <Typography
             level="h1"
             fontWeight="xl"
             fontSize="clamp(1.875rem, 1.3636rem + 2.1818vw, 3rem)"
           >
-            LERNG is a complex e-learning web application
+            LERNG is simple e-learning platform
           </Typography>
           <Typography fontSize="lg" textColor="text.secondary" lineHeight="lg">
-            Allowing to learn specialized knowledge about linux and it's distrubution systems from professionals.
+            That allows you to learn specialized knowledge about linux and it's distrubution systems from professionals.
           </Typography>
           <Box
             sx={{
@@ -85,12 +85,14 @@ export default function LandingPage() {
               '& > *': { flex: 'auto' },
             }}
           >
-            <Button size="lg" variant="outlined" color="neutral" disabled>
-              Learn More
-            </Button>
-            <Button size="lg" endDecorator={<ArrowForward />}>
+            <Button size="lg" variant="outlined" color="neutral">
               <Link to={AuthPath.SIGN_UP} style={{ textDecoration: "none", color: "inherit" }}>
                 Get started
+              </Link>
+            </Button>
+            <Button size="lg" endDecorator={<ArrowForward />}>
+              <Link to={AuthPath.SIGN_IN} style={{ textDecoration: "none", color: "inherit" }}>
+                Or Sign In
               </Link>
             </Button>
           </Box>

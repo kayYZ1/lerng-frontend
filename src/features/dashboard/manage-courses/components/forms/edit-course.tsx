@@ -117,7 +117,7 @@ export default function EditCourseForm({ setOpen, course }: IEditCourseFormProps
           </CardOverflow>
         </Stack>
       </form>
-      {error ? <WarningAlert type="Course edition error" message={errorResponse} /> : ""}
+      {error && <WarningAlert type="Course edition error" message={errorResponse} />}
     </Card>
   )
 }

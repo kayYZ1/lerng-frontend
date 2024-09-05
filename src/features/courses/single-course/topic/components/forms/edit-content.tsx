@@ -44,7 +44,7 @@ export default function EditContentForm({ setOpen, content }: IEditContentFormPr
   const [EditContent, { isLoading, error }] = useEditContentMutation();
   const dispatch = useDispatch();
 
-  const errorMessage = error && transformErrorResponse(error);
+  const errorMessage = transformErrorResponse(error);
 
   const formik = useFormik({
     initialValues: {
@@ -157,7 +157,7 @@ export default function EditContentForm({ setOpen, content }: IEditContentFormPr
           </CardOverflow>
         </Stack>
       </form>
-      {errorMessage && <WarningAlert type="Edit content error" message={errorMessage} />}
+      {error && <WarningAlert type="Edit content error" message={errorMessage} />}
     </Card>
   )
 }
