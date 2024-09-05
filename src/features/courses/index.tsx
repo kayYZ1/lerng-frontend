@@ -21,10 +21,20 @@ export default function Courses() {
   const { data, isLoading } = useGetCoursesQuery("Course");
 
   const query = searchParams.get("query") || "";
+  const sort = searchParams.get("sort") || "";
 
-  const filteredCourses: Course[] = query.length > 3 ? data.filter((course: Course) =>
+  const filteredCourses: Course[] = query.length > 3 ? data?.filter((course: Course) =>
     course.title.toLowerCase().includes(query.toLowerCase())
-  ) : data;
+  ) : data || [];
+
+  const sortedCourses = [...filteredCourses].sort((a, b) => {
+    if (sort === "ASC") {
+      return new Date(a.created).getTime() - new Date(b.created).getTime();
+    } else if (sort === "DESC") {
+      return new Date(b.created).getTime() - new Date(a.created).getTime();
+    }
+    return 0;
+  });
 
   return (
     <Box sx={{ flex: 1, width: '99%' }}>
@@ -56,11 +66,15 @@ export default function Courses() {
           startDecorator={< SearchRounded color="primary" />}
         />
         <Select
-          disabled
           size='sm'
-          placeholder="Sort by... (Coming soon)"
+          placeholder="Sort by..."
+          value={sort}
+          onChange={(_, newValue) => setSearchParams(prev => {
+            prev.set("sort", newValue as string);
+            return prev;
+          }, { replace: true })}
           sx={{
-            minWidth: '15rem',
+            minWidth: { xs: '60%', sm: '200px' },
           }}
           slotProps={{
             listbox: {
@@ -75,7 +89,7 @@ export default function Courses() {
         </Select>
       </Sheet>
       <Divider sx={{ my: 2 }} />
-      <CoursesList data={filteredCourses} isLoading={isLoading} />
+      <CoursesList data={sortedCourses} isLoading={isLoading} />
     </Box>
   )
 }

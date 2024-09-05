@@ -26,6 +26,14 @@ export const modulesApiSlice = authApi.injectEndpoints({
       },
       invalidatesTags: ['Topic'],
     }),
+    EditTopic: builder.mutation({
+      query: (values) => ({
+        url: "/topics/edit",
+        method: 'PATCH',
+        body: values,
+      }),
+      invalidatesTags: ['Topic'],
+    }),
   }),
 });
 
@@ -33,4 +41,5 @@ export const {
   useGetTopicsFromCourseQuery,
   useGetTopicQuery,
   useAddTopicMutation,
+  useEditTopicMutation,
 } = modulesApiSlice;

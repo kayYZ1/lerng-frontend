@@ -1,7 +1,3 @@
-import { useState } from 'react';
-import { useFormik } from 'formik';
-import * as yup from "yup";
-
 import Button from '@mui/joy/Button';
 import Divider from '@mui/joy/Divider';
 import Stack from '@mui/joy/Stack';
@@ -15,68 +11,55 @@ import Card from '@mui/joy/Card';
 import Typography from '@mui/joy/Typography';
 import Box from '@mui/joy/Box';
 
-import { transformErrorResponse } from 'shared/lib/functions';
-import { useEditCourseMutation } from 'app/api/courses.api.slice';
+import { useFormik } from 'formik';
+import * as yup from "yup";
 
-import AddCourseImage from '../add-course-image';
-import WarningAlert from 'shared/components/alerts/warning';
-import { Course } from 'shared/ts/types';
-
-interface IEditCourseFormProps {
-  setOpen: (value: boolean) => void
-  course: Course
-}
+import { useEditTopicMutation } from "app/api/topics.api.slice";
+import { Topic } from 'shared/ts/types';
 
 const validationSchema = yup.object().shape({
   title: yup.string().required("Title is required").min(3, "Title to short").max(40, "Title too long"),
-  description: yup.string().required("Description is required").min(5, "Description too short").max(120, "Description too long"),
-})
+  description: yup.string().required("Description is required").min(5, "Description too short").max(80, "Description too long"),
+});
 
-export default function EditCourseForm({ setOpen, course }: IEditCourseFormProps) {
-  const [EditCourse, { isLoading, error }] = useEditCourseMutation();
-  const [imgUrl, setImgUrl] = useState("");
+interface IEditTopicFormProps {
+  setOpen: (value: boolean) => void
+  topic: Topic
+}
 
-  const errorResponse = transformErrorResponse(error);
-
-  const setModalImageUrl = (url: string) => {
-    setImgUrl(url)
-  }
+export default function EditTopicForm({ setOpen, topic }: IEditTopicFormProps) {
+  const [EditTopic, { isLoading }] = useEditTopicMutation();
 
   const formik = useFormik({
     initialValues: {
-      title: course.title,
-      description: course.description,
-      imageUrl: course.imageUrl
+      title: topic.title,
+      description: topic.description,
     },
-    validationSchema: validationSchema,
+    validationSchema,
     onSubmit: async (values) => {
-      values.imageUrl = imgUrl === "" ? values.imageUrl : imgUrl
-
       const body = {
         title: values.title,
         description: values.description,
-        imageUrl: values.imageUrl,
-        courseId: course.id
+        topicId: topic.id
       }
-
-      await EditCourse(body);
+      await EditTopic(body);
       setOpen(false);
     }
   })
 
   return (
-    <Card sx={{ flex: 1 }} variant="plain">
+    <Card sx={{ flex: 1 }} variant='plain'>
       <Box>
-        <Typography level="title-md">Edit course</Typography>
+        <Typography level="title-md">Edit topic</Typography>
         <Typography level="body-sm">
-          Edit course information
+          Edit information about this topic
         </Typography>
       </Box>
       <Divider />
       <form onSubmit={formik.handleSubmit}>
         <Stack direction="column" gap={1}>
-          <FormControl>
-            <FormLabel>Course title</FormLabel>
+          <FormControl required>
+            <FormLabel>Title</FormLabel>
             <Input
               type="text"
               name="title"
@@ -88,7 +71,7 @@ export default function EditCourseForm({ setOpen, course }: IEditCourseFormProps
             {formik.touched.title ?
               <FormHelperText component="div">{formik.errors.title}</FormHelperText> : ""}
           </FormControl>
-          <FormControl>
+          <FormControl required>
             <FormLabel>Description</FormLabel>
             <Input
               type="text"
@@ -96,28 +79,22 @@ export default function EditCourseForm({ setOpen, course }: IEditCourseFormProps
               value={formik.values.description}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              error={formik.touched.description && !!formik.errors.description}
             />
             {formik.touched.description ?
               <FormHelperText component="div">{formik.errors.description}</FormHelperText> : ""}
           </FormControl>
-          <FormControl>
-            <FormLabel>Image</FormLabel>
-            <AddCourseImage setModalImageUrl={setModalImageUrl} />
-          </FormControl>
           <CardOverflow>
             <CardActions sx={{ alignSelf: 'flex-end', pt: 2 }}>
-              <Button size="sm" variant="outlined" onClick={() => setOpen(false)} loading={isLoading}>
+              <Button size="sm" variant="outlined" onClick={() => setOpen(false)}>
                 Cancel
               </Button>
-              <Button size="sm" variant="solid" type="submit">
+              <Button size="sm" variant="solid" type="submit" loading={isLoading}>
                 Save
               </Button>
             </CardActions>
           </CardOverflow>
         </Stack>
       </form>
-      {error && <WarningAlert type="Course edition error" message={errorResponse} />}
     </Card>
   )
 }

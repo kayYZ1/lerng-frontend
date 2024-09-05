@@ -13,6 +13,14 @@ export const questionsApiSlice = authApi.injectEndpoints({
       },
       invalidatesTags: ['Question'],
     }),
+    EditQuestion: builder.mutation({
+      query: (values) => ({
+        url: "/questions/edit",
+        method: "PATCH",
+        body: values
+      }),
+      invalidatesTags: ["Question"]
+    }),
     GetQuestions: builder.query({
       query: (topicId: string) => ({
         url: `/questions/${topicId}`,
@@ -23,5 +31,5 @@ export const questionsApiSlice = authApi.injectEndpoints({
   }),
 });
 
-export const { useAddQuestionMutation, useGetQuestionsQuery } =
+export const { useAddQuestionMutation, useGetQuestionsQuery, useEditQuestionMutation } =
   questionsApiSlice;

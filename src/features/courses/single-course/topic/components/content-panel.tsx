@@ -11,14 +11,20 @@ import Sheet from "@mui/joy/Sheet";
 
 import { MovieOutlined } from "@mui/icons-material";
 
+import EditContentModal from "./modals/edit-content";
+
 import { selectActiveContent } from "app/slice/contents.slice";
+import { selectCurrentUser } from "app/slice/user.slice";
 
 export default function ContentPanel() {
   const activeContent = useSelector(selectActiveContent);
+  const user = useSelector(selectCurrentUser);
+
   return (
     <Fragment>
       {activeContent !== null ?
         <Box sx={{ overflow: "auto", maxHeight: "75vh" }}>
+          {user.role === 'instructor' && <EditContentModal {...activeContent} />}
           <Stack direction="column" justifyContent="center" alignItems="center" spacing={2} px={2}>
             <Typography level="h1">
               {activeContent.title}
