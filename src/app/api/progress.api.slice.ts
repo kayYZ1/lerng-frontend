@@ -16,6 +16,13 @@ export const progressApiSlice = authApi.injectEndpoints({
       }),
       providesTags: ['Progress'],
     }),
+    CountProgress: builder.query({
+      query: (courseId) => ({
+        url: `progress/count-progress/${courseId}`,
+        method: 'GET',
+      }),
+      providesTags: ['Progress'],
+    }),
     SaveQuiz: builder.mutation({
       query: (args) => {
         const { topicId, values } = args;
@@ -34,4 +41,5 @@ export const {
   useSaveProgressMutation,
   useGetProgressQuery,
   useSaveQuizMutation,
+  useCountProgressQuery,
 } = progressApiSlice;

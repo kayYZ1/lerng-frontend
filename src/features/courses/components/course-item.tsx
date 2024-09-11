@@ -5,17 +5,21 @@ import CardContent from '@mui/joy/CardContent';
 import CardOverflow from '@mui/joy/CardOverflow';
 import Divider from '@mui/joy/Divider';
 import Grid from '@mui/joy/Grid';
+import Skeleton from '@mui/joy/Skeleton';
 import Typography from '@mui/joy/Typography';
 
 import { Course } from 'shared/ts/types';
 import { parseDate } from 'shared/lib/functions';
 import { selectMyCourses } from 'app/slice/enrolled.slice';
+import { useCountProgressQuery } from 'app/api/progress.api.slice';
 
 import CardType from './card-type';
 import { selectCurrentUser } from 'app/slice/user.slice';
 import EditCourseModal from 'features/dashboard/manage-courses/components/modals/edit-course';
 
 export default function CourseItem(item: Course) {
+  const { data, isLoading } = useCountProgressQuery(item.id);
+
   const enrolled = useSelector(selectMyCourses);
   const user = useSelector(selectCurrentUser);
 
@@ -44,6 +48,11 @@ export default function CourseItem(item: Course) {
           <CardContent orientation="horizontal" sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
             <Typography level="body-xs">Added {date}</Typography>
             {user.role === 'instructor' && <EditCourseModal {...item} />}
+            {isEnrolled ?
+              <Typography level="body-xs">{isLoading ? <Skeleton /> : `${data}%`}</Typography>
+              :
+              <Typography level="body-xs">Not enrolled</Typography>
+            }
           </CardContent>
         </CardOverflow>
       </Card>
