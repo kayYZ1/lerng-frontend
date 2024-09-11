@@ -60,6 +60,7 @@ export default function SignInForm() {
         <Input
           type="email"
           name="email"
+          placeholder="demo@lerng.com"
           value={formik.values.email}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -73,6 +74,7 @@ export default function SignInForm() {
         <Input
           type="password"
           name="password"
+          placeholder="demolerner"
           value={formik.values.password}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
