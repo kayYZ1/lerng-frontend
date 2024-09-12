@@ -1,5 +1,4 @@
 import { authApi } from 'app/base/auth.api';
-import { setCourses } from 'app/slice/courses.slice';
 
 export const coursesApiSlice = authApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -24,10 +23,6 @@ export const coursesApiSlice = authApi.injectEndpoints({
         url: '/courses/',
         method: 'GET',
       }),
-      async onQueryStarted(_, { dispatch, queryFulfilled }) {
-        const { data } = await queryFulfilled;
-        dispatch(setCourses(data));
-      },
       providesTags: ['Course'],
     }),
     GetCourse: builder.query({
