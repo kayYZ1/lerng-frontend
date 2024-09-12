@@ -1,7 +1,7 @@
 import Sheet from '@mui/joy/Sheet';
 import Box from '@mui/joy/Box';
 
-import { setActiveCourseId } from 'app/slice/courses.slice';
+import { setActiveCourse } from 'app/slice/courses.slice';
 import { useGetTopicsFromCourseQuery } from 'app/api/topics.api.slice';
 import { useDispatch } from 'react-redux';
 
@@ -18,7 +18,7 @@ export default function TopicsPanel({ id }: IdProps) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setActiveCourseId(id));
+    dispatch(setActiveCourse(id));
   }, [dispatch])
 
   return (
