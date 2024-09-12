@@ -7,6 +7,7 @@ import Divider from '@mui/joy/Divider';
 import Grid from '@mui/joy/Grid';
 import Skeleton from '@mui/joy/Skeleton';
 import Typography from '@mui/joy/Typography';
+import LinearProgress from '@mui/joy/LinearProgress';
 
 import { Course } from 'shared/ts/types';
 import { parseDate } from 'shared/lib/functions';
@@ -54,6 +55,7 @@ export default function CourseItem(item: Course) {
               <Typography level="body-xs">Not enrolled</Typography>
             }
           </CardContent>
+          <LinearProgress determinate value={data} />
         </CardOverflow>
       </Card>
     </Grid>
