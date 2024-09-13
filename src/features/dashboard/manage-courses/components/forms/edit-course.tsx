@@ -14,10 +14,14 @@ import FormLabel from '@mui/joy/FormLabel';
 import Card from '@mui/joy/Card';
 import Typography from '@mui/joy/Typography';
 import Box from '@mui/joy/Box';
+import Select from '@mui/joy/Select';
+import Option from '@mui/joy/Option';
+import Chip from '@mui/joy/Chip';
 
 import { transformErrorResponse } from 'shared/lib/functions';
 import { useEditCourseMutation } from 'app/api/courses.api.slice';
 
+import { Categories } from 'shared/enum';
 import AddCourseImage from '../add-course-image';
 import WarningAlert from 'shared/components/alerts/warning';
 import { Course } from 'shared/ts/types';
@@ -30,6 +34,7 @@ interface IEditCourseFormProps {
 const validationSchema = yup.object().shape({
   title: yup.string().required("Title is required").min(3, "Title to short").max(40, "Title too long"),
   description: yup.string().required("Description is required").min(5, "Description too short").max(120, "Description too long"),
+  categories: yup.array().required("Categories is required").min(1, "At least one category is required").max(3, "Maximum of 3 categories is allowed"),
 })
 
 export default function EditCourseForm({ setOpen, course }: IEditCourseFormProps) {
@@ -46,6 +51,7 @@ export default function EditCourseForm({ setOpen, course }: IEditCourseFormProps
     initialValues: {
       title: course.title,
       description: course.description,
+      categories: course.categories,
       imageUrl: course.imageUrl
     },
     validationSchema: validationSchema,
@@ -56,6 +62,7 @@ export default function EditCourseForm({ setOpen, course }: IEditCourseFormProps
         title: values.title,
         description: values.description,
         imageUrl: values.imageUrl,
+        categories: values.categories,
         courseId: course.id
       }
 
@@ -100,6 +107,41 @@ export default function EditCourseForm({ setOpen, course }: IEditCourseFormProps
             />
             {formik.touched.description ?
               <FormHelperText component="div">{formik.errors.description}</FormHelperText> : ""}
+          </FormControl>
+          <FormControl required>
+            <FormLabel>Categories</FormLabel>
+            <Select
+              multiple
+              value={formik.values.categories}
+              onChange={(_, newValue) => {
+                formik.setFieldValue('categories', newValue);
+              }}
+              renderValue={(selected) => (
+                <Box sx={{ display: 'flex', gap: '0.25rem' }}>
+                  {selected.map((selectedOption, id) => (
+                    <Chip variant="soft" color="primary" key={id}>
+                      {selectedOption.label}
+                    </Chip>
+                  ))}
+                </Box>
+              )}
+              sx={{ minWidth: '25rem' }}
+              slotProps={{
+                listbox: {
+                  sx: {
+                    width: '100%',
+                  },
+                },
+              }}
+            >
+              {Object.values(Categories).map((category) => (
+                <Option key={category} value={category}>
+                  {category}
+                </Option>
+              ))}
+            </Select>
+            {formik.touched.categories ?
+              <FormHelperText component="div">{formik.errors.categories}</FormHelperText> : ""}
           </FormControl>
           <FormControl>
             <FormLabel>Image</FormLabel>

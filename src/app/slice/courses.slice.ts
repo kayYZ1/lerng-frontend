@@ -24,6 +24,7 @@ const coursesSlice = createSlice({
 
 export const { setActiveCourse } = coursesSlice.actions;
 
-export const selectActiveCourse = (state: any) => state.course;
+export const selectActiveCourse = (state: { course: ActiveCourse }) =>
+  state.course;
 
 export default coursesSlice.reducer;
