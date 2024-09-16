@@ -58,7 +58,7 @@ export default function ViewTicketModal(feedbackTicket: FeedbackTicket) {
                 </Typography>
                 <Alert variant="soft" color={
                   {
-                    active: 'neutral',
+                    active: 'primary',
                     rejected: 'danger',
                     resolved: 'success'
                   }[feedbackTicket.status] as ColorPaletteProp

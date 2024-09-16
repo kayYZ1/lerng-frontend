@@ -20,10 +20,17 @@ export default function Course() {
       }}
       >
         <BreadcrumbsCustom />
-        <Typography component={"div"} level="h2" sx={{ mt: 1, mb: 2 }}>
-          {isLoading ? <TypographySkeleton /> : data.title}
-          {error ? "Something went wrong please refresh" : ""}
-        </Typography>
+        {isLoading ? <TypographySkeleton /> :
+          <>
+            <Typography component="div" level="h2" sx={{ mt: 1 }}>
+              {data.title}
+            </Typography>
+            <Typography component="div" level="body-sm" sx={{ mt: 1, mb: 2 }}>
+              {data.description}
+            </Typography>
+          </>
+        }
+        {error ? "Something went wrong please refresh" : ""}
       </Box>
       <Divider sx={{ my: 1 }} />
       <Box sx={{ flex: 1 }}>

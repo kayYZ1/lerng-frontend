@@ -8,6 +8,7 @@ import ListItemContent from '@mui/joy/ListItemContent';
 
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import SignpostIcon from '@mui/icons-material/Signpost';
+import FeedbackIcon from '@mui/icons-material/Feedback';
 
 import { CoursesPath, DashboardPath } from 'routes/paths';
 import style from '../dashboard.module.css';
@@ -22,6 +23,11 @@ const InstructorListItems = [
     link: CoursesPath.COURSES,
     name: 'Courses',
     icon: <SignpostIcon />
+  },
+  {
+    link: DashboardPath.FEEDBACK_INSTRUCTOR,
+    name: 'Feedback',
+    icon: <FeedbackIcon />
   }
 ];
 

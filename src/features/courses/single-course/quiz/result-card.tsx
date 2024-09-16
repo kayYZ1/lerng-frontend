@@ -14,12 +14,12 @@ import SentimentSatisfiedIcon from '@mui/icons-material/SentimentSatisfied';
 import { useSelector } from 'react-redux';
 import { useSaveQuizMutation } from 'app/api/progress.api.slice';
 import { selectCurrentUser } from 'app/slice/user.slice';
-import { selectActiveCourseId } from 'app/slice/courses.slice';
+import { selectActiveCourse } from 'app/slice/courses.slice';
 import { QuizScore } from '../shared/types';
 
 export default function ResultCard({ score }: QuizScore) {
   const user = useSelector(selectCurrentUser);
-  const activeCourseId = useSelector(selectActiveCourseId);
+  const activeCourse = useSelector(selectActiveCourse);
   const navigate = useNavigate();
 
   const { id } = useParams<{ id: string }>();
@@ -31,7 +31,7 @@ export default function ResultCard({ score }: QuizScore) {
     }
 
     await SaveQuiz({ topicId: id, values })
-    navigate(`/dashboard/courses/course/${activeCourseId}`)
+    navigate(`/dashboard/courses/course/${activeCourse}`)
   }
 
   return (

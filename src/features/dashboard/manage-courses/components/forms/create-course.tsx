@@ -14,10 +14,14 @@ import FormLabel from '@mui/joy/FormLabel';
 import Card from '@mui/joy/Card';
 import Typography from '@mui/joy/Typography';
 import Box from '@mui/joy/Box';
+import Select from '@mui/joy/Select';
+import Option from '@mui/joy/Option';
+import Chip from '@mui/joy/Chip';
 
 import { useCreateCourseMutation } from 'app/api/courses.api.slice';
 import { transformErrorResponse } from 'shared/lib/functions';
 
+import { Categories } from 'shared/enum';
 import AddCourseImage from '../add-course-image';
 import WarningAlert from 'shared/components/alerts/warning';
 
@@ -28,6 +32,7 @@ interface ICloseModal {
 const validationSchema = yup.object().shape({
   title: yup.string().required("Title is required").min(3, "Title to short").max(40, "Title too long"),
   description: yup.string().required("Description is required").min(5, "Description too short").max(120, "Description too long"),
+  categories: yup.array().required("Categories is required").min(1, "At least one category is required").max(3, "Maximum of 3 categories is allowed"),
 })
 
 export default function CreateCourseForm({ setOpen }: ICloseModal) {
@@ -44,11 +49,13 @@ export default function CreateCourseForm({ setOpen }: ICloseModal) {
     initialValues: {
       title: "",
       description: "",
+      categories: [],
       imageUrl: ""
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
       values.imageUrl = imgUrl;
+      console.log(values);
       await CreateCourse(values);
       setOpen(false);
     }
@@ -90,6 +97,41 @@ export default function CreateCourseForm({ setOpen }: ICloseModal) {
             />
             {formik.touched.description ?
               <FormHelperText component="div">{formik.errors.description}</FormHelperText> : ""}
+          </FormControl>
+          <FormControl required>
+            <FormLabel>Categories</FormLabel>
+            <Select
+              multiple
+              value={formik.values.categories}
+              onChange={(_, newValue) => {
+                formik.setFieldValue('categories', newValue);
+              }}
+              renderValue={(selected) => (
+                <Box sx={{ display: 'flex', gap: '0.25rem' }}>
+                  {selected.map((selectedOption, id) => (
+                    <Chip variant="soft" color="primary" key={id}>
+                      {selectedOption.label}
+                    </Chip>
+                  ))}
+                </Box>
+              )}
+              sx={{ minWidth: '25rem' }}
+              slotProps={{
+                listbox: {
+                  sx: {
+                    width: '100%',
+                  },
+                },
+              }}
+            >
+              {Object.values(Categories).map((category) => (
+                <Option key={category} value={category}>
+                  {category}
+                </Option>
+              ))}
+            </Select>
+            {formik.touched.categories ?
+              <FormHelperText component="div">{formik.errors.categories}</FormHelperText> : ""}
           </FormControl>
           <FormControl required>
             <FormLabel>Image</FormLabel>

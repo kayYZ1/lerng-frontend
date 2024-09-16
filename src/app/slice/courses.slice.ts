@@ -1,42 +1,30 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { Course } from 'shared/ts/types';
 
-type CoursesState = {
-  courses: Course[];
-  activeCourseId: string | null;
+type ActiveCourse = {
+  activeCourse: string | null;
 };
 
-const getInitialState = (): CoursesState => {
-  const storedCourses = sessionStorage.getItem('courses');
-  return storedCourses
-    ? JSON.parse(storedCourses)
-    : {
-        courses: [],
-        activeCourseId: null,
-      };
+const getInitialState = (): ActiveCourse => {
+  const storedActiveCourse = sessionStorage.getItem('course');
+  return storedActiveCourse ? JSON.parse(storedActiveCourse) : null;
 };
 
-const initialState: CoursesState = getInitialState();
+const initialState: ActiveCourse = getInitialState();
 
 const coursesSlice = createSlice({
-  name: 'courses',
+  name: 'course',
   initialState,
   reducers: {
-    setCourses: (state, action) => {
-      state.courses = action.payload;
-      sessionStorage.setItem('courses', JSON.stringify(state));
-    },
-    setActiveCourseId: (state, action) => {
-      state.activeCourseId = action.payload;
-      sessionStorage.setItem('courses', JSON.stringify(state));
+    setActiveCourse: (_state, action) => {
+      sessionStorage.setItem('course', JSON.stringify(action.payload));
+      return action.payload;
     },
   },
 });
 
-export const { setCourses, setActiveCourseId } = coursesSlice.actions;
+export const { setActiveCourse } = coursesSlice.actions;
 
-export const selectCourses = (state: any) => state.courses.courses;
-export const selectActiveCourseId = (state: any) =>
-  state.courses.activeCourseId;
+export const selectActiveCourse = (state: { course: ActiveCourse }) =>
+  state.course;
 
 export default coursesSlice.reducer;

@@ -1,4 +1,4 @@
-import { QuestionType } from 'shared/enum';
+import { QuestionType, Categories } from 'shared/enum';
 
 export type UserSignUp = {
   email: string;
@@ -24,6 +24,7 @@ export type Course = {
   id: string;
   title: string;
   description: string;
+  categories: Categories[];
   imageUrl: string;
   created: Date;
 };

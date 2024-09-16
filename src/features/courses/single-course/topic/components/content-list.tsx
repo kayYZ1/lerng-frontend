@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -11,7 +12,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import { Content } from 'shared/ts/types';
 import { selectActiveContent, setActiveContent } from 'app/slice/contents.slice';
 import { selectCurrentUser } from 'app/slice/user.slice';
-import { selectActiveCourseId } from 'app/slice/courses.slice';
+import { selectActiveCourse } from 'app/slice/courses.slice';
 
 import AddContentModal from './modals/add-content';
 
@@ -25,8 +26,15 @@ export default function ContentList({ contents }: IContentListProps) {
   const dispatch = useDispatch()
 
   const activeContent = useSelector(selectActiveContent)
+  const activeCourse = useSelector(selectActiveCourse);
   const user = useSelector(selectCurrentUser)
-  const activeCourseId = useSelector(selectActiveCourseId);
+
+  useEffect(() => {
+    dispatch(setActiveContent(contents[0]))
+    return () => {
+      dispatch(setActiveContent(null))
+    }
+  }, [contents])
 
   return (
     <List
@@ -59,7 +67,7 @@ export default function ContentList({ contents }: IContentListProps) {
         </ListItemDecorator>
         Quiz
       </ListItemButton>
-      <ListItemButton onClick={() => navigate(`/dashboard/courses/course/${activeCourseId}`)}>
+      <ListItemButton onClick={() => navigate(`/dashboard/courses/course/${activeCourse}`)}>
         <ListItemDecorator>
           <HomeIcon />
         </ListItemDecorator>
