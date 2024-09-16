@@ -25,7 +25,7 @@ export default function ManageCourses() {
         </Box>
       </Sheet>
       <Box>
-        <Typography sx={{ mx: { xs: "none", md: 4.5 }, py: 2 }}>Courses created by you</Typography>
+        <Typography sx={{ mx: { xs: "none", md: 4.5 }, py: 2 }}>Manage your courses</Typography>
         <Box sx={{
           display: 'flex',
         }}>

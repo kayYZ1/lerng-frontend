@@ -160,12 +160,6 @@ export default function Header() {
                 <SettingsRoundedIcon />
                 <Link to={DashboardPath.SETTINGS} className={style.link}>Settings</Link>
               </MenuItem>
-              {data.role === 'instructor' ?
-                <MenuItem>
-                  <FeedbackIcon />
-                  <Link to={DashboardPath.FEEDBACK_INSTRUCTOR} className={style.link}>Feedback</Link>
-                </MenuItem> : ""
-              }
               <ListDivider />
               <MenuItem>
                 <LogoutRoundedIcon />

@@ -47,15 +47,17 @@ export default function CourseItem(item: Course) {
               <Chip key={category} size='sm'>{category}</Chip>
             ))}
           </Stack>
-          <Typography level="body-sm">
-            {truncateText(item.description, 40)}
-          </Typography>
+          <Stack direction='row' justifyContent='space-between'>
+            <Typography level="body-sm">
+              {truncateText(item.description, 45)}
+            </Typography>
+            {user.role === 'instructor' && <EditCourseModal {...item} />}
+          </Stack>
         </CardContent>
         <CardOverflow variant="soft">
           <Divider inset="context" />
           <CardContent orientation="horizontal" sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
             <Typography level="body-xs">Added {date}</Typography>
-            {user.role === 'instructor' && <EditCourseModal {...item} />}
             {isEnrolled ?
               <Typography level="body-xs">{isLoading ? <Skeleton /> : `${data}%`}</Typography>
               :
