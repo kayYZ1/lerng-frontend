@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -25,8 +26,15 @@ export default function ContentList({ contents }: IContentListProps) {
   const dispatch = useDispatch()
 
   const activeContent = useSelector(selectActiveContent)
-  const user = useSelector(selectCurrentUser)
   const activeCourse = useSelector(selectActiveCourse);
+  const user = useSelector(selectCurrentUser)
+
+  useEffect(() => {
+    dispatch(setActiveContent(contents[0]))
+    return () => {
+      dispatch(setActiveContent(null))
+    }
+  }, [contents])
 
   return (
     <List
