@@ -19,9 +19,17 @@ export default function CourseInstructor() {
         :
         <Card
           sx={{
-            width: 320,
-            maxWidth: '100%',
             boxShadow: 'lg',
+            width: "100%",
+            height: 'auto',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            p: 3,
+            my: {
+              xs: 2,
+              md: 0
+            }
           }}
         >
           <CardContent sx={{ alignItems: 'center', textAlign: 'center' }}>

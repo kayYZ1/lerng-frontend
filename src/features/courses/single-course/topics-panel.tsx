@@ -9,6 +9,7 @@ import ProgressTable from './components/progress-table';
 import TopicsList from './components/topics-list';
 import TopicItemSkeleton from './components/skeletons/topic-item';
 import CourseInstructor from './components/course-instructor';
+import UserReview from './components/user-review';
 
 import { IdProps } from './shared/types';
 import { useEffect } from 'react';
@@ -44,7 +45,8 @@ export default function TopicsPanel({ id }: IdProps) {
       </Box>
       <Box sx={{ flex: 1, px: 2, py: 2 }}>
         <ProgressTable id={id} />
-        <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", my: 2 }}>
+        <Box sx={{ display: "flex", flexDirection: { xs: "column", md: "row" }, my: 2 }}>
+          <UserReview courseId={id} />
           <CourseInstructor />
         </Box>
       </Box>

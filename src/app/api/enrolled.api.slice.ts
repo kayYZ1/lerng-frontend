@@ -28,6 +28,31 @@ export const enrolledApiSlice = authApi.injectEndpoints({
         method: 'GET',
       }),
     }),
+    UpdateRating: builder.mutation({
+      query: (args) => {
+        const { courseId, values } = args;
+        return {
+          url: `/enrolled/review/${courseId}`,
+          method: 'PATCH',
+          body: values,
+        };
+      },
+      invalidatesTags: ['Enrolled'],
+    }),
+    GetRating: builder.query({
+      query: (courseId) => ({
+        url: `/enrolled/review/${courseId}`,
+        method: 'GET',
+      }),
+      providesTags: ['Enrolled'],
+    }),
+    GetRatingByCourse: builder.query({
+      query: (courseId) => ({
+        url: `/enrolled/average-rating/${courseId}`,
+        method: 'GET',
+      }),
+      providesTags: ['Enrolled'],
+    }),
   }),
 });
 
@@ -35,4 +60,7 @@ export const {
   useAddToEnrolledMutation,
   useGetEnrolledCoursesQuery,
   useGetInstructorStatisticsQuery,
+  useUpdateRatingMutation,
+  useGetRatingQuery,
+  useGetRatingByCourseQuery,
 } = enrolledApiSlice;

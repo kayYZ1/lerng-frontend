@@ -18,6 +18,7 @@ import { useCountProgressQuery } from 'app/api/progress.api.slice';
 
 import CardType from './card-type';
 import { selectCurrentUser } from 'app/slice/user.slice';
+import CourseRating from './course-rating';
 import EditCourseModal from 'features/dashboard/manage-courses/components/modals/edit-course';
 
 export default function CourseItem(item: Course) {
@@ -39,6 +40,7 @@ export default function CourseItem(item: Course) {
           <CardType isEnrolled={isEnrolled} item={item} user={user} />
         </CardOverflow>
         <CardContent sx={{ flexGrow: 1 }}>
+          <CourseRating courseId={item.id} />
           <Typography level="title-md" mb={1}>
             {truncateText(item.title, 38)}
           </Typography>
@@ -57,7 +59,7 @@ export default function CourseItem(item: Course) {
         <CardOverflow variant="soft">
           <Divider inset="context" />
           <CardContent orientation="horizontal" sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
-            <Typography level="body-xs">Added {date}</Typography>
+            <Typography level="body-xs">{date}</Typography>
             {isEnrolled ?
               <Typography level="body-xs">{isLoading ? <Skeleton /> : `${data}%`}</Typography>
               :
@@ -67,6 +69,6 @@ export default function CourseItem(item: Course) {
           <LinearProgress determinate value={data} />
         </CardOverflow>
       </Card>
-    </Grid>
+    </Grid >
   )
 }
