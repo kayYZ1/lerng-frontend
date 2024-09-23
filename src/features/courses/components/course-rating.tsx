@@ -14,7 +14,7 @@ export default function CourseRating({ courseId }: { courseId: string }) {
       {isLoading ? <Skeleton width={25} height={15} sx={{ paddingTop: 2 }} /> :
         <>
           <Typography component="p" level='body-xs'>
-            {rating.rating}/5
+            {rating.rating.toFixed(1)}/5
           </Typography>
           <StarIcon sx={{ fontSize: 16, color: '#a3850e' }} />
           <Typography component="p" level='body-xs'>
