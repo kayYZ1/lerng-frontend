@@ -32,7 +32,10 @@ interface ICloseModal {
 const validationSchema = yup.object().shape({
   title: yup.string().required("Title is required").min(3, "Title to short").max(40, "Title too long"),
   description: yup.string().required("Description is required").min(5, "Description too short").max(120, "Description too long"),
-  categories: yup.array().required("Categories is required").min(1, "At least one category is required").max(3, "Maximum of 3 categories is allowed"),
+  categories: yup.array().
+    required("Categories is required").
+    min(1, "At least one category is required").
+    max(2, "Maximum of 2 categories is allowed"),
 })
 
 export default function CreateCourseForm({ setOpen }: ICloseModal) {

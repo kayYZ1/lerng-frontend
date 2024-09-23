@@ -8,7 +8,7 @@ import { useGetRatingByCourseQuery } from 'app/api/enrolled.api.slice';
 
 export default function CourseRating({ courseId }: { courseId: string }) {
   const { data: rating, isLoading } = useGetRatingByCourseQuery(courseId);
-  console.log(rating);
+
   return (
     <Box display='flex' alignItems='center'>
       {isLoading ? <Skeleton width={25} height={15} sx={{ paddingTop: 2 }} /> :
