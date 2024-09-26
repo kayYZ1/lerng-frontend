@@ -82,13 +82,13 @@ export default function ResetPassword() {
           <FormControl required>
             <FormLabel>Password</FormLabel>
             <Input
-
               type="password"
               name="password"
               value={formik.values.password}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               error={formik.touched.password && !!formik.errors.password}
+              data-testid="password"
             />
             {formik.touched.password ?
               <FormHelperText component="div" className={style.formHelperError}>{formik.errors.password}</FormHelperText> : ""}
@@ -102,6 +102,7 @@ export default function ResetPassword() {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               error={formik.touched.repeatPassword && !!formik.errors.repeatPassword}
+              data-testid="repeatPassword"
             />
             {formik.touched.repeatPassword ?
               <FormHelperText component="div" className={style.formHelperError}>{formik.errors.repeatPassword}</FormHelperText> : ""}
