@@ -82,6 +82,7 @@ export default function ResetPassword() {
           <FormControl required>
             <FormLabel>Password</FormLabel>
             <Input
+
               type="password"
               name="password"
               value={formik.values.password}
