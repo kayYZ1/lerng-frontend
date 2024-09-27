@@ -36,7 +36,7 @@ export default function ForgotPasswordForm() {
 
   return (
     <form onSubmit={formik.handleSubmit}>
-      <FormControl required>
+      <FormControl>
         <FormLabel>Email</FormLabel>
         <Input
           type="email"
@@ -45,9 +45,12 @@ export default function ForgotPasswordForm() {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           error={formik.touched.email && !!formik.errors.email}
+          placeholder="Email to sent password reset link"
         />
         {formik.touched.email ?
-          <FormHelperText component="div" className={style.formHelperError}>{formik.errors.email}</FormHelperText> : ""}
+          <FormHelperText component="div" className={style.formHelperError} data-testid="email-error">
+            {formik.errors.email}
+          </FormHelperText> : ""}
       </FormControl>
       <Stack gap={4} sx={{ mt: 2 }}>
         <Button type="submit" fullWidth loading={isLoading}>

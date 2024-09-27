@@ -3,15 +3,14 @@ import { fireEvent, screen, waitFor } from '@testing-library/react';
 import { render } from 'tests/wrapper';
 
 import ResetPassword from 'features/auth/forgot-password/reset-password';
-import { act } from 'react';
 
 describe('Password reset form tests', () => {
   //Load up component with all the providers
   const renderDocument = () => {
     render(<ResetPassword />,
       {
-        route: "/reset-password/token",
-        path: "/reset-password/:token"
+        route: "/auth/forgot-password/token",
+        path: "/auth/forgot-password/:token"
       }
     );
   }
