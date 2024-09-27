@@ -78,8 +78,8 @@ export default function ResetPassword() {
       >
       </Divider>
       <Stack gap={4} sx={{ mt: 2 }}>
-        <form onSubmit={formik.handleSubmit}>
-          <FormControl required>
+        <form onSubmit={formik.handleSubmit} data-testid="form">
+          <FormControl>
             <FormLabel>Password</FormLabel>
             <Input
               type="password"
@@ -88,9 +88,12 @@ export default function ResetPassword() {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               error={formik.touched.password && !!formik.errors.password}
+              placeholder="New password"
             />
             {formik.touched.password ?
-              <FormHelperText component="div" className={style.formHelperError}>{formik.errors.password}</FormHelperText> : ""}
+              <FormHelperText component="div" className={style.formHelperError} data-testid="password-error">
+                {formik.errors.password}
+              </FormHelperText> : ""}
           </FormControl>
           <FormControl>
             <FormLabel>Repeat password</FormLabel>
@@ -101,9 +104,12 @@ export default function ResetPassword() {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               error={formik.touched.repeatPassword && !!formik.errors.repeatPassword}
+              placeholder="Repeat your password"
             />
             {formik.touched.repeatPassword ?
-              <FormHelperText component="div" className={style.formHelperError}>{formik.errors.repeatPassword}</FormHelperText> : ""}
+              <FormHelperText component="div" className={style.formHelperError} data-testid="rpassword-error">
+                {formik.errors.repeatPassword}
+              </FormHelperText> : ""}
           </FormControl>
           <Stack gap={4} sx={{ mt: 2 }}>
             <Button type="submit" fullWidth loading={isLoading}>

@@ -10,8 +10,8 @@ import DefaultRoutes from "routes/default";
 import AuthRoutes from "routes/auth";
 
 import LandingPageLayout from "layouts/landing-page/layout"
-import AuthGuard from "guards/authGuard"
-import AppGuard from "guards/appGuard"
+import AuthGuard from "guards/auth-guard"
+import AppGuard from "guards/app-guard"
 
 export default function App() {
   const router = createBrowserRouter([

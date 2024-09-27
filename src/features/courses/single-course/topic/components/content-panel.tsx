@@ -56,7 +56,7 @@ export default function ContentPanel() {
             </Box>
           </Box >
         </Box >
-        : "Module not selected."
+        : "Content not added."
       }
     </Fragment >
   )
