@@ -42,7 +42,7 @@ export default function UserNav() {
       {UserListItems.map(item => (
         <ListItem key={item.name}>
           <ListItemButton>
-            <ListItemDecorator>
+            <ListItemDecorator sx={{ pt: 0.5 }}>
               {item.icon}
             </ListItemDecorator>
             <ListItemContent>

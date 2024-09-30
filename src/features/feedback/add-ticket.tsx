@@ -5,7 +5,6 @@ import { useFormik } from 'formik';
 import Modal from '@mui/joy/Modal';
 import ModalClose from '@mui/joy/ModalClose';
 import ModalDialog, { ModalDialogProps } from '@mui/joy/ModalDialog';
-import DialogTitle from '@mui/joy/DialogTitle';
 import Tooltip from '@mui/joy/Tooltip';
 import IconButton from '@mui/joy/IconButton';
 import FormControl from '@mui/joy/FormControl';
@@ -21,6 +20,7 @@ import { EnrolledCourses } from 'shared/ts/types';
 import { useAddFeedbackTicketMutation } from 'app/api/feedback.slice';
 import { transformErrorResponse } from 'shared/lib/functions';
 import ErrorAlert from 'shared/components/alerts/error';
+import { Typography } from '@mui/joy';
 
 const validationSchema = yup.object().shape({
   problem: yup.string().required('This field is required').max(40, "Too long"),
@@ -67,7 +67,12 @@ export default function AddTicket({ course }: EnrolledCourses) {
       <Modal open={!!layout} onClose={() => setLayout(undefined)}>
         <ModalDialog layout={layout}>
           <ModalClose />
-          <DialogTitle component="p" level="body-md">File a feedback ticket</DialogTitle>
+          <Typography level="body-md">
+            File a feedback ticket
+          </Typography>
+          <Typography level="body-sm">
+            Ticket for: {course.title}
+          </Typography>
           <form onSubmit={formik.handleSubmit}>
             <Stack direction="column" gap={1}>
               <FormControl required>
