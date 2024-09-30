@@ -8,6 +8,7 @@ import Avatar from '@mui/joy/Avatar';
 import AvatarGroup from '@mui/joy/AvatarGroup';
 
 import ArrowForward from '@mui/icons-material/ArrowForward';
+import { GitHub } from '@mui/icons-material';
 
 import { Link } from 'react-router-dom';
 import { AuthPath } from 'routes/paths';
@@ -19,15 +20,35 @@ import ColorSchemeToggle from 'shared/components/color-toggle';
 import { UserLandingPage } from 'shared/ts/types';
 import Carousel from './components/carousel';
 
+function SocialLinks() {
+  return (
+    <Stack direction="row" spacing={2}>
+      <Button
+        variant="outlined"
+        color="neutral"
+        startDecorator={<GitHub />}
+        component="a"
+        href="https://github.com/kayYZ1"
+        target="_blank"
+      >
+        GitHub
+      </Button>
+    </Stack>
+  )
+}
+
 export default function LandingPage() {
   const { data, isLoading, error } = useGetLatestUsersQuery(undefined);
 
   return (
-    <Box>
-      <Box p={2}>
-        <Stack direction={"row"} justifyContent={"space-between"}>
-          <img src={LerngLogo} width={96} height={96} />
-          <ColorSchemeToggle />
+    <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <Box component="header" sx={{ py: 2, px: 3 }}>
+        <Stack direction="row" justifyContent="space-between" alignItems="center">
+          <img src={LerngLogo} alt="LERNG Logo" width={96} height={96} />
+          <Stack direction="row" spacing={2}>
+            <SocialLinks />
+            <ColorSchemeToggle />
+          </Stack>
         </Stack>
       </Box>
       <Container
@@ -71,10 +92,10 @@ export default function LandingPage() {
             fontWeight="xl"
             fontSize="clamp(1.875rem, 1.3636rem + 2.1818vw, 3rem)"
           >
-            LERNG is simple e-learning platform
+            LERNG  - a gateway to Linux mastery
           </Typography>
           <Typography fontSize="lg" textColor="text.secondary" lineHeight="lg">
-            That allows you to learn specialized knowledge about linux and it's distrubution systems from professionals.
+            Unlock specialized knowledge about Linux and its distribution systems from industry professionals.
           </Typography>
           <Box
             sx={{
@@ -87,12 +108,12 @@ export default function LandingPage() {
           >
             <Button size="lg" variant="outlined" color="neutral">
               <Link to={AuthPath.SIGN_UP} style={{ textDecoration: "none", color: "inherit" }}>
-                Get started
+                Sign Up
               </Link>
             </Button>
             <Button size="lg" endDecorator={<ArrowForward />}>
               <Link to={AuthPath.SIGN_IN} style={{ textDecoration: "none", color: "inherit" }}>
-                Or Sign In
+                Sign In
               </Link>
             </Button>
           </Box>
@@ -116,8 +137,8 @@ export default function LandingPage() {
                 })}
             </AvatarGroup>
             <Typography textColor="text.secondary">
-              Join a community of over <b>10K</b> <br />
-              developers.
+              Join our thriving community of <b>10,000+</b> <br></br>
+              Linux enthusiasts
             </Typography>
           </Box>
         </Box>
@@ -142,6 +163,11 @@ export default function LandingPage() {
           <Carousel />
         </AspectRatio>
       </Container>
+      <Box component="footer" sx={{ py: 3, mt: 'auto', textAlign: 'center' }}>
+        <Typography level="body-sm" textColor="text.secondary">
+          © {new Date().getFullYear()} LERNG. All rights reserved.
+        </Typography>
+      </Box>
     </Box>
   );
 }

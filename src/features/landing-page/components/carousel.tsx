@@ -4,6 +4,8 @@ import lpImage from "assets/svg/imagelp1.svg";
 import lpImage2 from "assets/svg/imagelp2.svg";
 import lpImage3 from "assets/svg/imagelp3.svg";
 
+import Box from "@mui/joy/Box";
+
 const images = [
   lpImage, lpImage2, lpImage3
 ];
@@ -18,15 +20,26 @@ export default function Carousel() {
   useEffect(() => {
     const interval = setInterval(nextImage, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [images.length]);
 
   return (
-    <div>
-      <img
+    <Box>
+      <Box
+        key={activeIdx}
+        component="img"
         src={images[activeIdx]}
-        alt="Carousel"
-        style={{ width: "100%", height: "auto" }}
+        alt="Carousel Image"
+        sx={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          opacity: 0.75,
+          animation: ""
+        }}
       />
-    </div>
+    </Box>
   );
 }
