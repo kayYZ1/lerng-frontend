@@ -20,7 +20,7 @@ export default function Carousel() {
   useEffect(() => {
     const interval = setInterval(nextImage, 3000);
     return () => clearInterval(interval);
-  }, [images.length]);
+  }, []);
 
   return (
     <Box>

@@ -20,7 +20,7 @@ export default function TopicsPanel({ id }: IdProps) {
 
   useEffect(() => {
     dispatch(setActiveCourse(id));
-  }, [dispatch])
+  }, [dispatch, id])
 
   return (
     <Sheet

@@ -20,7 +20,6 @@ import Skeleton from '@mui/joy/Skeleton';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
-import FeedbackIcon from '@mui/icons-material/Feedback';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 

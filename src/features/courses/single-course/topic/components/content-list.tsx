@@ -34,7 +34,7 @@ export default function ContentList({ contents }: IContentListProps) {
     return () => {
       dispatch(setActiveContent(null))
     }
-  }, [contents])
+  }, [contents, dispatch])
 
   return (
     <List
