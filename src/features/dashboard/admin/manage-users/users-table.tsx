@@ -2,33 +2,35 @@ import { useState, Fragment } from 'react';
 
 import IconButton from '@mui/joy/IconButton';
 import Table from '@mui/joy/Table';
-import Typography from '@mui/joy/Typography';
 import Sheet from '@mui/joy/Sheet';
 import Skeleton from "@mui/joy/Skeleton";
-import Box from "@mui/joy/Box";
-import Button from "@mui/joy/Button";
+import Chip from "@mui/joy/Chip";
+import { ColorPaletteProp } from '@mui/joy';
 
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+
 import { parseDate } from 'shared/lib/functions';
+import CollapsibleRow from './collapsible-row';
+import ViewProfile from './view-profile';
 
 interface Users {
   users: User[]
   isLoading: boolean
 }
 
-type User = {
+export type User = {
   id: string
   username: string
   email: string,
   role: string,
   created: Date,
+  access: string,
   imageUrl: string
 }
 
 function Row(u: User) {
   const [open, setOpen] = useState(false);
-
   return (
     <Fragment>
       <tr>
@@ -49,43 +51,28 @@ function Row(u: User) {
         <td>{u.role}</td>
         <td>{parseDate(u.created)}</td>
         <td>
-          <Button size="sm" variant="plain" color="neutral">
-            View
-          </Button>
+          <Chip
+            variant="soft"
+            size="sm"
+            sx={{ p: 0.5 }}
+            color={
+              {
+                blocked: 'primary',
+                open: 'success'
+              }[u.access] as ColorPaletteProp
+            }
+          >
+            {u.access}
+          </Chip>
+        </td>
+        <td>
+          <ViewProfile {...u} />
         </td>
       </tr>
       <tr>
         <td style={{ height: 0, padding: 0 }} colSpan={6}>
           {open && (
-            <Sheet
-              variant="soft"
-              sx={{ p: 1, pl: 6, boxShadow: 'inset 0 3px 6px 0 rgba(0 0 0 / 0.08)' }}
-            >
-              <Typography level="body-lg" component="div">
-                Courses
-              </Typography>
-              <Table
-                borderAxis="bothBetween"
-                size="sm"
-              >
-                <thead>
-                  <tr>
-                    <th>Course</th>
-                    <th>Description</th>
-                    <th>Created</th>
-                    <th>Review</th>
-                    <th>Instructor</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <td>Sample course</td>
-                  <td>Sample course description nice nice</td>
-                  <td>2024-02-13</td>
-                  <td>4.3/5</td>
-                  <td>Course instructor</td>
-                </tbody>
-              </Table>
-            </Sheet>
+            <CollapsibleRow userId={u.id} />
           )}
         </td>
       </tr>
@@ -96,9 +83,7 @@ function Row(u: User) {
 export default function UsersTable({ users, isLoading }: Users) {
   return (
     <Sheet>
-      <Table
-        aria-label="collapsible table"
-      >
+      <Table aria-label="collapsible table">
         <thead>
           <tr>
             <th style={{ width: 40 }} aria-label="empty" />
@@ -107,6 +92,7 @@ export default function UsersTable({ users, isLoading }: Users) {
             <th>Username</th>
             <th>Role</th>
             <th>Joined</th>
+            <th>Access</th>
             <th>Actions</th>
           </tr>
         </thead>
