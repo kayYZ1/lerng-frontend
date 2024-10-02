@@ -6,6 +6,7 @@ import TabList from "@mui/joy/TabList";
 import Tab, { tabClasses } from '@mui/joy/Tab';
 
 import BreadcrumbsCustom from "shared/components/breadcrumbs-custom.tsx";
+import ManageUsers from "./manage-users";
 
 export default function AdminPanel() {
   return (
@@ -58,7 +59,7 @@ export default function AdminPanel() {
             11
           </TabPanel>
           <TabPanel value={1}>
-            22
+            <ManageUsers />
           </TabPanel>
           <TabPanel value={2}>
             32
