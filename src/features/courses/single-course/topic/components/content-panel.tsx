@@ -5,11 +5,7 @@ import { useSelector } from "react-redux";
 import Box from "@mui/joy/Box";
 import Stack from "@mui/joy/Stack";
 import Typography from "@mui/joy/Typography";
-import Divider from "@mui/joy/Divider";
-import Chip from "@mui/joy/Chip";
 import Sheet from "@mui/joy/Sheet";
-
-import { MovieOutlined } from "@mui/icons-material";
 
 import EditContentModal from "./modals/edit-content";
 
@@ -43,11 +39,6 @@ export default function ContentPanel() {
               </Typography>
             </Box>
             <Box>
-              <Divider>
-                <Chip variant="soft" color="neutral" size="sm">
-                  <MovieOutlined />
-                </Chip>
-              </Divider>
               <Box display="flex" justifyContent="center" alignItems="center">
                 <Sheet variant="soft" sx={{ p: 2, mt: 1, width: "100%" }}>
                   <ReactPlayer pip stopOnUnmount light width="100%" url={activeContent.videoUrl} />

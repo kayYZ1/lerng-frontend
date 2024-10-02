@@ -6,32 +6,26 @@ import ListItemButton from '@mui/joy/ListItemButton';
 import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import ListItemContent from '@mui/joy/ListItemContent';
 
-import DashboardIcon from '@mui/icons-material/Dashboard';
+import AdminPanel from "@mui/icons-material/AdminPanelSettings"
 import SignpostIcon from '@mui/icons-material/Signpost';
-import FeedbackIcon from '@mui/icons-material/Feedback';
 
 import { CoursesPath, DashboardPath } from 'routes/paths';
 import style from '../dashboard.module.css';
 
 const InstructorListItems = [
   {
-    link: DashboardPath.DASHBOARD,
-    name: 'Instructor',
-    icon: <DashboardIcon />
+    link: DashboardPath.ADMIN,
+    name: 'Admin',
+    icon: <AdminPanel />
   },
   {
     link: CoursesPath.COURSES,
     name: 'Courses',
     icon: <SignpostIcon />
   },
-  {
-    link: DashboardPath.FEEDBACK_INSTRUCTOR,
-    name: 'Feedback',
-    icon: <FeedbackIcon />
-  }
 ];
 
-export default function InstructorNav() {
+export default function AdminNav() {
   return (
     <List
       aria-labelledby="nav-list-browse"
