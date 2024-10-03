@@ -7,9 +7,22 @@ import ModalClose from '@mui/joy/ModalClose';
 import Typography from '@mui/joy/Typography';
 import Sheet from '@mui/joy/Sheet';
 import { User } from './users-table';
+import { useChangeAccessMutation } from 'app/api/users.api.slice';
 
 export default function ViewProfile(user: User) {
   const [open, setOpen] = useState<boolean>(false);
+  const [ChangeAccess, { isLoading }] = useChangeAccessMutation();
+
+  const changeUserAccess = async (access: string) => {
+    const values = {
+      userId: user.id,
+      access
+    }
+    console.log(values)
+
+    await ChangeAccess(values)
+  }
+
   return (
     <Fragment>
       <Button size="sm" variant="plain" color="neutral" onClick={() => setOpen(true)}>
@@ -42,12 +55,12 @@ export default function ViewProfile(user: User) {
           </Typography>
           <Box display="flex" justifyContent="flex-end" pt={1}>
             {user.access === "open" ?
-              <Button color="danger" size="sm">
-                Ban {user.username}
+              <Button color="danger" size="sm" onClick={() => changeUserAccess("blocked")} loading={isLoading}>
+                Block {user.username}
               </Button>
               :
-              <Button color="neutral" size="sm">
-                Unban {user.username}
+              <Button color="neutral" size="sm" onClick={() => changeUserAccess("open")} loading={isLoading}>
+                Unblock {user.username}
               </Button>
             }
           </Box>

@@ -57,7 +57,7 @@ function Row(u: User) {
             sx={{ p: 0.5 }}
             color={
               {
-                blocked: 'primary',
+                blocked: 'danger',
                 open: 'success'
               }[u.access] as ColorPaletteProp
             }

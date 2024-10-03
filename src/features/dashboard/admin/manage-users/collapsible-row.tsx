@@ -17,27 +17,28 @@ export default function CollapsibleRow({ userId }: { userId: string }) {
       <Typography level="body-lg" component="div">
         Courses
       </Typography>
-      <Table
-        borderAxis="bothBetween"
-        size="sm"
-      >
-        <thead>
-          <tr>
-            <th>Course</th>
-            <th>Description</th>
-            <th>Created</th>
-          </tr>
-        </thead>
-        <tbody>
-          {userCourses && userCourses.map((course: EnrolledCourses) => (
+      {userCourses && userCourses.length !== 0 ?
+        <Table borderAxis="bothBetween" size="sm">
+          <thead>
             <tr>
-              <td>{course.course.title}</td>
-              <td>{course.course.description}</td>
-              <td>{parseDate(course.course.created)}</td>
+              <th>Course</th>
+              <th>Description</th>
+              <th>Created</th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
+          </thead>
+          <tbody>
+            {userCourses.map((course: EnrolledCourses) => (
+              <tr key={course.id}>
+                <td>{course.course.title}</td>
+                <td>{course.course.description}</td>
+                <td>{parseDate(course.course.created)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+        :
+        <Typography level="body-sm" component="div">User have not joined any courses yet.</Typography>
+      }
     </Sheet>
   )
 }
