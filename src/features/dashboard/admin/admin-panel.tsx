@@ -51,18 +51,12 @@ export default function AdminPanel() {
             <Tab sx={{ borderRadius: '6px 6px 0 0' }} indicatorInset value={1}>
               Manage
             </Tab>
-            <Tab sx={{ borderRadius: '6px 6px 0 0' }} indicatorInset value={2}>
-              App settings
-            </Tab>
           </TabList>
           <TabPanel value={0}>
             11
           </TabPanel>
           <TabPanel value={1}>
             <ManageUsers />
-          </TabPanel>
-          <TabPanel value={2}>
-            32
           </TabPanel>
         </Tabs>
       </Box>

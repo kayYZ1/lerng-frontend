@@ -57,7 +57,7 @@ export default function AddTicket({ course }: EnrolledCourses) {
   return (
     <Fragment>
       <Tooltip title="Add a ticket">
-        <IconButton color="primary" size="md" sx={{ fontSize: "smaller" }}
+        <IconButton color="primary" size="md" sx={{ fontSize: "smaller", py: 1 }}
           onClick={() => {
             setLayout('center');
           }}>

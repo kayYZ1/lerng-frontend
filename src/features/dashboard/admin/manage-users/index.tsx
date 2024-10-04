@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import Box from '@mui/joy/Box';
 import Sheet from '@mui/joy/Sheet';
 import Input from "@mui/joy/Input";
+import Typography from "@mui/joy/Typography";
 
 import { SearchRounded } from "@mui/icons-material";
 
@@ -22,6 +23,7 @@ export default function ManageUsers() {
   return (
     <Box sx={{
       display: "flex",
+      justifyContent: "center",
       my: 2
     }}>
       <Sheet

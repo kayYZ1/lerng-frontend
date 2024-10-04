@@ -128,6 +128,6 @@ export default function UsersTable({ users, isLoading }: Users) {
           }
         </tbody>
       </Table>
-    </Sheet >
+    </Sheet>
   );
 }

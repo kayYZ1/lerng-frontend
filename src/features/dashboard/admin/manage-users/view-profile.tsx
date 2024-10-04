@@ -1,13 +1,16 @@
 import { useState, Fragment } from 'react';
 
+import Avatar from '@mui/joy/Avatar';
 import Button from '@mui/joy/Button';
 import Box from '@mui/joy/Box';
 import Modal from '@mui/joy/Modal';
 import ModalClose from '@mui/joy/ModalClose';
 import Typography from '@mui/joy/Typography';
 import Sheet from '@mui/joy/Sheet';
+
 import { User } from './users-table';
 import { useChangeAccessMutation } from 'app/api/users.api.slice';
+import { parseDate } from 'shared/lib/functions';
 
 export default function ViewProfile(user: User) {
   const [open, setOpen] = useState<boolean>(false);
@@ -18,8 +21,6 @@ export default function ViewProfile(user: User) {
       userId: user.id,
       access
     }
-    console.log(values)
-
     await ChangeAccess(values)
   }
 
@@ -47,12 +48,29 @@ export default function ViewProfile(user: User) {
             textColor="inherit"
             sx={{ fontWeight: 'lg', mb: 1 }}
           >
-            User profile - {user.username}
+            User profile
           </Typography>
-          <Typography textColor="text.tertiary">
-            Make sure to use <code>aria-labelledby</code> on the modal dialog with an
-            optional <code>aria-describedby</code> attribute. Just a placeholder
-          </Typography>
+          <Box
+            width={400}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            flexDirection="column"
+            p={2}
+            gap={0.5}
+          >
+            <Avatar src={user.imageUrl} sx={{ '--Avatar-size': '6rem' }} />
+            <Typography level="title-lg">{user.username}</Typography>
+            <Typography level="body-sm" sx={{ maxWidth: '24ch' }}>
+              {user.email}
+            </Typography>
+            <Typography level="body-sm">
+              Access to application: <b>{user.access}</b>
+            </Typography>
+            <Typography level="body-sm">
+              Joined: {parseDate(user.created)}
+            </Typography>
+          </Box>
           <Box display="flex" justifyContent="flex-end" pt={1}>
             {user.access === "open" ?
               <Button color="danger" size="sm" onClick={() => changeUserAccess("blocked")} loading={isLoading}>

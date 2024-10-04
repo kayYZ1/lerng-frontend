@@ -88,7 +88,7 @@ export default function InstructorTickets() {
                       size="sm"
                       color={
                         {
-                          active: 'neutral',
+                          active: 'primary',
                           rejected: 'danger',
                           resolved: 'success'
                         }[ticket.status] as ColorPaletteProp
