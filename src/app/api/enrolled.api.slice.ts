@@ -22,6 +22,13 @@ export const enrolledApiSlice = authApi.injectEndpoints({
       },
       providesTags: ['Enrolled'],
     }),
+    GetCoursesForUser: builder.query({
+      query: (userId: string) => ({
+        url: `/enrolled/user-courses/${userId}`,
+        method: 'GET',
+      }),
+      providesTags: ['UserCourses'],
+    }),
     GetInstructorStatistics: builder.query({
       query: () => ({
         url: '/enrolled/statistics/instructor',
@@ -62,5 +69,6 @@ export const {
   useGetInstructorStatisticsQuery,
   useUpdateRatingMutation,
   useGetRatingQuery,
+  useGetCoursesForUserQuery,
   useGetRatingByCourseQuery,
 } = enrolledApiSlice;

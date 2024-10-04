@@ -6,32 +6,26 @@ import ListItemButton from '@mui/joy/ListItemButton';
 import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import ListItemContent from '@mui/joy/ListItemContent';
 
-import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
-import FeedbackIcon from '@mui/icons-material/Feedback';
+import AdminPanel from "@mui/icons-material/AdminPanelSettings"
 import SignpostIcon from '@mui/icons-material/Signpost';
 
 import { CoursesPath, DashboardPath } from 'routes/paths';
 import style from '../dashboard.module.css';
 
-const UserListItems = [
+const InstructorListItems = [
   {
-    link: DashboardPath.ENROLLED,
-    name: 'Enrolled',
-    icon: <LibraryBooksIcon />
+    link: DashboardPath.ADMIN,
+    name: 'Admin',
+    icon: <AdminPanel />
   },
   {
     link: CoursesPath.COURSES,
     name: 'Courses',
     icon: <SignpostIcon />
   },
-  {
-    link: DashboardPath.FEEDBACK,
-    name: 'Feedback',
-    icon: <FeedbackIcon />
-  }
 ];
 
-export default function UserNav() {
+export default function AdminNav() {
   return (
     <List
       aria-labelledby="nav-list-browse"
@@ -39,10 +33,10 @@ export default function UserNav() {
         '& .JoyListItemButton-root': { p: '8px' },
       }}
     >
-      {UserListItems.map(item => (
+      {InstructorListItems.map(item => (
         <ListItem key={item.name}>
           <ListItemButton>
-            <ListItemDecorator sx={{ pt: 0.5 }}>
+            <ListItemDecorator>
               {item.icon}
             </ListItemDecorator>
             <ListItemContent>

@@ -16,7 +16,7 @@ import style from '../dashboard.module.css';
 const InstructorListItems = [
   {
     link: DashboardPath.DASHBOARD,
-    name: 'Instructor Panel',
+    name: 'Instructor',
     icon: <DashboardIcon />
   },
   {

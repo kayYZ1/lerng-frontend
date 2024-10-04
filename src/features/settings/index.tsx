@@ -5,7 +5,7 @@ import SettingsLayout from 'layouts/settings/layout';
 
 import { useGetMeQuery } from 'app/api/auth.api.slice';
 
-import ProfileSkeleton from './components/profileSkeleton';
+import ProfileSkeleton from './components/profile-skeleton';
 import UpdatePassword from './update-password';
 import UpdateData from './update-data';
 

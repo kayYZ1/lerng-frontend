@@ -15,6 +15,8 @@ export const authApi = createApi({
     'Topic',
     'User',
     'Enrolled',
+    'UserCourses',
+    'Users',
   ],
   endpoints: () => ({}),
 });
