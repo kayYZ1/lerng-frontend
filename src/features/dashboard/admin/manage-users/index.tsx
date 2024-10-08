@@ -22,15 +22,14 @@ export default function ManageUsers() {
   return (
     <Box sx={{
       display: "flex",
-      justifyContent: "center",
       my: 2
     }}>
       <Sheet
         variant="outlined"
         sx={{
           display: { xs: 'flex', md: 'flex' },
-          mx: { xs: "none", md: 4 },
           flexDirection: "column",
+          mx: { xs: "none", md: 4 }
         }}
       >
         <Input

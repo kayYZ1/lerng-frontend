@@ -52,7 +52,7 @@ export default function QuizForm(questions: Question[]) {
         <ResultCard score={score} /> :
         <Card sx={{ flex: 1, width: { xs: 300, md: 400 } }}>
           <Box>
-            <Typography level="title-md">{activeQuestion.question}</Typography>
+            <Typography level="title-md" sx={{ userSelect: "none" }}>{activeQuestion.question}</Typography>
             <Typography level="body-sm" sx={{ py: 1 }}>
               Question type: {activeQuestion.type}
             </Typography>
