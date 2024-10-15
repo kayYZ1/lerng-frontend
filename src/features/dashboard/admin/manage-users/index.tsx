@@ -9,15 +9,25 @@ import { SearchRounded } from "@mui/icons-material";
 import { useGetAllUsersQuery } from "app/api/users.api.slice"
 import UsersTable from './users-table';
 
+interface User {
+  id: string
+  username: string
+  email: string
+  access: string
+  created: Date
+  imageUrl: string
+  role: string
+}
+
 export default function ManageUsers() {
   const [searchParams, setSearchParams] = useSearchParams({ query: "" });
   const { data: users, isLoading } = useGetAllUsersQuery(undefined);
 
   const query = searchParams.get("query") || "";
 
-  const filterUsers = query.length > 2 ? users?.filter((user: any) =>
+  const filterUsers = query.length > 2 ? users?.filter((user: User) =>
     user.username.toLowerCase().includes(query.toLowerCase())
-  ) : users || []; //Leave any for now
+  ) : users || [];
 
   return (
     <Box sx={{

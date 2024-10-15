@@ -38,7 +38,7 @@ export default function UsersTable({ users, isLoading }: Users) {
     setPage(newPage);
   };
 
-  const handleChangeRowsPerPage = (_event: any, newValue: number | null) => {
+  const handleChangeRowsPerPage = (_: any, newValue: number | null) => {
     setRowsPerPage(parseInt(newValue!.toString(), 10));
     setPage(0);
   };
