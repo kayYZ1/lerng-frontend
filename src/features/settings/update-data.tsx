@@ -100,6 +100,7 @@ export default function UpdateData(data: UserData) {
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   error={formik.touched.email && !!formik.errors.email}
+                  disabled={data.email === 'demo@lerng.com' ? true : false}
                 />
                 {formik.touched.email ?
                   <FormHelperText component="div">{formik.errors.email}</FormHelperText> : ""}
@@ -115,6 +116,7 @@ export default function UpdateData(data: UserData) {
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   error={formik.touched.username && !!formik.errors.username}
+                  disabled={data.username === 'demolerner' ? true : false}
                 />
                 {formik.touched.username ?
                   <FormHelperText component="div">{formik.errors.username}</FormHelperText> : ""}
@@ -134,7 +136,13 @@ export default function UpdateData(data: UserData) {
                   <Button size="sm" variant="outlined" onClick={() => formik.resetForm()}>
                     Clear
                   </Button>
-                  <Button size="sm" variant="solid" type="submit" loading={isLoading}>
+                  <Button
+                    size="sm"
+                    variant="solid"
+                    type="submit"
+                    loading={isLoading}
+                    disabled={data.email === 'demo@lerng.com' ? true : false}
+                  >
                     Save
                   </Button>
                 </CardActions>
