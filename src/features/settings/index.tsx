@@ -21,7 +21,7 @@ export default function Profile() {
       >
         <Divider />
         {isLoading ? <ProfileSkeleton /> : <UpdateData {...data} />}
-        <UpdatePassword />
+        <UpdatePassword {...data} />
       </Stack>
     </SettingsLayout>
   );
