@@ -5,12 +5,16 @@ import { GlobalStyles } from '@mui/joy';
 import CssBaseline from '@mui/joy/CssBaseline';
 
 interface IRootLayout {
-  children: ReactNode
+  children: ReactNode;
 }
 
 export default function RootLayout({ children }: IRootLayout) {
   return (
-    <CssVarsProvider disableTransitionOnChange defaultMode='system' disableNestedContext>
+    <CssVarsProvider
+      disableTransitionOnChange
+      defaultMode="system"
+      disableNestedContext
+    >
       <CssBaseline />
       <GlobalStyles
         styles={{
@@ -23,5 +27,5 @@ export default function RootLayout({ children }: IRootLayout) {
       />
       {children}
     </CssVarsProvider>
-  )
+  );
 }

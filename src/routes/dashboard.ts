@@ -12,9 +12,15 @@ const FeedbackInstructor = lazy(
 );
 
 const Courses = lazy(() => import('features/courses/index'));
-const SingleCourse = lazy(() => import('features/courses/single-course/index'));
-const Topic = lazy(() => import('features/courses/single-course/topic/index'));
-const Quiz = lazy(() => import('features/courses/single-course/quiz/index'));
+const SingleCourse = lazy(
+  () => import('features/courses/single-course/index'),
+);
+const Topic = lazy(
+  () => import('features/courses/single-course/topic/index'),
+);
+const Quiz = lazy(
+  () => import('features/courses/single-course/quiz/index'),
+);
 
 const routes = [
   {

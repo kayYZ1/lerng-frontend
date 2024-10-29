@@ -28,7 +28,7 @@ export const modulesApiSlice = authApi.injectEndpoints({
     }),
     EditTopic: builder.mutation({
       query: (values) => ({
-        url: "/topics/edit",
+        url: '/topics/edit',
         method: 'PATCH',
         body: values,
       }),

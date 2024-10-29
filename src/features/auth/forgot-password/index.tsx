@@ -1,13 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-import Stack from "@mui/joy/Stack";
-import Typography from "@mui/joy/Typography";
-import Divider from "@mui/joy/Divider";
+import Stack from '@mui/joy/Stack';
+import Typography from '@mui/joy/Typography';
+import Divider from '@mui/joy/Divider';
 
-import ForgotPasswordForm from "./forgot-password";
-import { AuthPath } from "routes/paths";
+import ForgotPasswordForm from './forgot-password';
+import { AuthPath } from 'routes/paths';
 
-import style from "../auth.module.css";
+import style from '../auth.module.css';
 
 export default function ForgotPassword() {
   return (
@@ -19,7 +19,9 @@ export default function ForgotPassword() {
           </Typography>
           <Typography level="body-sm">
             Go back?{' '}
-            <Link to={AuthPath.SIGN_IN} className={style.link}>Click here</Link>
+            <Link to={AuthPath.SIGN_IN} className={style.link}>
+              Click here
+            </Link>
           </Typography>
         </Stack>
       </Stack>
@@ -33,11 +35,10 @@ export default function ForgotPassword() {
             },
           },
         })}
-      >
-      </Divider>
+      ></Divider>
       <Stack gap={4} sx={{ mt: 2 }}>
         <ForgotPasswordForm />
       </Stack>
     </div>
-  )
+  );
 }

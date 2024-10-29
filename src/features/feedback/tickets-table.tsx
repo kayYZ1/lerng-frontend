@@ -13,23 +13,25 @@ import { parseDate } from 'shared/lib/functions';
 import ViewTicketModal from './components/view-ticket';
 
 export default function TicketsTable() {
-  const { data, isLoading } = useGetFeedbackTicketsQuery("Feedback");
+  const { data, isLoading } = useGetFeedbackTicketsQuery('Feedback');
 
   return (
     <Sheet
       variant="outlined"
       sx={{
-        display: "flex",
-        flexDirection: "column",
+        display: 'flex',
+        flexDirection: 'column',
       }}
     >
-      <Box sx={{ flexGrow: 1, overflow: "auto" }}>
+      <Box sx={{ flexGrow: 1, overflow: 'auto' }}>
         <Table
           hoverRow
           sx={{
-            '--TableCell-headBackground': 'var(--joy-palette-background-level1)',
+            '--TableCell-headBackground':
+              'var(--joy-palette-background-level1)',
             '--Table-headerUnderlineThickness': '1px',
-            '--TableRow-hoverBackground': 'var(--joy-palette-background-level1)',
+            '--TableRow-hoverBackground':
+              'var(--joy-palette-background-level1)',
             '--TableCell-paddingY': '4px',
             '--TableCell-paddingX': '8px',
           }}
@@ -46,69 +48,79 @@ export default function TicketsTable() {
             </tr>
           </thead>
           <tbody>
-            {isLoading ?
-              [1, 2, 3].map((index) => (
-                <tr key={index}>
-                  <td scope="row">
-                    <Skeleton animation="wave" variant="text" />
-                  </td>
-                  <td scope="row">
-                    <Skeleton animation="wave" variant="text" />
-                  </td>
-                  <td scope="row">
-                    <Skeleton animation="wave" variant="text" />
-                  </td>
-                  <td scope="row">
-                    <Skeleton animation="wave" variant="text" />
-                  </td>
-                  <td scope="row">
-                    <Skeleton animation="wave" variant="text" />
-                  </td>
-                  <td scope="row">
-                    <Skeleton animation="wave" variant="text" />
-                  </td>
-                </tr>
-              ))
+            {isLoading
+              ? [1, 2, 3].map((index) => (
+                  <tr key={index}>
+                    <td scope="row">
+                      <Skeleton animation="wave" variant="text" />
+                    </td>
+                    <td scope="row">
+                      <Skeleton animation="wave" variant="text" />
+                    </td>
+                    <td scope="row">
+                      <Skeleton animation="wave" variant="text" />
+                    </td>
+                    <td scope="row">
+                      <Skeleton animation="wave" variant="text" />
+                    </td>
+                    <td scope="row">
+                      <Skeleton animation="wave" variant="text" />
+                    </td>
+                    <td scope="row">
+                      <Skeleton animation="wave" variant="text" />
+                    </td>
+                  </tr>
+                ))
               : data.map((ticket: FeedbackTicket) => (
-                <tr key={ticket.id}>
-                  <td>
-                    <Typography level="body-xs">{ticket.ticket_id}</Typography>
-                  </td>
-                  <td>
-                    <Typography level="body-xs">{ticket.course.title}</Typography>
-                  </td>
-                  <td>
-                    <Typography level="body-xs">{ticket.problem}</Typography>
-                  </td>
-                  <td>
-                    <Chip
-                      variant="soft"
-                      size="sm"
-                      color={
-                        {
-                          active: 'primary',
-                          rejected: 'danger',
-                          resolved: 'success'
-                        }[ticket.status] as ColorPaletteProp
-                      }
-                    >
-                      {ticket.status}
-                    </Chip>
-                  </td>
-                  <td>
-                    <Typography level="body-xs">{parseDate(ticket.created)}</Typography>
-                  </td>
-                  <td>
-                    <Typography level="body-xs">{parseDate(ticket.updated)}</Typography>
-                  </td>
-                  <td>
-                    <ViewTicketModal {...ticket} />
-                  </td>
-                </tr>
-              ))}
+                  <tr key={ticket.id}>
+                    <td>
+                      <Typography level="body-xs">
+                        {ticket.ticket_id}
+                      </Typography>
+                    </td>
+                    <td>
+                      <Typography level="body-xs">
+                        {ticket.course.title}
+                      </Typography>
+                    </td>
+                    <td>
+                      <Typography level="body-xs">
+                        {ticket.problem}
+                      </Typography>
+                    </td>
+                    <td>
+                      <Chip
+                        variant="soft"
+                        size="sm"
+                        color={
+                          {
+                            active: 'primary',
+                            rejected: 'danger',
+                            resolved: 'success',
+                          }[ticket.status] as ColorPaletteProp
+                        }
+                      >
+                        {ticket.status}
+                      </Chip>
+                    </td>
+                    <td>
+                      <Typography level="body-xs">
+                        {parseDate(ticket.created)}
+                      </Typography>
+                    </td>
+                    <td>
+                      <Typography level="body-xs">
+                        {parseDate(ticket.updated)}
+                      </Typography>
+                    </td>
+                    <td>
+                      <ViewTicketModal {...ticket} />
+                    </td>
+                  </tr>
+                ))}
           </tbody>
         </Table>
       </Box>
-    </Sheet >
-  )
+    </Sheet>
+  );
 }

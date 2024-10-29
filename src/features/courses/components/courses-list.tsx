@@ -1,19 +1,21 @@
-import { Box, Grid } from "@mui/joy";
+import { Box, Grid } from '@mui/joy';
 
-import { Course } from "shared/ts/types";
-import CourseItem from "./course-item";
-import CourseSkeleton from "./course-skeleton";
+import { Course } from 'shared/ts/types';
+import CourseItem from './course-item';
+import CourseSkeleton from './course-skeleton';
 
 interface Props {
-  data: Course[]
-  isLoading: boolean
+  data: Course[];
+  isLoading: boolean;
 }
 
 export default function CoursesList({ data, isLoading }: Props) {
   return (
-    <Box sx={{
-      display: 'flex',
-    }}>
+    <Box
+      sx={{
+        display: 'flex',
+      }}
+    >
       <Grid
         container
         spacing={2}
@@ -24,20 +26,16 @@ export default function CoursesList({ data, isLoading }: Props) {
             xs: 4,
             sm: 4,
             md: 5,
-            lg: 6
-          }
+            lg: 6,
+          },
         }}
       >
-        {isLoading ?
-          [1, 2, 3, 4].map((index) => (
-            <CourseSkeleton key={index} />
-          ))
-          :
-          data.map((course) => (
-            <CourseItem {...course} key={course.id} />
-          ))
-        }
+        {isLoading
+          ? [1, 2, 3, 4].map((index) => <CourseSkeleton key={index} />)
+          : data.map((course) => (
+              <CourseItem {...course} key={course.id} />
+            ))}
       </Grid>
     </Box>
-  )
+  );
 }

@@ -1,9 +1,9 @@
-import Box from "@mui/joy/Box";
-import Typography from "@mui/joy/Typography";
-import Divider from "@mui/joy/Divider";
+import Box from '@mui/joy/Box';
+import Typography from '@mui/joy/Typography';
+import Divider from '@mui/joy/Divider';
 
-import BreadcrumbsCustom from "shared/components/breadcrumbs-custom";
-import InstructorTickets from "./instructor-tickets";
+import BreadcrumbsCustom from 'shared/components/breadcrumbs-custom';
+import InstructorTickets from './instructor-tickets';
 
 export default function FeedbackInstructor() {
   return (
@@ -15,9 +15,14 @@ export default function FeedbackInstructor() {
         </Typography>
       </Box>
       <Divider sx={{ my: 2 }} />
-      <Box px={6} display="flex" sx={{ flexDirection: { xs: 'column', sm: 'row' } }} gap={5}>
+      <Box
+        px={6}
+        display="flex"
+        sx={{ flexDirection: { xs: 'column', sm: 'row' } }}
+        gap={5}
+      >
         <InstructorTickets />
       </Box>
     </Box>
-  )
+  );
 }

@@ -16,7 +16,11 @@ export default function AddTopicModal() {
       <Modal
         open={open}
         onClose={() => setOpen(false)}
-        sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
       >
         <ModalDialog>
           <AddTopicForm setOpen={setOpen} />

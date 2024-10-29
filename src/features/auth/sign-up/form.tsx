@@ -1,48 +1,66 @@
-import { FormControl, FormLabel, Input, Stack, Box, Checkbox, Button, Typography, FormHelperText, Link } from "@mui/joy";
-import { useFormik } from "formik";
-import * as yup from "yup"
+import { useNavigate } from 'react-router-dom';
+import {
+  FormControl,
+  FormLabel,
+  Input,
+  Stack,
+  Box,
+  Checkbox,
+  Button,
+  Typography,
+  FormHelperText,
+  Link,
+} from '@mui/joy';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
 
-import { useSignUpFnMutation } from "app/api/auth.api.slice";
-import { UserSignUp } from "shared/ts/types";
+import { useSignUpFnMutation } from 'app/api/auth.api.slice';
+import { UserSignUp } from 'shared/ts/types';
 
-import style from "../auth.module.css"
-import ErrorAlert from "shared/components/alerts/error";
-import { transformErrorResponse } from "shared/lib/functions";
-import { useNavigate } from "react-router-dom";
+import ErrorAlert from 'shared/components/alerts/error';
+import ShowCapsLock from 'shared/components/show-capslock';
+import { transformErrorResponse } from 'shared/lib/functions';
+
+import style from '../auth.module.css';
 
 const validationSchema = yup.object().shape({
   email: yup.string().email('Invalid email').required('Email is required'),
   username: yup.string().required('Username is required'),
-  password: yup.string().min(8, 'Password must be atleast 8 characters long').required('Password is required'),
-  repeatPassword: yup.string().oneOf([yup.ref('password')], 'Passwords must match')
+  password: yup
+    .string()
+    .min(8, 'Password must be atleast 8 characters long')
+    .required('Password is required'),
+  repeatPassword: yup
+    .string()
+    .oneOf([yup.ref('password')], 'Passwords must match')
     .required('Please confirm your password'),
 });
 
 export default function SignUpForm() {
   const [SignUpFn, { isLoading, error }] = useSignUpFnMutation();
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const errorResponse = transformErrorResponse(error);
 
   const formik = useFormik({
     initialValues: {
-      email: "",
-      username: "",
-      password: "",
-      repeatPassword: "",
+      email: '',
+      username: '',
+      password: '',
+      repeatPassword: '',
     },
     validationSchema,
     onSubmit: async (values, { resetForm }) => {
       const user: UserSignUp = {
         email: values.email,
         password: values.password,
-        username: values.username
-      }
+        username: values.username,
+      };
       await SignUpFn(user);
-      navigate("/auth/sign-in")
+      navigate('/auth/sign-in');
       resetForm();
-    }
-  })
+    },
+  });
 
   return (
     <form onSubmit={formik.handleSubmit}>
@@ -56,8 +74,16 @@ export default function SignUpForm() {
           onBlur={formik.handleBlur}
           error={formik.touched.email && !!formik.errors.email}
         />
-        {formik.touched.email ?
-          <FormHelperText component="div" className={style.formHelperError}>{formik.errors.email}</FormHelperText> : ""}
+        {formik.touched.email ? (
+          <FormHelperText
+            component="div"
+            className={style.formHelperError}
+          >
+            {formik.errors.email}
+          </FormHelperText>
+        ) : (
+          ''
+        )}
       </FormControl>
       <FormControl required>
         <FormLabel>Username</FormLabel>
@@ -69,8 +95,16 @@ export default function SignUpForm() {
           onBlur={formik.handleBlur}
           error={formik.touched.username && !!formik.errors.username}
         />
-        {formik.touched.username ?
-          <FormHelperText component="div" className={style.formHelperError}>{formik.errors.username}</FormHelperText> : ""}
+        {formik.touched.username ? (
+          <FormHelperText
+            component="div"
+            className={style.formHelperError}
+          >
+            {formik.errors.username}
+          </FormHelperText>
+        ) : (
+          ''
+        )}
       </FormControl>
       <FormControl required>
         <FormLabel>Password</FormLabel>
@@ -82,8 +116,16 @@ export default function SignUpForm() {
           onBlur={formik.handleBlur}
           error={formik.touched.password && !!formik.errors.password}
         />
-        {formik.touched.password ?
-          <FormHelperText component="div" className={style.formHelperError}>{formik.errors.password}</FormHelperText> : ""}
+        {formik.touched.password ? (
+          <FormHelperText
+            component="div"
+            className={style.formHelperError}
+          >
+            {formik.errors.password}
+          </FormHelperText>
+        ) : (
+          ''
+        )}
       </FormControl>
       <FormControl required>
         <FormLabel>Repeat password</FormLabel>
@@ -93,10 +135,20 @@ export default function SignUpForm() {
           value={formik.values.repeatPassword}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          error={formik.touched.repeatPassword && !!formik.errors.repeatPassword}
+          error={
+            formik.touched.repeatPassword && !!formik.errors.repeatPassword
+          }
         />
-        {formik.touched.repeatPassword ?
-          <FormHelperText component="div" className={style.formHelperError}>{formik.errors.repeatPassword}</FormHelperText> : ""}
+        {formik.touched.repeatPassword ? (
+          <FormHelperText
+            component="div"
+            className={style.formHelperError}
+          >
+            {formik.errors.repeatPassword}
+          </FormHelperText>
+        ) : (
+          ''
+        )}
       </FormControl>
       <Stack gap={4} sx={{ mt: 2 }}>
         <Box
@@ -111,7 +163,10 @@ export default function SignUpForm() {
               label={
                 <>
                   I have read and agree to the{' '}
-                  <Typography fontWeight="md">terms and conditions</Typography>.
+                  <Typography fontWeight="md">
+                    terms and conditions
+                  </Typography>
+                  .
                 </>
               }
             />
@@ -126,7 +181,12 @@ export default function SignUpForm() {
           Sign in
         </Button>
       </Stack>
-      {error ? <ErrorAlert type="Sign Up Error" message={errorResponse} /> : ""}
+      <ShowCapsLock />
+      {error ? (
+        <ErrorAlert type="Sign Up Error" message={errorResponse} />
+      ) : (
+        ''
+      )}
     </form>
-  )
+  );
 }

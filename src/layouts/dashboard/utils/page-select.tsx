@@ -14,7 +14,7 @@ export default function PageSelect() {
 
   return (
     <Autocomplete
-      size='sm'
+      size="sm"
       placeholder="Search.."
       sx={{ width: { xs: 150, sm: 200, md: 250 } }}
       options={PageSelectOptions}
@@ -36,24 +36,22 @@ export default function PageSelect() {
         return (
           <AutocompleteOption key={key} {...rest}>
             <ListItemDecorator>
-              <IconButton size='sm' sx={{ paddingRight: 1 }}>
+              <IconButton size="sm" sx={{ paddingRight: 1 }}>
                 {option.icon}
               </IconButton>
             </ListItemDecorator>
             <ListItemContent sx={{ fontSize: 'sm' }}>
               {option.label}
-              <Typography level="body-xs">
-                {option.desc}
-              </Typography>
+              <Typography level="body-xs">{option.desc}</Typography>
             </ListItemContent>
           </AutocompleteOption>
-        )
+        );
       }}
       onChange={(_, value) => {
         if (value) {
-          navigate(`${value.link}`)
+          navigate(`${value.link}`);
         }
       }}
     />
-  )
+  );
 }

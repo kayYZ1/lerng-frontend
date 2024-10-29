@@ -1,13 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-import Stack from "@mui/joy/Stack";
-import Typography from "@mui/joy/Typography";
-import Divider from "@mui/joy/Divider";
+import Stack from '@mui/joy/Stack';
+import Typography from '@mui/joy/Typography';
+import Divider from '@mui/joy/Divider';
 
-import { AuthPath } from "routes/paths";
-import SignInForm from "./sign-in.form";
+import { AuthPath } from 'routes/paths';
+import SignInForm from './form';
 
-import style from "../auth.module.css";
+import style from '../auth.module.css';
 
 export default function SignIn() {
   return (
@@ -19,7 +19,9 @@ export default function SignIn() {
           </Typography>
           <Typography level="body-sm">
             New to the platform?{' '}
-            <Link to={AuthPath.SIGN_UP} className={style.link}>Sign Up</Link>
+            <Link to={AuthPath.SIGN_UP} className={style.link}>
+              Sign Up
+            </Link>
           </Typography>
         </Stack>
       </Stack>
@@ -33,11 +35,10 @@ export default function SignIn() {
             },
           },
         })}
-      >
-      </Divider>
+      ></Divider>
       <Stack gap={4} sx={{ mt: 2 }}>
         <SignInForm />
       </Stack>
     </div>
-  )
+  );
 }

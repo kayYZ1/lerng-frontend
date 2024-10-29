@@ -1,7 +1,7 @@
 import { useState, Fragment } from 'react';
 
 import IconButton from '@mui/joy/IconButton';
-import Chip from "@mui/joy/Chip";
+import Chip from '@mui/joy/Chip';
 import { ColorPaletteProp } from '@mui/joy';
 
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
@@ -42,7 +42,7 @@ export default function TableRow(u: User) {
             color={
               {
                 blocked: 'danger',
-                open: 'success'
+                open: 'success',
               }[u.access] as ColorPaletteProp
             }
           >
@@ -55,11 +55,9 @@ export default function TableRow(u: User) {
       </tr>
       <tr>
         <td style={{ height: 0, padding: 0 }} colSpan={6}>
-          {open && (
-            <CollapsibleRow userId={u.id} />
-          )}
+          {open && <CollapsibleRow userId={u.id} />}
         </td>
       </tr>
-    </Fragment >
+    </Fragment>
   );
 }

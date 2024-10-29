@@ -10,18 +10,20 @@ export default function CourseRating({ courseId }: { courseId: string }) {
   const { data: rating, isLoading } = useGetRatingByCourseQuery(courseId);
 
   return (
-    <Box display='flex' alignItems='center'>
-      {isLoading ? <Skeleton width={25} height={15} sx={{ paddingTop: 2 }} /> :
+    <Box display="flex" alignItems="center">
+      {isLoading ? (
+        <Skeleton width={25} height={15} sx={{ paddingTop: 2 }} />
+      ) : (
         <>
-          <Typography component="p" level='body-xs'>
+          <Typography component="p" level="body-xs">
             {rating.rating.toFixed(1)}/5
           </Typography>
           <StarIcon sx={{ fontSize: 16, color: '#a3850e' }} />
-          <Typography component="p" level='body-xs'>
+          <Typography component="p" level="body-xs">
             ({rating.votes})
           </Typography>
         </>
-      }
-    </Box >
+      )}
+    </Box>
   );
-} 
+}

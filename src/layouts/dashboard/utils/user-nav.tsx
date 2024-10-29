@@ -17,18 +17,18 @@ const UserListItems = [
   {
     link: DashboardPath.ENROLLED,
     name: 'Enrolled',
-    icon: <LibraryBooksIcon />
+    icon: <LibraryBooksIcon />,
   },
   {
     link: CoursesPath.COURSES,
     name: 'Courses',
-    icon: <SignpostIcon />
+    icon: <SignpostIcon />,
   },
   {
     link: DashboardPath.FEEDBACK,
     name: 'Feedback',
-    icon: <FeedbackIcon />
-  }
+    icon: <FeedbackIcon />,
+  },
 ];
 
 export default function UserNav() {
@@ -39,18 +39,20 @@ export default function UserNav() {
         '& .JoyListItemButton-root': { p: '8px' },
       }}
     >
-      {UserListItems.map(item => (
+      {UserListItems.map((item) => (
         <ListItem key={item.name}>
           <ListItemButton>
             <ListItemDecorator sx={{ pt: 0.5 }}>
               {item.icon}
             </ListItemDecorator>
             <ListItemContent>
-              <Link to={item.link} className={style.link}>{item.name}</Link>
+              <Link to={item.link} className={style.link}>
+                {item.name}
+              </Link>
             </ListItemContent>
           </ListItemButton>
         </ListItem>
       ))}
     </List>
-  )
+  );
 }

@@ -13,5 +13,5 @@ export default function TypographySkeleton() {
         <Skeleton>Typography for a course name</Skeleton>
       </Typography>
     </Box>
-  )
+  );
 }

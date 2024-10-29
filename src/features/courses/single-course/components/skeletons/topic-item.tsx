@@ -7,7 +7,12 @@ export default function TopicItemSkeleton() {
     <Card
       key={index}
       variant="outlined"
-      sx={{ width: 'max(80ch)', mt: 1, borderRadius: 0, '--Card-radius': 0 }}
+      sx={{
+        width: 'max(80ch)',
+        mt: 1,
+        borderRadius: 0,
+        '--Card-radius': 0,
+      }}
     >
       <CardContent orientation="horizontal">
         <Skeleton variant="rectangular" width={44} height={44} />

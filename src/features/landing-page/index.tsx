@@ -34,16 +34,22 @@ function SocialLinks() {
         GitHub
       </Button>
     </Stack>
-  )
+  );
 }
 
 export default function LandingPage() {
   const { data, isLoading, error } = useGetLatestUsersQuery(undefined);
 
   return (
-    <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <Box
+      sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}
+    >
       <Box component="header" sx={{ py: 2, px: 3 }}>
-        <Stack direction="row" justifyContent="space-between" alignItems="center">
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+        >
           <img src={LerngLogo} alt="LERNG Logo" width={96} height={96} />
           <Stack direction="row" spacing={2}>
             <SocialLinks />
@@ -92,10 +98,15 @@ export default function LandingPage() {
             fontWeight="xl"
             fontSize="clamp(1.875rem, 1.3636rem + 2.1818vw, 3rem)"
           >
-            LERNG  - a gateway to Linux mastery
+            LERNG - a gateway to Linux mastery
           </Typography>
-          <Typography fontSize="lg" textColor="text.secondary" lineHeight="lg">
-            Unlock specialized knowledge about Linux and its distribution systems from industry professionals.
+          <Typography
+            fontSize="lg"
+            textColor="text.secondary"
+            lineHeight="lg"
+          >
+            Unlock specialized knowledge about Linux and its distribution
+            systems from industry professionals.
           </Typography>
           <Box
             sx={{
@@ -107,12 +118,18 @@ export default function LandingPage() {
             }}
           >
             <Button size="lg" variant="outlined" color="neutral">
-              <Link to={AuthPath.SIGN_UP} style={{ textDecoration: "none", color: "inherit" }}>
+              <Link
+                to={AuthPath.SIGN_UP}
+                style={{ textDecoration: 'none', color: 'inherit' }}
+              >
                 Sign Up
               </Link>
             </Button>
             <Button size="lg" endDecorator={<ArrowForward />}>
-              <Link to={AuthPath.SIGN_IN} style={{ textDecoration: "none", color: "inherit" }}>
+              <Link
+                to={AuthPath.SIGN_IN}
+                style={{ textDecoration: 'none', color: 'inherit' }}
+              >
                 Sign In
               </Link>
             </Button>
@@ -130,11 +147,11 @@ export default function LandingPage() {
             }}
           >
             <AvatarGroup size="md">
-              {isLoading || error ?
-                [1, 2, 3].map((item) => <Avatar key={item} />) :
-                data.map((user: UserLandingPage) => {
-                  return <Avatar key={user.id} src={user.imageUrl} />
-                })}
+              {isLoading || error
+                ? [1, 2, 3].map((item) => <Avatar key={item} />)
+                : data.map((user: UserLandingPage) => {
+                    return <Avatar key={user.id} src={user.imageUrl} />;
+                  })}
             </AvatarGroup>
             <Typography textColor="text.secondary">
               Join our thriving community of <b>10,000+</b> <br></br>
@@ -163,7 +180,10 @@ export default function LandingPage() {
           <Carousel />
         </AspectRatio>
       </Container>
-      <Box component="footer" sx={{ py: 3, mt: 'auto', textAlign: 'center' }}>
+      <Box
+        component="footer"
+        sx={{ py: 3, mt: 'auto', textAlign: 'center' }}
+      >
         <Typography level="body-sm" textColor="text.secondary">
           © {new Date().getFullYear()} LERNG. All rights reserved.
         </Typography>

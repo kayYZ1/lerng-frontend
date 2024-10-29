@@ -33,9 +33,11 @@ export default function UpdateImageModal() {
       </IconButton>
       <Modal open={open} onClose={() => setOpen(false)}>
         <ModalDialog>
-          <ModalClose sx={{
-            marginTop: 0.5
-          }} />
+          <ModalClose
+            sx={{
+              marginTop: 0.5,
+            }}
+          />
           <Typography pb={0.5}>Update your avatar</Typography>
           <form
             onSubmit={(event: React.FormEvent<HTMLFormElement>) => {

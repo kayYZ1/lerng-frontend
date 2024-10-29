@@ -20,5 +20,5 @@ export default function WarningAlert({ type, message }: IAlert) {
         </Typography>
       </div>
     </Alert>
-  )
+  );
 }

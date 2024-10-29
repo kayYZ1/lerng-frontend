@@ -1,44 +1,44 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import DashboardLayout from "layouts/dashboard/app"
-import AuthLayout from "layouts/auth/layout"
+import DashboardLayout from 'layouts/dashboard/app';
+import AuthLayout from 'layouts/auth/layout';
 
-import Page404 from "features/404"
+import Page404 from 'features/404';
 
-import DashboardRoutes from "routes/dashboard";
-import DefaultRoutes from "routes/default";
-import AuthRoutes from "routes/auth";
+import DashboardRoutes from 'routes/dashboard';
+import DefaultRoutes from 'routes/default';
+import AuthRoutes from 'routes/auth';
 
-import LandingPageLayout from "layouts/landing-page/layout"
-import AuthGuard from "guards/auth-guard"
-import AppGuard from "guards/app-guard"
+import LandingPageLayout from 'layouts/landing-page/layout';
+import AuthGuard from 'guards/auth-guard';
+import AppGuard from 'guards/app-guard';
 
 export default function App() {
   const router = createBrowserRouter([
     {
       element: <LandingPageLayout />,
       errorElement: <Page404 />,
-      children: DefaultRoutes
+      children: DefaultRoutes,
     },
     {
-      element:
+      element: (
         <AppGuard>
           <DashboardLayout />
-        </AppGuard>,
+        </AppGuard>
+      ),
       errorElement: <Page404 />,
-      children: DashboardRoutes
+      children: DashboardRoutes,
     },
     {
-      element:
+      element: (
         <AuthGuard>
           <AuthLayout />
-        </AuthGuard>,
+        </AuthGuard>
+      ),
       errorElement: <Page404 />,
-      children: AuthRoutes
+      children: AuthRoutes,
     },
-  ])
+  ]);
 
-  return (
-    <RouterProvider router={router} />
-  )
+  return <RouterProvider router={router} />;
 }

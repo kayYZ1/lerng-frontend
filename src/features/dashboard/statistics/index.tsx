@@ -1,26 +1,28 @@
-import Box from "@mui/joy/Box";
-import Sheet from "@mui/joy/Sheet";
+import Box from '@mui/joy/Box';
+import Sheet from '@mui/joy/Sheet';
 
-import CoursesTable from "./courses-table"
+import CoursesTable from './courses-table';
 
 export default function Statistics() {
   return (
-    <Box sx={{
-      display: "flex",
-      my: 2
-    }}>
+    <Box
+      sx={{
+        display: 'flex',
+        my: 2,
+      }}
+    >
       <Sheet
         variant="outlined"
         sx={{
-          maxWidth: "1096px",
+          maxWidth: '1096px',
           borderRadius: 'sm',
           gridColumn: '1/-1',
           display: { xs: 'flex', md: 'flex' },
-          mx: { xs: "none", md: 4 }
+          mx: { xs: 'none', md: 4 },
         }}
       >
         <CoursesTable />
       </Sheet>
     </Box>
-  )
+  );
 }

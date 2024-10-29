@@ -83,7 +83,10 @@ export default function AuthLayout() {
           </Box>
           <Box component="footer" sx={{ py: 3 }}>
             <Typography level="body-xs" textAlign="center">
-              LERNG - <Link href="https://github.com/kayYZ1">https://github.com/kayYZ1</Link>
+              LERNG -{' '}
+              <Link href="https://github.com/kayYZ1">
+                https://github.com/kayYZ1
+              </Link>
             </Typography>
           </Box>
         </Box>

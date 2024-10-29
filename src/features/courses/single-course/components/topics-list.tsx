@@ -13,7 +13,7 @@ import TopicItem from './topic-item';
 import AddTopicModal from './modals/add-topic';
 
 interface ITopicsListProps {
-  topics: Topic[],
+  topics: Topic[];
 }
 
 export default function TopicsList({ topics }: ITopicsListProps) {
@@ -26,25 +26,28 @@ export default function TopicsList({ topics }: ITopicsListProps) {
         maxWidth: '80ch',
       }}
     >
-      {user.role === 'instructor' ?
-        <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
+      {user.role === 'instructor' ? (
+        <Box sx={{ display: 'flex', justifyContent: 'flex-start' }}>
           <Typography sx={{ px: 1, py: 1 }}>Add topic</Typography>
           <AddTopicModal />
         </Box>
-        : ""}
+      ) : (
+        ''
+      )}
       <AccordionGroup
         transition={{
-          initial: "0.3s ease-out",
-          expanded: "0.2s ease",
+          initial: '0.3s ease-out',
+          expanded: '0.2s ease',
         }}
         sx={{
           maxWidth: 700,
           [`& .${accordionSummaryClasses.indicator}`]: {
             transition: '0.2s',
           },
-          [`& [aria-expanded="true"] .${accordionSummaryClasses.indicator}`]: {
-            transform: 'rotate(180deg)',
-          },
+          [`& [aria-expanded="true"] .${accordionSummaryClasses.indicator}`]:
+            {
+              transform: 'rotate(180deg)',
+            },
         }}
       >
         {topics.map((item: Topic) => (
@@ -52,5 +55,5 @@ export default function TopicsList({ topics }: ITopicsListProps) {
         ))}
       </AccordionGroup>
     </Stack>
-  )
+  );
 }

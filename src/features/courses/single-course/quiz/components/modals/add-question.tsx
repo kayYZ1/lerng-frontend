@@ -18,7 +18,11 @@ export default function AddQuestionModal() {
       <Modal
         open={open}
         onClose={() => setOpen(false)}
-        sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
       >
         <ModalDialog>
           <AddQuestionForm setOpen={setOpen} />
