@@ -12,19 +12,27 @@ export default function EditQuestionModal(question: Question) {
   const [open, setOpen] = useState<boolean>(false);
   return (
     <Box>
-      <Typography component="div" level="body-xs" onClick={() => setOpen(true)}
+      <Typography
+        component="div"
+        level="body-xs"
+        onClick={() => setOpen(true)}
         sx={{
           '&:hover': {
             textDecoration: 'underline',
           },
           cursor: 'pointer',
-        }}>
+        }}
+      >
         Edit
       </Typography>
       <Modal
         open={open}
         onClose={() => setOpen(false)}
-        sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
       >
         <ModalDialog>
           <EditQuestionForm setOpen={setOpen} question={question} />

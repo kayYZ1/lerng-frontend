@@ -23,22 +23,29 @@ import ErrorAlert from 'shared/components/alerts/error';
 import { Typography } from '@mui/joy';
 
 const validationSchema = yup.object().shape({
-  problem: yup.string().required('This field is required').max(40, "Too long"),
-  details: yup.string().required('This field is required').max(400, "Too long"),
+  problem: yup
+    .string()
+    .required('This field is required')
+    .max(40, 'Too long'),
+  details: yup
+    .string()
+    .required('This field is required')
+    .max(400, 'Too long'),
 });
 
 export default function AddTicket({ course }: EnrolledCourses) {
-  const [layout, setLayout] = useState<ModalDialogProps['layout'] | undefined>(
-    undefined,
-  );
-  const [AddFeedbackTicket, { isLoading, error }] = useAddFeedbackTicketMutation();
+  const [layout, setLayout] = useState<
+    ModalDialogProps['layout'] | undefined
+  >(undefined);
+  const [AddFeedbackTicket, { isLoading, error }] =
+    useAddFeedbackTicketMutation();
 
   const errorMessage = transformErrorResponse(error);
 
   const formik = useFormik({
     initialValues: {
-      problem: "",
-      details: "",
+      problem: '',
+      details: '',
     },
     validationSchema,
     onSubmit: async (values, { resetForm }) => {
@@ -46,30 +53,32 @@ export default function AddTicket({ course }: EnrolledCourses) {
         problem: values.problem,
         details: values.details,
         courseId: course.id,
-      }
+      };
 
       await AddFeedbackTicket(ticketFeedback);
       resetForm();
       setLayout(undefined);
-    }
-  })
+    },
+  });
 
   return (
     <Fragment>
       <Tooltip title="Add a ticket">
-        <IconButton color="primary" size="md" sx={{ fontSize: "smaller", py: 1 }}
+        <IconButton
+          color="primary"
+          size="md"
+          sx={{ fontSize: 'smaller', py: 1 }}
           onClick={() => {
             setLayout('center');
-          }}>
+          }}
+        >
           <AddIcon />
         </IconButton>
       </Tooltip>
       <Modal open={!!layout} onClose={() => setLayout(undefined)}>
         <ModalDialog layout={layout}>
           <ModalClose />
-          <Typography level="body-md">
-            File a feedback ticket
-          </Typography>
+          <Typography level="body-md">File a feedback ticket</Typography>
           <Typography level="body-sm">
             Ticket for: {course.title}
           </Typography>
@@ -97,12 +106,21 @@ export default function AddTicket({ course }: EnrolledCourses) {
                   error={formik.touched.details && !!formik.errors.details}
                 />
               </FormControl>
-              <Button type="submit" fullWidth loading={isLoading} sx={{ marginTop: 2 }}>
+              <Button
+                type="submit"
+                fullWidth
+                loading={isLoading}
+                sx={{ marginTop: 2 }}
+              >
                 Send
               </Button>
             </Stack>
           </form>
-          {error ? <ErrorAlert message={errorMessage} type="Add ticket error" /> : ""}
+          {error ? (
+            <ErrorAlert message={errorMessage} type="Add ticket error" />
+          ) : (
+            ''
+          )}
         </ModalDialog>
       </Modal>
     </Fragment>

@@ -7,11 +7,7 @@ import { IAlert } from 'shared/ts/interfaces';
 
 export default function SuccessAlert({ message, type }: IAlert) {
   return (
-    <Alert
-      variant="soft"
-      color="success"
-      startDecorator={<DoneIcon />}
-    >
+    <Alert variant="soft" color="success" startDecorator={<DoneIcon />}>
       <div>
         <div>{type}</div>
         <Typography level="body-sm" color="success">
@@ -19,5 +15,5 @@ export default function SuccessAlert({ message, type }: IAlert) {
         </Typography>
       </div>
     </Alert>
-  )
+  );
 }

@@ -71,7 +71,10 @@ export default function SignInForm() {
           error={formik.touched.email && !!formik.errors.email}
         />
         {formik.touched.email ? (
-          <FormHelperText component="div" className={style.formHelperError}>
+          <FormHelperText
+            component="div"
+            className={style.formHelperError}
+          >
             {formik.errors.email}
           </FormHelperText>
         ) : (
@@ -90,7 +93,10 @@ export default function SignInForm() {
           error={formik.touched.password && !!formik.errors.password}
         />
         {formik.touched.password ? (
-          <FormHelperText component="div" className={style.formHelperError}>
+          <FormHelperText
+            component="div"
+            className={style.formHelperError}
+          >
             {formik.errors.password}
           </FormHelperText>
         ) : (
@@ -114,7 +120,9 @@ export default function SignInForm() {
         </Button>
       </Stack>
       <ShowCapsLock />
-      {error && <ErrorAlert type="Sign In Error" message={errorResponse} />}
+      {error && (
+        <ErrorAlert type="Sign In Error" message={errorResponse} />
+      )}
     </form>
   );
 }

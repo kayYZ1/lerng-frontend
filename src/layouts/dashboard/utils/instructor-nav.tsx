@@ -17,18 +17,18 @@ const InstructorListItems = [
   {
     link: DashboardPath.DASHBOARD,
     name: 'Instructor',
-    icon: <DashboardIcon />
+    icon: <DashboardIcon />,
   },
   {
     link: CoursesPath.COURSES,
     name: 'Courses',
-    icon: <SignpostIcon />
+    icon: <SignpostIcon />,
   },
   {
     link: DashboardPath.FEEDBACK_INSTRUCTOR,
     name: 'Feedback',
-    icon: <FeedbackIcon />
-  }
+    icon: <FeedbackIcon />,
+  },
 ];
 
 export default function InstructorNav() {
@@ -39,18 +39,18 @@ export default function InstructorNav() {
         '& .JoyListItemButton-root': { p: '8px' },
       }}
     >
-      {InstructorListItems.map(item => (
+      {InstructorListItems.map((item) => (
         <ListItem key={item.name}>
           <ListItemButton>
-            <ListItemDecorator>
-              {item.icon}
-            </ListItemDecorator>
+            <ListItemDecorator>{item.icon}</ListItemDecorator>
             <ListItemContent>
-              <Link to={item.link} className={style.link}>{item.name}</Link>
+              <Link to={item.link} className={style.link}>
+                {item.name}
+              </Link>
             </ListItemContent>
           </ListItemButton>
         </ListItem>
       ))}
     </List>
-  )
+  );
 }

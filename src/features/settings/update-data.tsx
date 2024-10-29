@@ -13,7 +13,7 @@ import CardOverflow from '@mui/joy/CardOverflow';
 import FormHelperText from '@mui/joy/FormHelperText';
 
 import { useFormik } from 'formik';
-import * as yup from "yup"
+import * as yup from 'yup';
 
 import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
 import Person2RoundedIcon from '@mui/icons-material/Person2Rounded';
@@ -29,11 +29,12 @@ import WarningAlert from 'shared/components/alerts/warning';
 
 const validationSchema = yup.object().shape({
   email: yup.string().email('Invalid email'),
-  username: yup.string()
+  username: yup.string(),
 });
 
 export default function UpdateData(data: UserData) {
-  const [UpdateUserData, { error, isLoading }] = useUpdateUserDataMutation();
+  const [UpdateUserData, { error, isLoading }] =
+    useUpdateUserDataMutation();
 
   const errorResponse = transformErrorResponse(error);
 
@@ -46,26 +47,24 @@ export default function UpdateData(data: UserData) {
     onSubmit: async (values, { resetForm }) => {
       const updatedUser: UpdateUser = {
         email: values.email,
-        username: values.username
-      }
+        username: values.username,
+      };
       await UpdateUserData(updatedUser);
       resetForm();
-    }
-  })
+    },
+  });
 
   return (
     <Card sx={{ flex: 1 }}>
       <Box>
         <Typography level="title-md">Personal info</Typography>
         <Typography level="body-sm">
-          Customize how your profile information will appear in the application.
+          Customize how your profile information will appear in the
+          application.
         </Typography>
       </Box>
       <Divider />
-      <Stack
-        direction="row"
-        spacing={1}
-      >
+      <Stack direction="row" spacing={1}>
         <Stack direction="column" spacing={0.5}>
           <AspectRatio
             ratio="1"
@@ -89,7 +88,8 @@ export default function UpdateData(data: UserData) {
                     sm: 'flex-column',
                     md: 'flex-row',
                   },
-                }}>
+                }}
+              >
                 <FormLabel>Email</FormLabel>
                 <Input
                   size="sm"
@@ -102,8 +102,13 @@ export default function UpdateData(data: UserData) {
                   error={formik.touched.email && !!formik.errors.email}
                   disabled={data.email === 'demo@lerng.com' ? true : false}
                 />
-                {formik.touched.email ?
-                  <FormHelperText component="div">{formik.errors.email}</FormHelperText> : ""}
+                {formik.touched.email ? (
+                  <FormHelperText component="div">
+                    {formik.errors.email}
+                  </FormHelperText>
+                ) : (
+                  ''
+                )}
               </FormControl>
               <FormControl>
                 <FormLabel>Username</FormLabel>
@@ -115,11 +120,18 @@ export default function UpdateData(data: UserData) {
                   value={formik.values.username}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
-                  error={formik.touched.username && !!formik.errors.username}
+                  error={
+                    formik.touched.username && !!formik.errors.username
+                  }
                   disabled={data.username === 'demolerner' ? true : false}
                 />
-                {formik.touched.username ?
-                  <FormHelperText component="div">{formik.errors.username}</FormHelperText> : ""}
+                {formik.touched.username ? (
+                  <FormHelperText component="div">
+                    {formik.errors.username}
+                  </FormHelperText>
+                ) : (
+                  ''
+                )}
               </FormControl>
               <FormControl sx={{ flexGrow: 1 }}>
                 <FormLabel>Role</FormLabel>
@@ -133,7 +145,11 @@ export default function UpdateData(data: UserData) {
               </FormControl>
               <CardOverflow>
                 <CardActions sx={{ alignSelf: 'flex-end', pt: 2 }}>
-                  <Button size="sm" variant="outlined" onClick={() => formik.resetForm()}>
+                  <Button
+                    size="sm"
+                    variant="outlined"
+                    onClick={() => formik.resetForm()}
+                  >
                     Clear
                   </Button>
                   <Button
@@ -141,17 +157,26 @@ export default function UpdateData(data: UserData) {
                     variant="solid"
                     type="submit"
                     loading={isLoading}
-                    disabled={data.email === 'demo@lerng.com' ? true : false}
+                    disabled={
+                      data.email === 'demo@lerng.com' ? true : false
+                    }
                   >
                     Save
                   </Button>
                 </CardActions>
               </CardOverflow>
             </Stack>
-            {error ? <WarningAlert type="Error occured while updating data" message={errorResponse} /> : ""}
+            {error ? (
+              <WarningAlert
+                type="Error occured while updating data"
+                message={errorResponse}
+              />
+            ) : (
+              ''
+            )}
           </form>
         </Stack>
       </Stack>
-    </Card >
-  )
+    </Card>
+  );
 }

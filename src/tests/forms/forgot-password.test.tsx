@@ -7,18 +7,18 @@ import ForgotPassword from 'features/auth/forgot-password/forgot-password';
 describe('Forgot password component tests', () => {
   //Load up component with all the providers
   const renderDocument = () => {
-    render(<ForgotPassword />,
-      {
-        route: "/auth/forgot-password/",
-        path: "/auth/forgot-password/"
-      }
-    );
-  }
+    render(<ForgotPassword />, {
+      route: '/auth/forgot-password/',
+      path: '/auth/forgot-password/',
+    });
+  };
 
   it('should render the component', () => {
     renderDocument();
 
-    const emailInput = screen.getByPlaceholderText("Email to sent password reset link")
+    const emailInput = screen.getByPlaceholderText(
+      'Email to sent password reset link',
+    );
     const submitBtn = screen.getByRole('button', { name: /Send/i });
 
     expect(emailInput).toBeInTheDocument();
@@ -32,7 +32,7 @@ describe('Forgot password component tests', () => {
     fireEvent.click(submitBtn);
 
     await waitFor(() => {
-      expect(screen.getByTestId("email-error")).toBeInTheDocument();
-    })
-  })
-})
+      expect(screen.getByTestId('email-error')).toBeInTheDocument();
+    });
+  });
+});

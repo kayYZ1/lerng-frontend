@@ -75,7 +75,10 @@ export default function SignUpForm() {
           error={formik.touched.email && !!formik.errors.email}
         />
         {formik.touched.email ? (
-          <FormHelperText component="div" className={style.formHelperError}>
+          <FormHelperText
+            component="div"
+            className={style.formHelperError}
+          >
             {formik.errors.email}
           </FormHelperText>
         ) : (
@@ -93,7 +96,10 @@ export default function SignUpForm() {
           error={formik.touched.username && !!formik.errors.username}
         />
         {formik.touched.username ? (
-          <FormHelperText component="div" className={style.formHelperError}>
+          <FormHelperText
+            component="div"
+            className={style.formHelperError}
+          >
             {formik.errors.username}
           </FormHelperText>
         ) : (
@@ -111,7 +117,10 @@ export default function SignUpForm() {
           error={formik.touched.password && !!formik.errors.password}
         />
         {formik.touched.password ? (
-          <FormHelperText component="div" className={style.formHelperError}>
+          <FormHelperText
+            component="div"
+            className={style.formHelperError}
+          >
             {formik.errors.password}
           </FormHelperText>
         ) : (
@@ -131,7 +140,10 @@ export default function SignUpForm() {
           }
         />
         {formik.touched.repeatPassword ? (
-          <FormHelperText component="div" className={style.formHelperError}>
+          <FormHelperText
+            component="div"
+            className={style.formHelperError}
+          >
             {formik.errors.repeatPassword}
           </FormHelperText>
         ) : (
@@ -151,7 +163,10 @@ export default function SignUpForm() {
               label={
                 <>
                   I have read and agree to the{' '}
-                  <Typography fontWeight="md">terms and conditions</Typography>.
+                  <Typography fontWeight="md">
+                    terms and conditions
+                  </Typography>
+                  .
                 </>
               }
             />
@@ -167,7 +182,11 @@ export default function SignUpForm() {
         </Button>
       </Stack>
       <ShowCapsLock />
-      {error ? <ErrorAlert type="Sign Up Error" message={errorResponse} /> : ''}
+      {error ? (
+        <ErrorAlert type="Sign Up Error" message={errorResponse} />
+      ) : (
+        ''
+      )}
     </form>
   );
 }

@@ -1,5 +1,5 @@
 import Box from '@mui/joy/Box';
-import Typography from '@mui/joy/Typography'
+import Typography from '@mui/joy/Typography';
 import BreadcrumbsCustom from 'shared/components/breadcrumbs-custom';
 
 interface LayoutChild {

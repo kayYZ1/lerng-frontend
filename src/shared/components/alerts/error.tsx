@@ -20,5 +20,5 @@ export default function ErrorAlert({ message, type }: IAlert) {
         </Typography>
       </div>
     </Alert>
-  )
+  );
 }

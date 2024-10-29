@@ -3,24 +3,23 @@ import { Link } from 'react-router-dom';
 
 import AspectRatio from '@mui/joy/AspectRatio';
 import IconButton from '@mui/joy/IconButton';
-import Tooltip from "@mui/joy/Tooltip";
+import Tooltip from '@mui/joy/Tooltip';
 
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 
 import { Course } from 'shared/ts/types';
 
-import style from "../../courses.module.css";
+import style from '../../courses.module.css';
 
 export default function InstructorCard(item: Course) {
   return (
     <Fragment>
-      <AspectRatio ratio="2" >
-        <Link to={`/dashboard/courses/course/${item.id}`} className={style.link}>
-          <img
-            src={item.imageUrl}
-            loading="lazy"
-            alt={`${item.title}`}
-          />
+      <AspectRatio ratio="2">
+        <Link
+          to={`/dashboard/courses/course/${item.id}`}
+          className={style.link}
+        >
+          <img src={item.imageUrl} loading="lazy" alt={`${item.title}`} />
         </Link>
       </AspectRatio>
       <IconButton
@@ -41,5 +40,5 @@ export default function InstructorCard(item: Course) {
         </Tooltip>
       </IconButton>
     </Fragment>
-  )
+  );
 }

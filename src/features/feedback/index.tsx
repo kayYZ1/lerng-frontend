@@ -17,7 +17,7 @@ import { EnrolledCourses } from 'shared/ts/types';
 import EnrolledListSkeleton from './components/skeletons/enrolled-list';
 
 export default function Feedback() {
-  const { data, isLoading } = useGetEnrolledCoursesQuery("Enrolled");
+  const { data, isLoading } = useGetEnrolledCoursesQuery('Enrolled');
 
   return (
     <Box sx={{ flex: 1, width: '100%' }}>
@@ -28,7 +28,12 @@ export default function Feedback() {
         </Typography>
       </Box>
       <Divider sx={{ my: 2 }} />
-      <Box px={6} display="flex" sx={{ flexDirection: { xs: 'column', sm: 'row' } }} gap={5}>
+      <Box
+        px={6}
+        display="flex"
+        sx={{ flexDirection: { xs: 'column', sm: 'row' } }}
+        gap={5}
+      >
         <Box>
           <Typography level="h4" component="h3" sx={{ pb: 1 }}>
             Courses
@@ -37,35 +42,32 @@ export default function Feedback() {
             sx={{
               width: { xs: 300, md: 400 },
               '--ListItemDecorator-size': '56px',
-              gap: 1
+              gap: 1,
             }}
           >
-            {
-              isLoading ? [1, 2, 3].map(x => (
-                <EnrolledListSkeleton key={x} />
-              )) : data.map((enrolled: EnrolledCourses) => (
-                <ListItem
-                  endAction={
-                    <AddTicket {...enrolled} />
-                  }
-                  key={enrolled.id}
-                >
-                  <ListItemDecorator>
-                    <Avatar src={enrolled.course.imageUrl} />
-                  </ListItemDecorator>
-                  <ListItemContent>
-                    <Typography level="title-sm">{enrolled.course.title}</Typography>
-                    <Typography level="body-sm" noWrap>
-                      {
-                        enrolled.course.description.length > 35 ?
-                          enrolled.course.description.slice(0, 35) + "..." :
-                          enrolled.course.description
-                      }
-                    </Typography>
-                  </ListItemContent>
-                </ListItem>
-              ))
-            }
+            {isLoading
+              ? [1, 2, 3].map((x) => <EnrolledListSkeleton key={x} />)
+              : data.map((enrolled: EnrolledCourses) => (
+                  <ListItem
+                    endAction={<AddTicket {...enrolled} />}
+                    key={enrolled.id}
+                  >
+                    <ListItemDecorator>
+                      <Avatar src={enrolled.course.imageUrl} />
+                    </ListItemDecorator>
+                    <ListItemContent>
+                      <Typography level="title-sm">
+                        {enrolled.course.title}
+                      </Typography>
+                      <Typography level="body-sm" noWrap>
+                        {enrolled.course.description.length > 35
+                          ? enrolled.course.description.slice(0, 35) +
+                            '...'
+                          : enrolled.course.description}
+                      </Typography>
+                    </ListItemContent>
+                  </ListItem>
+                ))}
           </List>
         </Box>
         <Box maxWidth={1200}>
@@ -80,11 +82,10 @@ export default function Feedback() {
               alignItems: 'center',
               justifyContent: { xs: 'space-between', sm: 'flex-start' },
             }}
-          >
-          </Sheet>
+          ></Sheet>
           <TicketsTable />
         </Box>
       </Box>
     </Box>
-  )
+  );
 }

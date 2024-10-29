@@ -19,14 +19,19 @@ export default function ViewProfile(user: User) {
   const changeUserAccess = async (access: string) => {
     const values = {
       userId: user.id,
-      access
-    }
-    await ChangeAccess(values)
-  }
+      access,
+    };
+    await ChangeAccess(values);
+  };
 
   return (
     <Fragment>
-      <Button size="sm" variant="plain" color="neutral" onClick={() => setOpen(true)}>
+      <Button
+        size="sm"
+        variant="plain"
+        color="neutral"
+        onClick={() => setOpen(true)}
+      >
         View
       </Button>
       <Modal
@@ -34,7 +39,11 @@ export default function ViewProfile(user: User) {
         aria-describedby="modal-desc"
         open={open}
         onClose={() => setOpen(false)}
-        sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
       >
         <Sheet
           variant="outlined"
@@ -72,15 +81,25 @@ export default function ViewProfile(user: User) {
             </Typography>
           </Box>
           <Box display="flex" justifyContent="flex-end" pt={1}>
-            {user.access === "open" ?
-              <Button color="danger" size="sm" onClick={() => changeUserAccess("blocked")} loading={isLoading}>
+            {user.access === 'open' ? (
+              <Button
+                color="danger"
+                size="sm"
+                onClick={() => changeUserAccess('blocked')}
+                loading={isLoading}
+              >
                 Block {user.username}
               </Button>
-              :
-              <Button color="neutral" size="sm" onClick={() => changeUserAccess("open")} loading={isLoading}>
+            ) : (
+              <Button
+                color="neutral"
+                size="sm"
+                onClick={() => changeUserAccess('open')}
+                loading={isLoading}
+              >
                 Unblock {user.username}
               </Button>
-            }
+            )}
           </Box>
         </Sheet>
       </Modal>

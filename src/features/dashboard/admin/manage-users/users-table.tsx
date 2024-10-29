@@ -3,7 +3,7 @@ import { useState } from 'react';
 import IconButton from '@mui/joy/IconButton';
 import Table from '@mui/joy/Table';
 import Sheet from '@mui/joy/Sheet';
-import Skeleton from "@mui/joy/Skeleton";
+import Skeleton from '@mui/joy/Skeleton';
 
 import Box from '@mui/joy/Box';
 import Typography from '@mui/joy/Typography';
@@ -68,9 +68,8 @@ export default function UsersTable({ users, isLoading }: Users) {
           </tr>
         </thead>
         <tbody>
-          {
-            isLoading ?
-              [1, 2, 3].map((index) => (
+          {isLoading
+            ? [1, 2, 3].map((index) => (
                 <tr key={index}>
                   <td scope="row">
                     <Skeleton animation="wave" variant="text" />
@@ -92,13 +91,12 @@ export default function UsersTable({ users, isLoading }: Users) {
                   </td>
                 </tr>
               ))
-              :
-              users
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((user) => (
-                  <TableRow key={user.id} {...user} />
-                ))
-          }
+            : users
+                .slice(
+                  page * rowsPerPage,
+                  page * rowsPerPage + rowsPerPage,
+                )
+                .map((user) => <TableRow key={user.id} {...user} />)}
         </tbody>
         <tfoot>
           <tr>
@@ -113,7 +111,10 @@ export default function UsersTable({ users, isLoading }: Users) {
               >
                 <FormControl orientation="horizontal" size="sm">
                   <FormLabel>Rows per page:</FormLabel>
-                  <Select onChange={handleChangeRowsPerPage} value={rowsPerPage}>
+                  <Select
+                    onChange={handleChangeRowsPerPage}
+                    value={rowsPerPage}
+                  >
                     <Option value={5}>5</Option>
                     <Option value={10}>10</Option>
                     <Option value={15}>15</Option>

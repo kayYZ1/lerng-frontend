@@ -28,14 +28,21 @@ export default function CourseItem(item: Course) {
   const user = useSelector(selectCurrentUser);
 
   const date = parseDate(item.created);
-  const isEnrolled = enrolled.some((course) => course.course.id === item.id); // Enrolled stored in rtk memory [*]
+  const isEnrolled = enrolled.some(
+    (course) => course.course.id === item.id,
+  ); // Enrolled stored in rtk memory [*]
 
   const truncateText = (text: string, maxLength: number) =>
-    text.length > maxLength ? `${text.substring(0, maxLength - 5)}...` : text;
+    text.length > maxLength
+      ? `${text.substring(0, maxLength - 5)}...`
+      : text;
 
   return (
     <Grid sx={{ py: 2 }}>
-      <Card variant="outlined" sx={{ width: 350, display: 'flex', flexDirection: 'column' }}>
+      <Card
+        variant="outlined"
+        sx={{ width: 350, display: 'flex', flexDirection: 'column' }}
+      >
         <CardOverflow>
           <CardType isEnrolled={isEnrolled} item={item} user={user} />
         </CardOverflow>
@@ -44,12 +51,14 @@ export default function CourseItem(item: Course) {
           <Typography level="title-md" mb={1}>
             {truncateText(item.title, 38)}
           </Typography>
-          <Stack direction='row' mb={1}>
+          <Stack direction="row" mb={1}>
             {item.categories.map((category) => (
-              <Chip key={category} size='sm'>{category}</Chip>
+              <Chip key={category} size="sm">
+                {category}
+              </Chip>
             ))}
           </Stack>
-          <Stack direction='row' justifyContent='space-between'>
+          <Stack direction="row" justifyContent="space-between">
             <Typography level="body-sm">
               {truncateText(item.description, 45)}
             </Typography>
@@ -58,17 +67,22 @@ export default function CourseItem(item: Course) {
         </CardContent>
         <CardOverflow variant="soft">
           <Divider inset="context" />
-          <CardContent orientation="horizontal" sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
+          <CardContent
+            orientation="horizontal"
+            sx={{ justifyContent: 'space-between', alignItems: 'center' }}
+          >
             <Typography level="body-xs">{date}</Typography>
-            {isEnrolled ?
-              <Typography level="body-xs">{isLoading ? <Skeleton /> : `${data}%`}</Typography>
-              :
+            {isEnrolled ? (
+              <Typography level="body-xs">
+                {isLoading ? <Skeleton /> : `${data}%`}
+              </Typography>
+            ) : (
               <Typography level="body-xs">Not enrolled</Typography>
-            }
+            )}
           </CardContent>
           <LinearProgress determinate value={data} />
         </CardOverflow>
       </Card>
-    </Grid >
-  )
+    </Grid>
+  );
 }

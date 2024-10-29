@@ -11,24 +11,34 @@ export default function EditCourseModal(course: Course) {
 
   return (
     <Fragment>
-      <Typography component="div" level="body-xs" onClick={() => setOpen(true)}
+      <Typography
+        component="div"
+        level="body-xs"
+        onClick={() => setOpen(true)}
         sx={{
           '&:hover': {
             textDecoration: 'underline',
           },
           cursor: 'pointer',
-        }}>Edit</Typography>
+        }}
+      >
+        Edit
+      </Typography>
       <Modal
         aria-labelledby="modal-title"
         aria-describedby="modal-desc"
         open={open}
         onClose={() => setOpen(false)}
-        sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
       >
         <ModalDialog>
           <EditCourseForm setOpen={setOpen} course={course} />
         </ModalDialog>
       </Modal>
     </Fragment>
-  )
+  );
 }

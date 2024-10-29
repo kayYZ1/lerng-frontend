@@ -10,50 +10,52 @@ import QuizIcon from '@mui/icons-material/Quiz';
 import HomeIcon from '@mui/icons-material/Home';
 
 import { Content } from 'shared/ts/types';
-import { selectActiveContent, setActiveContent } from 'app/slice/contents.slice';
+import {
+  selectActiveContent,
+  setActiveContent,
+} from 'app/slice/contents.slice';
 import { selectCurrentUser } from 'app/slice/user.slice';
 import { selectActiveCourse } from 'app/slice/courses.slice';
 
 import AddContentModal from './modals/add-content';
 
 interface IContentListProps {
-  contents: Content[],
+  contents: Content[];
 }
 
 export default function ContentList({ contents }: IContentListProps) {
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const activeContent = useSelector(selectActiveContent)
+  const activeContent = useSelector(selectActiveContent);
   const activeCourse = useSelector(selectActiveCourse);
-  const user = useSelector(selectCurrentUser)
+  const user = useSelector(selectCurrentUser);
 
   useEffect(() => {
-    dispatch(setActiveContent(contents[0]))
+    dispatch(setActiveContent(contents[0]));
     return () => {
-      dispatch(setActiveContent(null))
-    }
-  }, [contents, dispatch])
+      dispatch(setActiveContent(null));
+    };
+  }, [contents, dispatch]);
 
   return (
     <List
       component="nav"
       sx={{
         maxWidth: 400,
-        overflow: "auto",
-        maxHeight: "75vh"
+        overflow: 'auto',
+        maxHeight: '75vh',
       }}
     >
-      {user.role === 'instructor' ?
-        <AddContentModal />
-        : ""
-      }
+      {user.role === 'instructor' ? <AddContentModal /> : ''}
       {contents.map((content: Content, index: number) => (
         <ListItemButton
           key={content.id}
           onClick={() => dispatch(setActiveContent(content))}
-          selected={activeContent && activeContent.id === content.id ? true : false}
+          selected={
+            activeContent && activeContent.id === content.id ? true : false
+          }
         >
           <ListItemDecorator sx={{ paddingLeft: 0.7 }}>
             {index + 1}
@@ -61,13 +63,21 @@ export default function ContentList({ contents }: IContentListProps) {
           {content.title}
         </ListItemButton>
       ))}
-      <ListItemButton onClick={() => navigate(`/dashboard/courses/course/topic/quiz/${id}`)}>
+      <ListItemButton
+        onClick={() =>
+          navigate(`/dashboard/courses/course/topic/quiz/${id}`)
+        }
+      >
         <ListItemDecorator>
           <QuizIcon />
         </ListItemDecorator>
         Quiz
       </ListItemButton>
-      <ListItemButton onClick={() => navigate(`/dashboard/courses/course/${activeCourse}`)}>
+      <ListItemButton
+        onClick={() =>
+          navigate(`/dashboard/courses/course/${activeCourse}`)
+        }
+      >
         <ListItemDecorator>
           <HomeIcon />
         </ListItemDecorator>

@@ -10,13 +10,17 @@ export default function AddCourseImageModal() {
   const [open, setOpen] = useState<boolean>(false);
   return (
     <Fragment>
-      <Button color="primary" onClick={() => setOpen(true)} size='sm'>
+      <Button color="primary" onClick={() => setOpen(true)} size="sm">
         Create course
       </Button>
       <Modal
         open={open}
         onClose={() => setOpen(false)}
-        sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
       >
         <ModalDialog>
           <CreateCourseForm setOpen={setOpen} />
