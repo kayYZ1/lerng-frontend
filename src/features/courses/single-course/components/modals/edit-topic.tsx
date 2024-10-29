@@ -16,7 +16,11 @@ export default function EditTopicModal(topic: Topic) {
       <Modal
         open={open}
         onClose={() => setOpen(false)}
-        sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
       >
         <ModalDialog>
           <EditTopicForm setOpen={setOpen} topic={topic} />

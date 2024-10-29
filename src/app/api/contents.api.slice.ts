@@ -22,13 +22,17 @@ export const contentsApiSlice = authApi.injectEndpoints({
     }),
     EditContent: builder.mutation({
       query: (values) => ({
-        url: "/contents/edit",
-        method: "PATCH",
-        body: values
+        url: '/contents/edit',
+        method: 'PATCH',
+        body: values,
       }),
       invalidatesTags: ['Content'],
-    })
+    }),
   }),
 });
 
-export const { useGetContentsQuery, useNewContentMutation, useEditContentMutation } = contentsApiSlice;
+export const {
+  useGetContentsQuery,
+  useNewContentMutation,
+  useEditContentMutation,
+} = contentsApiSlice;

@@ -1,13 +1,13 @@
-import Box from "@mui/joy/Box";
-import Typography from "@mui/joy/Typography";
-import Tabs from "@mui/joy/Tabs";
-import TabPanel from "@mui/joy/TabPanel";
-import TabList from "@mui/joy/TabList";
+import Box from '@mui/joy/Box';
+import Typography from '@mui/joy/Typography';
+import Tabs from '@mui/joy/Tabs';
+import TabPanel from '@mui/joy/TabPanel';
+import TabList from '@mui/joy/TabList';
 import Tab, { tabClasses } from '@mui/joy/Tab';
 
-import ManageCourses from "./manage-courses/index.tsx";
-import Statistics from "./statistics/index.tsx";
-import BreadcrumbsCustom from "shared/components/breadcrumbs-custom.tsx";
+import ManageCourses from './manage-courses/index.tsx';
+import Statistics from './statistics/index.tsx';
+import BreadcrumbsCustom from 'shared/components/breadcrumbs-custom.tsx';
 
 export default function DashboardPanel() {
   return (
@@ -46,10 +46,18 @@ export default function DashboardPanel() {
               },
             }}
           >
-            <Tab sx={{ borderRadius: '6px 6px 0 0' }} indicatorInset value={0}>
+            <Tab
+              sx={{ borderRadius: '6px 6px 0 0' }}
+              indicatorInset
+              value={0}
+            >
               Manage Courses
             </Tab>
-            <Tab sx={{ borderRadius: '6px 6px 0 0' }} indicatorInset value={1}>
+            <Tab
+              sx={{ borderRadius: '6px 6px 0 0' }}
+              indicatorInset
+              value={1}
+            >
               Statistics
             </Tab>
           </TabList>
@@ -61,6 +69,6 @@ export default function DashboardPanel() {
           </TabPanel>
         </Tabs>
       </Box>
-    </Box >
-  )
+    </Box>
+  );
 }

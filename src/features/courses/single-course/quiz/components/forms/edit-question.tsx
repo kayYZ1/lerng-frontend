@@ -28,16 +28,26 @@ import WarningAlert from 'shared/components/alerts/warning';
 import { useEditQuestionMutation } from 'app/api/questions.api.slice';
 
 const validationSchema = yup.object().shape({
-  question: yup.string().required("Question is required").min(5, "Question to short").max(125, "Question too long"),
-  answer: yup.string().required("Answer is required").max(25, "Answer too long"),
+  question: yup
+    .string()
+    .required('Question is required')
+    .min(5, 'Question to short')
+    .max(125, 'Question too long'),
+  answer: yup
+    .string()
+    .required('Answer is required')
+    .max(25, 'Answer too long'),
 });
 
 interface IEditQuestionFormProps {
   setOpen: (open: boolean) => void;
-  question: Question
+  question: Question;
 }
 
-export default function EditQuestionForm({ setOpen, question }: IEditQuestionFormProps) {
+export default function EditQuestionForm({
+  setOpen,
+  question,
+}: IEditQuestionFormProps) {
   const [EditQuestion, { isLoading, error }] = useEditQuestionMutation();
 
   const errorMessage = transformErrorResponse(error);
@@ -46,7 +56,7 @@ export default function EditQuestionForm({ setOpen, question }: IEditQuestionFor
     initialValues: {
       question: question.question,
       type: question.type,
-      answer: question.answer
+      answer: question.answer,
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
@@ -54,20 +64,18 @@ export default function EditQuestionForm({ setOpen, question }: IEditQuestionFor
         question: values.question,
         type: values.type,
         answer: values.answer,
-        questionId: question.id
-      }
-      await EditQuestion(body)
-      setOpen(false)
-    }
-  })
+        questionId: question.id,
+      };
+      await EditQuestion(body);
+      setOpen(false);
+    },
+  });
 
   return (
-    <Card sx={{ flex: 1 }} variant='plain'>
+    <Card sx={{ flex: 1 }} variant="plain">
       <Box>
         <Typography level="title-md">Edit question</Typography>
-        <Typography level="body-sm">
-          Edit question for the quiz
-        </Typography>
+        <Typography level="body-sm">Edit question for the quiz</Typography>
       </Box>
       <Divider />
       <form onSubmit={formik.handleSubmit}>
@@ -82,8 +90,13 @@ export default function EditQuestionForm({ setOpen, question }: IEditQuestionFor
               onBlur={formik.handleBlur}
               error={formik.touched.question && !!formik.errors.question}
             />
-            {formik.touched.question ?
-              <FormHelperText component="div">{formik.errors.question}</FormHelperText> : ""}
+            {formik.touched.question ? (
+              <FormHelperText component="div">
+                {formik.errors.question}
+              </FormHelperText>
+            ) : (
+              ''
+            )}
           </FormControl>
           <FormControl required>
             <FormLabel>Type</FormLabel>
@@ -91,7 +104,7 @@ export default function EditQuestionForm({ setOpen, question }: IEditQuestionFor
               name="type"
               multiple={false}
               value={formik.values.type}
-              onChange={(_, value) => formik.setFieldValue("type", value)}
+              onChange={(_, value) => formik.setFieldValue('type', value)}
               indicator={<KeyboardArrowDown />}
               sx={{
                 [`& .${selectClasses.indicator}`]: {
@@ -106,47 +119,67 @@ export default function EditQuestionForm({ setOpen, question }: IEditQuestionFor
               <Option value={QuestionType.closed}>Closed</Option>
             </Select>
           </FormControl>
-          {
-            formik.values.type === 'open' ?
-              <FormControl required>
-                <FormLabel>Answer</FormLabel>
-                <Input
-                  type="text"
-                  name="answer"
-                  value={formik.values.answer}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  error={formik.touched.answer && !!formik.errors.answer}
-                />
-                {formik.touched.answer ?
-                  <FormHelperText component="div">{formik.errors.answer}</FormHelperText> : ""}
-              </FormControl>
-              : ""
-          }
-          {
-            formik.values.type === 'closed' ?
-              <FormControl required>
-                <FormLabel>Answer</FormLabel>
-                <RadioGroup name="answer" value={formik.values.answer} onChange={formik.handleChange}>
-                  <Radio value="1" label="True" color="primary" />
-                  <Radio value="0" label="False" color="danger" />
-                </RadioGroup>
-              </FormControl>
-              : ""
-          }
+          {formik.values.type === 'open' ? (
+            <FormControl required>
+              <FormLabel>Answer</FormLabel>
+              <Input
+                type="text"
+                name="answer"
+                value={formik.values.answer}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={formik.touched.answer && !!formik.errors.answer}
+              />
+              {formik.touched.answer ? (
+                <FormHelperText component="div">
+                  {formik.errors.answer}
+                </FormHelperText>
+              ) : (
+                ''
+              )}
+            </FormControl>
+          ) : (
+            ''
+          )}
+          {formik.values.type === 'closed' ? (
+            <FormControl required>
+              <FormLabel>Answer</FormLabel>
+              <RadioGroup
+                name="answer"
+                value={formik.values.answer}
+                onChange={formik.handleChange}
+              >
+                <Radio value="1" label="True" color="primary" />
+                <Radio value="0" label="False" color="danger" />
+              </RadioGroup>
+            </FormControl>
+          ) : (
+            ''
+          )}
           <CardOverflow>
             <CardActions sx={{ alignSelf: 'flex-end', pt: 2 }}>
-              <Button size="sm" variant="outlined" onClick={() => setOpen(false)}>
+              <Button
+                size="sm"
+                variant="outlined"
+                onClick={() => setOpen(false)}
+              >
                 Cancel
               </Button>
-              <Button size="sm" variant="solid" type="submit" loading={isLoading}>
+              <Button
+                size="sm"
+                variant="solid"
+                type="submit"
+                loading={isLoading}
+              >
                 Save
               </Button>
             </CardActions>
           </CardOverflow>
         </Stack>
       </form>
-      {error && <WarningAlert message={errorMessage} type="Edit question error" />}
+      {error && (
+        <WarningAlert message={errorMessage} type="Edit question error" />
+      )}
     </Card>
-  )
+  );
 }

@@ -10,11 +10,13 @@ export default function QuizTime({ setShowResult }: IQuizResult) {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setProgress((prevProgress) => (prevProgress < 0 ? 100 : prevProgress - 1));
+      setProgress((prevProgress) =>
+        prevProgress < 0 ? 100 : prevProgress - 1,
+      );
     }, 1000);
 
     if (progress === 0) {
-      setShowResult(true)
+      setShowResult(true);
     }
 
     return () => {
@@ -22,7 +24,5 @@ export default function QuizTime({ setShowResult }: IQuizResult) {
     };
   }, [progress, setShowResult]);
 
-  return (
-    <LinearProgress determinate value={progress} />
-  );
+  return <LinearProgress determinate value={progress} />;
 }

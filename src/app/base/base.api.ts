@@ -6,7 +6,11 @@ import {
 
 import { RootState } from 'app/store';
 import { getCookie } from 'shared/lib/cookies';
-import { setCredentials, setRefreshToken, signOut } from '../slice/auth.slice';
+import {
+  setCredentials,
+  setRefreshToken,
+  signOut,
+} from '../slice/auth.slice';
 
 const prodUrl = import.meta.env.VITE_PROD_URL;
 const localUrl = import.meta.env.VITE_DEV_URL;
@@ -35,7 +39,11 @@ export const baseQueryWithReauth = async (
     const refreshToken: string = getCookie();
     api.dispatch(setRefreshToken(refreshToken));
 
-    const refreshResult = await baseQuery('/auth/refresh', api, extraOptions);
+    const refreshResult = await baseQuery(
+      '/auth/refresh',
+      api,
+      extraOptions,
+    );
 
     if (refreshResult.data) {
       const accessToken = (refreshResult.data as { accessToken: string })

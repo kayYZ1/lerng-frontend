@@ -7,16 +7,17 @@ import StatisticsSkeleton from './statistics-skeleton';
 type Statistics = {
   course: string;
   count: number;
-}
+};
 
 export default function CoursesTable() {
-  const { data: statistics, isLoading } = useGetInstructorStatisticsQuery(undefined);
+  const { data: statistics, isLoading } =
+    useGetInstructorStatisticsQuery(undefined);
 
   return (
     <Sheet variant="outlined">
-      {isLoading ?
+      {isLoading ? (
         <StatisticsSkeleton />
-        :
+      ) : (
         <Table variant="soft" borderAxis="bothBetween">
           <thead>
             <tr>
@@ -42,7 +43,7 @@ export default function CoursesTable() {
             </tr>
           </tfoot>
         </Table>
-      }
+      )}
     </Sheet>
   );
 }

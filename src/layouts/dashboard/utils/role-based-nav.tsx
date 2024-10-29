@@ -10,8 +10,11 @@ export default function RoleBasedNav() {
   const user = useSelector(selectCurrentUser);
 
   switch (user.role) {
-    case 'instructor': return <InstructorNav />
-    case 'user': return <UserNav />
-    case 'admin': return <AdminNav />
+    case 'instructor':
+      return <InstructorNav />;
+    case 'user':
+      return <UserNav />;
+    case 'admin':
+      return <AdminNav />;
   }
 }

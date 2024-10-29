@@ -7,9 +7,10 @@ import { Route, Routes, MemoryRouter } from 'react-router-dom';
 
 const store = configureStore({
   reducer: {
-    [authApi.reducerPath]: authApi.reducer
+    [authApi.reducerPath]: authApi.reducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(authApi.middleware)
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(authApi.middleware),
 });
 
 interface CustomRenderOptions extends Omit<RenderOptions, 'wrapper'> {
@@ -19,11 +20,7 @@ interface CustomRenderOptions extends Omit<RenderOptions, 'wrapper'> {
 
 function renderWithProviders(
   ui: React.ReactElement,
-  {
-    route = "/",
-    path = "/",
-    ...renderOptions
-  }: CustomRenderOptions
+  { route = '/', path = '/', ...renderOptions }: CustomRenderOptions,
 ) {
   function Wrapper({ children }: { children: React.ReactNode }) {
     return (
@@ -34,7 +31,7 @@ function renderWithProviders(
           </Routes>
         </MemoryRouter>
       </Provider>
-    )
+    );
   }
   return render(ui, { wrapper: Wrapper, ...renderOptions });
 }

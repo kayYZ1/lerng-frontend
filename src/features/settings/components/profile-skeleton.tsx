@@ -6,7 +6,12 @@ export default function ProfileSkeleton() {
   return (
     <Card
       variant="outlined"
-      sx={{ width: 'max(700px, 60%)', height: 'max(400px, 60%)', borderRadius: 0, '--Card-radius': 0 }}
+      sx={{
+        width: 'max(700px, 60%)',
+        height: 'max(400px, 60%)',
+        borderRadius: 0,
+        '--Card-radius': 0,
+      }}
     >
       <CardContent orientation="horizontal">
         <Skeleton variant="rectangular" width={44} height={44} />

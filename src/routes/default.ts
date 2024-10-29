@@ -1,14 +1,14 @@
-import { createElement, lazy } from "react";
+import { createElement, lazy } from 'react';
 
-import { DefaultPath } from "./paths";
+import { DefaultPath } from './paths';
 
-const LandingPage = lazy(() => import("features/landing-page/index"))
+const LandingPage = lazy(() => import('features/landing-page/index'));
 
 const routes = [
   {
     path: DefaultPath.LANDING_PAGE,
-    element: createElement(LandingPage)
-  }
-]
+    element: createElement(LandingPage),
+  },
+];
 
-export default routes
+export default routes;

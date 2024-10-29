@@ -65,7 +65,9 @@ export default function UserReview({
                 sx={{
                   fontSize: 40,
                   color:
-                    score <= (hover || reviewScore) ? '#a3850e' : '#E0E0E0',
+                    score <= (hover || reviewScore)
+                      ? '#a3850e'
+                      : '#E0E0E0',
                   cursor: 'pointer',
                   transition: 'color 0.2s, transform 0.2s',
                   '&:hover': {
@@ -77,11 +79,7 @@ export default function UserReview({
           </Stack>
         )}
         {reviewScore > 0 && (
-          <Typography
-            level="body-sm"
-            component="i"
-            sx={{ mt: 1, color: 'text.secondary' }}
-          >
+          <Typography level="body-sm" component="i" sx={{ mt: 1 }}>
             You rated this course {reviewScore} out of 5 stars
           </Typography>
         )}

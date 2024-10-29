@@ -20,11 +20,13 @@ const VisuallyHiddenInput = styled('input')`
   width: 1px;
 `;
 
-export default function AddCourseImage({ setModalImageUrl }: ISetModalImageUrl) {
+export default function AddCourseImage({
+  setModalImageUrl,
+}: ISetModalImageUrl) {
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const [fileName, setFileName] = useState("");
+  const [fileName, setFileName] = useState('');
   const [isUploaded, setIsUploaded] = useState(false);
-  const [uploadError, setUploadError] = useState("");
+  const [uploadError, setUploadError] = useState('');
 
   const handleFileUpload = () => {
     if (fileInputRef.current) {
@@ -32,35 +34,41 @@ export default function AddCourseImage({ setModalImageUrl }: ISetModalImageUrl) 
     }
   };
 
-  const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = async (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
     const fileList = event.target.files!;
     if (fileList && fileList.length > 0) {
       const selectedFile = fileList[0];
-      const fileExtension = selectedFile.name.split('.').pop()?.toLowerCase(); // Get file extension
+      const fileExtension = selectedFile.name
+        .split('.')
+        .pop()
+        ?.toLowerCase(); // Get file extension
       if (fileExtension === 'png') {
-        const uploadPreset: string = import.meta.env.VITE_UPLOAD_PRESET_COURSE;
+        const uploadPreset: string = import.meta.env
+          .VITE_UPLOAD_PRESET_COURSE;
         const apiUrl: string = import.meta.env.VITE_API_URL;
 
         const formData = new FormData();
-        formData.append("file", selectedFile);
-        formData.append("upload_preset", uploadPreset);
+        formData.append('file', selectedFile);
+        formData.append('upload_preset', uploadPreset);
 
         try {
           const response = await fetch(apiUrl, {
-            method: "POST",
-            body: formData
-          })
+            method: 'POST',
+            body: formData,
+          });
 
-          const data = await response.json()
+          const data = await response.json();
 
-          setModalImageUrl(data.secure_url)
+          setModalImageUrl(data.secure_url);
           setFileName(selectedFile.name);
-          setIsUploaded(true)
+          setIsUploaded(true);
         } catch (error) {
-          setUploadError("Error while uploading the file.")
+          setUploadError('Error while uploading the file.');
         }
       } else {
-        setUploadError("Only .png files are allowed")
+        setUploadError('Only .png files are allowed');
       }
     }
   };
@@ -75,14 +83,24 @@ export default function AddCourseImage({ setModalImageUrl }: ISetModalImageUrl) 
         variant="outlined"
         color="neutral"
       >
-        {isUploaded ? fileName : "Upload your file"}
-        <VisuallyHiddenInput type="file" ref={fileInputRef} onChange={handleFileChange} accept='.png' />
+        {isUploaded ? fileName : 'Upload your file'}
+        <VisuallyHiddenInput
+          type="file"
+          ref={fileInputRef}
+          onChange={handleFileChange}
+          accept=".png"
+        />
       </Button>
-      {uploadError ?
-        <Typography level="body-sm" sx={{ color: "red", textAlign: "center", pt: 1 }}>
+      {uploadError ? (
+        <Typography
+          level="body-sm"
+          sx={{ color: 'red', textAlign: 'center', pt: 1 }}
+        >
           {uploadError}
-        </Typography> : ""
-      }
+        </Typography>
+      ) : (
+        ''
+      )}
     </Stack>
   );
 }

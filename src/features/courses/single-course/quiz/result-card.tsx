@@ -27,12 +27,12 @@ export default function ResultCard({ score }: QuizScore) {
 
   const saveQuizProgress = async () => {
     const values: { quizScore: number } = {
-      quizScore: score
-    }
+      quizScore: score,
+    };
 
-    await SaveQuiz({ topicId: id, values })
-    navigate(`/dashboard/courses/course/${activeCourse}`)
-  }
+    await SaveQuiz({ topicId: id, values });
+    navigate(`/dashboard/courses/course/${activeCourse}`);
+  };
 
   return (
     <Card
@@ -59,29 +59,31 @@ export default function ResultCard({ score }: QuizScore) {
           }}
         >
           <div>
-            {
-              score > 0 ?
-                <SentimentSatisfiedIcon sx={{ fontSize: "4rem" }} />
-                :
-                <SentimentDissatisfiedIcon sx={{ fontSize: "4rem" }} />
-            }
+            {score > 0 ? (
+              <SentimentSatisfiedIcon sx={{ fontSize: '4rem' }} />
+            ) : (
+              <SentimentDissatisfiedIcon sx={{ fontSize: '4rem' }} />
+            )}
           </div>
         </AspectRatio>
       </CardOverflow>
-      <Typography level="title-lg" sx={{ mt: 'calc(var(--icon-size) / 2)' }}>
-
-      </Typography>
+      <Typography
+        level="title-lg"
+        sx={{ mt: 'calc(var(--icon-size) / 2)' }}
+      ></Typography>
       <CardContent sx={{ maxWidth: '40ch' }}>
         Congratulations {user.username}, Your score is {score}!
       </CardContent>
-      <CardActions
-        orientation="vertical"
-        buttonFlex={1}
-      >
+      <CardActions orientation="vertical" buttonFlex={1}>
         <Button variant="solid" color="primary" disabled>
           Share
         </Button>
-        <Button variant="outlined" color="neutral" onClick={saveQuizProgress} loading={isLoading}>
+        <Button
+          variant="outlined"
+          color="neutral"
+          onClick={saveQuizProgress}
+          loading={isLoading}
+        >
           Return
         </Button>
       </CardActions>

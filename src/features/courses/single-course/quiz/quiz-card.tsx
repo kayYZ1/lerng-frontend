@@ -29,9 +29,9 @@ export default function QuizCard() {
 
   return (
     <Box>
-      {isQuizStarted ?
+      {isQuizStarted ? (
         <QuizForm {...data} />
-        :
+      ) : (
         <Box>
           <Card
             size="sm"
@@ -57,18 +57,23 @@ export default function QuizCard() {
               <Typography fontSize="xl4" fontWeight="xl" textColor="#fff">
                 {isLoading ? <CircularProgress /> : data.length}
               </Typography>
-              <Typography textColor="primary.200">
-                Questions
-              </Typography>
-              <Typography fontSize="xl2" fontWeight="l" textColor="#fff" sx={{ pt: 1 }}>
+              <Typography textColor="primary.200">Questions</Typography>
+              <Typography
+                fontSize="xl2"
+                fontWeight="l"
+                textColor="#fff"
+                sx={{ pt: 1 }}
+              >
                 ~1
               </Typography>
-              <Typography textColor="primary.200">
-                minute
-              </Typography>
+              <Typography textColor="primary.200">minute</Typography>
             </CardOverflow>
             <CardContent>
-              <AspectRatio ratio="19/8" objectFit="contain" variant="plain">
+              <AspectRatio
+                ratio="19/8"
+                objectFit="contain"
+                variant="plain"
+              >
                 <QuizSharp />
               </AspectRatio>
               <CardContent>
@@ -87,19 +92,26 @@ export default function QuizCard() {
               </Button>
             </CardContent>
           </Card>
-          {user.role === 'instructor' ?
+          {user.role === 'instructor' ? (
             <Box py={2}>
-              <Stack flexDirection="row" justifyContent="space-between" alignItems="flex-start">
+              <Stack
+                flexDirection="row"
+                justifyContent="space-between"
+                alignItems="flex-start"
+              >
                 <Typography fontSize="sm" py={1} pl={1}>
                   Set of questions
                 </Typography>
                 <AddQuestionModal />
               </Stack>
               <QuestionsList {...data} />
-            </Box> : ""}
+            </Box>
+          ) : (
+            ''
+          )}
         </Box>
-      }
-      {error ? "Something went wrong" : ""}
+      )}
+      {error ? 'Something went wrong' : ''}
     </Box>
   );
 }

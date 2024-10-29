@@ -22,7 +22,7 @@ import ResultCard from '../../result-card';
 
 export default function QuizForm(questions: Question[]) {
   const [activeQuestionIdx, setActiveQuestionIdx] = useState(0);
-  const [answer, setAnswer] = useState("");
+  const [answer, setAnswer] = useState('');
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
 
@@ -35,12 +35,12 @@ export default function QuizForm(questions: Question[]) {
   function handleNextQuestion() {
     submitAnswer();
     setActiveQuestionIdx((prev) => prev + 1);
-    setAnswer("")
+    setAnswer('');
   }
 
   function saveScore() {
-    submitAnswer()
-    setShowResult(true)
+    submitAnswer();
+    setShowResult(true);
   }
 
   const questionsLength = Object.keys(questions).length;
@@ -48,11 +48,14 @@ export default function QuizForm(questions: Question[]) {
 
   return (
     <Box>
-      {showResult ?
-        <ResultCard score={score} /> :
+      {showResult ? (
+        <ResultCard score={score} />
+      ) : (
         <Card sx={{ flex: 1, width: { xs: 300, md: 400 } }}>
           <Box>
-            <Typography level="title-md" sx={{ userSelect: "none" }}>{activeQuestion.question}</Typography>
+            <Typography level="title-md" sx={{ userSelect: 'none' }}>
+              {activeQuestion.question}
+            </Typography>
             <Typography level="body-sm" sx={{ py: 1 }}>
               Question type: {activeQuestion.type}
             </Typography>
@@ -62,23 +65,27 @@ export default function QuizForm(questions: Question[]) {
             <Stack sx={{ my: 1 }} gap={1}>
               <FormControl required>
                 <FormLabel>Answer</FormLabel>
-                {
-                  activeQuestion.type === QuestionType.open ?
-                    <Input
-                      type="text"
-                      name="answer"
-                      value={answer}
-                      onChange={(event) => setAnswer(event.target.value)}
-                    /> :
-                    <RadioGroup name="answer" value={answer} onChange={(event) => setAnswer(event.target.value)}>
-                      <Radio value="1" label="True" color="primary" />
-                      <Radio value="0" label="False" color="danger" />
-                    </RadioGroup>
-                }
+                {activeQuestion.type === QuestionType.open ? (
+                  <Input
+                    type="text"
+                    name="answer"
+                    value={answer}
+                    onChange={(event) => setAnswer(event.target.value)}
+                  />
+                ) : (
+                  <RadioGroup
+                    name="answer"
+                    value={answer}
+                    onChange={(event) => setAnswer(event.target.value)}
+                  >
+                    <Radio value="1" label="True" color="primary" />
+                    <Radio value="0" label="False" color="danger" />
+                  </RadioGroup>
+                )}
               </FormControl>
               <CardOverflow>
                 <CardActions sx={{ alignSelf: 'flex-end', pt: 2 }}>
-                  {activeQuestionIdx === questionsLength - 1 ?
+                  {activeQuestionIdx === questionsLength - 1 ? (
                     <Button
                       size="sm"
                       variant="solid"
@@ -86,7 +93,7 @@ export default function QuizForm(questions: Question[]) {
                     >
                       Save
                     </Button>
-                    :
+                  ) : (
                     <Button
                       size="sm"
                       variant="solid"
@@ -94,14 +101,14 @@ export default function QuizForm(questions: Question[]) {
                     >
                       Next
                     </Button>
-                  }
+                  )}
                 </CardActions>
               </CardOverflow>
             </Stack>
             <QuizTime setShowResult={setShowResult} />
           </form>
         </Card>
-      }
-    </Box >
-  )
+      )}
+    </Box>
+  );
 }

@@ -1,14 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import lpImage from "assets/svg/imagelp1.svg";
-import lpImage2 from "assets/svg/imagelp2.svg";
-import lpImage3 from "assets/svg/imagelp3.svg";
+import lpImage from 'assets/svg/imagelp1.svg';
+import lpImage2 from 'assets/svg/imagelp2.svg';
+import lpImage3 from 'assets/svg/imagelp3.svg';
 
-import Box from "@mui/joy/Box";
+import Box from '@mui/joy/Box';
 
-const images = [
-  lpImage, lpImage2, lpImage3
-];
+const images = [lpImage, lpImage2, lpImage3];
 
 export default function Carousel() {
   const [activeIdx, setActiveIdx] = useState(0);
@@ -37,7 +35,7 @@ export default function Carousel() {
           height: '100%',
           objectFit: 'cover',
           opacity: 0.75,
-          animation: ""
+          animation: '',
         }}
       />
     </Box>

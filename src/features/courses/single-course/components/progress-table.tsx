@@ -13,7 +13,9 @@ export default function ProgressTable({ id }: IdProps) {
 
   return (
     <Box>
-      {isLoading ? <TableSkeleton /> :
+      {isLoading ? (
+        <TableSkeleton />
+      ) : (
         <Table borderAxis="both">
           <thead>
             <tr>
@@ -32,7 +34,7 @@ export default function ProgressTable({ id }: IdProps) {
             ))}
           </tbody>
         </Table>
-      }
+      )}
     </Box>
-  )
+  );
 }

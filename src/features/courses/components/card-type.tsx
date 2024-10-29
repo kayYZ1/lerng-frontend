@@ -10,14 +10,16 @@ interface ICourseEnrolled {
   user: UserData;
 }
 
-export default function CardType({ isEnrolled, item, user }: ICourseEnrolled) {
+export default function CardType({
+  isEnrolled,
+  item,
+  user,
+}: ICourseEnrolled) {
   if (user.role === 'instructor') {
-    return <InstructorCard {...item} />
-  }
-  else if (isEnrolled) {
-    return <EnrolledCard {...item} />
-  }
-  else {
-    return <CourseCard {...item} />
+    return <InstructorCard {...item} />;
+  } else if (isEnrolled) {
+    return <EnrolledCard {...item} />;
+  } else {
+    return <CourseCard {...item} />;
   }
 }

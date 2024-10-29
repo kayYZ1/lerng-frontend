@@ -14,7 +14,7 @@ import Typography from '@mui/joy/Typography';
 import Box from '@mui/joy/Box';
 
 import { useFormik } from 'formik';
-import * as yup from "yup";
+import * as yup from 'yup';
 
 import { useAddTopicMutation } from 'app/api/topics.api.slice';
 
@@ -23,8 +23,16 @@ import { transformErrorResponse } from 'shared/lib/functions';
 import WarningAlert from 'shared/components/alerts/warning';
 
 const validationSchema = yup.object().shape({
-  title: yup.string().required("Title is required").min(3, "Title to short").max(40, "Title too long"),
-  description: yup.string().required("Description is required").min(5, "Description too short").max(80, "Description too long"),
+  title: yup
+    .string()
+    .required('Title is required')
+    .min(3, 'Title to short')
+    .max(40, 'Title too long'),
+  description: yup
+    .string()
+    .required('Description is required')
+    .min(5, 'Description too short')
+    .max(80, 'Description too long'),
 });
 
 export default function AddTopicForm({ setOpen }: ICloseModal) {
@@ -35,19 +43,19 @@ export default function AddTopicForm({ setOpen }: ICloseModal) {
 
   const formik = useFormik({
     initialValues: {
-      title: "",
-      description: "",
+      title: '',
+      description: '',
     },
     validationSchema,
     onSubmit: async (values) => {
       await AddTopic({ courseId: id, values });
       if (!errorResponse) setOpen(false);
       setOpen(false);
-    }
-  })
+    },
+  });
 
   return (
-    <Card sx={{ flex: 1 }} variant='plain'>
+    <Card sx={{ flex: 1 }} variant="plain">
       <Box>
         <Typography level="title-md">Add topic</Typography>
         <Typography level="body-sm">
@@ -67,8 +75,13 @@ export default function AddTopicForm({ setOpen }: ICloseModal) {
               onBlur={formik.handleBlur}
               error={formik.touched.title && !!formik.errors.title}
             />
-            {formik.touched.title ?
-              <FormHelperText component="div">{formik.errors.title}</FormHelperText> : ""}
+            {formik.touched.title ? (
+              <FormHelperText component="div">
+                {formik.errors.title}
+              </FormHelperText>
+            ) : (
+              ''
+            )}
           </FormControl>
           <FormControl required>
             <FormLabel>Description</FormLabel>
@@ -79,22 +92,43 @@ export default function AddTopicForm({ setOpen }: ICloseModal) {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
-            {formik.touched.description ?
-              <FormHelperText component="div">{formik.errors.description}</FormHelperText> : ""}
+            {formik.touched.description ? (
+              <FormHelperText component="div">
+                {formik.errors.description}
+              </FormHelperText>
+            ) : (
+              ''
+            )}
           </FormControl>
           <CardOverflow>
             <CardActions sx={{ alignSelf: 'flex-end', pt: 2 }}>
-              <Button size="sm" variant="outlined" onClick={() => setOpen(false)}>
+              <Button
+                size="sm"
+                variant="outlined"
+                onClick={() => setOpen(false)}
+              >
                 Cancel
               </Button>
-              <Button size="sm" variant="solid" type="submit" loading={isLoading}>
+              <Button
+                size="sm"
+                variant="solid"
+                type="submit"
+                loading={isLoading}
+              >
                 Save
               </Button>
             </CardActions>
           </CardOverflow>
         </Stack>
       </form>
-      {error ? <WarningAlert type="Topic creation error" message={errorResponse} /> : ""}
+      {error ? (
+        <WarningAlert
+          type="Topic creation error"
+          message={errorResponse}
+        />
+      ) : (
+        ''
+      )}
     </Card>
-  )
+  );
 }

@@ -1,7 +1,7 @@
-import Card from "@mui/joy/Card";
-import AspectRatio from "@mui/joy/AspectRatio";
-import Skeleton from "@mui/joy/Skeleton";
-import Typography from "@mui/joy/Typography";
+import Card from '@mui/joy/Card';
+import AspectRatio from '@mui/joy/AspectRatio';
+import Skeleton from '@mui/joy/Skeleton';
+import Typography from '@mui/joy/Typography';
 
 export default function CourseSkeleton() {
   return (
@@ -16,10 +16,10 @@ export default function CourseSkeleton() {
       </AspectRatio>
       <Typography>
         <Skeleton>
-          Lorem ipsum is placeholder text commonly used in the graphic, print, and
-          publishing industries.
+          Lorem ipsum is placeholder text commonly used in the graphic,
+          print, and publishing industries.
         </Skeleton>
       </Typography>
     </Card>
-  )
+  );
 }

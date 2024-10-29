@@ -16,34 +16,39 @@ export default function QuestionsList(questions: Question[]) {
   return (
     <AccordionGroup
       transition={{
-        initial: "0.3s ease-out",
-        expanded: "0.2s ease",
+        initial: '0.3s ease-out',
+        expanded: '0.2s ease',
       }}
       sx={{
         maxWidth: 400,
         [`& .${accordionSummaryClasses.indicator}`]: {
           transition: '0.2s',
         },
-        [`& [aria-expanded="true"] .${accordionSummaryClasses.indicator}`]: {
-          transform: 'rotate(180deg)',
-        },
+        [`& [aria-expanded="true"] .${accordionSummaryClasses.indicator}`]:
+          {
+            transform: 'rotate(180deg)',
+          },
       }}
     >
-      {questionsArray.length !== 0 ? questionsArray.map((question) => (
-        <Accordion key={question.id}>
-          <AccordionSummary>{question.question}</AccordionSummary>
-          <AccordionDetails>
-            <Box display="flex" justifyContent="space-between">
-              <Typography level='body-sm'>{question.type} - {question.answer}</Typography>
-              <EditQuestionModal {...question} />
-            </Box>
-          </AccordionDetails>
-        </Accordion>
-      )) :
-        <Typography level='body-sm' sx={{ p: 1 }}>
+      {questionsArray.length !== 0 ? (
+        questionsArray.map((question) => (
+          <Accordion key={question.id}>
+            <AccordionSummary>{question.question}</AccordionSummary>
+            <AccordionDetails>
+              <Box display="flex" justifyContent="space-between">
+                <Typography level="body-sm">
+                  {question.type} - {question.answer}
+                </Typography>
+                <EditQuestionModal {...question} />
+              </Box>
+            </AccordionDetails>
+          </Accordion>
+        ))
+      ) : (
+        <Typography level="body-sm" sx={{ p: 1 }}>
           No questions yet. Add one!
         </Typography>
-      }
+      )}
     </AccordionGroup>
-  )
+  );
 }

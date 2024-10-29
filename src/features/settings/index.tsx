@@ -10,14 +10,18 @@ import UpdatePassword from './update-password';
 import UpdateData from './update-data';
 
 export default function Profile() {
-  const { data, isLoading } = useGetMeQuery("User");
+  const { data, isLoading } = useGetMeQuery('User');
 
   return (
     <SettingsLayout>
       <Stack
         direction="column"
         spacing={1}
-        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
       >
         <Divider />
         {isLoading ? <ProfileSkeleton /> : <UpdateData {...data} />}

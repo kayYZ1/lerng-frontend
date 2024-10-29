@@ -6,7 +6,7 @@ import ListItemButton from '@mui/joy/ListItemButton';
 import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import ListItemContent from '@mui/joy/ListItemContent';
 
-import AdminPanel from "@mui/icons-material/AdminPanelSettings"
+import AdminPanel from '@mui/icons-material/AdminPanelSettings';
 import SignpostIcon from '@mui/icons-material/Signpost';
 
 import { CoursesPath, DashboardPath } from 'routes/paths';
@@ -16,12 +16,12 @@ const InstructorListItems = [
   {
     link: DashboardPath.ADMIN,
     name: 'Admin',
-    icon: <AdminPanel />
+    icon: <AdminPanel />,
   },
   {
     link: CoursesPath.COURSES,
     name: 'Courses',
-    icon: <SignpostIcon />
+    icon: <SignpostIcon />,
   },
 ];
 
@@ -33,18 +33,18 @@ export default function AdminNav() {
         '& .JoyListItemButton-root': { p: '8px' },
       }}
     >
-      {InstructorListItems.map(item => (
+      {InstructorListItems.map((item) => (
         <ListItem key={item.name}>
           <ListItemButton>
-            <ListItemDecorator>
-              {item.icon}
-            </ListItemDecorator>
+            <ListItemDecorator>{item.icon}</ListItemDecorator>
             <ListItemContent>
-              <Link to={item.link} className={style.link}>{item.name}</Link>
+              <Link to={item.link} className={style.link}>
+                {item.name}
+              </Link>
             </ListItemContent>
           </ListItemButton>
         </ListItem>
       ))}
     </List>
-  )
+  );
 }

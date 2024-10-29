@@ -14,13 +14,13 @@ export default function CourseInstructor() {
 
   return (
     <>
-      {isLoading ?
+      {isLoading ? (
         <InstructorCardSkeleton />
-        :
+      ) : (
         <Card
           sx={{
             boxShadow: 'lg',
-            width: "100%",
+            width: '100%',
             height: 'auto',
             display: 'flex',
             flexDirection: 'column',
@@ -28,8 +28,8 @@ export default function CourseInstructor() {
             p: 3,
             my: {
               xs: 2,
-              md: 0
-            }
+              md: 0,
+            },
           }}
         >
           <CardContent sx={{ alignItems: 'center', textAlign: 'center' }}>
@@ -40,7 +40,7 @@ export default function CourseInstructor() {
             </Typography>
           </CardContent>
         </Card>
-      }
+      )}
     </>
   );
 }

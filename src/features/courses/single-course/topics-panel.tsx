@@ -20,7 +20,7 @@ export default function TopicsPanel({ id }: IdProps) {
 
   useEffect(() => {
     dispatch(setActiveCourse(id));
-  }, [dispatch, id])
+  }, [dispatch, id]);
 
   return (
     <Sheet
@@ -45,12 +45,18 @@ export default function TopicsPanel({ id }: IdProps) {
       </Box>
       <Box sx={{ flex: 1, px: 2, py: 2 }}>
         <ProgressTable id={id} />
-        <Box sx={{ display: "flex", flexDirection: { xs: "column", md: "row" }, my: 2 }}>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: { xs: 'column', md: 'row' },
+            my: 2,
+          }}
+        >
           <UserReview courseId={id} />
           <CourseInstructor />
         </Box>
       </Box>
-      {error ? "Something went wrong" : ""}
-    </Sheet >
-  )
+      {error ? 'Something went wrong' : ''}
+    </Sheet>
+  );
 }

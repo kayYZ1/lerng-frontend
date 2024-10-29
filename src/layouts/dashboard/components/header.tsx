@@ -23,7 +23,10 @@ import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
-import { useGetMeQuery, useSignOutFnMutation } from 'app/api/auth.api.slice';
+import {
+  useGetMeQuery,
+  useSignOutFnMutation,
+} from 'app/api/auth.api.slice';
 import { signOut } from 'app/slice/auth.slice';
 import { authApi } from 'app/base/auth.api';
 
@@ -33,24 +36,24 @@ import ColorSchemeToggle from 'shared/components/color-toggle';
 
 import LerngLogo from 'assets/svg/logo-no-background.svg';
 
-import style from "../dashboard.module.css";
+import style from '../dashboard.module.css';
 import PageSelect from '../utils/page-select';
-import TeamNav from "./navigation";
+import TeamNav from './navigation';
 
 export default function Header() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { data, isLoading } = useGetMeQuery("User");
+  const { data, isLoading } = useGetMeQuery('User');
   const [SignOutFn] = useSignOutFnMutation();
 
   const [open, setOpen] = useState(false);
 
   const signOutHandler = () => {
-    SignOutFn("Auth");
+    SignOutFn('Auth');
     dispatch(signOut());
     dispatch(authApi.util.resetApiState()); //Reset the cache while signing out
-  }
+  };
 
   return (
     <Box
@@ -79,7 +82,11 @@ export default function Header() {
         </Stack>
       </Stack>
       <Box sx={{ display: { xs: 'inline-flex', sm: 'none' } }}>
-        <IconButton variant="plain" color="neutral" onClick={() => setOpen(true)}>
+        <IconButton
+          variant="plain"
+          color="neutral"
+          onClick={() => setOpen(true)}
+        >
           <MenuRoundedIcon />
         </IconButton>
         <Drawer
@@ -110,7 +117,11 @@ export default function Header() {
           <MenuButton
             variant="plain"
             size="sm"
-            sx={{ maxWidth: '32px', maxHeight: '32px', borderRadius: '9999999px' }}
+            sx={{
+              maxWidth: '32px',
+              maxHeight: '32px',
+              borderRadius: '9999999px',
+            }}
           >
             <Avatar
               src={isLoading ? '' : data.avatar}
@@ -119,7 +130,9 @@ export default function Header() {
               <Skeleton loading={isLoading} />
             </Avatar>
           </MenuButton>
-          {isLoading ? "" :
+          {isLoading ? (
+            ''
+          ) : (
             <Menu
               placement="bottom-end"
               size="sm"
@@ -137,10 +150,7 @@ export default function Header() {
                     alignItems: 'center',
                   }}
                 >
-                  <Avatar
-                    src={data.avatar}
-                    sx={{ borderRadius: '50%' }}
-                  />
+                  <Avatar src={data.avatar} sx={{ borderRadius: '50%' }} />
                   <Box sx={{ ml: 1.5 }}>
                     <Typography level="title-sm" textColor="text.primary">
                       {data.username}
@@ -148,26 +158,32 @@ export default function Header() {
                     <Typography level="body-sm" textColor="text.tertiary">
                       {data.email}
                     </Typography>
-                    <Typography level="body-xs">
-                      {data.role}
-                    </Typography>
+                    <Typography level="body-xs">{data.role}</Typography>
                   </Box>
                 </Box>
               </MenuItem>
               <ListDivider />
               <MenuItem>
                 <SettingsRoundedIcon />
-                <Link to={DashboardPath.SETTINGS} className={style.link}>Settings</Link>
+                <Link to={DashboardPath.SETTINGS} className={style.link}>
+                  Settings
+                </Link>
               </MenuItem>
               <ListDivider />
               <MenuItem>
                 <LogoutRoundedIcon />
-                <Link to={AuthPath.SIGN_IN} className={style.link} onClick={signOutHandler}>Sign Out</Link>
+                <Link
+                  to={AuthPath.SIGN_IN}
+                  className={style.link}
+                  onClick={signOutHandler}
+                >
+                  Sign Out
+                </Link>
               </MenuItem>
             </Menu>
-          }
+          )}
         </Dropdown>
       </Box>
-    </Box >
+    </Box>
   );
 }
