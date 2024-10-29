@@ -1,6 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { useEffect, useState } from 'react';
 
 import FormControl from '@mui/joy/FormControl';
 import FormLabel from '@mui/joy/FormLabel';
@@ -9,7 +8,6 @@ import Stack from '@mui/joy/Stack';
 import Box from '@mui/joy/Box';
 import Button from '@mui/joy/Button';
 import FormHelperText from '@mui/joy/FormHelperText';
-import Typography from '@mui/joy/Typography';
 
 import { useFormik } from 'formik';
 import * as yup from 'yup';
@@ -18,9 +16,11 @@ import { setCredentials } from 'app/slice/auth.slice';
 import { useSignInFnMutation } from 'app/api/auth.api.slice';
 import { UserSignIn } from 'shared/ts/types';
 
+import ShowCapsLock from 'shared/components/show-capslock';
 import ErrorAlert from 'shared/components/alerts/error';
-import { DashboardPath, AuthPath } from 'routes/paths';
 import { transformErrorResponse } from 'shared/lib/functions';
+
+import { DashboardPath, AuthPath } from 'routes/paths';
 
 import style from '../auth.module.css';
 
@@ -36,19 +36,8 @@ export default function SignInForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [isCapsLock, setIsCapsLock] = useState(false);
   const [SignInFn, { isLoading, error }] = useSignInFnMutation();
   const errorResponse = transformErrorResponse(error);
-
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      setIsCapsLock(event.getModifierState('CapsLock'));
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [isCapsLock]);
 
   const formik = useFormik({
     initialValues: {
@@ -124,11 +113,7 @@ export default function SignInForm() {
           Sign in
         </Button>
       </Stack>
-      {isCapsLock && (
-        <Typography color="danger" startDecorator="🚨">
-          Caps Lock is on!
-        </Typography>
-      )}
+      <ShowCapsLock />
       {error && <ErrorAlert type="Sign In Error" message={errorResponse} />}
     </form>
   );

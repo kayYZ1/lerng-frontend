@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   FormControl,
   FormLabel,
@@ -17,10 +17,11 @@ import * as yup from 'yup';
 import { useSignUpFnMutation } from 'app/api/auth.api.slice';
 import { UserSignUp } from 'shared/ts/types';
 
-import style from '../auth.module.css';
 import ErrorAlert from 'shared/components/alerts/error';
+import ShowCapsLock from 'shared/components/show-capslock';
 import { transformErrorResponse } from 'shared/lib/functions';
-import { useNavigate } from 'react-router-dom';
+
+import style from '../auth.module.css';
 
 const validationSchema = yup.object().shape({
   email: yup.string().email('Invalid email').required('Email is required'),
@@ -40,17 +41,6 @@ export default function SignUpForm() {
 
   const navigate = useNavigate();
   const errorResponse = transformErrorResponse(error);
-  const [isCapsLock, setIsCapsLock] = useState(false);
-
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      setIsCapsLock(event.getModifierState('CapsLock'));
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [isCapsLock]);
 
   const formik = useFormik({
     initialValues: {
@@ -176,11 +166,7 @@ export default function SignUpForm() {
           Sign in
         </Button>
       </Stack>
-      {isCapsLock && (
-        <Typography color="danger" startDecorator="🚨">
-          Caps Lock is on!
-        </Typography>
-      )}
+      <ShowCapsLock />
       {error ? <ErrorAlert type="Sign Up Error" message={errorResponse} /> : ''}
     </form>
   );
