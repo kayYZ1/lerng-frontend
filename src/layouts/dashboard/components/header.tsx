@@ -37,7 +37,6 @@ import ColorSchemeToggle from 'shared/components/color-toggle';
 import LerngLogo from 'assets/svg/logo-no-background.svg';
 
 import style from '../dashboard.module.css';
-import PageSelect from '../utils/page-select';
 import TeamNav from './navigation';
 
 export default function Header() {
@@ -111,7 +110,6 @@ export default function Header() {
           alignItems: 'center',
         }}
       >
-        <PageSelect />
         <ColorSchemeToggle />
         <Dropdown>
           <MenuButton

@@ -36,6 +36,6 @@ function renderWithProviders(
   return render(ui, { wrapper: Wrapper, ...renderOptions });
 }
 
-export * from '@testing-library/react';
+export * from '@testing-library/react'; // eslint-disable-line
 
 export { renderWithProviders as render };
