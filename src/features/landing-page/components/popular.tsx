@@ -33,9 +33,9 @@ const popularCourses = [
 
 export default function Popular() {
   return (
-    <Box sx={{ py: 2 }}>
-      <Typography level="h2" sx={{ textAlign: 'center', mb: 6 }}>
-        Popular Courses
+    <Box>
+      <Typography level="h2" sx={{ textAlign: 'center', pb: 8 }}>
+        This week's picks!
       </Typography>
       <Grid container spacing={4} sx={{ mx: 'auto' }}>
         {popularCourses.map((course, index) => (
