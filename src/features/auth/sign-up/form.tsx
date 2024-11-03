@@ -73,6 +73,7 @@ export default function SignUpForm(props: LocationState) {
         <Input
           type="email"
           name="email"
+          placeholder="john.doe@gmail.com"
           value={formik.values.email}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -94,6 +95,7 @@ export default function SignUpForm(props: LocationState) {
         <Input
           type="text"
           name="username"
+          placeholder="johndoe"
           value={formik.values.username}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -115,6 +117,7 @@ export default function SignUpForm(props: LocationState) {
         <Input
           type="password"
           name="password"
+          placeholder="password_example123#"
           value={formik.values.password}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -136,6 +139,7 @@ export default function SignUpForm(props: LocationState) {
         <Input
           type="password"
           name="repeatPassword"
+          placeholder="password_example123#"
           value={formik.values.repeatPassword}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}

@@ -3,6 +3,7 @@ import Box from '@mui/joy/Box';
 import Navigation from './components/navigation';
 import HeroSection from './components/hero-section';
 import Popular from './components/popular';
+import Footer from './components/footer';
 
 export default function LandingPage() {
   return (
@@ -12,6 +13,7 @@ export default function LandingPage() {
       <Navigation />
       <HeroSection />
       <Popular />
+      <Footer />
     </Box>
   );
 }
