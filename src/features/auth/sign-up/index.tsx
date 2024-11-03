@@ -1,6 +1,6 @@
 import { Stack, Typography, Divider } from '@mui/joy';
 
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import { AuthPath } from 'routes/paths';
 
@@ -8,6 +8,9 @@ import style from '../auth.module.css';
 import SignUpForm from './form';
 
 export default function SignUp() {
+  const location = useLocation();
+  const { value } = location.state || {};
+
   return (
     <div>
       <Stack gap={4} sx={{ mb: 2 }}>
@@ -35,7 +38,7 @@ export default function SignUp() {
         })}
       ></Divider>
       <Stack gap={4} sx={{ mt: 2 }}>
-        <SignUpForm />
+        <SignUpForm userEmail={value} />
       </Stack>
     </div>
   );

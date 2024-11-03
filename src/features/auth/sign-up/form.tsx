@@ -36,7 +36,11 @@ const validationSchema = yup.object().shape({
     .required('Please confirm your password'),
 });
 
-export default function SignUpForm() {
+type LocationState = {
+  userEmail: string | undefined;
+};
+
+export default function SignUpForm(props: LocationState) {
   const [SignUpFn, { isLoading, error }] = useSignUpFnMutation();
 
   const navigate = useNavigate();
@@ -44,7 +48,7 @@ export default function SignUpForm() {
 
   const formik = useFormik({
     initialValues: {
-      email: '',
+      email: typeof props.userEmail === 'string' ? props.userEmail : '',
       username: '',
       password: '',
       repeatPassword: '',
