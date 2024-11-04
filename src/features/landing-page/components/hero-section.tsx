@@ -11,10 +11,10 @@ import Card from '@mui/joy/Card';
 import Avatar from '@mui/joy/Avatar';
 import AvatarGroup from '@mui/joy/AvatarGroup';
 
-import Search from '@mui/icons-material/Search';
+import Mail from '@mui/icons-material/Mail';
 import Book from '@mui/icons-material/Book';
-import ArrowUpward from '@mui/icons-material/ArrowUpward';
-import ArrowDownward from '@mui/icons-material/ArrowDownward';
+import QuizIcon from '@mui/icons-material/Quiz';
+import FeedbackIcon from '@mui/icons-material/Feedback';
 
 import { AuthPath } from 'routes/paths';
 import { UserLandingPage } from 'shared/ts/types';
@@ -26,14 +26,15 @@ const mockCardsData = [
     icon: <Book />,
   },
   {
-    title: 'Comprehensive Curriculum 2',
-    description: 'Structured learning paths covering all aspects of Linux',
-    icon: <ArrowUpward />,
+    title: 'Knowledge Checks',
+    description: 'Test your understanding with quizzes',
+    icon: <QuizIcon />,
   },
   {
-    title: 'Comprehensive Curriculum 3',
-    description: 'Structured learning paths covering all aspects of Linux',
-    icon: <ArrowDownward />,
+    title: 'Feedback Modules',
+    description:
+      'Give feedback on the course modules directly to instructors!',
+    icon: <FeedbackIcon />,
   },
 ];
 
@@ -114,13 +115,12 @@ export default function HeroSection() {
           sx={{ flex: 1 }}
           size="md"
           type="email"
-          placeholder="Your email"
+          placeholder="Your e-mail address"
           value={email}
           onChange={(e) => {
             setEmail(e.currentTarget.value);
           }}
-          startDecorator={<Search />}
-          required
+          startDecorator={<Mail />}
         />
         <Button
           size="lg"
