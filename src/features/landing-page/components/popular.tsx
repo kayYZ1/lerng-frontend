@@ -9,7 +9,7 @@ import Person from '@mui/icons-material/Person';
 
 const popularCourses = [
   {
-    title: 'Linux System Administration Fundamentals',
+    title: 'Linux System Administration',
     description:
       'Master the basics of Linux system administration, from user management to system maintenance.',
     students: '15,234',
@@ -18,14 +18,14 @@ const popularCourses = [
   {
     title: 'Advanced Shell Scripting',
     description:
-      'Learn to write complex shell scripts and automate your Linux workflows.',
+      'Learn to write complex shell scripts and automate your Linux workflows. Lorem sadasda',
     students: '8,921',
     level: 'Advanced',
   },
   {
     title: 'Linux Security Essentials',
     description:
-      'Understand security fundamentals and protect your Linux systems from threats.',
+      'Understand security fundamentals and protect your Linux systems from threats. Lorem sadas',
     students: '12,445',
     level: 'Intermediate',
   },
