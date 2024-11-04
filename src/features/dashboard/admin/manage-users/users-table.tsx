@@ -38,11 +38,6 @@ export default function UsersTable({ users, isLoading }: Users) {
     setPage(newPage);
   };
 
-  const handleChangeRowsPerPage = (_: any, newValue: number | null) => {
-    setRowsPerPage(parseInt(newValue!.toString(), 10));
-    setPage(0);
-  };
-
   const getLabelDisplayedRowsTo = () => {
     if (users.length === -1) {
       return (page + 1) * rowsPerPage;
@@ -112,7 +107,10 @@ export default function UsersTable({ users, isLoading }: Users) {
                 <FormControl orientation="horizontal" size="sm">
                   <FormLabel>Rows per page:</FormLabel>
                   <Select
-                    onChange={handleChangeRowsPerPage}
+                    onChange={(_, newValue) => {
+                      setRowsPerPage(parseInt(newValue!.toString(), 10));
+                      setPage(0);
+                    }}
                     value={rowsPerPage}
                   >
                     <Option value={5}>5</Option>

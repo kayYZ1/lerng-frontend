@@ -36,7 +36,11 @@ const validationSchema = yup.object().shape({
     .required('Please confirm your password'),
 });
 
-export default function SignUpForm() {
+type LocationState = {
+  userEmail: string | undefined;
+};
+
+export default function SignUpForm(props: LocationState) {
   const [SignUpFn, { isLoading, error }] = useSignUpFnMutation();
 
   const navigate = useNavigate();
@@ -44,7 +48,7 @@ export default function SignUpForm() {
 
   const formik = useFormik({
     initialValues: {
-      email: '',
+      email: typeof props.userEmail === 'string' ? props.userEmail : '',
       username: '',
       password: '',
       repeatPassword: '',
@@ -69,6 +73,7 @@ export default function SignUpForm() {
         <Input
           type="email"
           name="email"
+          placeholder="john.doe@gmail.com"
           value={formik.values.email}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -90,6 +95,7 @@ export default function SignUpForm() {
         <Input
           type="text"
           name="username"
+          placeholder="johndoe"
           value={formik.values.username}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -111,6 +117,7 @@ export default function SignUpForm() {
         <Input
           type="password"
           name="password"
+          placeholder="password_example123#"
           value={formik.values.password}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -132,6 +139,7 @@ export default function SignUpForm() {
         <Input
           type="password"
           name="repeatPassword"
+          placeholder="password_example123#"
           value={formik.values.repeatPassword}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}

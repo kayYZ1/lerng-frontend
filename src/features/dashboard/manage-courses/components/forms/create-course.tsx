@@ -67,7 +67,6 @@ export default function CreateCourseForm({ setOpen }: ICloseModal) {
     validationSchema: validationSchema,
     onSubmit: async (values) => {
       values.imageUrl = imgUrl;
-      console.log(values);
       await CreateCourse(values);
       setOpen(false);
     },
