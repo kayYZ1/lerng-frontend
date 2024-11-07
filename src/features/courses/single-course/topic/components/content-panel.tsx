@@ -11,6 +11,7 @@ import EditContentModal from './modals/edit-content';
 
 import { selectActiveContent } from 'app/slice/contents.slice';
 import { selectCurrentUser } from 'app/slice/user.slice';
+import RemoveContentModal from './modals/remove-content';
 
 export default function ContentPanel() {
   const activeContent = useSelector(selectActiveContent);
@@ -21,7 +22,10 @@ export default function ContentPanel() {
       {activeContent !== null ? (
         <Box sx={{ overflow: 'auto', maxHeight: '75vh' }}>
           {user.role === 'instructor' && (
-            <EditContentModal {...activeContent} />
+            <Stack direction="row" justifyContent="space-between">
+              <EditContentModal {...activeContent} />
+              <RemoveContentModal contentId={activeContent.id} />
+            </Stack>
           )}
           <Stack
             direction="column"
