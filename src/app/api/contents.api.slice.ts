@@ -28,6 +28,13 @@ export const contentsApiSlice = authApi.injectEndpoints({
       }),
       invalidatesTags: ['Content'],
     }),
+    RemoveContent: builder.mutation({
+      query: (contentId: string) => ({
+        url: `/contents/remove/${contentId}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['Content'],
+    }),
   }),
 });
 
@@ -35,4 +42,5 @@ export const {
   useGetContentsQuery,
   useNewContentMutation,
   useEditContentMutation,
+  useRemoveContentMutation,
 } = contentsApiSlice;
