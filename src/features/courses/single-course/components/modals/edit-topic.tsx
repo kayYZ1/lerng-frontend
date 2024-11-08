@@ -1,7 +1,10 @@
 import { useState, Fragment } from 'react';
+
 import Modal from '@mui/joy/Modal';
 import ModalDialog from '@mui/joy/ModalDialog';
-import Button from '@mui/joy/Button';
+import IconButton from '@mui/joy/IconButton';
+
+import EditIcon from '@mui/icons-material/Edit';
 
 import EditTopicForm from '../forms/edit-topic';
 import { Topic } from 'shared/ts/types';
@@ -10,9 +13,9 @@ export default function EditTopicModal(topic: Topic) {
   const [open, setOpen] = useState<boolean>(false);
   return (
     <Fragment>
-      <Button color="neutral" onClick={() => setOpen(true)}>
-        Edit
-      </Button>
+      <IconButton onClick={() => setOpen(true)}>
+        <EditIcon />
+      </IconButton>
       <Modal
         open={open}
         onClose={() => setOpen(false)}

@@ -2,27 +2,27 @@ import { useState, Fragment } from 'react';
 
 import Modal from '@mui/joy/Modal';
 import ModalDialog from '@mui/joy/ModalDialog';
-import IconButton from '@mui/joy/IconButton';
 import Button from '@mui/joy/Button';
 import Divider from '@mui/joy/Divider';
 import DialogTitle from '@mui/joy/DialogTitle';
 import DialogContent from '@mui/joy/DialogContent';
 import DialogActions from '@mui/joy/DialogActions';
+import IconButton from '@mui/joy/IconButton';
 
 import WarningRoundedIcon from '@mui/icons-material/WarningRounded';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import { useRemoveContentMutation } from 'app/api/contents.api.slice';
+import { useRemoveTopicMutation } from 'app/api/topics.api.slice';
 
-export default function RemoveContentModal({
-  contentId,
+export default function RemoveTopicModal({
+  topicId,
 }: {
-  contentId: string;
+  topicId: string;
 }) {
-  const [open, setOpen] = useState(false);
-  const [RemoveContent, { isLoading }] = useRemoveContentMutation();
+  const [open, setOpen] = useState<boolean>(false);
+  const [RemoveTopic, { isLoading }] = useRemoveTopicMutation();
 
-  const removeContentHandler = async () => {
-    await RemoveContent(contentId);
+  const removeTopicHandler = async () => {
+    await RemoveTopic(topicId);
     setOpen(false);
   };
 
@@ -47,13 +47,14 @@ export default function RemoveContentModal({
           </DialogTitle>
           <Divider />
           <DialogContent>
-            Are you sure you want to remove the content?
+            Are you sure you want to remove the topic? This is a
+            destructive action.
           </DialogContent>
           <DialogActions>
             <Button
               variant="outlined"
               color="danger"
-              onClick={removeContentHandler}
+              onClick={removeTopicHandler}
               loading={isLoading}
             >
               Yes, I'm sure
