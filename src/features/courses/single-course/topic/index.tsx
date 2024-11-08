@@ -7,7 +7,7 @@ import Divider from '@mui/joy/Divider';
 import { useGetTopicQuery } from 'app/api/topics.api.slice';
 
 import TypographySkeleton from '../components/skeletons/typography';
-import TopicPanel from './single-topic';
+import SingleTopic from './single-topic';
 import BreadcrumbsCustom from 'shared/components/breadcrumbs-custom';
 
 export default function Topic() {
@@ -32,7 +32,7 @@ export default function Topic() {
       </Box>
       <Divider sx={{ my: 1 }} />
       <Box sx={{ flex: 1 }}>
-        <TopicPanel id={id} />
+        <SingleTopic id={id} />
       </Box>
     </Box>
   );

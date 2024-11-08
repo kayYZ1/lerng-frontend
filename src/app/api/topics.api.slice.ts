@@ -34,6 +34,13 @@ export const modulesApiSlice = authApi.injectEndpoints({
       }),
       invalidatesTags: ['Topic'],
     }),
+    RemoveTopic: builder.mutation({
+      query: (topicId: string) => ({
+        url: `/topics/topic/${topicId}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['Topic'],
+    }),
   }),
 });
 
@@ -42,4 +49,5 @@ export const {
   useGetTopicQuery,
   useAddTopicMutation,
   useEditTopicMutation,
+  useRemoveTopicMutation,
 } = modulesApiSlice;
