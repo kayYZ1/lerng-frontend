@@ -19,7 +19,7 @@ import { useCountProgressQuery } from 'app/api/progress.api.slice';
 import CardType from './card-type';
 import { selectCurrentUser } from 'app/slice/user.slice';
 import CourseRating from './course-rating';
-import EditCourseModal from 'features/dashboard/manage-courses/components/modals/edit-course';
+import EditCourseModal from 'features/instructor/manage-courses/components/modals/edit-course';
 
 export default function CourseItem(item: Course) {
   const { data, isLoading } = useCountProgressQuery(item.id);
