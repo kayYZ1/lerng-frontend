@@ -18,6 +18,13 @@ export const coursesApiSlice = authApi.injectEndpoints({
       }),
       invalidatesTags: ['Course'],
     }),
+    RemoveCourse: builder.mutation({
+      query: (courseId: string) => ({
+        url: `/courses/remove/${courseId}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['Course'],
+    }),
     GetCourses: builder.query({
       query: () => ({
         url: '/courses/',
@@ -53,6 +60,7 @@ export const {
   useEditCourseMutation,
   useGetCoursesQuery,
   useGetCourseQuery,
+  useRemoveCourseMutation,
   useGetInstructorCoursesQuery,
   useGetInstructorFromCourseQuery,
 } = coursesApiSlice;
