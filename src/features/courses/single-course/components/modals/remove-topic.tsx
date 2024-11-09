@@ -10,8 +10,9 @@ import DialogActions from '@mui/joy/DialogActions';
 import IconButton from '@mui/joy/IconButton';
 
 import WarningRoundedIcon from '@mui/icons-material/WarningRounded';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { useRemoveTopicMutation } from 'app/api/topics.api.slice';
+
+import RemoveAction from 'shared/components/actions/remove-action';
 
 export default function RemoveTopicModal({
   topicId,
@@ -29,7 +30,7 @@ export default function RemoveTopicModal({
   return (
     <Fragment>
       <IconButton onClick={() => setOpen(true)}>
-        <DeleteForeverIcon />
+        <RemoveAction title="Remove topic" />
       </IconButton>
       <Modal
         open={open}

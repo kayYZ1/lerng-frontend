@@ -10,8 +10,9 @@ import DialogContent from '@mui/joy/DialogContent';
 import DialogActions from '@mui/joy/DialogActions';
 
 import WarningRoundedIcon from '@mui/icons-material/WarningRounded';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+
 import { useRemoveContentMutation } from 'app/api/contents.api.slice';
+import RemoveAction from 'shared/components/actions/remove-action';
 
 export default function RemoveContentModal({
   contentId,
@@ -29,7 +30,7 @@ export default function RemoveContentModal({
   return (
     <Fragment>
       <IconButton onClick={() => setOpen(true)}>
-        <DeleteForeverIcon />
+        <RemoveAction title="Remove content" />
       </IconButton>
       <Modal
         open={open}
