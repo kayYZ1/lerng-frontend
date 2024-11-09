@@ -6,8 +6,7 @@ import IconButton from '@mui/joy/IconButton';
 
 import EditContentForm from '../forms/edit-content';
 import { Content } from 'shared/ts/types';
-
-import EditIcon from '@mui/icons-material/Edit';
+import EditAction from 'shared/components/actions/edit-action';
 
 export default function EditContentModal(content: Content) {
   const [open, setOpen] = useState(false);
@@ -15,7 +14,7 @@ export default function EditContentModal(content: Content) {
   return (
     <Fragment>
       <IconButton onClick={() => setOpen(true)}>
-        <EditIcon />
+        <EditAction title="Edit content" />
       </IconButton>
       <Modal
         open={open}
