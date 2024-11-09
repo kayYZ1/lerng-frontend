@@ -25,6 +25,7 @@ import { Categories } from 'shared/enum';
 import AddCourseImage from '../add-course-image';
 import WarningAlert from 'shared/components/alerts/warning';
 import { Course } from 'shared/ts/types';
+import RemoveCourseModal from '../modals/remove-course';
 
 interface IEditCourseFormProps {
   setOpen: (value: boolean) => void;
@@ -179,6 +180,7 @@ export default function EditCourseForm({
           </FormControl>
           <CardOverflow>
             <CardActions sx={{ alignSelf: 'flex-end', pt: 2 }}>
+              <RemoveCourseModal courseId={course.id} />
               <Button
                 size="sm"
                 variant="outlined"
