@@ -2,8 +2,8 @@ import { lazy, createElement } from 'react';
 
 import { DashboardPath, CoursesPath } from './paths';
 
-const Dashboard = lazy(() => import('features/dashboard/index'));
-const Admin = lazy(() => import('features/dashboard/admin/index'));
+const Dashboard = lazy(() => import('features/instructor/index'));
+const Admin = lazy(() => import('features/admin/index'));
 const SettingsProfile = lazy(() => import('features/settings/index'));
 const Enrolled = lazy(() => import('features/enrolled/index'));
 const Feedback = lazy(() => import('features/feedback/index'));

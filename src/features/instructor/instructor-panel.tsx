@@ -9,7 +9,7 @@ import ManageCourses from './manage-courses/index.tsx';
 import Statistics from './statistics/index.tsx';
 import BreadcrumbsCustom from 'shared/components/breadcrumbs-custom.tsx';
 
-export default function DashboardPanel() {
+export default function InstructorPanel() {
   return (
     <Box sx={{ flex: 1, width: '100%' }}>
       <Box>
