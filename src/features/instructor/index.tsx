@@ -4,12 +4,12 @@ import { Navigate } from 'react-router-dom';
 import { selectCurrentUser } from 'app/slice/user.slice';
 import { CoursesPath } from 'routes/paths';
 
-import DashboardPanel from './dashboard-panel';
+import InstructorPanel from './instructor-panel';
 
 export default function Dashboard() {
   const currentUser = useSelector(selectCurrentUser);
   return currentUser.role === 'instructor' ? (
-    <DashboardPanel />
+    <InstructorPanel />
   ) : (
     <Navigate to={CoursesPath.COURSES} />
   );
