@@ -17,7 +17,7 @@ import Textarea from '@mui/joy/Textarea';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
-import { transformErrorResponse } from 'shared/lib/functions';
+import { transformErrorResponse } from 'shared/utils/functions';
 import WarningAlert from 'shared/components/alerts/warning';
 import { Content } from 'shared/ts/types';
 

@@ -12,17 +12,19 @@ import Typography from '@mui/joy/Typography';
 import LinearProgress from '@mui/joy/LinearProgress';
 
 import { Course } from 'shared/ts/types';
-import { parseDate } from 'shared/lib/functions';
+import { parseDate } from 'shared/utils/functions';
 import { selectMyCourses } from 'app/slice/enrolled.slice';
 import { useCountProgressQuery } from 'app/api/progress.api.slice';
+import { useGetInstructorFromCourseQuery } from 'app/api/courses.api.slice';
 
 import CardType from './card-type';
 import { selectCurrentUser } from 'app/slice/user.slice';
 import CourseRating from './course-rating';
-import EditCourseModal from 'features/instructor/manage-courses/components/modals/edit-course';
+import EditCourseModal from './modals/edit-course';
 
 export default function CourseItem(item: Course) {
   const { data, isLoading } = useCountProgressQuery(item.id);
+  const { data: instructor } = useGetInstructorFromCourseQuery(item.id);
 
   const enrolled = useSelector(selectMyCourses);
   const user = useSelector(selectCurrentUser);
@@ -44,7 +46,14 @@ export default function CourseItem(item: Course) {
         sx={{ width: 350, display: 'flex', flexDirection: 'column' }}
       >
         <CardOverflow>
-          <CardType isEnrolled={isEnrolled} item={item} user={user} />
+          {instructor && (
+            <CardType
+              isEnrolled={isEnrolled}
+              item={item}
+              user={user}
+              instructorId={instructor.id}
+            />
+          )}
         </CardOverflow>
         <CardContent sx={{ flexGrow: 1 }}>
           <CourseRating courseId={item.id} />
@@ -62,7 +71,9 @@ export default function CourseItem(item: Course) {
             <Typography level="body-sm">
               {truncateText(item.description, 45)}
             </Typography>
-            {user.role === 'instructor' && <EditCourseModal {...item} />}
+            {instructor && user.id === instructor.id && (
+              <EditCourseModal {...item} />
+            )}
           </Stack>
         </CardContent>
         <CardOverflow variant="soft">

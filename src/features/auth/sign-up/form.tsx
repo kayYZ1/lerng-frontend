@@ -19,7 +19,7 @@ import { UserSignUp } from 'shared/ts/types';
 
 import ErrorAlert from 'shared/components/alerts/error';
 import ShowCapsLock from 'shared/components/show-capslock';
-import { transformErrorResponse } from 'shared/lib/functions';
+import { transformErrorResponse } from 'shared/utils/functions';
 
 import style from '../auth.module.css';
 

@@ -18,7 +18,7 @@ import AddIcon from '@mui/icons-material/Add';
 
 import { EnrolledCourses } from 'shared/ts/types';
 import { useAddFeedbackTicketMutation } from 'app/api/feedback.slice';
-import { transformErrorResponse } from 'shared/lib/functions';
+import { transformErrorResponse } from 'shared/utils/functions';
 import ErrorAlert from 'shared/components/alerts/error';
 import { Typography } from '@mui/joy';
 

@@ -20,7 +20,7 @@ import Person2RoundedIcon from '@mui/icons-material/Person2Rounded';
 import AdminPanelSettingsRoundedIcon from '@mui/icons-material/AdminPanelSettingsRounded';
 
 import { useUpdateUserDataMutation } from 'app/api/users.api.slice';
-import { transformErrorResponse } from 'shared/lib/functions';
+import { transformErrorResponse } from 'shared/utils/functions';
 
 import UpdateImageModal from './components/modals/update-image';
 

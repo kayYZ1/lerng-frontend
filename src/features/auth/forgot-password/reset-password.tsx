@@ -14,7 +14,7 @@ import * as yup from 'yup';
 
 import { AuthPath } from 'routes/paths';
 import { useResetPasswordFnMutation } from 'app/api/auth.api.slice';
-import { transformErrorResponse } from 'shared/lib/functions';
+import { transformErrorResponse } from 'shared/utils/functions';
 import SuccessAlert from 'shared/components/alerts/success';
 import ErrorAlert from 'shared/components/alerts/error';
 

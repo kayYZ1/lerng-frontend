@@ -20,7 +20,7 @@ import * as yup from 'yup';
 
 import { useUpdateUserPasswordMutation } from 'app/api/users.api.slice';
 import WarningAlert from 'shared/components/alerts/warning';
-import { transformErrorResponse } from 'shared/lib/functions';
+import { transformErrorResponse } from 'shared/utils/functions';
 import { UserData } from 'shared/ts/types';
 
 const validationSchema = yup.object().shape({
