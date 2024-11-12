@@ -1,3 +1,4 @@
+import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import Stack from '@mui/joy/Stack';
@@ -8,6 +9,7 @@ import { accordionSummaryClasses } from '@mui/joy/AccordionSummary';
 
 import { Topic } from 'shared/ts/types';
 import { selectCurrentUser } from 'app/slice/user.slice';
+import { useGetInstructorFromCourseQuery } from 'app/api/courses.api.slice';
 
 import TopicItem from './topic-item';
 import AddTopicModal from './modals/add-topic';
@@ -17,6 +19,9 @@ interface ITopicsListProps {
 }
 
 export default function TopicsList({ topics }: ITopicsListProps) {
+  const { id } = useParams<{ id: string }>();
+  const { data: instructor } = useGetInstructorFromCourseQuery(id!);
+
   const user = useSelector(selectCurrentUser);
 
   return (
@@ -26,13 +31,11 @@ export default function TopicsList({ topics }: ITopicsListProps) {
         maxWidth: '80ch',
       }}
     >
-      {user.role === 'instructor' ? (
+      {instructor && instructor.id === user.id && (
         <Box sx={{ display: 'flex', justifyContent: 'flex-start' }}>
           <Typography sx={{ px: 1, py: 1 }}>Add topic</Typography>
           <AddTopicModal />
         </Box>
-      ) : (
-        ''
       )}
       <AccordionGroup
         transition={{
@@ -50,9 +53,16 @@ export default function TopicsList({ topics }: ITopicsListProps) {
             },
         }}
       >
-        {topics.map((item: Topic) => (
-          <TopicItem {...item} key={item.id} />
-        ))}
+        {topics.map(
+          (item: Topic) =>
+            instructor && (
+              <TopicItem
+                item={item}
+                instructorId={instructor.id}
+                userId={user.id}
+              />
+            ),
+        )}
       </AccordionGroup>
     </Stack>
   );

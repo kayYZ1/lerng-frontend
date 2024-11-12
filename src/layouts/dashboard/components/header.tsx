@@ -22,6 +22,7 @@ import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import Terminal from '@mui/icons-material/Terminal';
 
 import {
   useGetMeQuery,
@@ -70,7 +71,10 @@ export default function Header() {
         sx={{ display: { xs: 'none', sm: 'flex' } }}
         paddingLeft={0.5}
       >
-        <img src={LerngLogo} width={96} height={96} />
+        <Stack direction="row" alignItems="center" spacing={1}>
+          <Terminal />
+          <Typography level="title-md">LERNG</Typography>
+        </Stack>
         <Stack direction="row">
           <IconButton onClick={() => navigate(-1)} size="sm">
             <ArrowBackIcon />
@@ -95,7 +99,10 @@ export default function Header() {
         >
           <ModalClose />
           <DialogTitle>
-            <img src={LerngLogo} width={96} height={96} />
+            <Stack direction="row" alignItems="center" spacing={1}>
+              <Terminal />
+              <Typography level="title-md">LERNG</Typography>
+            </Stack>
           </DialogTitle>
           <Box sx={{ px: 1 }}>
             <TeamNav />
