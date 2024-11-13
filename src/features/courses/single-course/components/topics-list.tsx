@@ -15,11 +15,7 @@ import TopicItem from './topic-item';
 import AddTopicModal from './modals/add-topic';
 import EmptyTopic from '../empty-state';
 
-interface ITopicsListProps {
-  topics: Topic[];
-}
-
-export default function TopicsList({ topics }: ITopicsListProps) {
+export default function TopicsList({ topics }: { topics: Topic[] }) {
   const { id } = useParams<{ id: string }>();
   const { data: instructor } = useGetInstructorFromCourseQuery(id!);
 
