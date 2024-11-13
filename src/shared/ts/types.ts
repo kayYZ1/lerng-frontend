@@ -16,10 +16,6 @@ export type UserSignIn = {
   password: string;
 };
 
-export type RouteChild = {
-  children: JSX.Element;
-};
-
 export type Course = {
   id: string;
   title: string;
@@ -74,10 +70,6 @@ export type UserData = {
   username: string;
   avatar: string;
   role: string;
-};
-
-export type IsInstructor = {
-  instructor: boolean;
 };
 
 export type FeedbackTicket = {

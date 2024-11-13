@@ -18,19 +18,6 @@ import BreadcrumbsCustom from 'shared/components/breadcrumbs-custom';
 import { EnrolledCourses } from 'shared/ts/types';
 
 export default function Enrolled() {
-  const user = useSelector(selectCurrentUser);
-
-  switch (user.role) {
-    case 'user':
-      return <MyCourses />;
-    case 'instructor':
-      return <Navigate to={DashboardPath.DASHBOARD} />;
-    default:
-      return <Navigate to={CoursesPath.COURSES} />;
-  }
-}
-
-function MyCourses() {
   const [searchParams, setSearchParams] = useSearchParams({ query: '' });
   const { data, isLoading } = useGetEnrolledCoursesQuery('Enrolled');
 

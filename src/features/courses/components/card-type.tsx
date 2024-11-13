@@ -17,11 +17,7 @@ export default function CardType({
   user,
   instructorId,
 }: ICourseEnrolled) {
-  if (
-    instructorId &&
-    instructorId === user.id &&
-    user.role === 'instructor'
-  ) {
+  if (instructorId && instructorId === user.id) {
     return <InstructorCard {...item} />;
   } else if (isEnrolled) {
     return <EnrolledCard {...item} />;

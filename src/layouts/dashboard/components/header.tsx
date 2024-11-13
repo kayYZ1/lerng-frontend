@@ -75,14 +75,6 @@ export default function Header() {
           <Terminal />
           <Typography level="title-md">LERNG</Typography>
         </Stack>
-        <Stack direction="row">
-          <IconButton onClick={() => navigate(-1)} size="sm">
-            <ArrowBackIcon />
-          </IconButton>
-          <IconButton onClick={() => navigate(+1)} size="sm">
-            <ArrowForwardIcon />
-          </IconButton>
-        </Stack>
       </Stack>
       <Box sx={{ display: { xs: 'inline-flex', sm: 'none' } }}>
         <IconButton
@@ -117,6 +109,14 @@ export default function Header() {
           alignItems: 'center',
         }}
       >
+        <Stack direction="row">
+          <IconButton onClick={() => navigate(-1)} size="sm">
+            <ArrowBackIcon />
+          </IconButton>
+          <IconButton onClick={() => navigate(+1)} size="sm">
+            <ArrowForwardIcon />
+          </IconButton>
+        </Stack>
         <ColorSchemeToggle />
         <Dropdown>
           <MenuButton

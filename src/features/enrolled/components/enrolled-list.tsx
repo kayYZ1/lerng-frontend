@@ -5,13 +5,15 @@ import CourseItem from 'features/courses/components/course-item';
 import CourseSkeleton from 'features/courses/components/course-skeleton';
 
 import { EnrolledCourses } from 'shared/ts/types';
+import EnrolledEmpty from '../empty-state';
 
-interface Props {
+export default function EnrolledList({
+  data,
+  isLoading,
+}: {
   data: EnrolledCourses[];
   isLoading: boolean;
-}
-
-export default function EnrolledList({ data, isLoading }: Props) {
+}) {
   return (
     <Box
       sx={{
@@ -35,6 +37,7 @@ export default function EnrolledList({ data, isLoading }: Props) {
         {isLoading
           ? [1, 2, 3, 4].map((index) => <CourseSkeleton key={index} />)
           : data.map((el) => <CourseItem {...el.course} key={el.id} />)}
+        {data && data.length === 0 && <EnrolledEmpty />}
       </Grid>
     </Box>
   );

@@ -13,6 +13,7 @@ import { useGetInstructorFromCourseQuery } from 'app/api/courses.api.slice';
 
 import TopicItem from './topic-item';
 import AddTopicModal from './modals/add-topic';
+import EmptyTopic from '../empty-state';
 
 interface ITopicsListProps {
   topics: Topic[];
@@ -64,6 +65,7 @@ export default function TopicsList({ topics }: ITopicsListProps) {
             ),
         )}
       </AccordionGroup>
+      {topics.length === 0 && <EmptyTopic />}
     </Stack>
   );
 }
