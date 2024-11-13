@@ -6,9 +6,8 @@ import { useGetContentsQuery } from 'app/api/contents.api.slice';
 
 import ContentList from './components/content-list';
 import ContentPanel from './components/content-panel';
-import { IdProps } from '../shared/types';
 
-export default function SingleTopic({ id }: IdProps) {
+export default function SingleTopic({ id }: { id: string | undefined }) {
   const { data, isLoading, error } = useGetContentsQuery(id!);
 
   return (

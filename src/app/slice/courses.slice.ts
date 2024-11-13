@@ -1,15 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-type ActiveCourse = {
-  activeCourse: string | null;
-};
-
-const getInitialState = (): ActiveCourse => {
+const getInitialState = (): string | null => {
   const storedActiveCourse = sessionStorage.getItem('course');
   return storedActiveCourse ? JSON.parse(storedActiveCourse) : null;
 };
 
-const initialState: ActiveCourse = getInitialState();
+const initialState: string | null = getInitialState();
 
 const coursesSlice = createSlice({
   name: 'course',
@@ -24,7 +20,7 @@ const coursesSlice = createSlice({
 
 export const { setActiveCourse } = coursesSlice.actions;
 
-export const selectActiveCourse = (state: { course: ActiveCourse }) =>
+export const selectActiveCourse = (state: { course: string | null }) =>
   state.course;
 
 export default coursesSlice.reducer;
