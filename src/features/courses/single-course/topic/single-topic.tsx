@@ -27,13 +27,13 @@ export default function SingleTopic({ id }: { id: string | undefined }) {
     >
       <Sheet sx={{ my: 2, px: 2 }}>
         {isLoading ? (
-          <Box mb={8}>
-            {[1, 2, 3].map((x) => (
+          <Box>
+            {[1, 2, 3, 4].map((x) => (
               <Skeleton
                 variant="rectangular"
                 width={320}
                 height="1em"
-                sx={{ mb: 1 }}
+                sx={{ my: 2 }}
                 key={x}
               />
             ))}

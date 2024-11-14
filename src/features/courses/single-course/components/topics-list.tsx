@@ -57,6 +57,7 @@ export default function TopicsList({ topics }: { topics: Topic[] }) {
                 item={item}
                 instructorId={instructor.id}
                 userId={user.id}
+                key={item.id}
               />
             ),
         )}

@@ -20,7 +20,7 @@ type Props = {
 
 export default function TopicItem({ item, userId, instructorId }: Props) {
   return (
-    <Accordion key={item.id}>
+    <Accordion>
       <AccordionSummary>{item.title}</AccordionSummary>
       <AccordionDetails>
         <Typography sx={{ py: 1 }}>{item.description}</Typography>

@@ -50,7 +50,6 @@ export default function ContentList({
       sx={{
         maxWidth: 400,
         overflow: 'auto',
-        maxHeight: '75vh',
       }}
     >
       {instructor && instructor.id === user.id && <AddContentModal />}
