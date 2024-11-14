@@ -35,8 +35,6 @@ import { DashboardPath, AuthPath } from 'routes/paths';
 
 import ColorSchemeToggle from 'shared/components/color-toggle';
 
-import LerngLogo from 'assets/svg/logo-no-background.svg';
-
 import style from '../dashboard.module.css';
 import TeamNav from './navigation';
 

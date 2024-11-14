@@ -1,9 +1,6 @@
-import { useSelector } from 'react-redux';
-import { Navigate, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 import { useGetEnrolledCoursesQuery } from 'app/api/enrolled.api.slice';
-import { selectCurrentUser } from 'app/slice/user.slice';
-import { CoursesPath, DashboardPath } from 'routes/paths';
 
 import Box from '@mui/joy/Box';
 import Typography from '@mui/joy/Typography';
