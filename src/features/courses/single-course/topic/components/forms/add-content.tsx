@@ -35,11 +35,11 @@ const validationSchema = yup.object().shape({
   paragraph150: yup
     .string()
     .required('This is required')
-    .max(150, 'Too long'),
+    .max(1000, 'Too long'),
   paragraph300: yup
     .string()
     .required('This is required')
-    .max(300, 'Too long'),
+    .max(2000, 'Too long'),
   videoUrl: yup
     .string()
     .matches(

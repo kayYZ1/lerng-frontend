@@ -27,7 +27,7 @@ export default function ContentPanel() {
   return (
     <Fragment>
       {activeContent !== null ? (
-        <Box sx={{ overflow: 'auto', maxHeight: '75vh' }}>
+        <Box sx={{ overflow: 'auto', maxHeight: '65vh', px: 8 }}>
           {instructor && instructor.id === user.id && (
             <Stack direction="row" justifyContent="space-between">
               <EditContentModal {...activeContent} />
