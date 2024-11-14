@@ -4,12 +4,13 @@ import { Course } from 'shared/ts/types';
 import CourseItem from './course-item';
 import CourseSkeleton from './course-skeleton';
 
-interface Props {
+export default function CoursesList({
+  data,
+  isLoading,
+}: {
   data: Course[];
   isLoading: boolean;
-}
-
-export default function CoursesList({ data, isLoading }: Props) {
+}) {
   return (
     <Box
       sx={{

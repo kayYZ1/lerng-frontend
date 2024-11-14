@@ -7,7 +7,7 @@ import { ColorPaletteProp } from '@mui/joy';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
-import { parseDate } from 'shared/lib/functions';
+import { parseDate } from 'shared/utils/functions';
 import CollapsibleRow from './collapsible-row';
 import ViewProfile from '../view-profile';
 import { User } from '../../types';

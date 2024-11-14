@@ -19,7 +19,7 @@ import * as yup from 'yup';
 import { useAddTopicMutation } from 'app/api/topics.api.slice';
 
 import { ICloseModal } from 'shared/ts/interfaces';
-import { transformErrorResponse } from 'shared/lib/functions';
+import { transformErrorResponse } from 'shared/utils/functions';
 import WarningAlert from 'shared/components/alerts/warning';
 
 const validationSchema = yup.object().shape({

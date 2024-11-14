@@ -5,7 +5,7 @@ import {
 } from '@reduxjs/toolkit/query/react';
 
 import { RootState } from 'app/store';
-import { getCookie } from 'shared/lib/cookies';
+import { getCookie } from 'shared/utils/cookies';
 import {
   setCredentials,
   setRefreshToken,

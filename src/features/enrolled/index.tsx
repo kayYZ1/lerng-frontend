@@ -1,9 +1,6 @@
-import { useSelector } from 'react-redux';
-import { Navigate, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 import { useGetEnrolledCoursesQuery } from 'app/api/enrolled.api.slice';
-import { selectCurrentUser } from 'app/slice/user.slice';
-import { CoursesPath, DashboardPath } from 'routes/paths';
 
 import Box from '@mui/joy/Box';
 import Typography from '@mui/joy/Typography';
@@ -18,19 +15,6 @@ import BreadcrumbsCustom from 'shared/components/breadcrumbs-custom';
 import { EnrolledCourses } from 'shared/ts/types';
 
 export default function Enrolled() {
-  const user = useSelector(selectCurrentUser);
-
-  switch (user.role) {
-    case 'user':
-      return <MyCourses />;
-    case 'instructor':
-      return <Navigate to={DashboardPath.DASHBOARD} />;
-    default:
-      return <Navigate to={CoursesPath.COURSES} />;
-  }
-}
-
-function MyCourses() {
   const [searchParams, setSearchParams] = useSearchParams({ query: '' });
   const { data, isLoading } = useGetEnrolledCoursesQuery('Enrolled');
 

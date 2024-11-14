@@ -9,6 +9,7 @@ import ListItemContent from '@mui/joy/ListItemContent';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import SignpostIcon from '@mui/icons-material/Signpost';
 import FeedbackIcon from '@mui/icons-material/Feedback';
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 
 import { CoursesPath, DashboardPath } from 'routes/paths';
 import style from '../dashboard.module.css';
@@ -18,6 +19,11 @@ const InstructorListItems = [
     link: DashboardPath.DASHBOARD,
     name: 'Instructor',
     icon: <DashboardIcon />,
+  },
+  {
+    link: DashboardPath.ENROLLED,
+    name: 'Enrolled',
+    icon: <LibraryBooksIcon />,
   },
   {
     link: CoursesPath.COURSES,

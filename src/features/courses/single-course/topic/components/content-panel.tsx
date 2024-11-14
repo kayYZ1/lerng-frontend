@@ -8,20 +8,27 @@ import Typography from '@mui/joy/Typography';
 import Sheet from '@mui/joy/Sheet';
 
 import EditContentModal from './modals/edit-content';
+import RemoveContentModal from './modals/remove-content';
 
 import { selectActiveContent } from 'app/slice/contents.slice';
 import { selectCurrentUser } from 'app/slice/user.slice';
-import RemoveContentModal from './modals/remove-content';
+import { selectActiveCourse } from 'app/slice/courses.slice';
+import { useGetInstructorFromCourseQuery } from 'app/api/courses.api.slice';
 
 export default function ContentPanel() {
   const activeContent = useSelector(selectActiveContent);
   const user = useSelector(selectCurrentUser);
+  const activeCourse = useSelector(selectActiveCourse);
+
+  const { data: instructor } = useGetInstructorFromCourseQuery(
+    activeCourse!,
+  );
 
   return (
     <Fragment>
       {activeContent !== null ? (
-        <Box sx={{ overflow: 'auto', maxHeight: '75vh' }}>
-          {user.role === 'instructor' && (
+        <Box sx={{ overflow: 'auto', maxHeight: '65vh', px: 8 }}>
+          {instructor && instructor.id === user.id && (
             <Stack direction="row" justifyContent="space-between">
               <EditContentModal {...activeContent} />
               <RemoveContentModal contentId={activeContent.id} />

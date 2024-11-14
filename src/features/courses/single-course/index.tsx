@@ -13,6 +13,7 @@ import BreadcrumbsCustom from 'shared/components/breadcrumbs-custom';
 export default function Course() {
   const { id } = useParams<{ id: string }>();
   const { data, isLoading, error } = useGetCourseQuery(id!);
+
   return (
     <Box sx={{ flex: 1, width: '100%' }}>
       <Box

@@ -9,7 +9,7 @@ import Typography from '@mui/joy/Typography';
 import Sheet from '@mui/joy/Sheet';
 
 import { useChangeAccessMutation } from 'app/api/users.api.slice';
-import { parseDate } from 'shared/lib/functions';
+import { parseDate } from 'shared/utils/functions';
 import { User } from '../types';
 
 export default function ViewProfile(user: User) {

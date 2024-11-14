@@ -9,7 +9,7 @@ import { ColorPaletteProp } from '@mui/joy';
 
 import { useInstructorTicketsQuery } from 'app/api/feedback.slice';
 import { FeedbackTicket } from 'shared/ts/types';
-import { parseDate } from 'shared/lib/functions';
+import { parseDate } from 'shared/utils/functions';
 
 import ChangeStatusModal from './status-change';
 

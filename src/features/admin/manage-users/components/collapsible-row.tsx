@@ -4,7 +4,7 @@ import Sheet from '@mui/joy/Sheet';
 
 import { useGetCoursesForUserQuery } from 'app/api/enrolled.api.slice';
 import { EnrolledCourses } from 'shared/ts/types';
-import { parseDate } from 'shared/lib/functions';
+import { parseDate } from 'shared/utils/functions';
 
 export default function CollapsibleRow({ userId }: { userId: string }) {
   const { data: userCourses } = useGetCoursesForUserQuery(userId); // Fix

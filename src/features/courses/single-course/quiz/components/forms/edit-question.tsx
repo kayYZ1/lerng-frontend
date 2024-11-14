@@ -22,7 +22,7 @@ import * as yup from 'yup';
 
 import { QuestionType } from 'shared/enum';
 import { Question } from 'shared/ts/types';
-import { transformErrorResponse } from 'shared/lib/functions';
+import { transformErrorResponse } from 'shared/utils/functions';
 import WarningAlert from 'shared/components/alerts/warning';
 
 import { useEditQuestionMutation } from 'app/api/questions.api.slice';

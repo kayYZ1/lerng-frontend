@@ -1,9 +1,12 @@
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+
 import Sheet from '@mui/joy/Sheet';
 import Box from '@mui/joy/Box';
 
 import { setActiveCourse } from 'app/slice/courses.slice';
 import { useGetTopicsFromCourseQuery } from 'app/api/topics.api.slice';
-import { useDispatch } from 'react-redux';
+import { useGetInstructorFromCourseQuery } from 'app/api/courses.api.slice';
 
 import ProgressTable from './components/progress-table';
 import TopicsList from './components/topics-list';
@@ -11,11 +14,11 @@ import TopicItemSkeleton from './components/skeletons/topic-item';
 import CourseInstructor from './components/course-instructor';
 import UserReview from './components/user-review';
 
-import { IdProps } from './shared/types';
-import { useEffect } from 'react';
-
-export default function TopicsPanel({ id }: IdProps) {
+export default function TopicsPanel({ id }: { id: string | undefined }) {
   const { data, isLoading, error } = useGetTopicsFromCourseQuery(id!);
+  const { data: instructor, isLoading: instructorLoader } =
+    useGetInstructorFromCourseQuery(id!);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -52,8 +55,13 @@ export default function TopicsPanel({ id }: IdProps) {
             my: 2,
           }}
         >
-          <UserReview courseId={id} />
-          <CourseInstructor />
+          {instructor && (
+            <UserReview courseId={id} instructorId={instructor.id} />
+          )}
+          <CourseInstructor
+            instructor={instructor}
+            isLoading={instructorLoader}
+          />
         </Box>
       </Box>
       {error ? 'Something went wrong' : ''}

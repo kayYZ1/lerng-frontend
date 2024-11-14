@@ -1,19 +1,28 @@
-import { useParams } from 'react-router-dom';
+import { Fragment } from 'react/jsx-runtime';
 
 import Avatar from '@mui/joy/Avatar';
 import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
 import Typography from '@mui/joy/Typography';
 
-import { useGetInstructorFromCourseQuery } from 'app/api/courses.api.slice';
 import InstructorCardSkeleton from './skeletons/instructor-card';
 
-export default function CourseInstructor() {
-  const { id } = useParams<{ id: string }>();
-  const { data, isLoading } = useGetInstructorFromCourseQuery(id!);
+type Instructor = {
+  id: string;
+  email: string;
+  username: string;
+  avatar: string;
+};
 
+export default function CourseInstructor({
+  instructor,
+  isLoading,
+}: {
+  instructor: Instructor;
+  isLoading: boolean;
+}) {
   return (
-    <>
+    <Fragment>
       {isLoading ? (
         <InstructorCardSkeleton />
       ) : (
@@ -33,14 +42,17 @@ export default function CourseInstructor() {
           }}
         >
           <CardContent sx={{ alignItems: 'center', textAlign: 'center' }}>
-            <Avatar src={data.avatar} sx={{ '--Avatar-size': '4rem' }} />
-            <Typography level="title-lg">{data.username}</Typography>
+            <Avatar
+              src={instructor.avatar}
+              sx={{ '--Avatar-size': '4rem' }}
+            />
+            <Typography level="title-lg">{instructor.username}</Typography>
             <Typography level="body-sm" sx={{ maxWidth: '24ch' }}>
-              {data.email}
+              {instructor.email}
             </Typography>
           </CardContent>
         </Card>
       )}
-    </>
+    </Fragment>
   );
 }

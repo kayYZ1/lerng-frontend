@@ -6,9 +6,8 @@ import { useGetContentsQuery } from 'app/api/contents.api.slice';
 
 import ContentList from './components/content-list';
 import ContentPanel from './components/content-panel';
-import { IdProps } from '../shared/types';
 
-export default function SingleTopic({ id }: IdProps) {
+export default function SingleTopic({ id }: { id: string | undefined }) {
   const { data, isLoading, error } = useGetContentsQuery(id!);
 
   return (
@@ -28,13 +27,13 @@ export default function SingleTopic({ id }: IdProps) {
     >
       <Sheet sx={{ my: 2, px: 2 }}>
         {isLoading ? (
-          <Box mb={8}>
-            {[1, 2, 3].map((x) => (
+          <Box>
+            {[1, 2, 3, 4].map((x) => (
               <Skeleton
                 variant="rectangular"
                 width={320}
                 height="1em"
-                sx={{ mb: 1 }}
+                sx={{ my: 2 }}
                 key={x}
               />
             ))}

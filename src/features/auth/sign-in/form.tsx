@@ -18,7 +18,7 @@ import { UserSignIn } from 'shared/ts/types';
 
 import ShowCapsLock from 'shared/components/show-capslock';
 import ErrorAlert from 'shared/components/alerts/error';
-import { transformErrorResponse } from 'shared/lib/functions';
+import { transformErrorResponse } from 'shared/utils/functions';
 
 import { DashboardPath, AuthPath } from 'routes/paths';
 

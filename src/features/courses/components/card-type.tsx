@@ -8,14 +8,16 @@ interface ICourseEnrolled {
   isEnrolled: boolean;
   item: Course;
   user: UserData;
+  instructorId: string;
 }
 
 export default function CardType({
   isEnrolled,
   item,
   user,
+  instructorId,
 }: ICourseEnrolled) {
-  if (user.role === 'instructor') {
+  if (instructorId && instructorId === user.id) {
     return <InstructorCard {...item} />;
   } else if (isEnrolled) {
     return <EnrolledCard {...item} />;

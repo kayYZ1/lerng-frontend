@@ -8,16 +8,17 @@ import AccordionDetails from '@mui/joy/AccordionDetails';
 import AccordionSummary from '@mui/joy/AccordionSummary';
 import Stack from '@mui/joy/Stack';
 
-import { useSelector } from 'react-redux';
-import { selectCurrentUser } from 'app/slice/user.slice';
-
 import { Topic } from 'shared/ts/types';
 import EditTopicModal from './modals/edit-topic';
 import RemoveTopicModal from './modals/remove-topic';
 
-export default function TopicItem(item: Topic) {
-  const currentUser = useSelector(selectCurrentUser);
+type Props = {
+  item: Topic;
+  userId: string;
+  instructorId: string;
+};
 
+export default function TopicItem({ item, userId, instructorId }: Props) {
   return (
     <Accordion>
       <AccordionSummary>{item.title}</AccordionSummary>
@@ -27,16 +28,16 @@ export default function TopicItem(item: Topic) {
           sx={{
             marginTop: 'auto',
             display: 'flex',
-            justifyContent: 'space-between',
+            justifyContent: 'flex-end',
             gap: 1,
           }}
         >
-          {currentUser.role === 'instructor' ? (
+          {instructorId === userId && (
             <Stack direction="row" gap={1}>
               <EditTopicModal {...item} />
               <RemoveTopicModal topicId={item.id} />
             </Stack>
-          ) : null}
+          )}
           <Button color="primary">
             <Link
               to={`/dashboard/courses/course/topic/${item.id}`}

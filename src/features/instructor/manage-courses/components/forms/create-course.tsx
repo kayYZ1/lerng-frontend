@@ -19,7 +19,7 @@ import Option from '@mui/joy/Option';
 import Chip from '@mui/joy/Chip';
 
 import { useCreateCourseMutation } from 'app/api/courses.api.slice';
-import { transformErrorResponse } from 'shared/lib/functions';
+import { transformErrorResponse } from 'shared/utils/functions';
 
 import { Categories } from 'shared/enum';
 import AddCourseImage from '../add-course-image';

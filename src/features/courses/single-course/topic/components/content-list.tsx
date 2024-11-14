@@ -16,21 +16,26 @@ import {
 } from 'app/slice/contents.slice';
 import { selectCurrentUser } from 'app/slice/user.slice';
 import { selectActiveCourse } from 'app/slice/courses.slice';
+import { useGetInstructorFromCourseQuery } from 'app/api/courses.api.slice';
 
 import AddContentModal from './modals/add-content';
 
-interface IContentListProps {
+export default function ContentList({
+  contents,
+}: {
   contents: Content[];
-}
-
-export default function ContentList({ contents }: IContentListProps) {
+}) {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const activeContent = useSelector(selectActiveContent);
-  const activeCourse = useSelector(selectActiveCourse);
   const user = useSelector(selectCurrentUser);
+  const activeCourse = useSelector(selectActiveCourse);
+
+  const { data: instructor } = useGetInstructorFromCourseQuery(
+    activeCourse!,
+  );
 
   useEffect(() => {
     dispatch(setActiveContent(contents[0]));
@@ -45,10 +50,9 @@ export default function ContentList({ contents }: IContentListProps) {
       sx={{
         maxWidth: 400,
         overflow: 'auto',
-        maxHeight: '75vh',
       }}
     >
-      {user.role === 'instructor' ? <AddContentModal /> : ''}
+      {instructor && instructor.id === user.id && <AddContentModal />}
       {contents.map((content: Content, index: number) => (
         <ListItemButton
           key={content.id}

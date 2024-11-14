@@ -18,11 +18,11 @@ import Select from '@mui/joy/Select';
 import Option from '@mui/joy/Option';
 import Chip from '@mui/joy/Chip';
 
-import { transformErrorResponse } from 'shared/lib/functions';
+import { transformErrorResponse } from 'shared/utils/functions';
 import { useEditCourseMutation } from 'app/api/courses.api.slice';
 
 import { Categories } from 'shared/enum';
-import AddCourseImage from '../add-course-image';
+import AddCourseImage from '../../../instructor/manage-courses/components/add-course-image';
 import WarningAlert from 'shared/components/alerts/warning';
 import { Course } from 'shared/ts/types';
 import RemoveCourseModal from '../modals/remove-course';

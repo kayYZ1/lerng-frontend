@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
@@ -12,12 +13,16 @@ import {
   useGetRatingQuery,
   useUpdateRatingMutation,
 } from 'app/api/enrolled.api.slice';
+import { selectCurrentUser } from 'app/slice/user.slice';
 
 export default function UserReview({
   courseId,
+  instructorId,
 }: {
   courseId: string | undefined;
+  instructorId: string;
 }) {
+  const user = useSelector(selectCurrentUser);
   const [hover, setHover] = useState(0);
 
   const { data: reviewScore, isLoading } = useGetRatingQuery(courseId);
@@ -52,8 +57,12 @@ export default function UserReview({
         }}
       >
         <Typography level="title-lg">Your Review</Typography>
-        {isLoading ? (
-          <Skeleton variant="rectangular" width={160} height={32} />
+        {user.id === instructorId ? (
+          <Typography level="body-md">
+            You cannot grade your own course
+          </Typography>
+        ) : isLoading ? (
+          <Skeleton variant="rectangular" width={160} height={24} />
         ) : (
           <Stack direction="row" spacing={1}>
             {[1, 2, 3, 4, 5].map((score) => (
