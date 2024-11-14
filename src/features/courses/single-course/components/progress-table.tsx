@@ -2,13 +2,12 @@ import Table from '@mui/joy/Table';
 import Box from '@mui/joy/Box';
 
 import { Progress } from 'shared/ts/types';
-import { IdProps } from '../shared/types';
 
 import { useGetProgressQuery } from 'app/api/progress.api.slice';
 
 import TableSkeleton from './skeletons/table';
 
-export default function ProgressTable({ id }: IdProps) {
+export default function ProgressTable({ id }: { id: string | undefined }) {
   const { data, isLoading } = useGetProgressQuery(id!);
 
   return (
