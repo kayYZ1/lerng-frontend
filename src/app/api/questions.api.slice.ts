@@ -1,4 +1,5 @@
 import { authApi } from 'app/base/auth.api';
+import { Question } from 'shared/ts/types';
 
 export const questionsApiSlice = authApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -13,7 +14,7 @@ export const questionsApiSlice = authApi.injectEndpoints({
       },
       invalidatesTags: ['Question'],
     }),
-    EditQuestion: builder.mutation({
+    EditQuestion: builder.mutation<Question, string>({
       query: (values) => ({
         url: '/questions/edit',
         method: 'PATCH',
@@ -21,7 +22,7 @@ export const questionsApiSlice = authApi.injectEndpoints({
       }),
       invalidatesTags: ['Question'],
     }),
-    GetQuestions: builder.query({
+    GetQuestions: builder.query<Question[], string>({
       query: (topicId: string) => ({
         url: `/questions/${topicId}`,
         method: 'GET',

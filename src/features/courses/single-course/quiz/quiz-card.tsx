@@ -25,12 +25,12 @@ export default function QuizCard() {
   const [isQuizStarted, setIsQuizStarted] = useState(false);
 
   const user = useSelector(selectCurrentUser);
-  const { data, isLoading, error } = useGetQuestionsQuery(id!);
+  const { data: questions, isLoading, error } = useGetQuestionsQuery(id!);
 
   return (
     <Box>
-      {isQuizStarted ? (
-        <QuizForm {...data} />
+      {isQuizStarted && questions ? (
+        <QuizForm {...questions} />
       ) : (
         <Box>
           <Card
@@ -55,7 +55,7 @@ export default function QuizCard() {
               }}
             >
               <Typography fontSize="xl4" fontWeight="xl" textColor="#fff">
-                {isLoading ? <CircularProgress /> : data.length}
+                {isLoading ? <CircularProgress /> : questions!.length}
               </Typography>
               <Typography textColor="primary.200">Questions</Typography>
               <Typography
@@ -86,7 +86,9 @@ export default function QuizCard() {
                 variant="outlined"
                 color="primary"
                 onClick={() => setIsQuizStarted(true)}
-                disabled={data && data.length === 0 ? true : false}
+                disabled={
+                  questions && questions.length === 0 ? true : false
+                }
               >
                 Start
               </Button>
@@ -104,7 +106,7 @@ export default function QuizCard() {
                 </Typography>
                 <AddQuestionModal />
               </Stack>
-              <QuestionsList {...data} />
+              <QuestionsList {...questions!} />
             </Box>
           ) : (
             ''

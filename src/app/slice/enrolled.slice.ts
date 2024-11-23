@@ -1,12 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { EnrolledCourses } from 'shared/ts/types';
+import { TEnrolled } from 'shared/ts/types';
 
-const getInitialState = (): EnrolledCourses[] => {
+const getInitialState = (): TEnrolled[] => {
   const storedCourses = sessionStorage.getItem('enrolled');
   return storedCourses ? JSON.parse(storedCourses) : [];
 };
 
-const initialState: EnrolledCourses[] = getInitialState();
+const initialState: TEnrolled[] = getInitialState();
 
 const enrolledSlice = createSlice({
   name: 'enrolled',
@@ -21,7 +21,7 @@ const enrolledSlice = createSlice({
 
 export const { setEnrolled } = enrolledSlice.actions;
 
-export const selectMyCourses = (state: { enrolled: EnrolledCourses[] }) =>
+export const selectMyCourses = (state: { enrolled: TEnrolled[] }) =>
   state.enrolled;
 
 export default enrolledSlice.reducer;

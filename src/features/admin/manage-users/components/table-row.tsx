@@ -55,7 +55,7 @@ export default function TableRow(u: User) {
       </tr>
       <tr>
         <td style={{ height: 0, padding: 0 }} colSpan={6}>
-          {open && <CollapsibleRow userId={u.id} />}
+          {open && <CollapsibleRow userId={u.id} username={u.username} />}
         </td>
       </tr>
     </Fragment>

@@ -1,20 +1,4 @@
-import { QuestionType, Categories } from 'shared/enum';
-
-export type UserSignUp = {
-  email: string;
-  password: string;
-  username: string;
-};
-
-export type UserLandingPage = {
-  id: string;
-  imageUrl: string;
-};
-
-export type UserSignIn = {
-  email: string;
-  password: string;
-};
+import { Categories, QuestionType } from 'shared/enum';
 
 export type Course = {
   id: string;
@@ -25,54 +9,22 @@ export type Course = {
   created: Date;
 };
 
-export type EnrolledCourses = {
+export type EditCourse = {
+  title: string;
+  description: string;
+  imageUrl: string;
+  categories: Categories[];
+  courseId?: string;
+};
+
+export type AddCourse = EditCourse;
+
+export type TEnrolled = {
   id: string;
   course: Course;
 };
 
-export type Topic = {
-  id: string;
-  title: string;
-  description: string;
-};
-
-export type Progress = {
-  id: string;
-  title: string;
-  scorePercentage: number;
-  quizScore: number;
-};
-
-export type Content = {
-  id: string;
-  title: string;
-  description: string;
-  paragraph150: string;
-  paragraph300: string;
-  videoUrl: string;
-};
-
-export type Question = {
-  id: string;
-  question: string;
-  type: QuestionType;
-  answer: string;
-};
-
-export type UpdateUser = {
-  username: string;
-  email: string;
-};
-
-export type UserData = {
-  id: string;
-  email: string;
-  username: string;
-  avatar: string;
-  role: string;
-};
-
-export type FeedbackTicket = {
+export type Feedback = {
   id: string;
   ticket_id: string;
   problem: string;
@@ -84,4 +36,59 @@ export type FeedbackTicket = {
   course: {
     title: string;
   };
+};
+
+export type AddFeedback = {
+  problem: string;
+  details: string;
+  courseId: string;
+};
+
+export type FeedbackStatus = {
+  feedbackId: string;
+  status: string;
+  feedbackMessage: string;
+};
+
+export type Progress = {
+  id: string;
+  title: string;
+  scorePercentage: string;
+  quizScore: string;
+};
+
+export type Question = {
+  id: string;
+  question: string;
+  type: QuestionType;
+  answer: string;
+};
+
+export type Topic = {
+  id: string;
+  title: string;
+  description: string;
+};
+
+export type AddTopic = {
+  title: string;
+  description: string;
+  courseId: string;
+};
+
+export type Content = {
+  id: string;
+  title: string;
+  description: string;
+  paragraph150: string;
+  paragraph300: string;
+  videoUrl: string;
+};
+
+export type User = {
+  id: string;
+  email: string;
+  username: string;
+  avatar: string;
+  role: string;
 };

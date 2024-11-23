@@ -1,8 +1,20 @@
 import { setCurrentUser } from 'app/slice/user.slice';
 import { authApi } from '../base/auth.api';
+import { User } from 'shared/ts/types';
 
 export const authApiSlice = authApi.injectEndpoints({
   endpoints: (builder) => ({
+    GetMe: builder.query<User, string>({
+      query: () => ({
+        url: '/auth/me',
+        method: 'GET',
+      }),
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
+        const { data } = await queryFulfilled;
+        dispatch(setCurrentUser(data));
+      },
+      providesTags: ['User'],
+    }),
     SignInFn: builder.mutation({
       query: (data) => ({
         url: '/auth/local/sign-in',
@@ -22,17 +34,6 @@ export const authApiSlice = authApi.injectEndpoints({
         url: '/auth/sign-out',
         method: 'POST',
       }),
-    }),
-    GetMe: builder.query({
-      query: () => ({
-        url: '/auth/me',
-        method: 'GET',
-      }),
-      async onQueryStarted(_, { dispatch, queryFulfilled }) {
-        const { data } = await queryFulfilled;
-        dispatch(setCurrentUser(data));
-      },
-      providesTags: ['User'],
     }),
     ForgotPasswordFn: builder.mutation({
       query: (data) => ({

@@ -12,22 +12,23 @@ import SearchRounded from '@mui/icons-material/SearchRounded';
 
 import EnrolledList from './components/enrolled-list';
 import BreadcrumbsCustom from 'shared/components/breadcrumbs-custom';
-import { EnrolledCourses } from 'shared/ts/types';
+import { TEnrolled } from 'shared/ts/types';
 
 export default function Enrolled() {
   const [searchParams, setSearchParams] = useSearchParams({ query: '' });
-  const { data, isLoading } = useGetEnrolledCoursesQuery('Enrolled');
+  const { data: enrolled, isLoading } =
+    useGetEnrolledCoursesQuery('Enrolled');
 
   const query = searchParams.get('query') || '';
 
-  const filteredCourses: EnrolledCourses[] =
-    query.length > 3
-      ? data.filter((enrolled: EnrolledCourses) =>
+  const filteredCourses: TEnrolled[] =
+    query.length > 3 && enrolled
+      ? enrolled.filter((enrolled: TEnrolled) =>
           enrolled.course.title
             .toLowerCase()
             .includes(query.toLowerCase()),
         )
-      : data;
+      : (enrolled as TEnrolled[]);
 
   return (
     <Box

@@ -4,14 +4,14 @@ import Grid from '@mui/joy/Grid';
 import CourseItem from 'features/courses/components/course-item';
 import CourseSkeleton from 'features/courses/components/course-skeleton';
 
-import { EnrolledCourses } from 'shared/ts/types';
 import EnrolledEmpty from '../empty-state';
+import { Enrolled } from 'shared/ts/types';
 
 export default function EnrolledList({
   data,
   isLoading,
 }: {
-  data: EnrolledCourses[];
+  data: Enrolled[];
   isLoading: boolean;
 }) {
   return (

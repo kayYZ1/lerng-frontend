@@ -8,10 +8,10 @@ import Stack from '@mui/joy/Stack';
 import { ColorPaletteProp } from '@mui/joy';
 
 import { useInstructorTicketsQuery } from 'app/api/feedback.slice';
-import { FeedbackTicket } from 'shared/ts/types';
 import { parseDate } from 'shared/utils/functions';
 
 import ChangeStatusModal from './status-change';
+import { IFeedback } from '../types';
 
 export default function InstructorTickets() {
   const { data, isLoading } = useInstructorTicketsQuery('Feedback');
@@ -73,7 +73,7 @@ export default function InstructorTickets() {
                     </td>
                   </tr>
                 ))
-              : data.map((ticket: FeedbackTicket) => (
+              : data.map((ticket: IFeedback) => (
                   <tr key={ticket.id}>
                     <td>
                       <Typography level="body-xs">

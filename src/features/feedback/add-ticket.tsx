@@ -16,7 +16,7 @@ import Textarea from '@mui/joy/Textarea';
 
 import AddIcon from '@mui/icons-material/Add';
 
-import { EnrolledCourses } from 'shared/ts/types';
+import { TEnrolled } from 'shared/ts/types';
 import { useAddFeedbackTicketMutation } from 'app/api/feedback.slice';
 import { transformErrorResponse } from 'shared/utils/functions';
 import ErrorAlert from 'shared/components/alerts/error';
@@ -33,7 +33,7 @@ const validationSchema = yup.object().shape({
     .max(400, 'Too long'),
 });
 
-export default function AddTicket({ course }: EnrolledCourses) {
+export default function AddTicket({ course }: TEnrolled) {
   const [layout, setLayout] = useState<
     ModalDialogProps['layout'] | undefined
   >(undefined);

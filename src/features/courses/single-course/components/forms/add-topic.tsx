@@ -48,7 +48,11 @@ export default function AddTopicForm({ setOpen }: ICloseModal) {
     },
     validationSchema,
     onSubmit: async (values) => {
-      await AddTopic({ courseId: id, values });
+      const body = {
+        ...values,
+        courseId: id!,
+      };
+      await AddTopic(body);
       if (!errorResponse) setOpen(false);
       setOpen(false);
     },

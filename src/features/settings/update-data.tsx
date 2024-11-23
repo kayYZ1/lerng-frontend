@@ -24,15 +24,20 @@ import { transformErrorResponse } from 'shared/utils/functions';
 
 import UpdateImageModal from './components/modals/update-image';
 
-import { UpdateUser, UserData } from 'shared/ts/types';
+import { User } from 'shared/ts/types';
 import WarningAlert from 'shared/components/alerts/warning';
+
+interface IUpdateUser {
+  email: string;
+  username: string;
+}
 
 const validationSchema = yup.object().shape({
   email: yup.string().email('Invalid email'),
   username: yup.string(),
 });
 
-export default function UpdateData(data: UserData) {
+export default function UpdateData(data: User) {
   const [UpdateUserData, { error, isLoading }] =
     useUpdateUserDataMutation();
 
@@ -45,7 +50,7 @@ export default function UpdateData(data: UserData) {
     },
     validationSchema,
     onSubmit: async (values, { resetForm }) => {
-      const updatedUser: UpdateUser = {
+      const updatedUser: IUpdateUser = {
         email: values.email,
         username: values.username,
       };

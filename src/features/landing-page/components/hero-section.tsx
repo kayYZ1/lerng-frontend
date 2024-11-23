@@ -17,7 +17,11 @@ import QuizIcon from '@mui/icons-material/Quiz';
 import FeedbackIcon from '@mui/icons-material/Feedback';
 
 import { AuthPath } from 'routes/paths';
-import { UserLandingPage } from 'shared/ts/types';
+
+interface HeroSectionUser {
+  id: string;
+  imageUrl: string;
+}
 
 const mockCardsData = [
   {
@@ -89,7 +93,7 @@ export default function HeroSection() {
         <AvatarGroup size="md">
           {isLoading || error
             ? [1, 2, 3].map((item) => <Avatar key={item} />)
-            : data.map((user: UserLandingPage) => {
+            : data.map((user: HeroSectionUser) => {
                 return <Avatar key={user.id} src={user.imageUrl} />;
               })}
         </AvatarGroup>

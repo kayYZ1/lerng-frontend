@@ -9,7 +9,8 @@ import AddCourseImageModal from './components/modals/add-course-image';
 import { Course } from 'shared/ts/types';
 
 export default function ManageCourses() {
-  const { data, isLoading } = useGetInstructorCoursesQuery(undefined);
+  const { data: courses, isLoading } =
+    useGetInstructorCoursesQuery(undefined);
 
   return (
     <Box>
@@ -51,9 +52,9 @@ export default function ManageCourses() {
               mx: { xs: 3, sm: 4, md: 4 },
             }}
           >
-            {isLoading
+            {isLoading || !courses
               ? [1, 2, 3, 4].map((index) => <CourseSkeleton key={index} />)
-              : data.map((course: Course) => (
+              : courses.map((course: Course) => (
                   <CourseItem {...course} key={course.id} />
                 ))}
           </Grid>

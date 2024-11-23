@@ -14,7 +14,6 @@ import * as yup from 'yup';
 
 import { setCredentials } from 'app/slice/auth.slice';
 import { useSignInFnMutation } from 'app/api/auth.api.slice';
-import { UserSignIn } from 'shared/ts/types';
 
 import ShowCapsLock from 'shared/components/show-capslock';
 import ErrorAlert from 'shared/components/alerts/error';
@@ -23,6 +22,11 @@ import { transformErrorResponse } from 'shared/utils/functions';
 import { DashboardPath, AuthPath } from 'routes/paths';
 
 import style from '../auth.module.css';
+
+interface ISignIn {
+  email: string;
+  password: string;
+}
 
 const validationSchema = yup.object().shape({
   email: yup.string().email('Invalid email').required('Email is required'),
@@ -46,7 +50,7 @@ export default function SignInForm() {
     },
     validationSchema,
     onSubmit: async (values, { resetForm }) => {
-      const user: UserSignIn = {
+      const user: ISignIn = {
         email: values.email,
         password: values.password,
       };

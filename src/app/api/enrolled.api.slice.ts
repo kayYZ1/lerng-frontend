@@ -1,16 +1,18 @@
 import { authApi } from 'app/base/auth.api';
 import { setEnrolled } from '../slice/enrolled.slice';
 
+import { TEnrolled } from 'shared/ts/types';
+
 export const enrolledApiSlice = authApi.injectEndpoints({
   endpoints: (builder) => ({
-    AddToEnrolled: builder.mutation({
+    AddToEnrolled: builder.mutation<string, string>({
       query: (courseId: string) => ({
         url: `/enrolled/add/${courseId}`,
         method: 'POST',
       }),
       invalidatesTags: ['Enrolled'],
     }),
-    GetEnrolledCourses: builder.query({
+    GetEnrolledCourses: builder.query<TEnrolled[], string>({
       query: () => ({
         url: '/enrolled/',
         method: 'GET',
