@@ -10,7 +10,7 @@ import Sheet from '@mui/joy/Sheet';
 
 import { useChangeAccessMutation } from 'app/api/users.api.slice';
 import { parseDate } from 'shared/utils/functions';
-import { User } from '../types';
+import { User } from 'shared/ts/types';
 
 export default function ViewProfile(user: User) {
   const [open, setOpen] = useState<boolean>(false);

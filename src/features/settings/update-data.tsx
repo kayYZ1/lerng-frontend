@@ -27,11 +27,6 @@ import UpdateImageModal from './components/modals/update-image';
 import { User } from 'shared/ts/types';
 import WarningAlert from 'shared/components/alerts/warning';
 
-interface IUpdateUser {
-  email: string;
-  username: string;
-}
-
 const validationSchema = yup.object().shape({
   email: yup.string().email('Invalid email'),
   username: yup.string(),
@@ -50,7 +45,7 @@ export default function UpdateData(data: User) {
     },
     validationSchema,
     onSubmit: async (values, { resetForm }) => {
-      const updatedUser: IUpdateUser = {
+      const updatedUser = {
         email: values.email,
         username: values.username,
       };
@@ -77,7 +72,7 @@ export default function UpdateData(data: User) {
             sx={{ flex: 1, minWidth: 120, borderRadius: '100%' }}
           >
             <img
-              src={data.avatar}
+              src={data.imageUrl}
               loading="lazy"
               alt="Avatar for your profile picture"
             />

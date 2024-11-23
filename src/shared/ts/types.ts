@@ -89,6 +89,28 @@ export type User = {
   id: string;
   email: string;
   username: string;
-  avatar: string;
+  imageUrl: string;
+  access: string;
+  created: Date;
   role: string;
+};
+
+export type UpdateUser = {
+  email: string;
+  username: string;
+};
+
+export type UpdatePassword = {
+  password: string;
+  newPassword: string;
+};
+
+export type HeroUser = {
+  id: string;
+  imageUrl: string;
+};
+
+export type UserAccess = {
+  userId: string;
+  access: string;
 };

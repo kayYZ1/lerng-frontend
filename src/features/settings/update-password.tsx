@@ -21,7 +21,7 @@ import * as yup from 'yup';
 import { useUpdateUserPasswordMutation } from 'app/api/users.api.slice';
 import WarningAlert from 'shared/components/alerts/warning';
 import { transformErrorResponse } from 'shared/utils/functions';
-import { UserData } from 'shared/ts/types';
+import { User } from 'shared/ts/types';
 
 const validationSchema = yup.object().shape({
   password: yup
@@ -38,7 +38,7 @@ const validationSchema = yup.object().shape({
     .required('Password is required'),
 });
 
-export default function UpdatePassword(data: UserData) {
+export default function UpdatePassword(data: User) {
   const [UpdateUserPassword, { error, isLoading }] =
     useUpdateUserPasswordMutation();
 

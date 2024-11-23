@@ -18,11 +18,6 @@ import FeedbackIcon from '@mui/icons-material/Feedback';
 
 import { AuthPath } from 'routes/paths';
 
-interface HeroSectionUser {
-  id: string;
-  imageUrl: string;
-}
-
 const mockCardsData = [
   {
     title: 'Comprehensive Curriculum',
@@ -45,7 +40,11 @@ const mockCardsData = [
 export default function HeroSection() {
   const navigate = useNavigate();
   const [email, setEmail] = useState<string>('');
-  const { data, isLoading, error } = useGetLatestUsersQuery(undefined);
+  const {
+    data: latestUsers,
+    isLoading,
+    error,
+  } = useGetLatestUsersQuery(undefined);
 
   return (
     <Box
@@ -93,7 +92,7 @@ export default function HeroSection() {
         <AvatarGroup size="md">
           {isLoading || error
             ? [1, 2, 3].map((item) => <Avatar key={item} />)
-            : data.map((user: HeroSectionUser) => {
+            : latestUsers!.map((user) => {
                 return <Avatar key={user.id} src={user.imageUrl} />;
               })}
         </AvatarGroup>
