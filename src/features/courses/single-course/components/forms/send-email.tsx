@@ -1,5 +1,9 @@
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import { useSelector } from 'react-redux';
+
+import { selectCurrentUser } from 'app/slice/user.slice';
+import { useSendEmailMutation } from 'app/api/users.api.slice';
 
 import Button from '@mui/joy/Button';
 import Divider from '@mui/joy/Divider';
@@ -16,11 +20,6 @@ import Textarea from '@mui/joy/Textarea';
 import Box from '@mui/joy/Box';
 
 import { Instructor } from 'shared/ts/types';
-import { ICloseModal } from 'shared/ts/interfaces';
-
-interface ISendEmail extends ICloseModal {
-  instructor: Instructor;
-}
 
 const validationSchema = yup.object().shape({
   topic: yup
@@ -37,8 +36,12 @@ const validationSchema = yup.object().shape({
 
 export default function SendEmailForm({
   instructor,
-  setOpen,
-}: ISendEmail) {
+}: {
+  instructor: Instructor;
+}) {
+  const user = useSelector(selectCurrentUser);
+  const [SendEmail, { isLoading, isSuccess }] = useSendEmailMutation();
+
   const formik = useFormik({
     initialValues: {
       topic: '',
@@ -46,8 +49,13 @@ export default function SendEmailForm({
     },
     validationSchema,
     onSubmit: async (values) => {
-      console.log(values);
-      setOpen(false);
+      const body = {
+        ...values,
+        sender: user.email,
+        instructorId: instructor.id,
+      };
+
+      await SendEmail(body);
     },
   });
 
@@ -106,11 +114,21 @@ export default function SendEmailForm({
               <Button size="sm" variant="outlined">
                 Cancel
               </Button>
-              <Button size="sm" variant="solid" type="submit">
+              <Button
+                size="sm"
+                variant="solid"
+                type="submit"
+                loading={isLoading}
+              >
                 Send
               </Button>
             </CardActions>
           </CardOverflow>
+          {isSuccess && (
+            <Typography level="body-sm" textColor="green">
+              Email message succesfully send.
+            </Typography>
+          )}
         </Stack>
       </form>
     </Card>

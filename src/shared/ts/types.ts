@@ -116,3 +116,10 @@ export type UserAccess = {
   userId: string;
   access: string;
 };
+
+export type SendEmail = {
+  sender: string;
+  topic: string;
+  message: string;
+  instructorId?: string;
+};

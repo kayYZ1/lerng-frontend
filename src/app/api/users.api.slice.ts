@@ -1,6 +1,7 @@
 import { authApi } from 'app/base/auth.api';
 import {
   HeroUser,
+  SendEmail,
   UpdatePassword,
   UpdateUser,
   User,
@@ -55,6 +56,13 @@ export const usersApiSlice = authApi.injectEndpoints({
       }),
       invalidatesTags: ['Users'],
     }),
+    SendEmail: builder.mutation<unknown, SendEmail>({
+      query: (data) => ({
+        url: `/mail/send/${data.instructorId}`,
+        method: 'POST',
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -65,4 +73,5 @@ export const {
   useGetLatestUsersQuery,
   useGetAllUsersQuery,
   useChangeAccessMutation,
+  useSendEmailMutation,
 } = usersApiSlice;

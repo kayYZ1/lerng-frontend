@@ -28,7 +28,7 @@ export default function SendEmailModal(instructor: Instructor) {
         }}
       >
         <ModalDialog>
-          <SendEmailForm instructor={instructor} setOpen={setOpen} />
+          <SendEmailForm instructor={instructor} />
         </ModalDialog>
       </Modal>
     </Fragment>
