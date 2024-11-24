@@ -90,10 +90,12 @@ export type User = {
   email: string;
   username: string;
   imageUrl: string;
-  access: string;
-  created: Date;
-  role: string;
+  access?: string;
+  created?: Date;
+  role?: string;
 };
+
+export type Instructor = User;
 
 export type UpdateUser = {
   email: string;

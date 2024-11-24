@@ -6,13 +6,8 @@ import CardContent from '@mui/joy/CardContent';
 import Typography from '@mui/joy/Typography';
 
 import InstructorCardSkeleton from './skeletons/instructor-card';
-
-type Instructor = {
-  id: string;
-  email: string;
-  username: string;
-  avatar: string;
-};
+import SendEmailModal from './modals/send-email';
+import { Instructor } from 'shared/ts/types';
 
 export default function CourseInstructor({
   instructor,
@@ -43,13 +38,14 @@ export default function CourseInstructor({
         >
           <CardContent sx={{ alignItems: 'center', textAlign: 'center' }}>
             <Avatar
-              src={instructor.avatar}
+              src={instructor.imageUrl}
               sx={{ '--Avatar-size': '4rem' }}
             />
             <Typography level="title-lg">{instructor.username}</Typography>
             <Typography level="body-sm" sx={{ maxWidth: '24ch' }}>
               {instructor.email}
             </Typography>
+            <SendEmailModal {...instructor} />
           </CardContent>
         </Card>
       )}
