@@ -6,7 +6,13 @@ import { useGetCoursesForUserQuery } from 'app/api/enrolled.api.slice';
 import { EnrolledCourses } from 'shared/ts/types';
 import { parseDate } from 'shared/utils/functions';
 
-export default function CollapsibleRow({ userId }: { userId: string }) {
+export default function CollapsibleRow({
+  userId,
+  username,
+}: {
+  userId: string;
+  username: string;
+}) {
   const { data: userCourses } = useGetCoursesForUserQuery(userId); // Fix
 
   return (
@@ -19,7 +25,7 @@ export default function CollapsibleRow({ userId }: { userId: string }) {
       }}
     >
       <Typography level="body-lg" component="div">
-        Courses
+        {username} recent actvitiy
       </Typography>
       {userCourses && userCourses.length !== 0 ? (
         <Table borderAxis="bothBetween" size="sm">

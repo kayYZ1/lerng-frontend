@@ -12,6 +12,7 @@ import { useAddToEnrolledMutation } from 'app/api/enrolled.api.slice';
 
 export default function CourseCard(item: Course) {
   const navigate = useNavigate();
+
   const [AddToEnrolled, { isLoading }] = useAddToEnrolledMutation();
 
   const handleEnroll = async () => {

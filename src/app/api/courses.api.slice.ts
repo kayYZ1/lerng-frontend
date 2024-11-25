@@ -1,8 +1,9 @@
 import { authApi } from 'app/base/auth.api';
+import { AddCourse, Course, EditCourse, User } from 'shared/ts/types';
 
 export const coursesApiSlice = authApi.injectEndpoints({
   endpoints: (builder) => ({
-    CreateCourse: builder.mutation({
+    CreateCourse: builder.mutation<unknown, AddCourse>({
       query: (data) => ({
         url: '/courses/create',
         method: 'POST',
@@ -10,7 +11,7 @@ export const coursesApiSlice = authApi.injectEndpoints({
       }),
       invalidatesTags: ['Course'],
     }),
-    EditCourse: builder.mutation({
+    EditCourse: builder.mutation<unknown, EditCourse>({
       query: (data) => ({
         url: '/courses/edit',
         method: 'PATCH',
@@ -25,32 +26,33 @@ export const coursesApiSlice = authApi.injectEndpoints({
       }),
       invalidatesTags: ['Course'],
     }),
-    GetCourses: builder.query({
+    GetCourses: builder.query<Course[], string>({
       query: () => ({
         url: '/courses/',
         method: 'GET',
       }),
-      providesTags: ['Course'],
+      providesTags: ['Courses'],
     }),
-    GetCourse: builder.query({
+    GetCourse: builder.query<Course, string>({
       query: (courseId: string) => ({
         url: `/courses/${courseId}`,
         method: 'GET',
       }),
       providesTags: ['Course'],
     }),
-    GetInstructorCourses: builder.query({
+    GetInstructorCourses: builder.query<Course[], undefined>({
       query: () => ({
         url: `/courses/instructor`,
         method: 'GET',
       }),
-      providesTags: ['Course'],
+      providesTags: ['Courses'],
     }),
-    GetInstructorFromCourse: builder.query({
+    GetInstructorFromCourse: builder.query<User, string>({
       query: (courseId: string) => ({
         url: `/courses/course/instructor/${courseId}`,
         method: 'GET',
       }),
+      providesTags: ['Instructor'],
     }),
   }),
 });

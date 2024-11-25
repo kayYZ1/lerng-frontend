@@ -10,7 +10,7 @@ import UpdatePassword from './update-password';
 import UpdateData from './update-data';
 
 export default function Profile() {
-  const { data, isLoading } = useGetMeQuery('User');
+  const { data: user, isLoading } = useGetMeQuery('User');
 
   return (
     <SettingsLayout>
@@ -24,8 +24,12 @@ export default function Profile() {
         }}
       >
         <Divider />
-        {isLoading ? <ProfileSkeleton /> : <UpdateData {...data} />}
-        <UpdatePassword {...data} />
+        {isLoading || !user ? (
+          <ProfileSkeleton />
+        ) : (
+          <UpdateData {...user} />
+        )}
+        {user && <UpdatePassword {...user} />}
       </Stack>
     </SettingsLayout>
   );

@@ -1,8 +1,16 @@
 import { authApi } from 'app/base/auth.api';
+import {
+  HeroUser,
+  SendEmail,
+  UpdatePassword,
+  UpdateUser,
+  User,
+  UserAccess,
+} from 'shared/ts/types';
 
 export const usersApiSlice = authApi.injectEndpoints({
   endpoints: (builder) => ({
-    UpdateUserData: builder.mutation({
+    UpdateUserData: builder.mutation<unknown, UpdateUser>({
       query: (data) => ({
         url: '/users/update/data',
         method: 'PATCH',
@@ -10,7 +18,7 @@ export const usersApiSlice = authApi.injectEndpoints({
       }),
       invalidatesTags: ['User'],
     }),
-    UpdateUserPassword: builder.mutation({
+    UpdateUserPassword: builder.mutation<unknown, UpdatePassword>({
       query: (data) => ({
         url: '/users/update/password',
         method: 'PATCH',
@@ -18,7 +26,7 @@ export const usersApiSlice = authApi.injectEndpoints({
       }),
       invalidatesTags: ['User'],
     }),
-    UpdateUserImage: builder.mutation({
+    UpdateUserImage: builder.mutation<unknown, unknown>({
       query: (data) => ({
         url: '/users/update/imageUrl',
         method: 'PATCH',
@@ -26,27 +34,34 @@ export const usersApiSlice = authApi.injectEndpoints({
       }),
       invalidatesTags: ['User'],
     }),
-    GetLatestUsers: builder.query({
+    GetLatestUsers: builder.query<HeroUser[], undefined>({
       query: () => ({
         url: '/users/latest-users',
         method: 'GET',
       }),
       providesTags: ['Users'],
     }),
-    GetAllUsers: builder.query({
+    GetAllUsers: builder.query<User, string>({
       query: () => ({
         url: '/users/all',
         method: 'GET',
       }),
       providesTags: ['Users'],
     }),
-    ChangeAccess: builder.mutation({
+    ChangeAccess: builder.mutation<unknown, UserAccess>({
       query: (data) => ({
         url: '/users/change-access',
         method: 'PATCH',
         body: data,
       }),
       invalidatesTags: ['Users'],
+    }),
+    SendEmail: builder.mutation<unknown, SendEmail>({
+      query: (data) => ({
+        url: `/mail/send/${data.instructorId}`,
+        method: 'POST',
+        body: data,
+      }),
     }),
   }),
 });
@@ -58,4 +73,5 @@ export const {
   useGetLatestUsersQuery,
   useGetAllUsersQuery,
   useChangeAccessMutation,
+  useSendEmailMutation,
 } = usersApiSlice;

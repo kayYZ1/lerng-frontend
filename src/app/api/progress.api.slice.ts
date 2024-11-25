@@ -1,22 +1,16 @@
 import { authApi } from 'app/base/auth.api';
+import { Progress } from 'shared/ts/types';
 
 export const progressApiSlice = authApi.injectEndpoints({
   endpoints: (builder) => ({
-    SaveProgress: builder.mutation({
-      query: ({ topicId, data }) => ({
-        url: `/progress/save/${topicId}`,
-        method: 'PATCH',
-        body: data,
-      }),
-    }),
-    GetProgress: builder.query({
+    GetProgress: builder.query<Progress, string>({
       query: (courseId) => ({
         url: `/progress/get/${courseId}`,
         method: 'GET',
       }),
       providesTags: ['Progress'],
     }),
-    CountProgress: builder.query({
+    CountProgress: builder.query<number, string>({
       query: (courseId) => ({
         url: `progress/count-progress/${courseId}`,
         method: 'GET',
@@ -38,7 +32,6 @@ export const progressApiSlice = authApi.injectEndpoints({
 });
 
 export const {
-  useSaveProgressMutation,
   useGetProgressQuery,
   useSaveQuizMutation,
   useCountProgressQuery,

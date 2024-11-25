@@ -42,7 +42,7 @@ export default function Header() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { data, isLoading } = useGetMeQuery('User');
+  const { data: user, isLoading } = useGetMeQuery('User');
   const [SignOutFn] = useSignOutFnMutation();
 
   const [open, setOpen] = useState(false);
@@ -127,13 +127,13 @@ export default function Header() {
             }}
           >
             <Avatar
-              src={isLoading ? '' : data.avatar}
+              src={isLoading || !user ? '' : user.avatar}
               sx={{ maxWidth: '32px', maxHeight: '32px' }}
             >
               <Skeleton loading={isLoading} />
             </Avatar>
           </MenuButton>
-          {isLoading ? (
+          {isLoading || !user ? (
             ''
           ) : (
             <Menu
@@ -153,15 +153,15 @@ export default function Header() {
                     alignItems: 'center',
                   }}
                 >
-                  <Avatar src={data.avatar} sx={{ borderRadius: '50%' }} />
+                  <Avatar src={user.avatar} sx={{ borderRadius: '50%' }} />
                   <Box sx={{ ml: 1.5 }}>
                     <Typography level="title-sm" textColor="text.primary">
-                      {data.username}
+                      {user.username}
                     </Typography>
                     <Typography level="body-sm" textColor="text.tertiary">
-                      {data.email}
+                      {user.email}
                     </Typography>
-                    <Typography level="body-xs">{data.role}</Typography>
+                    <Typography level="body-xs">{user.role}</Typography>
                   </Box>
                 </Box>
               </MenuItem>

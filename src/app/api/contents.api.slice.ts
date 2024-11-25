@@ -1,13 +1,15 @@
 import { authApi } from 'app/base/auth.api';
 
+import { Content } from 'shared/ts/types';
+
 export const contentsApiSlice = authApi.injectEndpoints({
   endpoints: (builder) => ({
-    GetContents: builder.query({
+    GetContents: builder.query<Content[], string>({
       query: (moduleId: string) => ({
         url: `/contents/${moduleId}`,
         method: 'GET',
       }),
-      providesTags: ['Content'],
+      providesTags: ['Contents'],
     }),
     NewContent: builder.mutation({
       query: (args) => {

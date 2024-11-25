@@ -1,4 +1,9 @@
-import { useParams } from 'react-router-dom';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
+import { useSelector } from 'react-redux';
+
+import { selectCurrentUser } from 'app/slice/user.slice';
+import { useSendEmailMutation } from 'app/api/users.api.slice';
 
 import Button from '@mui/joy/Button';
 import Divider from '@mui/joy/Divider';
@@ -11,94 +16,94 @@ import Input from '@mui/joy/Input';
 import FormLabel from '@mui/joy/FormLabel';
 import Card from '@mui/joy/Card';
 import Typography from '@mui/joy/Typography';
+import Textarea from '@mui/joy/Textarea';
 import Box from '@mui/joy/Box';
 
-import { useFormik } from 'formik';
-import * as yup from 'yup';
-
-import { useAddTopicMutation } from 'app/api/topics.api.slice';
-
-import { ICloseModal } from 'shared/ts/interfaces';
-import { transformErrorResponse } from 'shared/utils/functions';
-import WarningAlert from 'shared/components/alerts/warning';
+import { Instructor } from 'shared/ts/types';
 
 const validationSchema = yup.object().shape({
-  title: yup
+  topic: yup
     .string()
-    .required('Title is required')
-    .min(3, 'Title to short')
-    .max(40, 'Title too long'),
-  description: yup
+    .required('Topic is required')
+    .min(3, 'Topic to short')
+    .max(50, 'Topic too long'),
+  message: yup
     .string()
-    .required('Description is required')
-    .min(5, 'Description too short')
-    .max(80, 'Description too long'),
+    .required('Message is required')
+    .min(5, 'Message too short')
+    .max(320, 'Message too long'),
 });
 
-export default function AddTopicForm({ setOpen }: ICloseModal) {
-  const { id } = useParams<{ id: string }>();
-  const [AddTopic, { isLoading, error }] = useAddTopicMutation();
-
-  const errorResponse = transformErrorResponse(error);
+export default function SendEmailForm({
+  instructor,
+}: {
+  instructor: Instructor;
+}) {
+  const user = useSelector(selectCurrentUser);
+  const [SendEmail, { isLoading, isSuccess }] = useSendEmailMutation();
 
   const formik = useFormik({
     initialValues: {
-      title: '',
-      description: '',
+      topic: '',
+      message: '',
     },
     validationSchema,
     onSubmit: async (values) => {
       const body = {
         ...values,
-        courseId: id!,
+        sender: user.email,
+        instructorId: instructor.id,
       };
-      await AddTopic(body);
-      if (!errorResponse) setOpen(false);
-      setOpen(false);
+
+      await SendEmail(body);
     },
   });
 
   return (
     <Card sx={{ flex: 1 }} variant="plain">
       <Box>
-        <Typography level="title-md">Add topic</Typography>
-        <Typography level="body-sm">
-          Add a new topic to the course
+        <Typography level="title-md">
+          Send message a to <b>{instructor.username}</b>
         </Typography>
       </Box>
       <Divider />
       <form onSubmit={formik.handleSubmit}>
         <Stack direction="column" gap={1}>
           <FormControl required>
-            <FormLabel>Title</FormLabel>
+            <FormLabel>Email topic</FormLabel>
             <Input
               type="text"
-              name="title"
-              value={formik.values.title}
+              name="topic"
+              placeholder="ex. Issue in course #ID"
+              value={formik.values.topic}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              error={formik.touched.title && !!formik.errors.title}
+              error={formik.touched.topic && !!formik.errors.topic}
+              size="sm"
             />
-            {formik.touched.title ? (
+            {formik.touched.topic ? (
               <FormHelperText component="div">
-                {formik.errors.title}
+                {formik.errors.topic}
               </FormHelperText>
             ) : (
               ''
             )}
           </FormControl>
           <FormControl required>
-            <FormLabel>Description</FormLabel>
-            <Input
-              type="text"
-              name="description"
-              value={formik.values.description}
+            <FormLabel>Email message</FormLabel>
+            <Textarea
+              name="message"
+              placeholder="Your complain ... or praise"
+              value={formik.values.message}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
+              minRows={4}
+              maxRows={8}
+              size="sm"
             />
-            {formik.touched.description ? (
+            {formik.touched.message ? (
               <FormHelperText component="div">
-                {formik.errors.description}
+                {formik.errors.message}
               </FormHelperText>
             ) : (
               ''
@@ -106,11 +111,7 @@ export default function AddTopicForm({ setOpen }: ICloseModal) {
           </FormControl>
           <CardOverflow>
             <CardActions sx={{ alignSelf: 'flex-end', pt: 2 }}>
-              <Button
-                size="sm"
-                variant="outlined"
-                onClick={() => setOpen(false)}
-              >
+              <Button size="sm" variant="outlined">
                 Cancel
               </Button>
               <Button
@@ -119,20 +120,17 @@ export default function AddTopicForm({ setOpen }: ICloseModal) {
                 type="submit"
                 loading={isLoading}
               >
-                Save
+                Send
               </Button>
             </CardActions>
           </CardOverflow>
+          {isSuccess && (
+            <Typography level="body-sm" textColor="green">
+              Email message succesfully send.
+            </Typography>
+          )}
         </Stack>
       </form>
-      {error ? (
-        <WarningAlert
-          type="Topic creation error"
-          message={errorResponse}
-        />
-      ) : (
-        ''
-      )}
     </Card>
   );
 }

@@ -23,7 +23,9 @@ import CourseRating from './course-rating';
 import EditCourseModal from './modals/edit-course';
 
 export default function CourseItem(item: Course) {
-  const { data, isLoading } = useCountProgressQuery(item.id);
+  const { data: courseProgress, isLoading } = useCountProgressQuery(
+    item.id,
+  );
   const { data: instructor } = useGetInstructorFromCourseQuery(item.id);
 
   const enrolled = useSelector(selectMyCourses);
@@ -85,13 +87,13 @@ export default function CourseItem(item: Course) {
             <Typography level="body-xs">{date}</Typography>
             {isEnrolled ? (
               <Typography level="body-xs">
-                {isLoading ? <Skeleton /> : `${data}%`}
+                {isLoading ? <Skeleton /> : `${courseProgress}%`}
               </Typography>
             ) : (
               <Typography level="body-xs">Not enrolled</Typography>
             )}
           </CardContent>
-          <LinearProgress determinate value={data} />
+          <LinearProgress determinate value={courseProgress} />
         </CardOverflow>
       </Card>
     </Grid>

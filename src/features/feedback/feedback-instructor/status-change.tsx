@@ -16,14 +16,14 @@ import FormHelperText from '@mui/joy/FormHelperText';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
-import { FeedbackTicket } from 'shared/ts/types';
 import { useChangeTicketStatusMutation } from 'app/api/feedback.slice';
+import { Feedback } from 'shared/ts/types';
 
 const validationSchema = yup.object().shape({
   feedbackMessage: yup.string().max(200, 'Too long'),
 });
 
-export default function ChangeStatusModal(feedbackTicket: FeedbackTicket) {
+export default function ChangeStatusModal(feedbackTicket: Feedback) {
   const [open, setOpen] = useState<boolean>(false);
 
   const [ChangeTicketStatus, { error, isLoading }] =

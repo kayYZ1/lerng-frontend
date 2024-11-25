@@ -8,7 +8,10 @@ export const authApi = createApi({
   tagTypes: [
     'Auth',
     'Content',
+    'Contents',
     'Course',
+    'Courses',
+    'Instructor',
     'Feedback',
     'Progress',
     'Question',

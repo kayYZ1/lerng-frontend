@@ -1,11 +1,16 @@
 import Table from '@mui/joy/Table';
 import Box from '@mui/joy/Box';
 
-import { Progress } from 'shared/ts/types';
-
 import { useGetProgressQuery } from 'app/api/progress.api.slice';
 
 import TableSkeleton from './skeletons/table';
+
+interface IProgress {
+  id: string;
+  title: string;
+  scorePercentage: number;
+  quizScore: number;
+}
 
 export default function ProgressTable({ id }: { id: string | undefined }) {
   const { data, isLoading } = useGetProgressQuery(id!);
@@ -24,7 +29,7 @@ export default function ProgressTable({ id }: { id: string | undefined }) {
             </tr>
           </thead>
           <tbody>
-            {data.map((progress: Progress) => (
+            {data.map((progress: IProgress) => (
               <tr key={progress.id}>
                 <td>{progress.title}</td>
                 <td>{progress.scorePercentage}%</td>

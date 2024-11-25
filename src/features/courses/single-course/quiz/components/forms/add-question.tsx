@@ -24,6 +24,7 @@ import * as yup from 'yup';
 
 import { ICloseModal } from 'shared/ts/interfaces';
 import { QuestionType } from 'shared/enum';
+
 import { useAddQuestionMutation } from 'app/api/questions.api.slice';
 
 const validationSchema = yup.object().shape({

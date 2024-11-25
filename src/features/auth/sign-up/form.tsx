@@ -15,13 +15,18 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 
 import { useSignUpFnMutation } from 'app/api/auth.api.slice';
-import { UserSignUp } from 'shared/ts/types';
 
 import ErrorAlert from 'shared/components/alerts/error';
 import ShowCapsLock from 'shared/components/show-capslock';
 import { transformErrorResponse } from 'shared/utils/functions';
 
 import style from '../auth.module.css';
+
+interface ISignUp {
+  email: string;
+  username: string;
+  password: string;
+}
 
 const validationSchema = yup.object().shape({
   email: yup.string().email('Invalid email').required('Email is required'),
@@ -36,11 +41,11 @@ const validationSchema = yup.object().shape({
     .required('Please confirm your password'),
 });
 
-type LocationState = {
+export default function SignUpForm({
+  userEmail,
+}: {
   userEmail: string | undefined;
-};
-
-export default function SignUpForm(props: LocationState) {
+}) {
   const [SignUpFn, { isLoading, error }] = useSignUpFnMutation();
 
   const navigate = useNavigate();
@@ -48,14 +53,14 @@ export default function SignUpForm(props: LocationState) {
 
   const formik = useFormik({
     initialValues: {
-      email: typeof props.userEmail === 'string' ? props.userEmail : '',
+      email: typeof userEmail === 'string' ? userEmail : '',
       username: '',
       password: '',
       repeatPassword: '',
     },
     validationSchema,
     onSubmit: async (values, { resetForm }) => {
-      const user: UserSignUp = {
+      const user: ISignUp = {
         email: values.email,
         password: values.password,
         username: values.username,

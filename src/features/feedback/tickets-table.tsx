@@ -8,9 +8,9 @@ import { ColorPaletteProp } from '@mui/joy';
 
 import { useGetFeedbackTicketsQuery } from 'app/api/feedback.slice';
 
-import { FeedbackTicket } from 'shared/ts/types';
 import { parseDate } from 'shared/utils/functions';
 import ViewTicketModal from './components/view-ticket';
+import { IFeedback } from './types';
 
 export default function TicketsTable() {
   const { data, isLoading } = useGetFeedbackTicketsQuery('Feedback');
@@ -71,7 +71,7 @@ export default function TicketsTable() {
                     </td>
                   </tr>
                 ))
-              : data.map((ticket: FeedbackTicket) => (
+              : data.map((ticket: IFeedback) => (
                   <tr key={ticket.id}>
                     <td>
                       <Typography level="body-xs">

@@ -20,11 +20,10 @@ import Chip from '@mui/joy/Chip';
 
 import { useCreateCourseMutation } from 'app/api/courses.api.slice';
 import { transformErrorResponse } from 'shared/utils/functions';
-
 import { Categories } from 'shared/enum';
-import AddCourseImage from '../add-course-image';
 import WarningAlert from 'shared/components/alerts/warning';
 
+import AddCourseImage from '../add-course-image';
 interface ICloseModal {
   setOpen: (value: boolean) => void;
 }
@@ -61,7 +60,7 @@ export default function CreateCourseForm({ setOpen }: ICloseModal) {
     initialValues: {
       title: '',
       description: '',
-      categories: [],
+      categories: [] as Categories[],
       imageUrl: '',
     },
     validationSchema: validationSchema,

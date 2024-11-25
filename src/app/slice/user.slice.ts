@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { UserData } from 'shared/ts/types';
+import { User } from 'shared/ts/types';
 
 interface UserState {
-  user: null | UserData;
+  user: null | User;
 }
 
 const initialState: UserState = {
@@ -21,6 +21,6 @@ const userSlice = createSlice({
 
 export const { setCurrentUser } = userSlice.actions;
 
-export const selectCurrentUser = (state: { user: UserData }) => state.user;
+export const selectCurrentUser = (state: { user: User }) => state.user;
 
 export default userSlice.reducer;

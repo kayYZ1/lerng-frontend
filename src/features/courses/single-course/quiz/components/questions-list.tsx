@@ -7,8 +7,8 @@ import AccordionSummary, {
 import Box from '@mui/joy/Box';
 import Typography from '@mui/joy/Typography';
 
-import { Question } from 'shared/ts/types';
 import EditQuestionModal from './modals/edit-question';
+import { Question } from 'shared/ts/types';
 
 export default function QuestionsList(questions: Question[]) {
   const questionsArray = Object.values(questions);

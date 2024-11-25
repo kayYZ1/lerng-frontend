@@ -8,7 +8,7 @@ import ContentList from './components/content-list';
 import ContentPanel from './components/content-panel';
 
 export default function SingleTopic({ id }: { id: string | undefined }) {
-  const { data, isLoading, error } = useGetContentsQuery(id!);
+  const { data: contents, isLoading, error } = useGetContentsQuery(id!);
 
   return (
     <Box
@@ -26,7 +26,7 @@ export default function SingleTopic({ id }: { id: string | undefined }) {
       }}
     >
       <Sheet sx={{ my: 2, px: 2 }}>
-        {isLoading ? (
+        {isLoading || !contents ? (
           <Box>
             {[1, 2, 3, 4].map((x) => (
               <Skeleton
@@ -39,7 +39,7 @@ export default function SingleTopic({ id }: { id: string | undefined }) {
             ))}
           </Box>
         ) : (
-          <ContentList contents={data} />
+          <ContentList contents={contents} />
         )}
         {error
           ? 'Could not load the contents of the list, please try again.'

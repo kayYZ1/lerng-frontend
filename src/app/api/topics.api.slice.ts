@@ -1,32 +1,32 @@
 import { authApi } from 'app/base/auth.api';
+import { AddTopic, Topic } from 'shared/ts/types';
 
 export const modulesApiSlice = authApi.injectEndpoints({
   endpoints: (builder) => ({
-    GetTopicsFromCourse: builder.query({
+    GetTopicsFromCourse: builder.query<Topic[], string>({
       query: (courseId: string) => ({
         url: `/topics/${courseId}`,
         method: 'GET',
       }),
       providesTags: ['Topic'],
     }),
-    GetTopic: builder.query({
-      query: (moduleId: string) => ({
-        url: `/topics/topic/${moduleId}`,
+    GetTopic: builder.query<Topic, string>({
+      query: (topicId: string) => ({
+        url: `/topics/topic/${topicId}`,
         method: 'GET',
       }),
     }),
-    AddTopic: builder.mutation({
-      query: (args) => {
-        const { courseId, values } = args;
+    AddTopic: builder.mutation<unknown, AddTopic>({
+      query: (values) => {
         return {
-          url: `/topics/create/${courseId}`,
+          url: `/topics/create/${values.courseId}`,
           method: 'POST',
           body: values,
         };
       },
       invalidatesTags: ['Topic'],
     }),
-    EditTopic: builder.mutation({
+    EditTopic: builder.mutation<unknown, unknown>({
       query: (values) => ({
         url: '/topics/edit',
         method: 'PATCH',
@@ -34,7 +34,7 @@ export const modulesApiSlice = authApi.injectEndpoints({
       }),
       invalidatesTags: ['Topic'],
     }),
-    RemoveTopic: builder.mutation({
+    RemoveTopic: builder.mutation<unknown, string>({
       query: (topicId: string) => ({
         url: `/topics/topic/${topicId}`,
         method: 'DELETE',
