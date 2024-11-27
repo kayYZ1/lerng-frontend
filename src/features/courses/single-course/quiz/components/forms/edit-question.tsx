@@ -1,3 +1,6 @@
+import { useFormik } from 'formik';
+import * as yup from 'yup';
+
 import Button from '@mui/joy/Button';
 import Divider from '@mui/joy/Divider';
 import Stack from '@mui/joy/Stack';
@@ -17,15 +20,12 @@ import Select, { selectClasses } from '@mui/joy/Select';
 
 import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
 
-import { useFormik } from 'formik';
-import * as yup from 'yup';
-
 import { transformErrorResponse } from 'shared/utils/functions';
 import WarningAlert from 'shared/components/alerts/warning';
 import { QuestionType } from 'shared/enum';
+import { Question } from 'shared/ts/types';
 
 import { useEditQuestionMutation } from 'app/api/questions.api.slice';
-import { IQuestion } from '../../types';
 
 const validationSchema = yup.object().shape({
   question: yup
@@ -39,15 +39,13 @@ const validationSchema = yup.object().shape({
     .max(25, 'Answer too long'),
 });
 
-interface IEditQuestionFormProps {
-  setOpen: (open: boolean) => void;
-  question: IQuestion;
-}
-
 export default function EditQuestionForm({
   setOpen,
   question,
-}: IEditQuestionFormProps) {
+}: {
+  setOpen: (open: boolean) => void;
+  question: Question;
+}) {
   const [EditQuestion, { isLoading, error }] = useEditQuestionMutation();
 
   const errorMessage = transformErrorResponse(error);

@@ -127,14 +127,14 @@ export default function Header() {
             }}
           >
             <Avatar
-              src={isLoading || !user ? '' : user.avatar}
+              src={user && user.imageUrl}
               sx={{ maxWidth: '32px', maxHeight: '32px' }}
             >
               <Skeleton loading={isLoading} />
             </Avatar>
           </MenuButton>
           {isLoading || !user ? (
-            ''
+            '' //Loading Skeleton
           ) : (
             <Menu
               placement="bottom-end"
@@ -153,7 +153,10 @@ export default function Header() {
                     alignItems: 'center',
                   }}
                 >
-                  <Avatar src={user.avatar} sx={{ borderRadius: '50%' }} />
+                  <Avatar
+                    src={user.imageUrl}
+                    sx={{ borderRadius: '50%' }}
+                  />
                   <Box sx={{ ml: 1.5 }}>
                     <Typography level="title-sm" textColor="text.primary">
                       {user.username}

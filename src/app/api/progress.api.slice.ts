@@ -3,7 +3,7 @@ import { Progress } from 'shared/ts/types';
 
 export const progressApiSlice = authApi.injectEndpoints({
   endpoints: (builder) => ({
-    GetProgress: builder.query<Progress, string>({
+    GetProgress: builder.query<Progress[], string>({
       query: (courseId) => ({
         url: `/progress/get/${courseId}`,
         method: 'GET',

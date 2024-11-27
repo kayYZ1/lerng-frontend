@@ -13,10 +13,10 @@ import { ColorPaletteProp, Alert } from '@mui/joy';
 
 import ZoomIn from '@mui/icons-material/ZoomIn';
 
-import { FeedbackTicket } from 'shared/ts/types';
+import { Feedback } from 'shared/ts/types';
 import { parseDate } from 'shared/utils/functions';
 
-export default function ViewTicketModal(feedbackTicket: FeedbackTicket) {
+export default function ViewTicketModal(feedbackTicket: Feedback) {
   const [open, setOpen] = useState<boolean>(false);
 
   return (

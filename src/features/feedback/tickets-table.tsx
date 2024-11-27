@@ -10,10 +10,10 @@ import { useGetFeedbackTicketsQuery } from 'app/api/feedback.slice';
 
 import { parseDate } from 'shared/utils/functions';
 import ViewTicketModal from './components/view-ticket';
-import { IFeedback } from './types';
 
 export default function TicketsTable() {
-  const { data, isLoading } = useGetFeedbackTicketsQuery('Feedback');
+  const { data: tickets, isLoading } =
+    useGetFeedbackTicketsQuery('Feedback');
 
   return (
     <Sheet
@@ -71,7 +71,8 @@ export default function TicketsTable() {
                     </td>
                   </tr>
                 ))
-              : data.map((ticket: IFeedback) => (
+              : tickets &&
+                tickets.map((ticket) => (
                   <tr key={ticket.id}>
                     <td>
                       <Typography level="body-xs">

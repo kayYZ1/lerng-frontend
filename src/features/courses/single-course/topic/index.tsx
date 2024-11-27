@@ -12,7 +12,7 @@ import BreadcrumbsCustom from 'shared/components/breadcrumbs-custom';
 
 export default function Topic() {
   const { id } = useParams<{ id: string }>();
-  const { data, isLoading, error } = useGetTopicQuery(id!);
+  const { data: topic, isLoading, error } = useGetTopicQuery(id!);
 
   return (
     <Box sx={{ flex: 1, width: '100%' }}>
@@ -23,17 +23,15 @@ export default function Topic() {
       >
         <BreadcrumbsCustom />
         <Typography component={'div'} level="h2" sx={{ mt: 1, mb: 1 }}>
-          {isLoading ? <TypographySkeleton /> : data.title}
-          {error ? 'Something went wrong please refresh' : ''}
+          {isLoading ? <TypographySkeleton /> : topic && topic.title}
         </Typography>
         <Typography component={'div'} level="body-md">
-          {isLoading ? <TypographySkeleton /> : data.description}
+          {isLoading ? <TypographySkeleton /> : topic && topic.description}
         </Typography>
+        {error && 'Something went wrong please refresh'}
       </Box>
       <Divider sx={{ my: 1 }} />
-      <Box sx={{ flex: 1 }}>
-        <SingleTopic id={id} />
-      </Box>
+      <Box sx={{ flex: 1 }}>{id && <SingleTopic id={id} />}</Box>
     </Box>
   );
 }

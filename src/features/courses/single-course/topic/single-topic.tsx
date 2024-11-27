@@ -7,7 +7,7 @@ import { useGetContentsQuery } from 'app/api/contents.api.slice';
 import ContentList from './components/content-list';
 import ContentPanel from './components/content-panel';
 
-export default function SingleTopic({ id }: { id: string | undefined }) {
+export default function SingleTopic({ id }: { id: string }) {
   const { data: contents, isLoading, error } = useGetContentsQuery(id!);
 
   return (
@@ -41,9 +41,8 @@ export default function SingleTopic({ id }: { id: string | undefined }) {
         ) : (
           <ContentList contents={contents} />
         )}
-        {error
-          ? 'Could not load the contents of the list, please try again.'
-          : ''}
+        {error &&
+          'Could not load the contents of the list, please try again.'}
       </Sheet>
       <Sheet sx={{ my: 2, px: 2, py: 2, mx: { sm: 2, md: 2 } }}>
         <ContentPanel />

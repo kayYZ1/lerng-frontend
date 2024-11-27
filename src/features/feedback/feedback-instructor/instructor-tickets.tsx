@@ -11,10 +11,10 @@ import { useInstructorTicketsQuery } from 'app/api/feedback.slice';
 import { parseDate } from 'shared/utils/functions';
 
 import ChangeStatusModal from './status-change';
-import { IFeedback } from '../types';
 
 export default function InstructorTickets() {
-  const { data, isLoading } = useInstructorTicketsQuery('Feedback');
+  const { data: tickets, isLoading } =
+    useInstructorTicketsQuery('Feedback');
 
   return (
     <Sheet
@@ -73,7 +73,8 @@ export default function InstructorTickets() {
                     </td>
                   </tr>
                 ))
-              : data.map((ticket: IFeedback) => (
+              : tickets &&
+                tickets.map((ticket) => (
                   <tr key={ticket.id}>
                     <td>
                       <Typography level="body-xs">

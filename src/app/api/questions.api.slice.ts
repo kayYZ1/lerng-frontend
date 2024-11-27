@@ -14,7 +14,7 @@ export const questionsApiSlice = authApi.injectEndpoints({
       },
       invalidatesTags: ['Question'],
     }),
-    EditQuestion: builder.mutation<Question, string>({
+    EditQuestion: builder.mutation<unknown, Question>({
       query: (values) => ({
         url: '/questions/edit',
         method: 'PATCH',

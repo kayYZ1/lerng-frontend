@@ -1,4 +1,4 @@
-import { Course, UserData } from 'shared/ts/types';
+import { Course, User } from 'shared/ts/types';
 
 import InstructorCard from './cards/instructor-card';
 import EnrolledCard from './cards/enrolled-card';
@@ -7,7 +7,7 @@ import CourseCard from './cards/course-card';
 interface ICourseEnrolled {
   isEnrolled: boolean;
   item: Course;
-  user: UserData;
+  user: User;
   instructorId: string;
 }
 

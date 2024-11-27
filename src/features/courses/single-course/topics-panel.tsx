@@ -15,7 +15,11 @@ import CourseInstructor from './components/course-instructor';
 import UserReview from './components/user-review';
 
 export default function TopicsPanel({ id }: { id: string | undefined }) {
-  const { data, isLoading, error } = useGetTopicsFromCourseQuery(id!);
+  const {
+    data: topics,
+    isLoading,
+    error,
+  } = useGetTopicsFromCourseQuery(id!);
   const { data: instructor, isLoading: instructorLoader } =
     useGetInstructorFromCourseQuery(id!);
 
@@ -44,7 +48,11 @@ export default function TopicsPanel({ id }: { id: string | undefined }) {
           py: 2,
         }}
       >
-        {isLoading ? <TopicItemSkeleton /> : <TopicsList topics={data} />}
+        {isLoading ? (
+          <TopicItemSkeleton />
+        ) : (
+          topics && <TopicsList topics={topics} />
+        )}
       </Box>
       <Box sx={{ flex: 1, px: 2, py: 2 }}>
         <ProgressTable id={id} />
@@ -56,15 +64,17 @@ export default function TopicsPanel({ id }: { id: string | undefined }) {
           }}
         >
           {instructor && (
-            <UserReview courseId={id} instructorId={instructor.id} />
+            <>
+              <UserReview courseId={id} instructorId={instructor.id} />
+              <CourseInstructor
+                instructor={instructor}
+                isLoading={instructorLoader}
+              />
+            </>
           )}
-          <CourseInstructor
-            instructor={instructor}
-            isLoading={instructorLoader}
-          />
         </Box>
       </Box>
-      {error ? 'Something went wrong' : ''}
+      {error && 'Something went wrong please refresh the page.'}
     </Sheet>
   );
 }

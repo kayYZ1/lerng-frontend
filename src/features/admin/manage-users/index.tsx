@@ -7,27 +7,18 @@ import Input from '@mui/joy/Input';
 import { SearchRounded } from '@mui/icons-material';
 
 import { useGetAllUsersQuery } from 'app/api/users.api.slice';
+import { User } from 'shared/ts/types';
 import UsersTable from './users-table';
-
-interface User {
-  id: string;
-  username: string;
-  email: string;
-  access: string;
-  created: Date;
-  imageUrl: string;
-  role: string;
-}
 
 export default function ManageUsers() {
   const [searchParams, setSearchParams] = useSearchParams({ query: '' });
-  const { data: users, isLoading } = useGetAllUsersQuery(undefined);
+  const { data: users, isLoading } = useGetAllUsersQuery('Users');
 
   const query = searchParams.get('query') || '';
 
   const filterUsers =
-    query.length > 2
-      ? users?.filter((user: User) =>
+    users && query.length > 2
+      ? users.filter((user: User) =>
           user.username.toLowerCase().includes(query.toLowerCase()),
         )
       : users || [];

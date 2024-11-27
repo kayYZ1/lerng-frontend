@@ -16,7 +16,7 @@ import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
 import TableRow from './components/table-row';
-import { Users } from '../types';
+import { User } from 'shared/ts/types';
 
 function labelDisplayedRows({
   from,
@@ -30,7 +30,13 @@ function labelDisplayedRows({
   return `${from}–${to} of ${count !== -1 ? count : `more than ${to}`}`;
 }
 
-export default function UsersTable({ users, isLoading }: Users) {
+export default function UsersTable({
+  users,
+  isLoading,
+}: {
+  users: User[];
+  isLoading: boolean;
+}) {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 

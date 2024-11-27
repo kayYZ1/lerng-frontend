@@ -13,11 +13,11 @@ import TicketsTable from './tickets-table';
 import AddTicket from './add-ticket';
 
 import { useGetEnrolledCoursesQuery } from 'app/api/enrolled.api.slice';
-import { EnrolledCourses } from 'shared/ts/types';
 import EnrolledListSkeleton from './components/skeletons/enrolled-list';
 
 export default function Feedback() {
-  const { data, isLoading } = useGetEnrolledCoursesQuery('Enrolled');
+  const { data: enrolledCourses, isLoading } =
+    useGetEnrolledCoursesQuery('Enrolled');
 
   return (
     <Box sx={{ flex: 1, width: '100%' }}>
@@ -47,7 +47,8 @@ export default function Feedback() {
           >
             {isLoading
               ? [1, 2, 3].map((x) => <EnrolledListSkeleton key={x} />)
-              : data.map((enrolled: EnrolledCourses) => (
+              : enrolledCourses &&
+                enrolledCourses.map((enrolled) => (
                   <ListItem
                     endAction={<AddTicket {...enrolled} />}
                     key={enrolled.id}

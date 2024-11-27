@@ -12,7 +12,7 @@ import BreadcrumbsCustom from 'shared/components/breadcrumbs-custom';
 
 export default function Course() {
   const { id } = useParams<{ id: string }>();
-  const { data, isLoading, error } = useGetCourseQuery(id!);
+  const { data: course, isLoading, error } = useGetCourseQuery(id!);
 
   return (
     <Box sx={{ flex: 1, width: '100%' }}>
@@ -25,20 +25,20 @@ export default function Course() {
         {isLoading ? (
           <TypographySkeleton />
         ) : (
-          <>
+          <Box>
             <Typography component="div" level="h2" sx={{ mt: 1 }}>
-              {data.title}
+              {course?.title}
             </Typography>
             <Typography
               component="div"
               level="body-sm"
               sx={{ mt: 1, mb: 2 }}
             >
-              {data.description}
+              {course?.description}
             </Typography>
-          </>
+          </Box>
         )}
-        {error ? 'Something went wrong please refresh' : ''}
+        {error && 'Something went wrong please refresh the page.'}
       </Box>
       <Divider sx={{ my: 1 }} />
       <Box sx={{ flex: 1 }}>

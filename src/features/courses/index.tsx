@@ -21,17 +21,17 @@ export default function Courses() {
     query: '',
     sort: '',
   });
-  const { data, isLoading } = useGetCoursesQuery('Course');
+  const { data: courses, isLoading } = useGetCoursesQuery('Course');
 
   const query = searchParams.get('query') || '';
   const sort = searchParams.get('sort') || '';
 
   const filteredCourses: Course[] =
-    query.length > 3
-      ? data?.filter((course: Course) =>
+    courses && query.length > 3
+      ? courses.filter((course: Course) =>
           course.title.toLowerCase().includes(query.toLowerCase()),
         )
-      : data || [];
+      : courses || [];
 
   const sortedCourses = [...filteredCourses].sort((a, b) => {
     if (sort === 'ASC') {

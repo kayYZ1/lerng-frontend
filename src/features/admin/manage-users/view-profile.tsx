@@ -77,7 +77,7 @@ export default function ViewProfile(user: User) {
               Access to application: <b>{user.access}</b>
             </Typography>
             <Typography level="body-sm">
-              Joined: {parseDate(user.created)}
+              Joined: {parseDate(user.created!)}
             </Typography>
           </Box>
           <Box display="flex" justifyContent="flex-end" pt={1}>

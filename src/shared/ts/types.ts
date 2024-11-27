@@ -58,7 +58,7 @@ export type Progress = {
 };
 
 export type Question = {
-  id: string;
+  id?: string;
   question: string;
   type: QuestionType;
   answer: string;

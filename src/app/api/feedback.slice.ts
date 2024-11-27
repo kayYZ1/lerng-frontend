@@ -11,14 +11,14 @@ export const feedbackApiSlice = authApi.injectEndpoints({
       }),
       invalidatesTags: ['Feedback'],
     }),
-    GetFeedbackTickets: builder.query<Feedback, string>({
+    GetFeedbackTickets: builder.query<Feedback[], string>({
       query: () => ({
         url: '/feedback/tickets',
         method: 'GET',
       }),
       providesTags: ['Feedback'],
     }),
-    InstructorTickets: builder.query<Feedback, string>({
+    InstructorTickets: builder.query<Feedback[], string>({
       query: () => ({
         url: '/feedback/tickets/instructor',
         method: 'GET',

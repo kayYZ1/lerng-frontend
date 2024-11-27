@@ -8,9 +8,10 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
 import { parseDate } from 'shared/utils/functions';
+import { User } from 'shared/ts/types';
+
 import CollapsibleRow from './collapsible-row';
 import ViewProfile from '../view-profile';
-import { User } from '../../types';
 
 export default function TableRow(u: User) {
   const [open, setOpen] = useState(false);
@@ -33,7 +34,7 @@ export default function TableRow(u: User) {
         <td>{u.email}</td>
         <td>{u.username}</td>
         <td>{u.role}</td>
-        <td>{parseDate(u.created)}</td>
+        <td>{parseDate(u.created!)}</td>
         <td>
           <Chip
             variant="soft"
@@ -43,7 +44,7 @@ export default function TableRow(u: User) {
               {
                 blocked: 'danger',
                 open: 'success',
-              }[u.access] as ColorPaletteProp
+              }[u.access!] as ColorPaletteProp
             }
           >
             {u.access}

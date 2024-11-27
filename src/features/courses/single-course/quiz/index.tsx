@@ -42,7 +42,9 @@ export default function Quiz() {
         ) : (
           <Box width={400} py={2} flexWrap="wrap">
             <Typography level="body-md">Quiz for: </Typography>
-            <Typography level="body-sm">{course.title}</Typography>
+            <Typography level="body-sm">
+              {course && course.title}
+            </Typography>
           </Box>
         )}
         <QuizCard />

@@ -5,13 +5,13 @@ import CourseItem from 'features/courses/components/course-item';
 import CourseSkeleton from 'features/courses/components/course-skeleton';
 
 import EnrolledEmpty from '../empty-state';
-import { Enrolled } from 'shared/ts/types';
+import { TEnrolled } from 'shared/ts/types';
 
 export default function EnrolledList({
   data,
   isLoading,
 }: {
-  data: Enrolled[];
+  data: TEnrolled[];
   isLoading: boolean;
 }) {
   return (

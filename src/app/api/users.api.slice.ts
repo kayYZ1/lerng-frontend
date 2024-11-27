@@ -41,7 +41,7 @@ export const usersApiSlice = authApi.injectEndpoints({
       }),
       providesTags: ['Users'],
     }),
-    GetAllUsers: builder.query<User, string>({
+    GetAllUsers: builder.query<User[], string>({
       query: () => ({
         url: '/users/all',
         method: 'GET',

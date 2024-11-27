@@ -5,15 +5,8 @@ import { useGetProgressQuery } from 'app/api/progress.api.slice';
 
 import TableSkeleton from './skeletons/table';
 
-interface IProgress {
-  id: string;
-  title: string;
-  scorePercentage: number;
-  quizScore: number;
-}
-
 export default function ProgressTable({ id }: { id: string | undefined }) {
-  const { data, isLoading } = useGetProgressQuery(id!);
+  const { data: progressArray, isLoading } = useGetProgressQuery(id!);
 
   return (
     <Box>
@@ -29,13 +22,14 @@ export default function ProgressTable({ id }: { id: string | undefined }) {
             </tr>
           </thead>
           <tbody>
-            {data.map((progress: IProgress) => (
-              <tr key={progress.id}>
-                <td>{progress.title}</td>
-                <td>{progress.scorePercentage}%</td>
-                <td>{progress.quizScore}</td>
-              </tr>
-            ))}
+            {progressArray &&
+              progressArray.map((progress) => (
+                <tr key={progress.id}>
+                  <td>{progress.title}</td>
+                  <td>{progress.scorePercentage}%</td>
+                  <td>{progress.quizScore}</td>
+                </tr>
+              ))}
           </tbody>
         </Table>
       )}

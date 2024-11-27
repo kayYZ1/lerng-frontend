@@ -3,7 +3,7 @@ import Typography from '@mui/joy/Typography';
 import Sheet from '@mui/joy/Sheet';
 
 import { useGetCoursesForUserQuery } from 'app/api/enrolled.api.slice';
-import { EnrolledCourses } from 'shared/ts/types';
+import { TEnrolled } from 'shared/ts/types';
 import { parseDate } from 'shared/utils/functions';
 
 export default function CollapsibleRow({
@@ -37,7 +37,7 @@ export default function CollapsibleRow({
             </tr>
           </thead>
           <tbody>
-            {userCourses.map((course: EnrolledCourses) => (
+            {userCourses.map((course: TEnrolled) => (
               <tr key={course.id}>
                 <td>{course.course.title}</td>
                 <td>{course.course.description}</td>
