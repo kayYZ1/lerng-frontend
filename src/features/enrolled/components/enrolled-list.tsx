@@ -22,7 +22,7 @@ export default function EnrolledList({
     >
       <Grid
         container
-        spacing={1}
+        spacing={2}
         direction="row"
         sx={{
           flexGrow: 1,
@@ -30,7 +30,7 @@ export default function EnrolledList({
             xs: 4,
             sm: 4,
             md: 5,
-            lg: 5,
+            lg: 6,
           },
         }}
       >
