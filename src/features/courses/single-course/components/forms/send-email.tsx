@@ -20,6 +20,7 @@ import Textarea from '@mui/joy/Textarea';
 import Box from '@mui/joy/Box';
 
 import { Instructor } from 'shared/ts/types';
+import SuccessAlert from 'shared/components/alerts/success';
 
 const validationSchema = yup.object().shape({
   topic: yup
@@ -36,8 +37,10 @@ const validationSchema = yup.object().shape({
 
 export default function SendEmailForm({
   instructor,
+  setOpen,
 }: {
   instructor: Instructor;
+  setOpen: (value: boolean) => void;
 }) {
   const user = useSelector(selectCurrentUser);
   const [SendEmail, { isLoading, isSuccess }] = useSendEmailMutation();
@@ -111,7 +114,11 @@ export default function SendEmailForm({
           </FormControl>
           <CardOverflow>
             <CardActions sx={{ alignSelf: 'flex-end', pt: 2 }}>
-              <Button size="sm" variant="outlined">
+              <Button
+                size="sm"
+                variant="outlined"
+                onClick={() => setOpen(false)}
+              >
                 Cancel
               </Button>
               <Button
@@ -125,9 +132,10 @@ export default function SendEmailForm({
             </CardActions>
           </CardOverflow>
           {isSuccess && (
-            <Typography level="body-sm" textColor="green">
-              Email message succesfully send.
-            </Typography>
+            <SuccessAlert
+              type="Email"
+              message="Message succesfully sent"
+            />
           )}
         </Stack>
       </form>
