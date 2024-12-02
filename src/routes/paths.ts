@@ -3,6 +3,9 @@ const DefaultPath = {
   HOME: '/home',
   POLICY: '/policy',
   TOS: '/tos',
+  CONTACT: '/contact',
+  ABOUT_US: '/about-us',
+  SERVICES: '/services',
 };
 
 const AUTH = '/auth';
