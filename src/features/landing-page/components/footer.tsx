@@ -1,13 +1,15 @@
+import { Link } from 'react-router-dom';
+
 import Box from '@mui/joy/Box';
 import Typography from '@mui/joy/Typography';
 import Grid from '@mui/joy/Grid';
 import Sheet from '@mui/joy/Sheet';
 import IconButton from '@mui/joy/IconButton';
-import Link from '@mui/joy/Link';
 
 import GitHub from '@mui/icons-material/GitHub';
 import LinkedIn from '@mui/icons-material/LinkedIn';
 import Mail from '@mui/icons-material/Mail';
+import { DefaultPath } from 'routes/paths';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -45,15 +47,9 @@ export default function Footer() {
         <Grid xs={12} sm={4}>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
             <Typography level="title-sm">Quick Links</Typography>
-            <Link level="body-sm" href="/about">
-              About Us
-            </Link>
-            <Link level="body-sm" href="/services">
-              Services
-            </Link>
-            <Link level="body-sm" href="/contact">
-              Contact
-            </Link>
+            <Link to="aboutus">About Us</Link>
+            <Link to="services">Services</Link>
+            <Link to="contact">Contact</Link>
           </Box>
         </Grid>
         <Grid xs={12} sm={4}>
@@ -94,12 +90,8 @@ export default function Footer() {
               © {currentYear} LERNG. All rights reserved.
             </Typography>
             <Box sx={{ display: 'flex', gap: 2 }}>
-              <Link level="body-xs" href="/privacy">
-                Privacy Policy
-              </Link>
-              <Link level="body-xs" href="/terms">
-                Terms of Service
-              </Link>
+              <Link to={DefaultPath.POLICY}>Privacy Policy</Link>
+              <Link to={DefaultPath.TOS}>Terms of Service</Link>
             </Box>
           </Box>
         </Grid>

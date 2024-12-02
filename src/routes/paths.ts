@@ -1,6 +1,8 @@
 const DefaultPath = {
   LANDING_PAGE: '/',
   HOME: '/home',
+  POLICY: '/policy',
+  TOS: '/tos',
 };
 
 const AUTH = '/auth';
