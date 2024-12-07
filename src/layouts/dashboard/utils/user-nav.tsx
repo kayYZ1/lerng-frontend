@@ -15,14 +15,14 @@ import style from '../dashboard.module.css';
 
 const UserListItems = [
   {
-    link: DashboardPath.ENROLLED,
-    name: 'Enrolled',
-    icon: <LibraryBooksIcon />,
-  },
-  {
     link: CoursesPath.COURSES,
     name: 'Courses',
     icon: <SignpostIcon />,
+  },
+  {
+    link: DashboardPath.ENROLLED,
+    name: 'Enrolled',
+    icon: <LibraryBooksIcon />,
   },
   {
     link: DashboardPath.FEEDBACK,

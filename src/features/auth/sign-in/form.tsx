@@ -19,7 +19,7 @@ import ShowCapsLock from 'shared/components/show-capslock';
 import ErrorAlert from 'shared/components/alerts/error';
 import { transformErrorResponse } from 'shared/utils/functions';
 
-import { DashboardPath, AuthPath } from 'routes/paths';
+import { AuthPath, CoursesPath } from 'routes/paths';
 
 import style from '../auth.module.css';
 
@@ -56,7 +56,7 @@ export default function SignInForm() {
       };
       const { accessToken } = await SignInFn(user).unwrap();
       dispatch(setCredentials(accessToken));
-      navigate(DashboardPath.ENROLLED);
+      navigate(CoursesPath.COURSES);
       resetForm();
     },
   });

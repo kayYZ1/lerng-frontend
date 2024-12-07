@@ -16,9 +16,9 @@ import style from '../dashboard.module.css';
 
 const InstructorListItems = [
   {
-    link: DashboardPath.DASHBOARD,
-    name: 'Instructor',
-    icon: <DashboardIcon />,
+    link: CoursesPath.COURSES,
+    name: 'Courses',
+    icon: <SignpostIcon />,
   },
   {
     link: DashboardPath.ENROLLED,
@@ -26,14 +26,14 @@ const InstructorListItems = [
     icon: <LibraryBooksIcon />,
   },
   {
-    link: CoursesPath.COURSES,
-    name: 'Courses',
-    icon: <SignpostIcon />,
-  },
-  {
     link: DashboardPath.FEEDBACK_INSTRUCTOR,
     name: 'Feedback',
     icon: <FeedbackIcon />,
+  },
+  {
+    link: DashboardPath.DASHBOARD,
+    name: 'Instructor',
+    icon: <DashboardIcon />,
   },
 ];
 
