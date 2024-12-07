@@ -20,6 +20,7 @@ const AuthPath = {
 const DASHBOARD = '/dashboard';
 const DashboardPath = {
   DASHBOARD: DASHBOARD,
+  INSTRUCTOR: `${DASHBOARD}/instructor`,
   SETTINGS: `${DASHBOARD}/settings`,
   ENROLLED: `${DASHBOARD}/enrolled`,
   FEEDBACK: `${DASHBOARD}/feedback`,

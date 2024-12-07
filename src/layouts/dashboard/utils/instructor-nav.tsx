@@ -26,12 +26,7 @@ const InstructorListItems = [
     icon: <LibraryBooksIcon />,
   },
   {
-    link: DashboardPath.FEEDBACK_INSTRUCTOR,
-    name: 'Feedback',
-    icon: <FeedbackIcon />,
-  },
-  {
-    link: DashboardPath.DASHBOARD,
+    link: DashboardPath.INSTRUCTOR,
     name: 'Instructor',
     icon: <DashboardIcon />,
   },
@@ -51,9 +46,11 @@ export default function InstructorNav() {
         <ListItem
           key={item.name}
           sx={{
-            backgroundColor: location.pathname.includes(item.link)
-              ? 'primary.softBg'
-              : 'inherit',
+            backgroundColor:
+              location.pathname.includes(item.link) ||
+              location.pathname === item.link
+                ? 'primary.softBg'
+                : 'inherit',
           }}
         >
           <ListItemButton>

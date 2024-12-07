@@ -7,6 +7,8 @@ import Tab, { tabClasses } from '@mui/joy/Tab';
 
 import ManageCourses from './manage-courses/index.tsx';
 import Statistics from './statistics/index.tsx';
+import FeedbackInstructor from './feedback/index.tsx';
+
 import BreadcrumbsCustom from 'shared/components/breadcrumbs-custom.tsx';
 
 export default function InstructorPanel() {
@@ -60,12 +62,22 @@ export default function InstructorPanel() {
             >
               Statistics
             </Tab>
+            <Tab
+              sx={{ borderRadius: '6px 6px 0 0' }}
+              indicatorInset
+              value={2}
+            >
+              Feedback
+            </Tab>
           </TabList>
           <TabPanel value={0}>
             <ManageCourses />
           </TabPanel>
           <TabPanel value={1}>
             <Statistics />
+          </TabPanel>
+          <TabPanel value={2}>
+            <FeedbackInstructor />
           </TabPanel>
         </Tabs>
       </Box>
