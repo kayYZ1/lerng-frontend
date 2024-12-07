@@ -4,6 +4,11 @@ import Avatar from '@mui/joy/Avatar';
 import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
 import Typography from '@mui/joy/Typography';
+import IconButton from '@mui/joy/IconButton';
+import Stack from '@mui/joy/Stack';
+import Tooltip from '@mui/joy/Tooltip';
+
+import Chat from '@mui/icons-material/Chat';
 
 import InstructorCardSkeleton from './skeletons/instructor-card';
 import SendEmailModal from './modals/send-email';
@@ -45,7 +50,14 @@ export default function CourseInstructor({
             <Typography level="body-sm" sx={{ maxWidth: '24ch' }}>
               {instructor.email}
             </Typography>
-            <SendEmailModal {...instructor} />
+            <Stack direction="row" gap={4}>
+              <SendEmailModal {...instructor} />
+              <Tooltip title="Chat with instructor" variant="solid">
+                <IconButton>
+                  <Chat />
+                </IconButton>
+              </Tooltip>
+            </Stack>
           </CardContent>
         </Card>
       )}

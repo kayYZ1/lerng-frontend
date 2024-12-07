@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import List from '@mui/joy/List';
 import ListItem from '@mui/joy/ListItem';
@@ -38,6 +38,8 @@ const InstructorListItems = [
 ];
 
 export default function InstructorNav() {
+  const location = useLocation();
+
   return (
     <List
       aria-labelledby="nav-list-browse"
@@ -46,7 +48,15 @@ export default function InstructorNav() {
       }}
     >
       {InstructorListItems.map((item) => (
-        <ListItem key={item.name}>
+        <ListItem
+          key={item.name}
+          sx={{
+            backgroundColor:
+              location.pathname === item.link
+                ? 'primary.softBg'
+                : 'inherit',
+          }}
+        >
           <ListItemButton>
             <ListItemDecorator>{item.icon}</ListItemDecorator>
             <ListItemContent>

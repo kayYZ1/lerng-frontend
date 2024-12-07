@@ -3,6 +3,7 @@ import { useState, Fragment } from 'react';
 import Modal from '@mui/joy/Modal';
 import ModalDialog from '@mui/joy/ModalDialog';
 import IconButton from '@mui/joy/IconButton';
+import Tooltip from '@mui/joy/Tooltip';
 
 import Mail from '@mui/icons-material/Mail';
 
@@ -16,7 +17,9 @@ export default function SendEmailModal(instructor: Instructor) {
   return (
     <Fragment>
       <IconButton onClick={() => setOpen(true)}>
-        <Mail />
+        <Tooltip title="Send email to instructor" variant="solid">
+          <Mail />
+        </Tooltip>
       </IconButton>
       <Modal
         open={open}
