@@ -45,10 +45,9 @@ export default function UserNav() {
         <ListItem
           key={item.name}
           sx={{
-            backgroundColor:
-              location.pathname === item.link
-                ? 'primary.softBg'
-                : 'inherit',
+            backgroundColor: location.pathname.includes(item.link)
+              ? 'primary.softBg'
+              : 'inherit',
           }}
         >
           <ListItemButton>
