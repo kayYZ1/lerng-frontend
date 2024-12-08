@@ -8,7 +8,6 @@ import ListItemContent from '@mui/joy/ListItemContent';
 
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import SignpostIcon from '@mui/icons-material/Signpost';
-import FeedbackIcon from '@mui/icons-material/Feedback';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 
 import { CoursesPath, DashboardPath } from 'routes/paths';
