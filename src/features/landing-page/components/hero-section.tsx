@@ -4,6 +4,7 @@ import { useGetLatestUsersQuery } from 'app/api/users.api.slice';
 
 import Box from '@mui/joy/Box';
 import Typography from '@mui/joy/Typography';
+import IconButton from '@mui/joy/IconButton';
 import Button from '@mui/joy/Button';
 import Input from '@mui/joy/Input';
 import Grid from '@mui/joy/Grid';
@@ -26,7 +27,7 @@ const mockCardsData = [
   },
   {
     title: 'Knowledge Checks',
-    description: 'Test your understanding with quizzes',
+    description: 'Test your understanding of subjects with quizes!',
     icon: <QuizIcon />,
   },
   {
@@ -138,13 +139,50 @@ export default function HeroSection() {
           Let's get started!
         </Button>
       </Box>
-      <Grid container spacing={4} sx={{ mx: 'auto' }}>
+      <Grid
+        container
+        spacing={4}
+        sx={{
+          mx: 'auto',
+          px: 2,
+          maxWidth: 'lg',
+          justifyContent: 'center',
+        }}
+      >
         {mockCardsData.map((card) => (
           <Grid xs={12} md={4} key={card.title}>
-            <Card variant="soft" sx={{ height: '100%', py: 4 }}>
-              {card.icon}
-              <Typography level="h4">{card.title}</Typography>
-              <Typography>{card.description}</Typography>
+            <Card
+              variant="outlined"
+              sx={{
+                height: '100%',
+                py: 4,
+                px: 3,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                textAlign: 'center',
+                boxShadow: 'sm',
+                borderRadius: 'md',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                '&:hover': {
+                  transform: 'scale(1.05)',
+                  boxShadow: 'lg',
+                },
+              }}
+            >
+              <IconButton size="lg">{card.icon}</IconButton>
+              <Typography level="body-lg" fontWeight="lg" sx={{ mb: 2 }}>
+                {card.title}
+              </Typography>
+              <Typography
+                level="body-md"
+                sx={{
+                  color: 'text.secondary',
+                  lineHeight: 1.6,
+                }}
+              >
+                {card.description}
+              </Typography>
             </Card>
           </Grid>
         ))}

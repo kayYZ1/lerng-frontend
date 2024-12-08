@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import List from '@mui/joy/List';
 import ListItem from '@mui/joy/ListItem';
@@ -8,7 +8,6 @@ import ListItemContent from '@mui/joy/ListItemContent';
 
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import SignpostIcon from '@mui/icons-material/Signpost';
-import FeedbackIcon from '@mui/icons-material/Feedback';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 
 import { CoursesPath, DashboardPath } from 'routes/paths';
@@ -16,9 +15,9 @@ import style from '../dashboard.module.css';
 
 const InstructorListItems = [
   {
-    link: DashboardPath.DASHBOARD,
-    name: 'Instructor',
-    icon: <DashboardIcon />,
+    link: CoursesPath.COURSES,
+    name: 'Courses',
+    icon: <SignpostIcon />,
   },
   {
     link: DashboardPath.ENROLLED,
@@ -26,18 +25,15 @@ const InstructorListItems = [
     icon: <LibraryBooksIcon />,
   },
   {
-    link: CoursesPath.COURSES,
-    name: 'Courses',
-    icon: <SignpostIcon />,
-  },
-  {
-    link: DashboardPath.FEEDBACK_INSTRUCTOR,
-    name: 'Feedback',
-    icon: <FeedbackIcon />,
+    link: DashboardPath.INSTRUCTOR,
+    name: 'Instructor',
+    icon: <DashboardIcon />,
   },
 ];
 
 export default function InstructorNav() {
+  const location = useLocation();
+
   return (
     <List
       aria-labelledby="nav-list-browse"
@@ -46,7 +42,16 @@ export default function InstructorNav() {
       }}
     >
       {InstructorListItems.map((item) => (
-        <ListItem key={item.name}>
+        <ListItem
+          key={item.name}
+          sx={{
+            backgroundColor:
+              location.pathname.includes(item.link) ||
+              location.pathname === item.link
+                ? 'primary.softBg'
+                : 'inherit',
+          }}
+        >
           <ListItemButton>
             <ListItemDecorator>{item.icon}</ListItemDecorator>
             <ListItemContent>

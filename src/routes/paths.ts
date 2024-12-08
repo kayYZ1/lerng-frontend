@@ -1,6 +1,11 @@
 const DefaultPath = {
   LANDING_PAGE: '/',
   HOME: '/home',
+  POLICY: '/policy',
+  TOS: '/tos',
+  CONTACT: '/contact',
+  ABOUT_US: '/about-us',
+  SERVICES: '/services',
 };
 
 const AUTH = '/auth';
@@ -15,6 +20,7 @@ const AuthPath = {
 const DASHBOARD = '/dashboard';
 const DashboardPath = {
   DASHBOARD: DASHBOARD,
+  INSTRUCTOR: `${DASHBOARD}/instructor`,
   SETTINGS: `${DASHBOARD}/settings`,
   ENROLLED: `${DASHBOARD}/enrolled`,
   FEEDBACK: `${DASHBOARD}/feedback`,

@@ -2,13 +2,13 @@ import { lazy, createElement } from 'react';
 
 import { DashboardPath, CoursesPath } from './paths';
 
-const Dashboard = lazy(() => import('features/instructor/index'));
+const Instructor = lazy(() => import('features/instructor/index'));
 const Admin = lazy(() => import('features/admin/index'));
 const SettingsProfile = lazy(() => import('features/settings/index'));
 const Enrolled = lazy(() => import('features/enrolled/index'));
 const Feedback = lazy(() => import('features/feedback/index'));
 const FeedbackInstructor = lazy(
-  () => import('features/feedback/feedback-instructor/index'),
+  () => import('features/instructor/feedback/index'),
 );
 
 const Courses = lazy(() => import('features/courses/index'));
@@ -24,8 +24,8 @@ const Quiz = lazy(
 
 const routes = [
   {
-    path: DashboardPath.DASHBOARD,
-    element: createElement(Dashboard),
+    path: DashboardPath.INSTRUCTOR,
+    element: createElement(Instructor),
   },
   {
     path: DashboardPath.ADMIN,

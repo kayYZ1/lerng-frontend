@@ -88,9 +88,16 @@ export default function FileUploadComponent() {
               {file.name}
             </Typography>
           ) : (
-            'Upload image...'
+            'PNG only'
           )}
         </Sheet>
+        <input
+          type="file"
+          className={style.visuallyHiddenInput}
+          ref={fileInputRef}
+          onChange={onFileChange}
+          accept=".png"
+        />
         <Button
           onClick={onFileUpload}
           component="label"
@@ -103,27 +110,16 @@ export default function FileUploadComponent() {
             paddingTop: 1,
           }}
         >
-          Upload
-          <input
-            type="file"
-            className={style.visuallyHiddenInput}
-            ref={fileInputRef}
-            onChange={onFileChange}
-            accept=".png"
-          />
+          Upload by clicking here
         </Button>
-        {isSuccess ? (
+        {isSuccess && (
           <SuccessAlert
             type="Image upload"
             message="Image upload was succesfull"
           />
-        ) : (
-          ''
         )}
-        {validationError ? (
+        {validationError && (
           <ErrorAlert type="File upload error" message={validationError} />
-        ) : (
-          ''
         )}
       </Stack>
     </Box>

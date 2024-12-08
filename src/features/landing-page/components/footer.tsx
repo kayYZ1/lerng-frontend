@@ -1,13 +1,31 @@
+import { Link } from 'react-router-dom';
+
 import Box from '@mui/joy/Box';
 import Typography from '@mui/joy/Typography';
 import Grid from '@mui/joy/Grid';
 import Sheet from '@mui/joy/Sheet';
 import IconButton from '@mui/joy/IconButton';
-import Link from '@mui/joy/Link';
 
 import GitHub from '@mui/icons-material/GitHub';
 import LinkedIn from '@mui/icons-material/LinkedIn';
 import Mail from '@mui/icons-material/Mail';
+
+import { DefaultPath } from 'routes/paths';
+
+function CustomLink({ href, name }: { href: string; name: string }) {
+  return (
+    <Link
+      to={href}
+      style={{
+        color: '#0B6BCB',
+        fontSize: 'smaller',
+        textDecoration: 'none',
+      }}
+    >
+      {name}
+    </Link>
+  );
+}
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -45,15 +63,9 @@ export default function Footer() {
         <Grid xs={12} sm={4}>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
             <Typography level="title-sm">Quick Links</Typography>
-            <Link level="body-sm" href="/about">
-              About Us
-            </Link>
-            <Link level="body-sm" href="/services">
-              Services
-            </Link>
-            <Link level="body-sm" href="/contact">
-              Contact
-            </Link>
+            <CustomLink href={DefaultPath.ABOUT_US} name="About us" />
+            <CustomLink href={DefaultPath.SERVICES} name="Services" />
+            <CustomLink href={DefaultPath.CONTACT} name="Contact" />
           </Box>
         </Grid>
         <Grid xs={12} sm={4}>
@@ -94,12 +106,11 @@ export default function Footer() {
               © {currentYear} LERNG. All rights reserved.
             </Typography>
             <Box sx={{ display: 'flex', gap: 2 }}>
-              <Link level="body-xs" href="/privacy">
-                Privacy Policy
-              </Link>
-              <Link level="body-xs" href="/terms">
-                Terms of Service
-              </Link>
+              <CustomLink
+                href={DefaultPath.POLICY}
+                name="Privacy Policy"
+              />
+              <CustomLink href={DefaultPath.TOS} name="Terms Of Service" />
             </Box>
           </Box>
         </Grid>

@@ -4,11 +4,7 @@ import { CssVarsProvider } from '@mui/joy/styles';
 import { GlobalStyles } from '@mui/joy';
 import CssBaseline from '@mui/joy/CssBaseline';
 
-interface IRootLayout {
-  children: ReactNode;
-}
-
-export default function RootLayout({ children }: IRootLayout) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <CssVarsProvider
       disableTransitionOnChange

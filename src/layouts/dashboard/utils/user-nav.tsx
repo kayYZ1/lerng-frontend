@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import List from '@mui/joy/List';
 import ListItem from '@mui/joy/ListItem';
@@ -15,14 +15,14 @@ import style from '../dashboard.module.css';
 
 const UserListItems = [
   {
-    link: DashboardPath.ENROLLED,
-    name: 'Enrolled',
-    icon: <LibraryBooksIcon />,
-  },
-  {
     link: CoursesPath.COURSES,
     name: 'Courses',
     icon: <SignpostIcon />,
+  },
+  {
+    link: DashboardPath.ENROLLED,
+    name: 'Enrolled',
+    icon: <LibraryBooksIcon />,
   },
   {
     link: DashboardPath.FEEDBACK,
@@ -32,6 +32,8 @@ const UserListItems = [
 ];
 
 export default function UserNav() {
+  const location = useLocation();
+
   return (
     <List
       aria-labelledby="nav-list-browse"
@@ -40,7 +42,14 @@ export default function UserNav() {
       }}
     >
       {UserListItems.map((item) => (
-        <ListItem key={item.name}>
+        <ListItem
+          key={item.name}
+          sx={{
+            backgroundColor: location.pathname.includes(item.link)
+              ? 'primary.softBg'
+              : 'inherit',
+          }}
+        >
           <ListItemButton>
             <ListItemDecorator sx={{ pt: 0.5 }}>
               {item.icon}

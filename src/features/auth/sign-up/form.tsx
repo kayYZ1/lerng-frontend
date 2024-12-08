@@ -34,6 +34,15 @@ const validationSchema = yup.object().shape({
   password: yup
     .string()
     .min(8, 'Password must be atleast 8 characters long')
+    .max(64, 'Password must have less than 64 characters')
+    .test(
+      'Cant contain the username',
+      "Password can't contain the username",
+      function (password) {
+        const { username } = this.parent;
+        return password && username ? !password.includes(username) : true;
+      },
+    )
     .required('Password is required'),
   repeatPassword: yup
     .string()

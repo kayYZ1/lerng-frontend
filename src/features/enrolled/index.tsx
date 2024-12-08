@@ -63,8 +63,8 @@ export default function Enrolled() {
       >
         <Input
           size="sm"
-          sx={{ width: '25em' }}
-          placeholder="Search through enrolled courses"
+          sx={{ width: '20em' }}
+          placeholder="Search through enrolled..."
           value={query}
           onChange={(event) =>
             setSearchParams(
