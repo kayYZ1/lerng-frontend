@@ -8,7 +8,7 @@ import Grid from '@mui/joy/Grid';
 import Card from '@mui/joy/Card';
 
 import Person from '@mui/icons-material/Person';
-import { DashboardPath } from 'routes/paths';
+import { CoursesPath, DashboardPath } from 'routes/paths';
 
 const popularCourses = [
   {
@@ -21,14 +21,14 @@ const popularCourses = [
   {
     title: 'Advanced Shell Scripting',
     description:
-      'Learn to write complex shell scripts and automate your Linux workflows. Lorem sadasda',
+      'Learn to write complex shell scripts and automate your Linux workflows.',
     students: '8,921',
     level: 'Advanced',
   },
   {
     title: 'Linux Security Essentials',
     description:
-      'Understand security fundamentals and protect your Linux systems from threats. Lorem sadas',
+      'Understand security fundamentals and protect your Linux systems from threats.',
     students: '12,445',
     level: 'Intermediate',
   },
@@ -108,7 +108,7 @@ export default function Popular() {
                   py: 1.2,
                   fontWeight: 'bold',
                 }}
-                onClick={() => navigate(DashboardPath.DASHBOARD)}
+                onClick={() => navigate(CoursesPath.COURSES)}
               >
                 Learn More
               </Button>
