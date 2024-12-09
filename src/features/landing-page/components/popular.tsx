@@ -8,7 +8,7 @@ import Grid from '@mui/joy/Grid';
 import Card from '@mui/joy/Card';
 
 import Person from '@mui/icons-material/Person';
-import { CoursesPath, DashboardPath } from 'routes/paths';
+import { CoursesPath } from 'routes/paths';
 
 const popularCourses = [
   {
