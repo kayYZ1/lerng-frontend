@@ -9,7 +9,7 @@ export const coursesApiSlice = authApi.injectEndpoints({
         method: 'POST',
         body: data,
       }),
-      invalidatesTags: ['Course'],
+      invalidatesTags: ['Courses'],
     }),
     EditCourse: builder.mutation<unknown, EditCourse>({
       query: (data) => ({
@@ -17,14 +17,14 @@ export const coursesApiSlice = authApi.injectEndpoints({
         method: 'PATCH',
         body: data,
       }),
-      invalidatesTags: ['Course'],
+      invalidatesTags: ['Courses'],
     }),
     RemoveCourse: builder.mutation({
       query: (courseId: string) => ({
         url: `/courses/remove/${courseId}`,
         method: 'DELETE',
       }),
-      invalidatesTags: ['Course'],
+      invalidatesTags: ['Courses'],
     }),
     GetCourses: builder.query<Course[], string>({
       query: () => ({
