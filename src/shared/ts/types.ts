@@ -123,3 +123,8 @@ export type SendEmail = {
   message: string;
   instructorId?: string;
 };
+
+export type Popular = {
+  course: Course;
+  users: number;
+};

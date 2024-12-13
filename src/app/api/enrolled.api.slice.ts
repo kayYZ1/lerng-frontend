@@ -1,7 +1,7 @@
 import { authApi } from 'app/base/auth.api';
 import { setEnrolled } from '../slice/enrolled.slice';
 
-import { TEnrolled } from 'shared/ts/types';
+import { Popular, TEnrolled } from 'shared/ts/types';
 
 export const enrolledApiSlice = authApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -62,6 +62,13 @@ export const enrolledApiSlice = authApi.injectEndpoints({
       }),
       providesTags: ['Enrolled'],
     }),
+    GetPopularCourses: builder.query<Popular[], string>({
+      query: () => ({
+        url: '/enrolled/popular',
+        method: 'GET',
+      }),
+      providesTags: ['Popular'],
+    }),
   }),
 });
 
@@ -73,4 +80,5 @@ export const {
   useGetRatingQuery,
   useGetCoursesForUserQuery,
   useGetRatingByCourseQuery,
+  useGetPopularCoursesQuery,
 } = enrolledApiSlice;
