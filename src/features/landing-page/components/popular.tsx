@@ -11,11 +11,13 @@ import Person from '@mui/icons-material/Person';
 import { AuthPath } from 'routes/paths';
 
 import { useGetPopularCoursesQuery } from 'app/api/enrolled.api.slice';
+import PopularSkeleton from './skeletons/popular-skeleton';
 
 export default function Popular() {
   const navigate = useNavigate();
 
-  const { data: popularCourses } = useGetPopularCoursesQuery('Popular');
+  const { data: popularCourses, isLoading } =
+    useGetPopularCoursesQuery('Popular');
 
   return (
     <Box sx={{ px: 4 }}>
@@ -31,93 +33,100 @@ export default function Popular() {
           justifyContent: 'center',
         }}
       >
-        {popularCourses &&
-          popularCourses.map((popularCourse, index) => (
-            <Grid key={index} xs={12} md={4}>
-              <Card
-                variant="outlined"
-                sx={{
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  p: 3,
-                  borderRadius: 'lg',
-                  boxShadow: 'sm',
-                  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                  '&:hover': {
-                    transform: 'translateY(-8px)',
-                    boxShadow: 'lg',
-                  },
-                }}
-              >
-                <Box
+        {isLoading
+          ? [1, 2, 3].map((index) => (
+              <Grid xs={12} md={4}>
+                <PopularSkeleton key={index} />
+              </Grid>
+            ))
+          : popularCourses?.map((popularCourse, index) => (
+              <Grid xs={12} md={4}>
+                <Card
+                  key={index}
+                  variant="outlined"
                   sx={{
-                    flex: 1,
+                    height: '100%',
                     display: 'flex',
                     flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    p: 3,
+                    borderRadius: 'lg',
+                    boxShadow: 'sm',
+                    transition:
+                      'transform 0.3s ease, box-shadow 0.3s ease',
+                    '&:hover': {
+                      transform: 'translateY(-8px)',
+                      boxShadow: 'lg',
+                    },
                   }}
                 >
-                  <Typography
-                    level="h4"
-                    fontWeight="lg"
+                  <Box
                     sx={{
-                      mb: 1,
-                      color: 'primary.main',
-                      display: '-webkit-box',
-                      WebkitLineClamp: 2,
-                      WebkitBoxOrient: 'vertical',
-                      overflow: 'hidden',
-                    }}
-                  >
-                    {popularCourse.course.title}
-                  </Typography>
-                  <Typography
-                    sx={{
-                      mb: 3,
-                      color: 'text.secondary',
-                      lineHeight: 1.6,
-                      display: '-webkit-box',
-                      WebkitLineClamp: 3,
-                      WebkitBoxOrient: 'vertical',
-                      overflow: 'hidden',
                       flex: 1,
+                      display: 'flex',
+                      flexDirection: 'column',
                     }}
                   >
-                    {popularCourse.course.description}
-                  </Typography>
-                  <Stack
-                    direction="row"
-                    spacing={2}
-                    alignItems="center"
-                    sx={{
-                      color: 'text.secondary',
-                      mt: 'auto',
-                    }}
-                  >
-                    <Person sx={{ fontSize: 20 }} />
-                    <Typography level="body-sm" noWrap>
-                      {popularCourse.users === 1
-                        ? `${popularCourse.users} student`
-                        : `${popularCourse.users} students`}
+                    <Typography
+                      level="h4"
+                      fontWeight="lg"
+                      sx={{
+                        mb: 1,
+                        color: 'primary.main',
+                        display: '-webkit-box',
+                        WebkitLineClamp: 2,
+                        WebkitBoxOrient: 'vertical',
+                        overflow: 'hidden',
+                      }}
+                    >
+                      {popularCourse.course.title}
                     </Typography>
-                  </Stack>
-                </Box>
-                <Button
-                  variant="solid"
-                  color="primary"
-                  sx={{
-                    mt: 3,
-                    py: 1.2,
-                    fontWeight: 'bold',
-                  }}
-                  onClick={() => navigate(AuthPath.SIGN_IN)}
-                >
-                  Learn More
-                </Button>
-              </Card>
-            </Grid>
-          ))}
+                    <Typography
+                      sx={{
+                        mb: 3,
+                        color: 'text.secondary',
+                        lineHeight: 1.6,
+                        display: '-webkit-box',
+                        WebkitLineClamp: 3,
+                        WebkitBoxOrient: 'vertical',
+                        overflow: 'hidden',
+                        flex: 1,
+                      }}
+                    >
+                      {popularCourse.course.description}
+                    </Typography>
+                    <Stack
+                      direction="row"
+                      spacing={2}
+                      alignItems="center"
+                      sx={{
+                        color: 'text.secondary',
+                        mt: 'auto',
+                      }}
+                    >
+                      <Person sx={{ fontSize: 20 }} />
+                      <Typography level="body-sm" noWrap>
+                        {popularCourse.users === 1
+                          ? `${popularCourse.users} student`
+                          : `${popularCourse.users} students`}
+                      </Typography>
+                    </Stack>
+                  </Box>
+                  <Button
+                    variant="solid"
+                    color="primary"
+                    sx={{
+                      mt: 3,
+                      py: 1.2,
+                      fontWeight: 'bold',
+                    }}
+                    onClick={() => navigate(AuthPath.SIGN_IN)}
+                  >
+                    Learn More
+                  </Button>
+                </Card>
+              </Grid>
+            ))}
       </Grid>
     </Box>
   );

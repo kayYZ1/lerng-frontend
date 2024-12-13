@@ -80,7 +80,9 @@ export default function ForgotPasswordForm() {
           Send Reset Link
         </Button>
       </Stack>
-      {error && <ErrorAlert type="Reset password" message={errorResponse} />}
+      {error && (
+        <ErrorAlert type="Reset password" message={errorResponse} />
+      )}
       {isSuccess && (
         <SuccessAlert
           type="Reset password"
