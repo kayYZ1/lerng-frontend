@@ -8,7 +8,7 @@ import Grid from '@mui/joy/Grid';
 import Card from '@mui/joy/Card';
 
 import Person from '@mui/icons-material/Person';
-import { CoursesPath } from 'routes/paths';
+import { AuthPath } from 'routes/paths';
 
 import { useGetPopularCoursesQuery } from 'app/api/enrolled.api.slice';
 
@@ -20,7 +20,7 @@ export default function Popular() {
   return (
     <Box sx={{ px: 4 }}>
       <Typography level="h2" sx={{ textAlign: 'center', pb: 8 }}>
-        This Week's Picks!
+        Most popular courses
       </Typography>
       <Grid
         container
@@ -51,11 +51,24 @@ export default function Popular() {
                   },
                 }}
               >
-                <Box>
+                <Box
+                  sx={{
+                    flex: 1,
+                    display: 'flex',
+                    flexDirection: 'column',
+                  }}
+                >
                   <Typography
                     level="h4"
                     fontWeight="lg"
-                    sx={{ mb: 1, color: 'primary.main' }}
+                    sx={{
+                      mb: 1,
+                      color: 'primary.main',
+                      display: '-webkit-box',
+                      WebkitLineClamp: 2,
+                      WebkitBoxOrient: 'vertical',
+                      overflow: 'hidden',
+                    }}
                   >
                     {popularCourse.course.title}
                   </Typography>
@@ -64,6 +77,11 @@ export default function Popular() {
                       mb: 3,
                       color: 'text.secondary',
                       lineHeight: 1.6,
+                      display: '-webkit-box',
+                      WebkitLineClamp: 3,
+                      WebkitBoxOrient: 'vertical',
+                      overflow: 'hidden',
+                      flex: 1,
                     }}
                   >
                     {popularCourse.course.description}
@@ -72,11 +90,16 @@ export default function Popular() {
                     direction="row"
                     spacing={2}
                     alignItems="center"
-                    sx={{ color: 'text.secondary' }}
+                    sx={{
+                      color: 'text.secondary',
+                      mt: 'auto',
+                    }}
                   >
                     <Person sx={{ fontSize: 20 }} />
-                    <Typography level="body-sm">
-                      {popularCourse.users} students
+                    <Typography level="body-sm" noWrap>
+                      {popularCourse.users === 1
+                        ? `${popularCourse.users} student`
+                        : `${popularCourse.users} students`}
                     </Typography>
                   </Stack>
                 </Box>
@@ -88,7 +111,7 @@ export default function Popular() {
                     py: 1.2,
                     fontWeight: 'bold',
                   }}
-                  onClick={() => navigate(CoursesPath.COURSES)}
+                  onClick={() => navigate(AuthPath.SIGN_IN)}
                 >
                   Learn More
                 </Button>
