@@ -128,3 +128,9 @@ export type Popular = {
   course: Course;
   users: number;
 };
+
+export type Statistic = {
+  course: string;
+  count: number;
+  rating: number;
+};

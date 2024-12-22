@@ -16,6 +16,7 @@ export const authApi = createApi({
     'Topic',
     'Popular',
     'User',
+    'Statistics',
     'Enrolled',
     'UserCourses',
     'Users',
