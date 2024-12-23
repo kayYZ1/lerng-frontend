@@ -9,7 +9,7 @@ export const contentsApiSlice = authApi.injectEndpoints({
         url: `/contents/${moduleId}`,
         method: 'GET',
       }),
-      providesTags: ['Contents'],
+      providesTags: ['Content'],
     }),
     NewContent: builder.mutation({
       query: (args) => {

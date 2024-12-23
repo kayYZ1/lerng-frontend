@@ -38,7 +38,12 @@ export default function TopicItem({ item, userId, instructorId }: Props) {
               <RemoveTopicModal topicId={item.id} />
             </Stack>
           )}
-          <Button color="primary">
+          <Button
+            color="primary"
+            sx={{
+              borderRadius: 25,
+            }}
+          >
             <Link
               to={`/dashboard/courses/course/topic/${item.id}`}
               style={{ textDecoration: 'none', color: 'inherit' }}

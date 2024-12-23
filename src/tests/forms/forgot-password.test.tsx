@@ -17,7 +17,7 @@ describe('Forgot password component tests', () => {
     renderDocument();
 
     const emailInput = screen.getByPlaceholderText(
-      'Email to sent password reset link',
+      'Enter your email address',
     );
     const submitBtn = screen.getByRole('button', { name: /Send/i });
 

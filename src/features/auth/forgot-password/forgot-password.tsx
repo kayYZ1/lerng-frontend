@@ -46,9 +46,15 @@ export default function ForgotPasswordForm() {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           error={formik.touched.email && !!formik.errors.email}
-          placeholder="Email to sent password reset link"
+          placeholder="Enter your email address"
+          sx={{
+            '&:focus': {
+              borderColor: 'primary.main',
+              boxShadow: '0 0 0 3px rgba(25, 118, 210, 0.2)',
+            },
+          }}
         />
-        {formik.touched.email ? (
+        {formik.touched.email && formik.errors.email && (
           <FormHelperText
             component="div"
             className={style.formHelperError}
@@ -56,27 +62,32 @@ export default function ForgotPasswordForm() {
           >
             {formik.errors.email}
           </FormHelperText>
-        ) : (
-          ''
         )}
       </FormControl>
       <Stack gap={4} sx={{ mt: 2 }}>
-        <Button type="submit" fullWidth loading={isLoading}>
-          Send
+        <Button
+          type="submit"
+          fullWidth
+          loading={isLoading}
+          sx={{
+            py: 1.2,
+            fontWeight: 'bold',
+            '&:hover': {
+              backgroundColor: 'primary.dark',
+            },
+          }}
+        >
+          Send Reset Link
         </Button>
       </Stack>
-      {error ? (
+      {error && (
         <ErrorAlert type="Reset password" message={errorResponse} />
-      ) : (
-        ''
       )}
-      {isSuccess ? (
+      {isSuccess && (
         <SuccessAlert
           type="Reset password"
-          message="Reset link has been sent. Please check your e-mail"
+          message="Password reset link has been sent to your email address. Please check your inbox."
         />
-      ) : (
-        ''
       )}
     </form>
   );

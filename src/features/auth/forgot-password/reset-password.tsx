@@ -95,7 +95,7 @@ export default function ResetPassword() {
               error={formik.touched.password && !!formik.errors.password}
               placeholder="New password"
             />
-            {formik.touched.password ? (
+            {formik.touched.password && (
               <FormHelperText
                 component="div"
                 className={style.formHelperError}
@@ -103,8 +103,6 @@ export default function ResetPassword() {
               >
                 {formik.errors.password}
               </FormHelperText>
-            ) : (
-              ''
             )}
           </FormControl>
           <FormControl>
@@ -121,7 +119,7 @@ export default function ResetPassword() {
               }
               placeholder="Repeat your password"
             />
-            {formik.touched.repeatPassword ? (
+            {formik.touched.repeatPassword && (
               <FormHelperText
                 component="div"
                 className={style.formHelperError}
@@ -129,8 +127,6 @@ export default function ResetPassword() {
               >
                 {formik.errors.repeatPassword}
               </FormHelperText>
-            ) : (
-              ''
             )}
           </FormControl>
           <Stack gap={4} sx={{ mt: 2 }}>
@@ -138,18 +134,14 @@ export default function ResetPassword() {
               Reset
             </Button>
           </Stack>
-          {error ? (
+          {error && (
             <ErrorAlert type="Reset password" message={errorResponse} />
-          ) : (
-            ''
           )}
-          {isSuccess ? (
+          {isSuccess && (
             <SuccessAlert
               type="Reset password"
               message="Your password has been changed"
             />
-          ) : (
-            ''
           )}
         </form>
       </Stack>

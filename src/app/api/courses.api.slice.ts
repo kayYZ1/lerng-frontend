@@ -31,7 +31,7 @@ export const coursesApiSlice = authApi.injectEndpoints({
         url: '/courses/',
         method: 'GET',
       }),
-      providesTags: ['Courses'],
+      providesTags: ['Course'],
     }),
     GetCourse: builder.query<Course, string>({
       query: (courseId: string) => ({
@@ -45,7 +45,7 @@ export const coursesApiSlice = authApi.injectEndpoints({
         url: `/courses/instructor`,
         method: 'GET',
       }),
-      providesTags: ['Courses'],
+      providesTags: ['Course'],
     }),
     GetInstructorFromCourse: builder.query<User, string>({
       query: (courseId: string) => ({

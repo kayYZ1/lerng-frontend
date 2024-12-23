@@ -4,14 +4,9 @@ import Sheet from '@mui/joy/Sheet';
 import { useGetInstructorStatisticsQuery } from 'app/api/enrolled.api.slice';
 import StatisticsSkeleton from './statistics-skeleton';
 
-type Statistics = {
-  course: string;
-  count: number;
-};
-
 export default function CoursesTable() {
   const { data: statistics, isLoading } =
-    useGetInstructorStatisticsQuery(undefined);
+    useGetInstructorStatisticsQuery('Statistics');
 
   return (
     <Sheet variant="outlined">
@@ -23,23 +18,24 @@ export default function CoursesTable() {
             <tr>
               <th style={{ width: '30%' }}>Course name</th>
               <th>Active enrolled users</th>
-              <th>User review</th>
+              <th>Course rating</th>
             </tr>
           </thead>
           <tbody>
-            {statistics.map((row: Statistics) => (
-              <tr key={row.course}>
-                <th scope="row">{row.course}</th>
-                <td>{row.count}</td>
-                <td>soon</td>
-              </tr>
-            ))}
+            {statistics &&
+              statistics.map((row) => (
+                <tr key={row.course}>
+                  <th scope="row">{row.course}</th>
+                  <td>{row.count}</td>
+                  <td>{row.rating}/5</td>
+                </tr>
+              ))}
           </tbody>
           <tfoot>
             <tr>
               <th scope="row">Average</th>
-              <td>1021</td>
-              <td>3.5</td>
+              <td>:)</td>
+              <td>:(</td>
             </tr>
           </tfoot>
         </Table>

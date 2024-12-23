@@ -8,39 +8,21 @@ import Grid from '@mui/joy/Grid';
 import Card from '@mui/joy/Card';
 
 import Person from '@mui/icons-material/Person';
-import { CoursesPath } from 'routes/paths';
+import { AuthPath } from 'routes/paths';
 
-const popularCourses = [
-  {
-    title: 'Linux System Administration',
-    description:
-      'Master the basics of Linux system administration, from user management to system maintenance.',
-    students: '15,234',
-    level: 'Beginner',
-  },
-  {
-    title: 'Advanced Shell Scripting',
-    description:
-      'Learn to write complex shell scripts and automate your Linux workflows.',
-    students: '8,921',
-    level: 'Advanced',
-  },
-  {
-    title: 'Linux Security Essentials',
-    description:
-      'Understand security fundamentals and protect your Linux systems from threats.',
-    students: '12,445',
-    level: 'Intermediate',
-  },
-];
+import { useGetPopularCoursesQuery } from 'app/api/enrolled.api.slice';
+import PopularSkeleton from './skeletons/popular-skeleton';
 
 export default function Popular() {
   const navigate = useNavigate();
 
+  const { data: popularCourses, isLoading } =
+    useGetPopularCoursesQuery('Popular');
+
   return (
     <Box sx={{ px: 4 }}>
       <Typography level="h2" sx={{ textAlign: 'center', pb: 8 }}>
-        This Week's Picks!
+        Most popular courses
       </Typography>
       <Grid
         container
@@ -51,70 +33,100 @@ export default function Popular() {
           justifyContent: 'center',
         }}
       >
-        {popularCourses.map((course, index) => (
-          <Grid key={index} xs={12} md={4}>
-            <Card
-              variant="outlined"
-              sx={{
-                height: '100%',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                p: 3,
-                borderRadius: 'lg',
-                boxShadow: 'sm',
-                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                '&:hover': {
-                  transform: 'translateY(-8px)',
-                  boxShadow: 'lg',
-                },
-              }}
-            >
-              <Box>
-                <Typography
-                  level="h4"
-                  fontWeight="lg"
-                  sx={{ mb: 1, color: 'primary.main' }}
-                >
-                  {course.title}
-                </Typography>
-                <Typography
+        {isLoading
+          ? [1, 2, 3].map((index) => (
+              <Grid xs={12} md={4}>
+                <PopularSkeleton key={index} />
+              </Grid>
+            ))
+          : popularCourses?.map((popularCourse, index) => (
+              <Grid xs={12} md={4}>
+                <Card
+                  key={index}
+                  variant="outlined"
                   sx={{
-                    mb: 3,
-                    color: 'text.secondary',
-                    lineHeight: 1.6,
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    p: 3,
+                    borderRadius: 'lg',
+                    boxShadow: 'sm',
+                    transition:
+                      'transform 0.3s ease, box-shadow 0.3s ease',
+                    '&:hover': {
+                      transform: 'translateY(-8px)',
+                      boxShadow: 'lg',
+                    },
                   }}
                 >
-                  {course.description}
-                </Typography>
-                <Stack
-                  direction="row"
-                  spacing={2}
-                  alignItems="center"
-                  sx={{ color: 'text.secondary' }}
-                >
-                  <Person sx={{ fontSize: 20 }} />
-                  <Typography level="body-sm">
-                    {course.students} students
-                  </Typography>
-                  <Typography level="body-sm">• {course.level}</Typography>
-                </Stack>
-              </Box>
-              <Button
-                variant="solid"
-                color="primary"
-                sx={{
-                  mt: 3,
-                  py: 1.2,
-                  fontWeight: 'bold',
-                }}
-                onClick={() => navigate(CoursesPath.COURSES)}
-              >
-                Learn More
-              </Button>
-            </Card>
-          </Grid>
-        ))}
+                  <Box
+                    sx={{
+                      flex: 1,
+                      display: 'flex',
+                      flexDirection: 'column',
+                    }}
+                  >
+                    <Typography
+                      level="h4"
+                      fontWeight="lg"
+                      sx={{
+                        mb: 1,
+                        color: 'primary.main',
+                        display: '-webkit-box',
+                        WebkitLineClamp: 2,
+                        WebkitBoxOrient: 'vertical',
+                        overflow: 'hidden',
+                      }}
+                    >
+                      {popularCourse.course.title}
+                    </Typography>
+                    <Typography
+                      sx={{
+                        mb: 3,
+                        color: 'text.secondary',
+                        lineHeight: 1.6,
+                        display: '-webkit-box',
+                        WebkitLineClamp: 3,
+                        WebkitBoxOrient: 'vertical',
+                        overflow: 'hidden',
+                        flex: 1,
+                      }}
+                    >
+                      {popularCourse.course.description}
+                    </Typography>
+                    <Stack
+                      direction="row"
+                      spacing={2}
+                      alignItems="center"
+                      sx={{
+                        color: 'text.secondary',
+                        mt: 'auto',
+                      }}
+                    >
+                      <Person sx={{ fontSize: 20 }} />
+                      <Typography level="body-sm" noWrap>
+                        {popularCourse.users === 1
+                          ? `${popularCourse.users} student`
+                          : `${popularCourse.users} students`}
+                      </Typography>
+                    </Stack>
+                  </Box>
+                  <Button
+                    variant="solid"
+                    color="primary"
+                    sx={{
+                      mt: 3,
+                      py: 1.2,
+                      fontWeight: 'bold',
+                    }}
+                    onClick={() => navigate(AuthPath.SIGN_IN)}
+                  >
+                    Learn More
+                  </Button>
+                </Card>
+              </Grid>
+            ))}
       </Grid>
     </Box>
   );
