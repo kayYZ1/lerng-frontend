@@ -139,3 +139,8 @@ export type CategoriesStats = {
   category: string;
   count: number;
 };
+
+export type UserYearleStats = {
+  year: string;
+  count: number;
+};

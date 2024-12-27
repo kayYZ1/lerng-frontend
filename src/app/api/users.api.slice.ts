@@ -6,6 +6,7 @@ import {
   UpdateUser,
   User,
   UserAccess,
+  UserYearleStats,
 } from 'shared/ts/types';
 
 export const usersApiSlice = authApi.injectEndpoints({
@@ -63,6 +64,13 @@ export const usersApiSlice = authApi.injectEndpoints({
         body: data,
       }),
     }),
+    GetUserYearlyStats: builder.query<UserYearleStats[], string>({
+      query: () => ({
+        url: '/users/stats/yearly',
+        method: 'GET',
+      }),
+      providesTags: ['AdminStatistics'],
+    }),
   }),
 });
 
@@ -74,4 +82,5 @@ export const {
   useGetAllUsersQuery,
   useChangeAccessMutation,
   useSendEmailMutation,
+  useGetUserYearlyStatsQuery,
 } = usersApiSlice;
