@@ -134,3 +134,8 @@ export type Statistic = {
   count: number;
   rating: number;
 };
+
+export type CategoriesStats = {
+  category: string;
+  count: number;
+};

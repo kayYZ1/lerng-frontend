@@ -7,6 +7,7 @@ export const authApi = createApi({
   keepUnusedDataFor: 90,
   tagTypes: [
     'Auth',
+    'AdminStatistics',
     'Content',
     'Course',
     'Instructor',
