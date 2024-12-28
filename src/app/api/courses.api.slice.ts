@@ -1,7 +1,7 @@
 import { authApi } from 'app/base/auth.api';
 import {
   AddCourse,
-  CategoriesStats,
+  CategoriesStat,
   Course,
   EditCourse,
   User,
@@ -60,7 +60,7 @@ export const coursesApiSlice = authApi.injectEndpoints({
       }),
       providesTags: ['Instructor'],
     }),
-    GetCategoriesStats: builder.query<CategoriesStats[], string>({
+    GetCategoriesStats: builder.query<CategoriesStat[], string>({
       query: () => ({
         url: '/courses/stats/categories',
         method: 'GET',

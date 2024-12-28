@@ -135,12 +135,18 @@ export type Statistic = {
   rating: number;
 };
 
-export type CategoriesStats = {
-  category: string;
+export type AdminStat = {
   count: number;
 };
 
-export type UserYearleStats = {
+export type CategoriesStat = AdminStat & {
+  category: string;
+};
+
+export type UserYearlyStat = AdminStat & {
   year: string;
-  count: number;
+};
+
+export type UserMonthlyStat = AdminStat & {
+  month: string;
 };

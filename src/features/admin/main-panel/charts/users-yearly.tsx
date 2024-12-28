@@ -14,23 +14,17 @@ export default function UsersYearlyChart() {
     useGetUserYearlyStatsQuery('AdminStatistics');
 
   return (
-    <Grid xs={12} md={6}>
+    <Grid xs={8} md={4}>
       <ChartContainer sx={{ minHeight: '400px' }}>
         <Typography level="body-md" pb={2}>
           New user's joining overview
         </Typography>
         {isLoading && !userYearlyStats ? (
-          <Box
-            width={700}
-            height={300}
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-          >
+          <Box display="flex" justifyContent="center" alignItems="center">
             <CircularProgress size="md" />
           </Box>
         ) : (
-          <PieChart width={700} height={300}>
+          <PieChart width={500} height={250}>
             <Pie
               data={userYearlyStats}
               dataKey="count"
