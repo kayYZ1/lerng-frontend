@@ -6,6 +6,8 @@ import {
   UpdateUser,
   User,
   UserAccess,
+  UserMonthlyStat,
+  UserYearlyStat,
 } from 'shared/ts/types';
 
 export const usersApiSlice = authApi.injectEndpoints({
@@ -56,12 +58,27 @@ export const usersApiSlice = authApi.injectEndpoints({
       }),
       invalidatesTags: ['Users'],
     }),
+    //Move send email to mail.api.slice.ts
     SendEmail: builder.mutation<unknown, SendEmail>({
       query: (data) => ({
         url: `/mail/send/${data.instructorId}`,
         method: 'POST',
         body: data,
       }),
+    }),
+    GetUserYearlyStats: builder.query<UserYearlyStat[], string>({
+      query: () => ({
+        url: '/users/stats/yearly',
+        method: 'GET',
+      }),
+      providesTags: ['AdminStatistics'],
+    }),
+    GetUserMonthlyStats: builder.query<UserMonthlyStat[], string>({
+      query: () => ({
+        url: '/users/stats/monthly',
+        method: 'GET',
+      }),
+      providesTags: ['AdminStatistics'],
     }),
   }),
 });
@@ -74,4 +91,6 @@ export const {
   useGetAllUsersQuery,
   useChangeAccessMutation,
   useSendEmailMutation,
+  useGetUserYearlyStatsQuery,
+  useGetUserMonthlyStatsQuery,
 } = usersApiSlice;

@@ -134,3 +134,19 @@ export type Statistic = {
   count: number;
   rating: number;
 };
+
+export type AdminStat = {
+  count: number;
+};
+
+export type CategoriesStat = AdminStat & {
+  category: string;
+};
+
+export type UserYearlyStat = AdminStat & {
+  year: string;
+};
+
+export type UserMonthlyStat = AdminStat & {
+  month: string;
+};

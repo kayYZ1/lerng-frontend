@@ -1,5 +1,11 @@
 import { authApi } from 'app/base/auth.api';
-import { AddCourse, Course, EditCourse, User } from 'shared/ts/types';
+import {
+  AddCourse,
+  CategoriesStat,
+  Course,
+  EditCourse,
+  User,
+} from 'shared/ts/types';
 
 export const coursesApiSlice = authApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -54,6 +60,13 @@ export const coursesApiSlice = authApi.injectEndpoints({
       }),
       providesTags: ['Instructor'],
     }),
+    GetCategoriesStats: builder.query<CategoriesStat[], string>({
+      query: () => ({
+        url: '/courses/stats/categories',
+        method: 'GET',
+      }),
+      providesTags: ['AdminStatistics'],
+    }),
   }),
 });
 
@@ -65,4 +78,5 @@ export const {
   useRemoveCourseMutation,
   useGetInstructorCoursesQuery,
   useGetInstructorFromCourseQuery,
+  useGetCategoriesStatsQuery,
 } = coursesApiSlice;
