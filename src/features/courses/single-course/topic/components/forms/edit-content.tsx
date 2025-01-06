@@ -25,13 +25,24 @@ import { setActiveContent } from 'app/slice/contents.slice';
 import { useEditContentMutation } from 'app/api/contents.api.slice';
 
 const validationSchema = yup.object().shape({
-  title: yup.string().min(3, 'Title to short').max(40, 'Title too long'),
+  title: yup
+    .string()
+    .required('Title is required')
+    .min(3, 'Title to short')
+    .max(40, 'Title too long'),
   description: yup
     .string()
+    .required('Description is required')
     .min(5, 'Description too short')
     .max(80, 'Description too long'),
-  paragraph150: yup.string().max(150, 'Too long'),
-  paragraph300: yup.string().max(300, 'Too long'),
+  paragraph150: yup
+    .string()
+    .required('This is required')
+    .max(1000, 'Too long'),
+  paragraph300: yup
+    .string()
+    .required('This is required')
+    .max(2000, 'Too long'),
   videoUrl: yup
     .string()
     .matches(
