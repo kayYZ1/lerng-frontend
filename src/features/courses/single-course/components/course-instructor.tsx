@@ -52,11 +52,6 @@ export default function CourseInstructor({
             </Typography>
             <Stack direction="row" gap={4}>
               <SendEmailModal {...instructor} />
-              <Tooltip title="Chat with instructor" variant="solid">
-                <IconButton>
-                  <Chat />
-                </IconButton>
-              </Tooltip>
             </Stack>
           </CardContent>
         </Card>

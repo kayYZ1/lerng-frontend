@@ -19,15 +19,15 @@ export default function UsersMonthlyChart() {
     useGetUserMonthlyStatsQuery('AdminStatistics');
 
   return (
-    <Grid xs={12} md={6}>
+    <Grid xs={12} md={8}>
       <ChartContainer sx={{ minHeight: '400px' }}>
         <Typography level="body-md" pb={2}>
           User monthly activity
         </Typography>
         {isLoading && !userMonthlyStats ? (
           <Box
-            width={700}
-            height={300}
+            width={1000}
+            height={400}
             display="flex"
             justifyContent="center"
             alignItems="center"
@@ -35,7 +35,7 @@ export default function UsersMonthlyChart() {
             <CircularProgress size="md" />
           </Box>
         ) : (
-          <LineChart width={700} height={300} data={userMonthlyStats}>
+          <LineChart width={950} height={300} data={userMonthlyStats}>
             <Line type="monotone" dataKey="count" stroke="#8884d8" />
             <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
             <XAxis dataKey="month" tick={{ fontSize: 8 }} />
