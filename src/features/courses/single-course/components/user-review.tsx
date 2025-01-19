@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 
 import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
@@ -7,25 +6,20 @@ import Typography from '@mui/joy/Typography';
 import Stack from '@mui/joy/Stack';
 
 import StarIcon from '@mui/icons-material/Star';
-import Skeleton from '@mui/joy/Skeleton';
 
 import {
   useGetRatingQuery,
   useUpdateRatingMutation,
 } from 'app/api/enrolled.api.slice';
-import { selectCurrentUser } from 'app/slice/user.slice';
 
 export default function UserReview({
   courseId,
-  instructorId,
 }: {
   courseId: string | undefined;
-  instructorId: string;
 }) {
-  const user = useSelector(selectCurrentUser);
   const [hover, setHover] = useState(0);
 
-  const { data: reviewScore, isLoading } = useGetRatingQuery(courseId);
+  const { data: reviewScore } = useGetRatingQuery(courseId);
   const [UpdateRating] = useUpdateRatingMutation();
 
   const handleReviewScore = async (score: number) => {
@@ -57,36 +51,26 @@ export default function UserReview({
         }}
       >
         <Typography level="title-lg">Your Review</Typography>
-        {user.id === instructorId ? (
-          <Typography level="body-md">
-            You cannot grade your own course
-          </Typography>
-        ) : isLoading ? (
-          <Skeleton variant="rectangular" width={160} height={24} />
-        ) : (
-          <Stack direction="row" spacing={1}>
-            {[1, 2, 3, 4, 5].map((score) => (
-              <StarIcon
-                key={score}
-                onMouseEnter={() => setHover(score)}
-                onMouseLeave={() => setHover(0)}
-                onClick={() => handleReviewScore(score)}
-                sx={{
-                  fontSize: 40,
-                  color:
-                    score <= (hover || reviewScore)
-                      ? '#a3850e'
-                      : '#E0E0E0',
-                  cursor: 'pointer',
-                  transition: 'color 0.2s, transform 0.2s',
-                  '&:hover': {
-                    transform: 'scale(1.2)',
-                  },
-                }}
-              />
-            ))}
-          </Stack>
-        )}
+        <Stack direction="row" spacing={1}>
+          {[1, 2, 3, 4, 5].map((score) => (
+            <StarIcon
+              key={score}
+              onMouseEnter={() => setHover(score)}
+              onMouseLeave={() => setHover(0)}
+              onClick={() => handleReviewScore(score)}
+              sx={{
+                fontSize: 40,
+                color:
+                  score <= (hover || reviewScore) ? '#a3850e' : '#E0E0E0',
+                cursor: 'pointer',
+                transition: 'color 0.2s, transform 0.2s',
+                '&:hover': {
+                  transform: 'scale(1.2)',
+                },
+              }}
+            />
+          ))}
+        </Stack>
         {reviewScore > 0 && (
           <Typography level="body-sm" component="i" sx={{ mt: 1 }}>
             You rated this course {reviewScore} out of 5 stars

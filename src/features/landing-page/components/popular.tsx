@@ -35,14 +35,13 @@ export default function Popular() {
       >
         {isLoading
           ? [1, 2, 3].map((index) => (
-              <Grid xs={12} md={4}>
-                <PopularSkeleton key={index} />
+              <Grid xs={12} md={4} key={index}>
+                <PopularSkeleton />
               </Grid>
             ))
           : popularCourses?.map((popularCourse, index) => (
-              <Grid xs={12} md={4}>
+              <Grid xs={12} md={4} key={index}>
                 <Card
-                  key={index}
                   variant="outlined"
                   sx={{
                     height: '100%',

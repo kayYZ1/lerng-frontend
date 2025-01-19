@@ -13,6 +13,7 @@ import TopicsList from './components/topics-list';
 import TopicItemSkeleton from './components/skeletons/topic-item';
 import CourseInstructor from './components/course-instructor';
 import UserReview from './components/user-review';
+import InstructorReview from './components/instructor-review';
 
 export default function TopicsPanel({ id }: { id: string | undefined }) {
   const {
@@ -63,14 +64,17 @@ export default function TopicsPanel({ id }: { id: string | undefined }) {
             my: 2,
           }}
         >
+          {!instructorLoader &&
+            (instructor ? (
+              <InstructorReview />
+            ) : (
+              <UserReview courseId={id} />
+            ))}
           {instructor && (
-            <>
-              <UserReview courseId={id} instructorId={instructor.id} />
-              <CourseInstructor
-                instructor={instructor}
-                isLoading={instructorLoader}
-              />
-            </>
+            <CourseInstructor
+              instructor={instructor}
+              isLoading={instructorLoader}
+            />
           )}
         </Box>
       </Box>
