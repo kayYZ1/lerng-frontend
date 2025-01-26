@@ -14,12 +14,12 @@ export default function CourseInstructor({
   instructor,
   isLoading,
 }: {
-  instructor: Instructor;
+  instructor?: Instructor;
   isLoading: boolean;
 }) {
   return (
     <Fragment>
-      {isLoading ? (
+      {isLoading || !instructor ? (
         <InstructorCardSkeleton />
       ) : (
         <Card

@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
 import Sheet from '@mui/joy/Sheet';
@@ -7,6 +7,7 @@ import Box from '@mui/joy/Box';
 import { setActiveCourse } from 'app/slice/courses.slice';
 import { useGetTopicsFromCourseQuery } from 'app/api/topics.api.slice';
 import { useGetInstructorFromCourseQuery } from 'app/api/courses.api.slice';
+import { selectCurrentUser } from 'app/slice/user.slice';
 
 import ProgressTable from './components/progress-table';
 import TopicsList from './components/topics-list';
@@ -14,6 +15,7 @@ import TopicItemSkeleton from './components/skeletons/topic-item';
 import CourseInstructor from './components/course-instructor';
 import UserReview from './components/user-review';
 import InstructorReview from './components/instructor-review';
+import InstructorCardSkeleton from './components/skeletons/instructor-card';
 
 export default function TopicsPanel({ id }: { id: string | undefined }) {
   const {
@@ -25,6 +27,8 @@ export default function TopicsPanel({ id }: { id: string | undefined }) {
     useGetInstructorFromCourseQuery(id!);
 
   const dispatch = useDispatch();
+
+  const user = useSelector(selectCurrentUser);
 
   useEffect(() => {
     dispatch(setActiveCourse(id));
@@ -64,18 +68,16 @@ export default function TopicsPanel({ id }: { id: string | undefined }) {
             my: 2,
           }}
         >
-          {!instructorLoader &&
-            (instructor ? (
-              <InstructorReview />
-            ) : (
-              <UserReview courseId={id} />
-            ))}
-          {instructor && (
-            <CourseInstructor
-              instructor={instructor}
-              isLoading={instructorLoader}
-            />
+          {instructorLoader && <InstructorCardSkeleton />}
+          {instructor?.id === user.id ? (
+            <InstructorReview />
+          ) : (
+            <UserReview courseId={id} />
           )}
+          <CourseInstructor
+            instructor={instructor}
+            isLoading={instructorLoader}
+          />
         </Box>
       </Box>
       {error && 'Something went wrong please refresh the page.'}
