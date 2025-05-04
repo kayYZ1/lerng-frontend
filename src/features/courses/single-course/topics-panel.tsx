@@ -21,7 +21,6 @@ export default function TopicsPanel({ id }: { id: string | undefined }) {
   const {
     data: topics,
     isLoading,
-    error,
   } = useGetTopicsFromCourseQuery(id!);
   const { data: instructor, isLoading: instructorLoader } =
     useGetInstructorFromCourseQuery(id!);
@@ -80,7 +79,6 @@ export default function TopicsPanel({ id }: { id: string | undefined }) {
           />
         </Box>
       </Box>
-      {error && 'Something went wrong please refresh the page.'}
     </Sheet>
   );
 }

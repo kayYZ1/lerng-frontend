@@ -18,10 +18,10 @@ export default function CardType({
   instructorId,
 }: ICourseEnrolled) {
   if (instructorId && instructorId === user.id) {
-    return <InstructorCard {...item} />;
+    return <InstructorCard item={item} />;
   } else if (isEnrolled) {
-    return <EnrolledCard {...item} />;
+    return <EnrolledCard item={item} />;
   } else {
-    return <CourseCard {...item} />;
+    return <CourseCard item={item} />;
   }
 }

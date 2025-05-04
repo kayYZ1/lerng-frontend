@@ -7,7 +7,7 @@ import { Course } from 'shared/ts/types';
 
 import style from '../../courses.module.css';
 
-export default function EnrolledCard(item: Course) {
+export default function EnrolledCard({ item }: { item: Course }) {
   return (
     <Fragment>
       <AspectRatio ratio="2">
